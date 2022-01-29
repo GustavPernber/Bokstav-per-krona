@@ -1,0 +1,25 @@
+https://api-extern.systembolaget.se/sb-api-ecommerce/v1/productsearch/search?
+
+size=30
+page=2
+
+categoryLevel1=Vin | Öl | Sprit | Cider%20%26%20blanddrycker
+
+
+categoryLevel2= [TODO]
+
+isEcoFriendlyPackage=false | true
+packaging=Flaska |NULL|
+
+isInDepotStockForFastDelivery=false | true
+
+priceFrom=[INTEGER]
+priceTo=[INTEGER]
+
+
+volumeFrom=[INTEGER]
+volumeTo=[INTEGER]
+
+
+alcoholPercentageFrom=[INTEGER]
+alcoholPercentageTo=[INTEGER]

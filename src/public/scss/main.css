@@ -40,19 +40,135 @@ p {
   font-family: 'Roboto', sans-serif;
 }
 
-main#index section.drinksContainer > article {
-  background: green;
+body {
+  background-color: #F9F9F9;
+}
+
+body > header#header {
+  background: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 5rem;
+}
+
+body > header#header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: lightgoldenrodyellow;
+  width: 100%;
+  height: 100%;
+}
+
+body > header#header nav ul {
+  height: 100%;
+  background: lightgreen;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  list-style: none;
+}
+
+body > header#header nav ul li {
+  height: 100%;
+  width: 100%;
+  background: lightsalmon;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body > header#header nav ul li button {
+  border: none;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: lightpink;
+  width: 100%;
+}
+
+body > header#header nav ul li button:hover {
+  cursor: pointer;
+  border-top: 2px solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid black;
+}
+
+body > header#header nav ul li button span {
+  letter-spacing: 0.5px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+main#index {
+  height: 100vh;
+}
+
+main#index section.drinksContainer > a {
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  text-decoration: none;
+  color: black;
+  border: 1px solid #2d29261a;
+  border-radius: 4px;
+  -webkit-box-shadow: #2d29261a 0px 2px 6px 0px;
+          box-shadow: #2d29261a 0px 2px 6px 0px;
   max-width: 42rem;
   width: 100%;
-  height: 17rem;
+  min-height: 17rem;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto;
       grid-template-columns: auto auto;
 }
 
-main#index section.drinksContainer > article figure {
-  background: red;
+main#index section.drinksContainer > a:hover {
+  -webkit-transform: translateY(-0.18rem);
+          transform: translateY(-0.18rem);
+  -webkit-box-shadow: #2d29261a 0px 2px 16px 0px;
+          box-shadow: #2d29261a 0px 2px 16px 0px;
+}
+
+main#index section.drinksContainer > a:hover .titles > h2, main#index section.drinksContainer > a:hover .titles > h1 {
+  color: #537f61;
+  text-decoration: underline;
+}
+
+main#index section.drinksContainer > a figure {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,24 +181,21 @@ main#index section.drinksContainer > article figure {
   width: 10rem;
 }
 
-main#index section.drinksContainer > article figure img {
+main#index section.drinksContainer > a figure img {
   max-height: 10rem;
   max-width: 6rem;
-  background: blue;
 }
 
-main#index section.drinksContainer > article div.infoContainer {
+main#index section.drinksContainer > a div.infoContainer {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto;
       grid-template-columns: auto auto;
-  -ms-grid-rows: auto 20%;
-      grid-template-rows: auto 20%;
-  background: lightskyblue;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
 }
 
-main#index section.drinksContainer > article div.infoContainer div.textContainer {
-  background: lightgoldenrodyellow;
+main#index section.drinksContainer > a div.infoContainer div.textContainer {
   padding: 1.2rem 2rem 1rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -94,13 +207,13 @@ main#index section.drinksContainer > article div.infoContainer div.textContainer
   gap: 1rem;
 }
 
-main#index section.drinksContainer > article div.infoContainer div.textContainer > p.usageTaste {
+main#index section.drinksContainer > a div.infoContainer div.textContainer > p.usageTaste {
   color: #2D2926;
   font-family: "Munson Regular";
   font-size: 0.95rem;
 }
 
-main#index section.drinksContainer > article div.infoContainer div.textContainer .titles {
+main#index section.drinksContainer > a div.infoContainer div.textContainer .titles {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,36 +233,80 @@ main#index section.drinksContainer > article div.infoContainer div.textContainer
   gap: 0.1rem;
 }
 
-main#index section.drinksContainer > article div.infoContainer div.textContainer .titles > p {
+main#index section.drinksContainer > a div.infoContainer div.textContainer .titles > p {
   letter-spacing: 1.25px;
   font-family: 'Roboto Condensed', sans-serif;
   color: #737373;
   font-size: 0.8rem;
 }
 
-main#index section.drinksContainer > article div.infoContainer div.textContainer .titles > h1 {
-  color: #2D2926;
-  font-weight: 600;
+main#index section.drinksContainer > a div.infoContainer div.textContainer .titles > h1 {
+  font-weight: 500;
 }
 
-main#index section.drinksContainer > article div.infoContainer div.textContainer .titles > h2 {
+main#index section.drinksContainer > a div.infoContainer div.textContainer .titles > h2 {
   font-size: 1.2rem;
-  color: #737373;
   font-weight: 400;
+  letter-spacing: -0.08px;
 }
 
-main#index section.drinksContainer > article div.infoContainer aside.clocks {
+main#index section.drinksContainer > a div.infoContainer aside.clocks {
   width: 7rem;
-  background: lightsalmon;
   -ms-grid-column: 2;
   grid-column: 2;
   -ms-grid-row: 1;
   grid-row: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2rem 0;
+  border-left: 1px solid rgba(45, 41, 38, 0.1);
 }
 
-main#index section.drinksContainer > article div.infoContainer footer.volumePrice {
-  background: lightgreen;
+main#index section.drinksContainer > a div.infoContainer aside.clocks div.clock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main#index section.drinksContainer > a div.infoContainer aside.clocks div.clock object {
+  max-width: 1.5rem;
+}
+
+main#index section.drinksContainer > a div.infoContainer aside.clocks div.clock p {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #2D2926;
+  letter-spacing: 1.5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+main#index section.drinksContainer > a div.infoContainer footer.volumePrice {
   grid-column: span 2;
+  border-top: 1px solid rgba(45, 41, 38, 0.1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,14 +320,28 @@ main#index section.drinksContainer > article div.infoContainer footer.volumePric
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-right: 2rem;
+  min-height: 3.25rem;
 }
 
-main#index section.drinksContainer > article div.infoContainer footer.volumePrice p {
+main#index section.drinksContainer > a div.infoContainer footer.volumePrice > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+main#index section.drinksContainer > a div.infoContainer footer.volumePrice > div p {
   color: #737373;
   font-size: 0.75rem;
 }
 
-main#index section.drinksContainer > article div.infoContainer footer.volumePrice h3 {
+main#index section.drinksContainer > a div.infoContainer footer.volumePrice h3 {
   font-weight: 400;
   font-size: 1rem;
   color: #2D2926;

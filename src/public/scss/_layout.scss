@@ -1,20 +1,94 @@
 @import './variables'; 
 @import './typography';
 
+body{
+    >header#header{
+        background: red;
+        @include center;
+        height: 5rem;
+        
+        nav{
+            @include center;
+            background: lightgoldenrodyellow;
+            width: 100%;
+            height: 100%;
+            ul{
+                height: 100%;
+                background: lightgreen;
+                @include center;
+                justify-content: space-between;
+                width: 100%;
+                list-style: none;
+                
+                li{
+                    height: 100%;
+                    width: 100%;
+                    background: lightsalmon;
+                    @include center;
+
+                    button{
+                        border: none;
+                        height: 100%;
+                        @include center;
+                        background: lightpink;
+                        width: 100%;
+
+                        &:hover{
+                            cursor: pointer;
+                            border-top:2px solid rgba(0, 0, 0, 0) ;
+                            border-bottom: 2px solid black;
+                        }
+
+                        span{
+                            letter-spacing: 0.5px;
+                            font-family: 'Roboto Condensed', sans-serif;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+    background-color:$bgWhite ;
+}
+
+
+
+
 main#index{
+    height: 100vh;
     section.drinksContainer{
-        >article{
-            background: green;
+        >a{
+            transition: 0.25s ease-in-out;
+            
+            
+            text-decoration: none;
+            color: black;
+            border: 1px solid #2d29261a;
+            border-radius: 4px;
+            box-shadow: #2d29261a 0px 2px 6px 0px;
+
             max-width: 42rem;
             width: 100%;
-            height: 17rem;
+            min-height: 17rem;
             
 
             display: grid;
             grid-template-columns: auto auto;
 
+            &:hover{
+                transform: translateY(-0.18rem);
+                box-shadow: #2d29261a 0px 2px 16px 0px;
+                .titles> h2, .titles > h1{
+                    color: $systemetGreen;
+                    // border-bottom: red 1px solid;
+                    text-decoration: underline;
+                    // color: red !important;
+                }
+            }
+            
             figure{
-                background: red;
+                
                 @include center;
                 
                 width: 10rem;
@@ -22,38 +96,37 @@ main#index{
                     max-height: 10rem;
                     max-width: 6rem;
                     
-                    background: blue;
                 }
             }
-
+            
             div.infoContainer{
                 display: grid;
                 grid-template-columns: auto auto;
-                grid-template-rows: auto 20%;
-
-                background: lightskyblue;
-
+                grid-template-rows: auto auto;
+                
+                
+                
                 div.textContainer{
-                    background: lightgoldenrodyellow;
+                    
                     padding: 1.2rem 2rem 1rem 0;
                     display: flex;
                     flex-direction: column;
-                    gap: 1rem;                    
-                        
+                    gap: 1rem;
+                    
                     >p.usageTaste{
                         color: $textBlack;
                         font-family: "Munson Regular";
                         font-size: 0.95rem;
-            
+                        
                     }
-
+                    
                     .titles{
                         @include center;
                         flex-direction: column;
                         
                         align-items: flex-start;
                         gap: 0.1rem;
-
+                        
                         >p{
                             letter-spacing: 1.25px;
                             font-family: 'Roboto Condensed', sans-serif;
@@ -61,50 +134,81 @@ main#index{
                             font-size: 0.8rem;
                             
                         }
-    
+                        
                         >h1{
-                            color: $textBlack;
-                            font-weight: 600;
+                            // color: $textBlack;
+                            font-weight: 500;
                         }
                         
                         >h2{
                             font-size: 1.2rem;
-                            color: $textGrey;
+                            // color: $textGrey;
                             font-weight: 400;
+                            letter-spacing: -0.08px;
                         }
                     }
                     
-
+                    
                 }
-
+                
                 
                 aside.clocks{
                     width: 7rem;
-                    background: lightsalmon;
+                    
                     grid-column: 2;
                     grid-row: 1;
+                    
+                    @include center;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: 2rem 0;
+                    
+                    border-left: 1px solid $borderGrey;
+                    div.clock{
+                        @include center;
+                        flex-direction: column;
+                        
+                        object{
+                            max-width: 1.5rem;
+                        }
+                        p{
+                            font-family: 'Roboto Condensed', sans-serif;
+                            color: $textBlack;
+                            letter-spacing: 1.5px;
+                            font-size: 0.65rem;
+                            font-weight: 700;
+                        }
+                        
+                    }
                 }
                 footer.volumePrice{
-                    background: lightgreen;
                     grid-column: span 2;
-
+                    border-top: 1px solid $borderGrey;
                     @include center;
                     justify-content: space-between;
                     padding-right:2rem ;
-                    p{
-                        color: $textGrey;
-                        font-size: 0.75rem;
+                    min-height: 3.25rem;
+                    
+                    >div{
+                        @include center;
+                        gap: 1rem;
+                        p{
+                            color: $textGrey;
+                            font-size: 0.75rem;
+                        }
                     }
-
+                    
+                    
                     h3{
                         font-weight: 400;
                         font-size: 1rem;
                         color: $textBlack;
                     }
                 }
-
+                
             }
-
+            
+            
         }
     }
 }

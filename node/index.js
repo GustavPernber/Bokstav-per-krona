@@ -1,11 +1,7 @@
 const axios=require('axios')
 const sqlite3=require('sqlite3')
 
-let config = {
-    headers: {
-        "Ocp-Apim-Subscription-Key": "cfc702aed3094c86b92d6d4ff7a54c84"
-    }
-}
+
 
 
 //klass funktioner: level1, individual, database
@@ -15,21 +11,142 @@ class APItoDB{
     constructor({dbPath, categories}){
         this.dbPath=dbPath
         this.categories=categories
+
+        this.amountList=[]
+        this.config = {
+            headers: {
+                "Ocp-Apim-Subscription-Key": "cfc702aed3094c86b92d6d4ff7a54c84"
+            }
+        }
     }
 
-    #level1(params) {
-        //main loopen, kör igenom alla items men kallar på single product vid den nivån
+    async init(){
+        await this.#level1()
+        console.log('Completed')
     }
 
-    #singleProduct(){
-        //Behandlar  vad som ska hända med objektet för en produkt. Kallar på databas
+
+    #sleep(){
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve()
+            }, 10);
+        })
+    }
+    
+    //Behandlar alla level1, alltså allt
+    async #level1() {
+
+        //LEVEL1
+        for(let k=0; k<this.categories.length; k++){
+            //Loopar igenom alla huvudkategorier
+            let categoryObj=this.categories[k]
+            let level1= categoryObj.level1
+            console.log('Lvl1: ', level1)
+            
+            // LEVEL2 går igenom alla level2
+            for(let j=0; j<categoryObj.level2.length; j++){
+                
+                let level2=categoryObj.level2[j]
+                console.log('Lvl2: ', level2)
+
+                await this.#getPages(level1, level2)
+
+            }
+            
+
+        }
+        console.log(this.amountList)
+    
     }
 
-    #writeToDb(){
+    //Behandlar alla pages för tillhörande level2
+    #getPages(level1, level2){
+        //Går igenom alla tillgängliga pages. För en page skickas det till singePage som behandlar ett objekt
+        //Resolve när alla pages är uppnådda och behandlade för den level2
+
+        console.log('Getting pages...')
+        return new Promise( async(resolve, reject)=>{
+
+            let maxPages=false
+            let totalProducts=0
+            let response=undefined
+            
+            for(let i=1; maxPages===false; i++){
+                
+                try {
+                    
+                    response= await axios.get(`https://api-extern.systembolaget.se/sb-api-ecommerce/v1/productsearch/search?categoryLevel1=${level1}&categoryLevel2=${level2}&page=${i}`, this.config)
+                } catch (error) {
+                    console.log('API error:')
+                    console.error(error)
+                    reject()
+                }
+
+        
+                if(response.data.products.length<1){ 
+                    console.log('All pages completed for: ', level1, level2)
+                    maxPages=true
+                    this.amountList.push(`${level1}: ${level2}: ${totalProducts}`)
+                }else{
+                    totalProducts+=response.data.products.length
+                    await this.#singlePage(response.data.products)
+
+                }
+            }
+            console.log('Resolved pages.')
+            resolve()
+
+        })
 
     }
+
+    //Behandlar en page. Ca30 produkter 
+    #singlePage(products){
+        //Har en lista med objekt. 30objekt vanligtvis
+        return new Promise( async(resolve, reject)=>{
+
+            for(let i=1; i<products.length; i++){
+                //För varje produkt:
+                let product=products[i]
+                // await this.#sleep()
+
+            }
+
+            console.log('Resolved single page')
+            resolve()
+
+
+        })
+    }
+
+
+    // #writeToDb(){
+    //     //Skriver till databasen om objektet ej redan finns
+    // }
 
 }
+
+
+const APIScript=new APItoDB({
+    dbPath: 'C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db', 
+    
+    categories: [
+        // {level1:"Öl",
+        // level2:["Ale", "Ljus%20lager"],
+        // amount:0
+        // },
+
+        {level1:"Vin",
+        level2:["Rosé"],
+        amount:0
+        }
+    ]
+
+})
+
+APIScript.init()
+
 
 async function forLoop (){
 
@@ -259,4 +376,4 @@ async function forLoop (){
 }
 
 
-forLoop()
+

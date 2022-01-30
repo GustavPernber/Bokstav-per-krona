@@ -1,1 +1,1 @@
-try {
+await this.#sleep()

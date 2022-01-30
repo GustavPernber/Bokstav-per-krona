@@ -3,18 +3,19 @@
 
 body{
     >header#header{
-        background: red;
+     
         @include center;
         height: 5rem;
-        
+        border-bottom: 2px solid $borderGrey;
+
         nav{
             @include center;
-            background: lightgoldenrodyellow;
+         
             width: 100%;
             height: 100%;
             ul{
                 height: 100%;
-                background: lightgreen;
+             
                 @include center;
                 justify-content: space-between;
                 width: 100%;
@@ -23,25 +24,31 @@ body{
                 li{
                     height: 100%;
                     width: 100%;
-                    background: lightsalmon;
+                  
                     @include center;
 
                     button{
                         border: none;
                         height: 100%;
                         @include center;
-                        background: lightpink;
+                        background: none;
                         width: 100%;
-
+                        transition: 1s;
+                        border-top:0 solid rgba(0, 0, 0, 0) ;
+                        border-bottom: 0 solid rgba(0, 0, 0, 0) ;
                         &:hover{
+                            transition: 0.3s;
+                            
                             cursor: pointer;
-                            border-top:2px solid rgba(0, 0, 0, 0) ;
-                            border-bottom: 2px solid black;
+                            border-top:0 solid rgba(0, 0, 0, 0) ;
+                            border-bottom: 2px solid $systemetGreen;
                         }
 
                         span{
                             letter-spacing: 0.5px;
                             font-family: 'Roboto Condensed', sans-serif;
+                            font-size: 1rem;
+                            font-weight: 400;
                         }
 
                     }
@@ -55,26 +62,30 @@ body{
 
 
 
+
+
+
 main#index{
+
+    background-color:$bgWhite ;
     height: 100vh;
     section.drinksContainer{
         >a{
             transition: 0.25s ease-in-out;
-            
-            
             text-decoration: none;
             color: black;
+
             border: 1px solid #2d29261a;
             border-radius: 4px;
             box-shadow: #2d29261a 0px 2px 6px 0px;
 
+
             max-width: 42rem;
             width: 100%;
             min-height: 17rem;
-            
-
+        
             display: grid;
-            grid-template-columns: auto auto;
+            // grid-template-columns: auto auto auto;
 
             &:hover{
                 transform: translateY(-0.18rem);
@@ -88,7 +99,8 @@ main#index{
             }
             
             figure{
-                
+                grid-column: 1;
+                grid-row: span 3;
                 @include center;
                 
                 width: 10rem;
@@ -99,116 +111,161 @@ main#index{
                 }
             }
             
-            div.infoContainer{
-                display: grid;
-                grid-template-columns: auto auto;
-                grid-template-rows: auto auto;
+            .titles{
+                grid-column: 2;
+                grid-row: 1;
+
+                @include center;
+                flex-direction: column;
                 
+                align-items: flex-start;
+                gap: 0.1rem;
                 
-                
-                div.textContainer{
-                    
-                    padding: 1.2rem 2rem 1rem 0;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                    
-                    >p.usageTaste{
-                        color: $textBlack;
-                        font-family: "Munson Regular";
-                        font-size: 0.95rem;
-                        
-                    }
-                    
-                    .titles{
-                        @include center;
-                        flex-direction: column;
-                        
-                        align-items: flex-start;
-                        gap: 0.1rem;
-                        
-                        >p{
-                            letter-spacing: 1.25px;
-                            font-family: 'Roboto Condensed', sans-serif;
-                            color: $textGrey;
-                            font-size: 0.8rem;
-                            
-                        }
-                        
-                        >h1{
-                            // color: $textBlack;
-                            font-weight: 500;
-                        }
-                        
-                        >h2{
-                            font-size: 1.2rem;
-                            // color: $textGrey;
-                            font-weight: 400;
-                            letter-spacing: -0.08px;
-                        }
-                    }
-                    
+                >p{
+                    letter-spacing: 1.25px;
+                    font-family: 'Roboto Condensed', sans-serif;
+                    color: $textGrey;
+                    font-size: 0.8rem;
                     
                 }
                 
-                
-                aside.clocks{
-                    width: 7rem;
-                    
-                    grid-column: 2;
-                    grid-row: 1;
-                    
-                    @include center;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    padding: 2rem 0;
-                    
-                    border-left: 1px solid $borderGrey;
-                    div.clock{
-                        @include center;
-                        flex-direction: column;
-                        
-                        object{
-                            max-width: 1.5rem;
-                        }
-                        p{
-                            font-family: 'Roboto Condensed', sans-serif;
-                            color: $textBlack;
-                            letter-spacing: 1.5px;
-                            font-size: 0.65rem;
-                            font-weight: 700;
-                        }
-                        
-                    }
-                }
-                footer.volumePrice{
-                    grid-column: span 2;
-                    border-top: 1px solid $borderGrey;
-                    @include center;
-                    justify-content: space-between;
-                    padding-right:2rem ;
-                    min-height: 3.25rem;
-                    
-                    >div{
-                        @include center;
-                        gap: 1rem;
-                        p{
-                            color: $textGrey;
-                            font-size: 0.75rem;
-                        }
-                    }
-                    
-                    
-                    h3{
-                        font-weight: 400;
-                        font-size: 1rem;
-                        color: $textBlack;
-                    }
+                >h1{
+                    // color: $textBlack;
+                    font-weight: 500;
                 }
                 
+                >h2{
+                    font-size: 1.2rem;
+                    // color: $textGrey;
+                    font-weight: 400;
+                    letter-spacing: -0.08px;
+                }
             }
+            
+            .usageTasteContainer{
+                grid-column: 2;
+                grid-row: 2;
+                >p{
+                    color: $textBlack;
+                    font-family: "Munson Regular";
+                    font-size: 0.95rem;
+                    
+                }
+            }
+            
+            
+            aside.clocks{
+                width: 7rem;
+                
+                grid-column: 3;
+                grid-row: span 2;
+                
+                @include center;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 2rem 0;
+                
+                border-left: 1px solid $borderGrey;
+                div.clock{
+                    @include center;
+                    flex-direction: column;
+                    
+                    object{
+                        max-width: 1.5rem;
+                    }
+                    p{
+                        font-family: 'Roboto Condensed', sans-serif;
+                        color: $textBlack;
+                        letter-spacing: 1.5px;
+                        font-size: 0.65rem;
+                        font-weight: 700;
+                    }
+                    
+                }
+            }
+            footer.volumePrice{
+                grid-column: 2 / span 2;
+
+                grid-row: 3;
+                border-top: 1px solid $borderGrey;
+                @include center;
+                justify-content: space-between;
+                padding-right:2rem ;
+                min-height: 3.25rem;
+                
+                >div{
+                    @include center;
+                    gap: 1rem;
+                    p{
+                        color: $textGrey;
+                        font-size: 0.75rem;
+                    }
+                }
+                
+                
+                h3{
+                    font-weight: 400;
+                    font-size: 1rem;
+                    color: $textBlack;
+                }
+            }
+                
+            
             
             
         }
     }
+}
+
+@media screen and (max-width: 560px){
+   main#index{
+        section.drinksContainer{
+
+            >a{
+                
+                grid-template-columns: 4rem auto auto;
+                figure{
+                    width: 100%;
+                    grid-column: 1;
+                    grid-row: span 2;
+
+                    >img{
+                        max-width: 1.5rem;
+                        max-height: 6rem;
+                    }
+                }
+                .titles{
+                    padding-top: 0.5rem;
+                    grid-column: 2 / 4 ;
+                    grid-row: 1;
+                }
+
+                
+                footer.volumePrice{
+                    border: none;
+                    grid-column: 2 / 4;
+                    grid-row: 2;
+                }
+                
+                aside.clocks{
+                    grid-column: span 3 ;
+                    grid-row: 3;
+                    @include center;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    width: 100%;
+                    padding: 1.3rem;
+
+                    border-top: 1px solid $borderGrey;
+                    border-bottom: 1px solid $borderGrey;
+                }
+                .usageTasteContainer{
+                    padding: 1rem 2rem;
+                    grid-column: span 3;
+                    grid-row: 4;
+                }
+
+            }
+        }
+   } 
 }

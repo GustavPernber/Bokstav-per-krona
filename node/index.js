@@ -1,379 +1,225 @@
-const axios=require('axios')
-const sqlite3=require('sqlite3')
+const axios = require("axios");
+const sqlite3 = require("sqlite3");
 
 
+class APItoDB {
+    constructor({ dbPath, categories }) {
+        this.dbPath = dbPath;
+        this.categories = categories;
 
-
-//klass funktioner: level1, individual, database
-
-
-class APItoDB{
-    constructor({dbPath, categories}){
-        this.dbPath=dbPath
-        this.categories=categories
-
-        this.amountList=[]
+        this.amountList = {};
         this.config = {
             headers: {
-                "Ocp-Apim-Subscription-Key": "cfc702aed3094c86b92d6d4ff7a54c84"
+                "Ocp-Apim-Subscription-Key": "cfc702aed3094c86b92d6d4ff7a54c84",
+            },
+        };
+
+        this.db = new sqlite3.Database(this.dbPath, (err) => {
+            if (err) {
+                console.log("DB CONNECTION ERROR");
+                console.error(err.message);
+                throw new Error();
+            } else {
+                console.log("Connected to the database.");
             }
-        }
+        });
     }
 
-    async init(){
-        await this.#level1()
-        console.log('Completed')
+    async init() {
+        await this.#level1();
+        console.log("Completed");
     }
 
-
-    #sleep(){
-        return new Promise((resolve, reject)=>{
-            setTimeout(() => {
-                resolve()
-            }, 10);
-        })
-    }
-    
     //Behandlar alla level1, alltså allt
     async #level1() {
-
         //LEVEL1
-        for(let k=0; k<this.categories.length; k++){
+        for (let k = 0; k < this.categories.length; k++) {
             //Loopar igenom alla huvudkategorier
-            let categoryObj=this.categories[k]
-            let level1= categoryObj.level1
-            console.log('Lvl1: ', level1)
-            
+            let categoryObj = this.categories[k];
+            this.level1 = categoryObj.level1;
+            let level1 = this.level1;
+            console.log("Lvl1: ", level1);
+
             // LEVEL2 går igenom alla level2
-            for(let j=0; j<categoryObj.level2.length; j++){
-                
-                let level2=categoryObj.level2[j]
-                console.log('Lvl2: ', level2)
+            for (let j = 0; j < categoryObj.level2.length; j++) {
+                let level2 = categoryObj.level2[j];
+                console.log("Lvl2: ", level2);
+                this.level2 = level2;
 
-                await this.#getPages(level1, level2)
-
+                await this.#getPages(level1, level2);
             }
-            
-
         }
-        console.log(this.amountList)
-    
+        console.log(this.amountList);
     }
 
     //Behandlar alla pages för tillhörande level2
-    #getPages(level1, level2){
+    #getPages(level1, level2) {
+        this.keyString = `${this.level1} -> ${this.level2}`;
+        this.amountList[this.keyString] = 0;
         //Går igenom alla tillgängliga pages. För en page skickas det till singePage som behandlar ett objekt
         //Resolve när alla pages är uppnådda och behandlade för den level2
 
-        console.log('Getting pages...')
-        return new Promise( async(resolve, reject)=>{
+        console.log("Getting pages...");
+        return new Promise(async (resolve, reject) => {
+            let maxPages = false;
+            let totalProducts = 0;
+            let response = undefined;
 
-            let maxPages=false
-            let totalProducts=0
-            let response=undefined
-            
-            for(let i=1; maxPages===false; i++){
-                
+            for (let i = 1; maxPages === false; i++) {
                 try {
-                    
-                    response= await axios.get(`https://api-extern.systembolaget.se/sb-api-ecommerce/v1/productsearch/search?categoryLevel1=${level1}&categoryLevel2=${level2}&page=${i}`, this.config)
+                    response = await axios.get(
+                        `https://api-extern.systembolaget.se/sb-api-ecommerce/v1/productsearch/search?categoryLevel1=${level1}&categoryLevel2=${level2}&page=${i}`,
+                        this.config
+                    );
                 } catch (error) {
-                    console.log('API error:')
-                    console.error(error)
+                    console.log("API error:");
+                    console.error(error);
+                    reject();
+                }
+
+                if (response.data.products.length < 1) {
+                    console.log("All pages completed for:", level1, level2);
+                    maxPages = true;
+                    resolve();
+                } else {
+                    totalProducts += response.data.products.length;
+                    await this.#singlePage(response.data.products);
+                }
+            }
+        });
+    }
+
+    //Behandlar en page. Ca30 produkter
+    #singlePage(products) {
+        //Har en lista med objekt. 30objekt vanligtvis
+        return new Promise(async (resolve, reject) => {
+            for (let i = 1; i < products.length; i++) {
+                //För varje produkt:
+                let product = products[i];
+                await this.#writeToDb(product);
+            }
+
+            console.log("Resolved single page. Fetching new from API...");
+            resolve();
+        });
+    }
+
+    //Tar in en produkt objekt och skriver den till databasen om den inte redan finns
+    #writeToDb(product) {
+        //Skriver till databasen om objektet ej redan finns
+
+        return new Promise(async (resolve, reject) => {
+            let imgUrl = null;
+            if (product.images.length > 0) {
+                imgUrl = `${product.images[0].imageUrl}_200.png`;
+            }
+
+            const apk = (product.alcoholPercentage * 0.01 * product.volume) / product.price;
+            const bpk = `${product.productNameBold} ${product.productNameThin}`.replace(/\s+/g, "").length / product.price;
+
+            let tasteClocks = "";
+            for (let i = 0; i < product.tasteClocks.length; i++) {
+                tasteClocks += `${product.tasteClocks[i].key}:${product.tasteClocks[i].value}, `;
+            }
+
+            const data = {
+                id: parseInt(product.productId),
+                nameBold: product.productNameBold,
+                nameThin: product.productNameThin,
+                cat2: product.categoryLevel2,
+                cat3: product.categoryLevel3,
+                cat4: product.categoryLevel4,
+                usage: product.usage,
+                taste: product.taste,
+                imgUrl: imgUrl,
+                tasteClocks: tasteClocks,
+                volume: product.volume,
+                price: product.price,
+                alcPercentage: product.alcoholPercentage,
+                assortmentText: product.assortmentText,
+                apk: apk,
+                bpk: bpk,
+            };
+
+            let table = undefined;
+
+            switch (this.level1) {
+                case "Vin":
+                    table = "Wine";
+                    break;
+                case "Öl":
+                    table = "Beer";
+                    break;
+                case "Cider%20%26%20blanddrycker":
+                    table = "Cider";
+                    break;
+                case "Sprit":
+                    table = "Liquor";
+                    break;
+            }
+
+            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category2, category3, category4, usage, taste, imgUrl, tasteClocks, volume, price, APK, BPK) VALUES(?,?, ?, ?,?,?,?,?,?,?,?,?,?,?)`;
+            let params = [
+                data.id,
+                data.nameBold,
+                data.nameThin,
+                data.cat2,
+                data.cat3,
+                data.cat4,
+                data.usage,
+                data.taste,
+                data.imgUrl,
+                data.tasteClocks,
+                data.volume,
+                data.price,
+                data.apk,
+                data.bpk,
+            ];
+
+            try {
+                await this.#queryPromise(query, params);
+                this.amountList[this.keyString] += 1;
+            } catch (error) {
+                if(error.errno===19){ //Unique constraint failed
+                    console.log("DUPLICATE DETECTED:", data.id, data.nameBold);
+
+                }else{
+                    console.log(error)
                     reject()
                 }
+            }
 
-        
-                if(response.data.products.length<1){ 
-                    console.log('All pages completed for: ', level1, level2)
-                    maxPages=true
-                    this.amountList.push(`${level1}: ${level2}: ${totalProducts}`)
-                }else{
-                    totalProducts+=response.data.products.length
-                    await this.#singlePage(response.data.products)
+            console.log(this.amountList);
+            resolve();
+        });
+    }
 
+    //Skickar query med params till SQL Db. Returnerar ett promise så att async/await i funktionen över funkar
+    #queryPromise(query, params) {
+        return new Promise((resolve, reject) => {
+            this.db.all(query, params, (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows[0]);
                 }
-            }
-            console.log('Resolved pages.')
-            resolve()
-
-        })
-
-    }
-
-    //Behandlar en page. Ca30 produkter 
-    #singlePage(products){
-        //Har en lista med objekt. 30objekt vanligtvis
-        return new Promise( async(resolve, reject)=>{
-
-            for(let i=1; i<products.length; i++){
-                //För varje produkt:
-                let product=products[i]
-                // await this.#sleep()
-
-            }
-
-            console.log('Resolved single page')
-            resolve()
-
-
-        })
-    }
-
-
-    // #writeToDb(){
-    //     //Skriver till databasen om objektet ej redan finns
-    // }
-
-}
-
-
-const APIScript=new APItoDB({
-    dbPath: 'C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db', 
-    
-    categories: [
-        // {level1:"Öl",
-        // level2:["Ale", "Ljus%20lager"],
-        // amount:0
-        // },
-
-        {level1:"Vin",
-        level2:["Rosé"],
-        amount:0
-        }
-    ]
-
-})
-
-APIScript.init()
-
-
-async function forLoop (){
-
-    function tblName(level1){
-        let tblName=undefined
-        switch (level1) {
-            case "Vin":
-                tblName="Wine"
-                break;
-            case "Öl":
-                tblName="Beer"
-                break;
-            // case "Vin":
-                
-            //     break;
-        
-        }
-        return tblName
-    }
-
-    function runDb({table, valueArray}){
-
-        return new Promise((resolve, reject)=>{
-            let query=`SELECT * FROM ${table} WHERE id=?`
-            let id=valueArray[0]
-
-            db.serialize(() => {
-                db.all(query, [id], (err, rows)=>{
-                    if (err) {
-                        throw err;
-                        
-                    }
-                    else if(rows[0]===undefined){
-                        reject()
-                    }
-                    console.log(rows)
-                    query=`INSERT INTO ${table} (id, nameBold) VALUES(?, ?)`
-                    
-                })
-
-                .run(query, valueArray, (err)=> {
-                    if (err) {
-                            
-                        console.log('INSERTION ERROR')
-                        console.log(err)
-                        console.log(query, valueArray)
-                        reject()
-                        
-                    }
-                    else{
-                        resolve()
-                    }
-            
-                });
             });
-
-
-            // //Check for duplicate
-            
-            // let id=valueArray[0]
-
-            // let query=`SELECT * FROM ${table} WHERE id=?`
-            // db.all(query, [id], (err, rows)=>{
-            //     if (err) {
-            //         throw err;
-                    
-            //     }
-            //     else if(rows[0]===undefined){
-            //         reject()
-            //     }
-            //     console.log(rows)
-                
-            // })
-             
-            // query=`INSERT INTO ${table} (id, nameBold) VALUES(?, ?)`
-            // db.run(query, valueArray, (err)=> {
-            //     if (err) {
-                        
-            //         console.log('INSERTION ERROR')
-            //         console.log(err)
-            //         reject()
-                    
-            //     }
-            //     else{
-            //         resolve()
-            //     }
-        
-            // });
-        })
+        });
     }
-
-
-    //DB stuff
-    let db = new sqlite3.Database('C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db', (err) => {
-    
-        if (err) {
-            console.log('DB CONNECTION ERROR')
-            console.error(err.message);
-        }
-        console.log('Connected to the database.');
-    
-    })
-
-    const categories=[
-        // {level1:"Öl",
-        // level2:["Ale", "Ljus%20lager"],
-        // amount:0
-        // },
-
-        {level1:"Vin",
-        level2:["Rosé"],
-        amount:0
-        }
-    ]
-    
-    let  printArr=[]
-
-    let allCollected=false
-
-    const config = {
-        headers: {
-            "Ocp-Apim-Subscription-Key": "cfc702aed3094c86b92d6d4ff7a54c84"
-        }
-    }
-
-    let total=0
-    //Huvudkategori
-    for(let k=0; k<categories.length; k++){
-        let categoryObj=categories[k]
-        let level1= categoryObj.level1
-        
-        //Underkategori
-        for(let j=0; j<categoryObj.level2.length; j++){
-            let level2=categoryObj.level2[j]
-            
-            //30 produkter
-            for(let i=1; allCollected==false; i++){
-
-                //API request
-                try {
-                    
-                    response= await axios.get(`https://api-extern.systembolaget.se/sb-api-ecommerce/v1/productsearch/search?categoryLevel1=${level1}&categoryLevel2=${level2}&page=${i}`, config)
-            
-                } catch (error) {
-                    console.log('API error:')
-                    console.error(error)
-        
-                }
-
-                if(response.data.products.length>0){
-                    
-                    total+=response.data.products.length
-
-                    // För varje produkt
-                    for (let p = 0; p < response.data.products.length; p++) {
-                        const product = response.data.products[p];
-                        
-                        // console.log(product)
-
-                        let imgUrl=null
-                        if (product.images.length>0) {
-                            imgUrl=`${product.images[0].imageUrl}_200.png`
-                        }
-
-                        const apk=((product.alcoholPercentage*0.01)*product.volume)/product.price
-
-                        //Matchar alla spaces med regex och tar bort dom
-                        const bpk= ((`${product.productNameBold} ${product.productNameThin}`).replace(/\s+/g, '').length)/product.price
-
-                        let dbValues={
-                            id: parseInt(product.productId),
-                            nameBold: product.productNameBold,
-                            nameThin:product.productNameThin,
-                            cat2:product.categoryLevel2,
-                            cat3:product.categoryLevel3,
-                            cat4:product.categoryLevel4,
-                            usage:product.usage,
-                            taste:product.taste,
-                            imgUrl:imgUrl,
-                            tasteClocks:product.tasteClocks,
-                            volume:product.volume,
-                            price:product.price,
-                            alcPercentage: product.alcoholPercentage,
-                            assortmentText: product.assortmentText,
-                            //APK, BPK
-                            apk:apk,
-                            bpk:bpk
-                            
-                            
-                        }
-                        console.log(dbValues);
-                        // if(dbValues.nameBold==="Morning Bride"){
-                        //     console.log(product);
-                        // }
-                        
-                        // let tableName=tblName(level1)
-                        // let query=`INSERT INTO ${tableName} (id, nameBold) VALUES(?, ?)`
-                        try {
-                            
-                            await runDb({table:tblName(level1), valueArray:[`$${dbValues.id}`, `$${dbValues.nameBold}`]})
-                        } catch (error) {
-                            
-                        }
-                        
-   
-                    }
-
-                    console.log(`${level1}: ${level2}:`, total)
-                }else{
-                    allCollected=true
-                    printArr.push(`${level1}: ${level2}: ${total}`)
-                }
-            
-            }
-
-            //Dags för nästa 30 i denna underkategori. Allcollected ska då bli false och total 0 
-            allCollected=false
-            total=0
-        }
-        console.log(printArr)
-
-
-    }
-
-    
-    
 }
 
+const APIScript = new APItoDB({
+    dbPath: "C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db",
 
+    categories: [
+        { level1: "Öl", level2: ["Ale", "Ljus%20lager"]},
 
+        { level1: "Vin", level2: ["Rosé", "Vitt"]},
+        
+        {level1:"Sprit", level2:["Rom", "Likör"]},
+
+        {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]}
+    ],
+});
+
+APIScript.init();

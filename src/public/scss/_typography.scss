@@ -1,1 +1,53 @@
-@import './variables';
+@import "./variables";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Roboto Condensed', sans-serif;
+
+@font-face {
+	font-family: "Munson Regular";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Munson Regular"), url("font/munson_roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Munson Italic";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Munson Italic"), url("font/munson_italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Munson Bold";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Munson Bold"), url("font/munson_bold.woff") format("woff");
+}
+
+@font-face {
+	font-family: "Munson Bold Italic";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Munson Bold Italic"),
+		url("font/munson_bolditalic.woff") format("woff");
+}
+
+
+:root{
+	font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2{
+    font-family: "Munson Regular";
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+

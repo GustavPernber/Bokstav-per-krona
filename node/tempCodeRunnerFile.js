@@ -1,1 +1,1 @@
-await this.#sleep()
+console.log(rows[0])

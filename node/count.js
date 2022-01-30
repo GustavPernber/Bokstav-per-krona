@@ -1,34 +1,57 @@
 const sqlite3 = require('sqlite3').verbose();
 
-function func2(id){
+async function func2(id){
 
     let db = new sqlite3.Database('C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db', (err) => {
     
         if (err) {
             console.log('open')
             console.error(err.message);
+            throw new Error
         }else{
-
             console.log('Connected to the database.');
         }
     
     })
 
     const query="SELECT * FROM Wine WHERE id=?"
-    db.all(query, [id], (err, rows)=>{
-        if (err) {
-            throw err;
+    // const query="INSERT INTO Wine (id, nameBold) VALUES(?, ?)"
+    
 
-        }
-        console.log(rows[0])
-        // rows.forEach((row) => {
-        //     console.log(row);
-        // });
-    })
+    
+    console.log(typeof await queryS(query, [689075]));    
+    // db.all(query, [id], (err, rows)=>{
+    //     if (err) {
+    //         throw err;
 
+    //     }
+    //     // console.log(rows[0])
+    //     console.log('1')
+        
+    // })
+    
+    
+    
+
+    function queryS(query, params){
+        return new Promise((resolve, reject)=>{
+            db.all(query, params, (err, rows)=>{
+                if (err) {
+                    throw err;
+        
+                }
+                
+                
+                resolve(rows[0])
+                
+            })
+        })
+    
+    }
 }
-
+//Takes in query and params, returns results
 func2(1866)
+
 // console.log(func1(2));
 
 

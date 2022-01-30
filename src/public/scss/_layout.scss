@@ -1,2 +1,83 @@
 @import './variables'; 
 @import './typography';
+
+main#index{
+    section.drinksContainer{
+        >article{
+            background: green;
+            max-width: 42rem;
+            width: 100%;
+            height: 17rem;
+            
+
+            display: grid;
+            grid-template-columns: auto auto;
+
+            figure{
+                background: red;
+                @include center;
+                
+                width: 10rem;
+                img{
+                    max-height: 10rem;
+                    max-width: 6rem;
+                    
+                    background: blue;
+                }
+            }
+
+            div.infoContainer{
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto 20%;
+
+                background: lightskyblue;
+
+                div.textContainer{
+                    background: lightgoldenrodyellow;
+                    padding: 1rem;
+                    
+                        
+                    >p.usageTaste{
+                        color: $textBlack;
+                        font-family: "Munson Regular";
+            
+                    }
+
+                    .titles{
+                        >p{
+                            font-family: "Munson Regular";
+                            color: $textGrey;
+                            
+                        }
+    
+                        >h1{
+                            color: $textBlack;
+                        }
+    
+                        >h2{
+                            color: $textGrey;
+                            font-weight: 400;
+                        }
+                    }
+                    
+
+                }
+
+                
+                aside.clocks{
+                    width: 7rem;
+                    background: lightsalmon;
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+                footer.volumePrice{
+                    background: lightgreen;
+                    grid-column: span 2;
+                }
+
+            }
+
+        }
+    }
+}

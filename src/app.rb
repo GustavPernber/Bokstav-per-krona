@@ -3,7 +3,7 @@ require 'slim'
 require 'sqlite3'
 require 'base64'
 require 'bcrypt'
-require "rerun"
+# require "rerun"
 
 # set :default_content_type, :json
 

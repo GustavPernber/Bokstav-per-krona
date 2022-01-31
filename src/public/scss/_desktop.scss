@@ -36,6 +36,8 @@ body{
                         transition: 1s;
                         border-top:0 solid rgba(0, 0, 0, 0) ;
                         border-bottom: 0 solid rgba(0, 0, 0, 0) ;
+                        padding: 0 1rem;
+
                         &:hover{
                             transition: 0.3s;
                             
@@ -63,7 +65,42 @@ main#index{
 
     background-color:$bgWhite ;
     height: 100vh;
+    @include center;
+    flex-direction:column ;
+
+    header.searchOptions{
+        background-color: lightcoral;
+        width: 42rem;
+        @include center;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        >button:nth-child(1){
+            background-color: red;
+            grid-column: span 2;
+            height: 2.5rem;
+        }
+
+        button:nth-child(2){
+            grid-row:2; 
+            width: 5rem;
+ 
+        }
+
+        div{
+            grid-row:2; 
+        }
+
+    }
+
+
     section.drinksContainer{
+
+        @include center;
+        flex-direction:column ;
+        gap: 1.5rem;
+
         >a{
             transition: 0.25s ease-in-out;
             text-decoration: none;
@@ -140,6 +177,7 @@ main#index{
             .usageTasteContainer{
                 grid-column: 2;
                 grid-row: 2;
+                padding-right: 1rem;
                 >p{
                     color: $textBlack;
                     font-family: "Munson Regular";
@@ -209,8 +247,53 @@ main#index{
             
             
         }
+
+        &.strippedArticles{
+            a{
+                display: grid;
+                grid-template-rows: 7rem 3rem;
+                min-height: 0;
+                height: auto;
+
+                grid-template-columns: 7rem auto auto;
+                figure{
+                    grid-column: 1;
+                    grid-row: span 2;
+                    width: auto;
+                    img{
+                        padding: 2rem 2rem;
+
+                    }
+                    // img{
+                    //     max-height: 1.4rem;
+                    // }
+                }
+
+                .titles{
+                    grid-column: 2 / 4;
+
+                    grid-row: 1;
+                }
+                
+                footer.volumePrice{
+                    border: none;
+                    grid-column: 2 / 4;
+                    grid-row: 2;
+                    @include center;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    padding: 0.5rem 1rem 0 0 ;
+
+                }
+                aside.clocks{
+                    display: none;
+                }
+
+                .usageTasteContainer{
+                    display: none;
+                }
+            }
+        }
     }
 }
-
-
 

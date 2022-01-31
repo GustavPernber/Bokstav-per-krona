@@ -3,14 +3,28 @@
 
 @media screen and (max-width: 560px){
 
-    // body{
-    //     >header#header{
-
-    //     }
-    // }
+    body{
+        >header#header{
+            nav{
+                ul{
+                    li{
+                        button{
+                            span{
+                                font-size: 0.8rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
    main#index{
         section.drinksContainer{
+            padding: 0 1rem;
+            @include center;
+            flex-direction:column ;
+            gap: 1.5rem;
 
             >a{
                 display: grid;
@@ -84,6 +98,52 @@
                 }
 
             }
+
+            &.strippedArticles{
+                a{
+                    display: grid;
+                    grid-template-rows: 6.5rem auto;
+                    grid-template-columns: 4rem auto auto;
+
+                    min-height: 0;
+                    height: auto;
+
+                    figure{
+                        grid-column: 1;
+                        grid-row: 1;
+                        @include center;
+                        flex-direction:column ;
+                        justify-content: flex-end;
+                        img{
+                            padding: 0;
+                        }
+                    }
+
+                    .titles{
+                        grid-column: 2 / 4;
+
+                        grid-row: 1;
+                    }
+                    
+                    footer.volumePrice{
+                        grid-column: 2 / 4;
+                        grid-row: 2;
+                        @include center;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        padding: 0.5rem 0 0 0 ;
+
+                    }
+                    aside.clocks{
+                        display: none;
+                    }
+
+                    .usageTasteContainer{
+                        display: none;
+                    }
+                }
+            }
+            
         }
    } 
 }

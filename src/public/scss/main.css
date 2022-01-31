@@ -165,6 +165,7 @@ body > header#header nav ul li button {
   transition: 1s;
   border-top: 0 solid rgba(0, 0, 0, 0);
   border-bottom: 0 solid rgba(0, 0, 0, 0);
+  padding: 0 1rem;
 }
 
 body > header#header nav ul li button:hover {
@@ -185,6 +186,71 @@ body > header#header nav ul li button span {
 main#index {
   background-color: #F9F9F9;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main#index header.searchOptions {
+  background-color: lightcoral;
+  width: 42rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+main#index header.searchOptions > button:nth-child(1) {
+  background-color: red;
+  grid-column: span 2;
+  height: 2.5rem;
+}
+
+main#index header.searchOptions button:nth-child(2) {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  width: 5rem;
+}
+
+main#index header.searchOptions div {
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+main#index section.drinksContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
 }
 
 main#index section.drinksContainer > a {
@@ -285,6 +351,7 @@ main#index section.drinksContainer > a .usageTasteContainer {
   grid-column: 2;
   -ms-grid-row: 2;
   grid-row: 2;
+  padding-right: 1rem;
 }
 
 main#index section.drinksContainer > a .usageTasteContainer > p {
@@ -393,6 +460,69 @@ main#index section.drinksContainer > a footer.volumePrice h3 {
   color: #2D2926;
 }
 
+main#index section.drinksContainer.strippedArticles a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 7rem 3rem;
+      grid-template-rows: 7rem 3rem;
+  min-height: 0;
+  height: auto;
+  -ms-grid-columns: 7rem auto auto;
+      grid-template-columns: 7rem auto auto;
+}
+
+main#index section.drinksContainer.strippedArticles a figure {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  grid-row: span 2;
+  width: auto;
+}
+
+main#index section.drinksContainer.strippedArticles a figure img {
+  padding: 2rem 2rem;
+}
+
+main#index section.drinksContainer.strippedArticles a .titles {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2 / 4;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+main#index section.drinksContainer.strippedArticles a footer.volumePrice {
+  border: none;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2 / 4;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 0.5rem 1rem 0 0;
+}
+
+main#index section.drinksContainer.strippedArticles a aside.clocks {
+  display: none;
+}
+
+main#index section.drinksContainer.strippedArticles a .usageTasteContainer {
+  display: none;
+}
+
 @font-face {
   font-family: "Munson Regular";
   font-style: normal;
@@ -435,6 +565,26 @@ p {
 }
 
 @media screen and (max-width: 560px) {
+  body > header#header nav ul li button span {
+    font-size: 0.8rem;
+  }
+  main#index section.drinksContainer {
+    padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 1.5rem;
+  }
   main#index section.drinksContainer > a {
     display: -ms-grid;
     display: grid;
@@ -516,6 +666,77 @@ p {
   }
   main#index section.drinksContainer > a .usageTasteContainer > p {
     font-size: 0.8rem;
+  }
+  main#index section.drinksContainer.strippedArticles a {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 6.5rem auto;
+        grid-template-rows: 6.5rem auto;
+    -ms-grid-columns: 4rem auto auto;
+        grid-template-columns: 4rem auto auto;
+    min-height: 0;
+    height: auto;
+  }
+  main#index section.drinksContainer.strippedArticles a figure {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  main#index section.drinksContainer.strippedArticles a figure img {
+    padding: 0;
+  }
+  main#index section.drinksContainer.strippedArticles a .titles {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2 / 4;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  main#index section.drinksContainer.strippedArticles a footer.volumePrice {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2 / 4;
+    -ms-grid-row: 2;
+    grid-row: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 0.5rem 0 0 0;
+  }
+  main#index section.drinksContainer.strippedArticles a aside.clocks {
+    display: none;
+  }
+  main#index section.drinksContainer.strippedArticles a .usageTasteContainer {
+    display: none;
   }
 }
 

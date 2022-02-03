@@ -2,11 +2,15 @@
 @import './typography';
 
 body{
+    @include center;
+    flex-direction: column;
+    justify-content: flex-start;
     >header#header{
      
         @include center;
         height: 5rem;
         border-bottom: 2px solid $borderGrey;
+        width: 100%;
 
         nav{
             @include center;
@@ -62,45 +66,72 @@ body{
 }
 
 main#index{
-
-    background-color:$bgWhite ;
     height: 100vh;
-    @include center;
-    flex-direction:column ;
+    background-color:$bgWhite ;
+    // height: 100vh;
+    grid-column-gap: 3rem;
+    padding: 0 3rem;
+    grid-template-rows: 5rem auto;
+    margin: 0;
+
+    display: grid;
+    // grid-template-columns: auto auto ;
 
     header.searchOptions{
+        
+        grid-column: 2;
+        grid-row: 1;
+        
         background-color: lightcoral;
-        width: 42rem;
+        max-width: 42rem;
+        width: 100%;
         @include center;
-
+        
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-
-        >button:nth-child(1){
+        
+        >button.filter{
             background-color: red;
-            grid-column: span 2;
-            height: 2.5rem;
+        
+            display: none;
         }
-
-        button:nth-child(2){
-            grid-row:2; 
+        
+        button.sort{
+            grid-row:1; 
             width: 5rem;
- 
+            
         }
-
+        
         div{
-            grid-row:2; 
+            grid-row:1; 
         }
-
+        
     }
-
-
+    
+    aside.filters{
+        grid-column: 1;
+        grid-row: span 2;
+        justify-self: flex-end;
+        
+        
+        background: red;
+        height: 80vh;
+        width: 15rem;
+        // margin: 0 2rem;
+        
+    }
+    
     section.drinksContainer{
-
+        align-self: flex-start;
+        justify-self: flex-start;
+        grid-column: 2;
+        grid-row: 2;
+        // margin: 0 1rem;
         @include center;
         flex-direction:column ;
         gap: 1.5rem;
 
+        // padding: 0 2rem;
         >a{
             transition: 0.25s ease-in-out;
             text-decoration: none;
@@ -145,10 +176,11 @@ main#index{
             .titles{
                 grid-column: 2;
                 grid-row: 1;
+                padding-top: 1rem;
 
                 @include center;
                 flex-direction: column;
-                
+                justify-content: flex-start;
                 align-items: flex-start;
                 gap: 0.1rem;
                 
@@ -178,10 +210,12 @@ main#index{
                 grid-column: 2;
                 grid-row: 2;
                 padding-right: 1rem;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
                 >p{
                     color: $textBlack;
                     font-family: "Munson Regular";
-                    font-size: 0.95rem;
+                    font-size: 0.85rem;
                     
                 }
             }
@@ -249,11 +283,16 @@ main#index{
         }
 
         &.strippedArticles{
-            a{
+            width: 100%;
+
+            >a{
                 display: grid;
-                grid-template-rows: 7rem 3rem;
+                grid-template-rows: auto 3rem;
                 min-height: 0;
                 height: auto;
+                max-width: 42rem;
+                // width: 100%;
+                width: 100%;
 
                 grid-template-columns: 7rem auto auto;
                 figure{
@@ -271,8 +310,8 @@ main#index{
 
                 .titles{
                     grid-column: 2 / 4;
-
                     grid-row: 1;
+                    padding-right: 15rem;
                 }
                 
                 footer.volumePrice{
@@ -297,3 +336,46 @@ main#index{
     }
 }
 
+@media screen and (max-width: 890px){
+    main#index{
+
+        grid-column-gap: 0;
+        grid-template-columns: auto;
+        padding: 0 3rem;
+
+        aside.filters{
+            display: none;
+        }
+
+        header.searchOptions{
+            grid-column: 1;
+            grid-row: 1;
+            justify-self: center;
+            
+            >button.filter{
+                background-color: red;
+                grid-row: 1;
+                grid-column: span 2;
+                height: auto;
+                display: block;
+            }
+            
+            button.sort{
+                grid-row:2; 
+                width: 5rem;
+                
+            }
+            
+            div{
+                grid-row:2; 
+            }
+
+        }
+
+        section.drinksContainer{
+            grid-column: 1;
+            grid-row: 2;
+
+        }
+    }
+}

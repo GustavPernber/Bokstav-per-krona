@@ -84,6 +84,22 @@ p {
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   background-color: #F9F9F9;
 }
 
@@ -99,6 +115,7 @@ body > header#header {
           align-items: center;
   height: 5rem;
   border-bottom: 2px solid rgba(45, 41, 38, 0.1);
+  width: 100%;
 }
 
 body > header#header nav {
@@ -184,26 +201,25 @@ body > header#header nav ul li button span {
 }
 
 main#index {
-  background-color: #F9F9F9;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  background-color: #F9F9F9;
+  grid-column-gap: 3rem;
+  padding: 0 3rem;
+  -ms-grid-rows: 5rem auto;
+      grid-template-rows: 5rem auto;
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
 }
 
 main#index header.searchOptions {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
   background-color: lightcoral;
-  width: 42rem;
+  max-width: 42rem;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -219,24 +235,40 @@ main#index header.searchOptions {
       grid-template-columns: repeat(2, 1fr);
 }
 
-main#index header.searchOptions > button:nth-child(1) {
+main#index header.searchOptions > button.filter {
   background-color: red;
-  grid-column: span 2;
-  height: 2.5rem;
+  display: none;
 }
 
-main#index header.searchOptions button:nth-child(2) {
-  -ms-grid-row: 2;
-  grid-row: 2;
+main#index header.searchOptions button.sort {
+  -ms-grid-row: 1;
+  grid-row: 1;
   width: 5rem;
 }
 
 main#index header.searchOptions div {
-  -ms-grid-row: 2;
-  grid-row: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+main#index aside.filters {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  grid-row: span 2;
+  justify-self: flex-end;
+  background: red;
+  height: 80vh;
+  width: 15rem;
 }
 
 main#index section.drinksContainer {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  justify-self: flex-start;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -307,6 +339,7 @@ main#index section.drinksContainer > a .titles {
   grid-column: 2;
   -ms-grid-row: 1;
   grid-row: 1;
+  padding-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -320,6 +353,9 @@ main#index section.drinksContainer > a .titles {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -352,12 +388,14 @@ main#index section.drinksContainer > a .usageTasteContainer {
   -ms-grid-row: 2;
   grid-row: 2;
   padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 main#index section.drinksContainer > a .usageTasteContainer > p {
   color: #2D2926;
   font-family: "Munson Regular";
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 main#index section.drinksContainer > a aside.clocks {
@@ -460,37 +498,44 @@ main#index section.drinksContainer > a footer.volumePrice h3 {
   color: #2D2926;
 }
 
-main#index section.drinksContainer.strippedArticles a {
+main#index section.drinksContainer.strippedArticles {
+  width: 100%;
+}
+
+main#index section.drinksContainer.strippedArticles > a {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 7rem 3rem;
-      grid-template-rows: 7rem 3rem;
+  -ms-grid-rows: auto 3rem;
+      grid-template-rows: auto 3rem;
   min-height: 0;
   height: auto;
+  max-width: 42rem;
+  width: 100%;
   -ms-grid-columns: 7rem auto auto;
       grid-template-columns: 7rem auto auto;
 }
 
-main#index section.drinksContainer.strippedArticles a figure {
+main#index section.drinksContainer.strippedArticles > a figure {
   -ms-grid-column: 1;
   grid-column: 1;
   grid-row: span 2;
   width: auto;
 }
 
-main#index section.drinksContainer.strippedArticles a figure img {
+main#index section.drinksContainer.strippedArticles > a figure img {
   padding: 2rem 2rem;
 }
 
-main#index section.drinksContainer.strippedArticles a .titles {
+main#index section.drinksContainer.strippedArticles > a .titles {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2 / 4;
   -ms-grid-row: 1;
   grid-row: 1;
+  padding-right: 15rem;
 }
 
-main#index section.drinksContainer.strippedArticles a footer.volumePrice {
+main#index section.drinksContainer.strippedArticles > a footer.volumePrice {
   border: none;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
@@ -515,12 +560,55 @@ main#index section.drinksContainer.strippedArticles a footer.volumePrice {
   padding: 0.5rem 1rem 0 0;
 }
 
-main#index section.drinksContainer.strippedArticles a aside.clocks {
+main#index section.drinksContainer.strippedArticles > a aside.clocks {
   display: none;
 }
 
-main#index section.drinksContainer.strippedArticles a .usageTasteContainer {
+main#index section.drinksContainer.strippedArticles > a .usageTasteContainer {
   display: none;
+}
+
+@media screen and (max-width: 890px) {
+  main#index {
+    grid-column-gap: 0;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    padding: 0 3rem;
+  }
+  main#index aside.filters {
+    display: none;
+  }
+  main#index header.searchOptions {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+  main#index header.searchOptions > button.filter {
+    background-color: red;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    grid-column: span 2;
+    height: auto;
+    display: block;
+  }
+  main#index header.searchOptions button.sort {
+    -ms-grid-row: 2;
+    grid-row: 2;
+    width: 5rem;
+  }
+  main#index header.searchOptions div {
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+  main#index section.drinksContainer {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
 }
 
 @font-face {
@@ -568,8 +656,17 @@ p {
   body > header#header nav ul li button span {
     font-size: 0.8rem;
   }
-  main#index section.drinksContainer {
+  main#index {
+    width: 100%;
     padding: 0 1rem;
+  }
+  main#index.strippedArticles header.searchOptions {
+    background-color: gree;
+  }
+  main#index header.searchOptions > button.filter {
+    display: block;
+  }
+  main#index section.drinksContainer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -613,12 +710,6 @@ p {
   }
   main#index section.drinksContainer > a .titles > p {
     font-size: 0.65rem;
-  }
-  main#index section.drinksContainer > a .titles > h1 {
-    font-size: 1.1rem;
-  }
-  main#index section.drinksContainer > a .titles > h2 {
-    font-size: 1.1rem;
   }
   main#index section.drinksContainer > a footer.volumePrice {
     border: none;
@@ -670,12 +761,14 @@ p {
   main#index section.drinksContainer.strippedArticles a {
     display: -ms-grid;
     display: grid;
-    -ms-grid-rows: 6.5rem auto;
-        grid-template-rows: 6.5rem auto;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
     -ms-grid-columns: 4rem auto auto;
         grid-template-columns: 4rem auto auto;
     min-height: 0;
     height: auto;
+    max-width: 90vw;
+    width: 100%;
   }
   main#index section.drinksContainer.strippedArticles a figure {
     -ms-grid-column: 1;
@@ -703,11 +796,19 @@ p {
     padding: 0;
   }
   main#index section.drinksContainer.strippedArticles a .titles {
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-left: 0;
+    padding-bottom: 0.5rem;
     -ms-grid-column: 2;
     -ms-grid-column-span: 2;
     grid-column: 2 / 4;
     -ms-grid-row: 1;
     grid-row: 1;
+    gap: 0.3rem;
+  }
+  main#index section.drinksContainer.strippedArticles a .titles h1, main#index section.drinksContainer.strippedArticles a .titles h2 {
+    font-size: 0.9rem;
   }
   main#index section.drinksContainer.strippedArticles a footer.volumePrice {
     -ms-grid-column: 2;
@@ -731,6 +832,27 @@ p {
         -ms-flex-align: start;
             align-items: flex-start;
     padding: 0.5rem 0 0 0;
+  }
+  main#index section.drinksContainer.strippedArticles a footer.volumePrice > div {
+    padding-right: 0.3rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    gap: 0.5rem;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  main#index section.drinksContainer.strippedArticles a footer.volumePrice > div p {
+    white-space: nowrap;
   }
   main#index section.drinksContainer.strippedArticles a aside.clocks {
     display: none;

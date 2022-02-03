@@ -20,8 +20,25 @@
     }
 
    main#index{
+        width: 100%;
+        padding: 0 1rem;
+
+        &.strippedArticles{
+            header.searchOptions{
+                background-color: gree;
+            }
+        }
+
+
+        header.searchOptions{
+            
+            >button.filter{
+
+                display: block;
+            }
+        }
+
         section.drinksContainer{
-            padding: 0 1rem;
             @include center;
             flex-direction:column ;
             gap: 1.5rem;
@@ -50,13 +67,13 @@
                         font-size: 0.65rem;
                     }
 
-                    >h1{
-                        font-size: 1.1rem;
-                    }
+                    // >h1{
+                    //     font-size: 0.9rem;
+                    // }
 
-                    >h2{
-                        font-size: 1.1rem;
-                    }
+                    // >h2{
+                    //     font-size: 6rem;
+                    // }
                 }
 
                 
@@ -102,11 +119,14 @@
             &.strippedArticles{
                 a{
                     display: grid;
-                    grid-template-rows: 6.5rem auto;
+                    grid-template-rows: auto auto;
                     grid-template-columns: 4rem auto auto;
 
                     min-height: 0;
                     height: auto;
+
+                    max-width: 90vw;
+                    width: 100%;
 
                     figure{
                         grid-column: 1;
@@ -120,9 +140,20 @@
                     }
 
                     .titles{
+                        padding-right: 2rem;
+                        padding-top: 1rem;
+                        padding-left: 0;
+                        padding-bottom: 0.5rem;
+
                         grid-column: 2 / 4;
 
                         grid-row: 1;
+                        gap: 0.3rem;
+
+                        h1, h2{
+                            font-size: 0.9rem;
+                        }
+
                     }
                     
                     footer.volumePrice{
@@ -132,6 +163,16 @@
                         justify-content: space-between;
                         align-items: flex-start;
                         padding: 0.5rem 0 0 0 ;
+                        >div{
+                            padding-right: 0.3rem;
+                            @include center;
+                            justify-content: flex-start;
+                            gap: 0.5rem;
+                            flex-wrap: wrap;
+                            p{
+                                white-space: nowrap;
+                            }
+                        }
 
                     }
                     aside.clocks{

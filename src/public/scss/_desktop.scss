@@ -70,96 +70,13 @@ main#index{
     background-color:$bgWhite ;
     grid-column-gap: 3rem;
     padding: 0 3rem;
-    grid-template-rows: 3rem auto;
+    grid-template-columns: 30% auto;
     margin: 0;
+    width: 100%;
 
     display: grid;
    
-    header.searchOptions{
-        
-        grid-column: 2;
-        grid-row: 1;
-        max-width: 42rem;
-        width: 100%;
-        @include center;
-        
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        align-items: start;
-        
-        >button.filter{
-            background-color: red;
-            display: none;
-
-        }
-        
-        button.sort{
-
-            background-color: $bgWhite;
-            border: none;
-            padding: 0.4rem 1rem;
-            border-radius: 8px;
-
-            grid-row:1; 
-            max-width: 10rem;
-            width: 100%;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-            color: $systemetGreen;
-            font-size: 1rem;
-            @include center;
-            flex-direction: row;
-            white-space: nowrap;
-            justify-content: space-between;
-
-            &:hover{
-                background-color: $lightSystemetGreen;
-                cursor: pointer;
-            }
-            
-            
-            
-        }
-        
-        div{
-            grid-row:1; 
-            @include center;
-            justify-content: flex-end;
-
-            gap: 0.2rem;
-
-            p{
-                margin-right: 0.4rem;
-                color: $textBlack
-            }
-
-            button{
-                background: white;
-                border: none;
-                border-radius: 8px;
-                width: 2.5rem;
-                height: 2.5rem;
-                @include center;
-                flex-direction: column;
-
-                object{
-                    pointer-events: none;
-                }
-                &:hover{
-                    cursor: pointer;
-                    background: $lightSystemetGreen
-                }
-
-                &.active{
-                    object{
-                        opacity: 0.15;
-                    }
-                }
-
-            }
-        }
-        
-    }
+    
     
     aside.filters{
         grid-column: 1;
@@ -214,214 +131,349 @@ main#index{
         
     }
     
-    section.drinksContainer{
-        align-self: flex-start;
-        justify-self: flex-start;
+    >div{
         grid-column: 2;
-        grid-row: 2;
-        // margin: 0 1rem;
-        @include center;
-        flex-direction:column ;
         gap: 1.5rem;
 
-        // padding: 0 2rem;
-        >a{
-            transition: 0.25s ease-in-out;
-            text-decoration: none;
-            color: black;
+        max-width: 42rem;
+        width: 100%;
+       
+        @include center;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
 
-            border: 1px solid #2d29261a;
-            border-radius: 4px;
-            box-shadow: #2d29261a 0px 2px 6px 0px;
-
-            background-color: white;
+        header.searchOptions{
+        
             max-width: 42rem;
             width: 100%;
-            min-height: 17rem;
-        
+            @include center;
+            
             display: grid;
-            // grid-template-columns: auto auto auto;
-
-            &:hover{
-                transform: translateY(-0.18rem);
-                box-shadow: #2d29261a 0px 2px 16px 0px;
-                .titles> h2, .titles > h1{
-                    color: $systemetGreen;
-                    // border-bottom: red 1px solid;
-                    text-decoration: underline;
-                    // color: red !important;
-                }
+            grid-template-columns: repeat(2, 1fr);
+            align-items: start;
+            
+            >button.filter{
+                background-color: red;
+                display: none;
+    
             }
             
-            figure{
-                grid-column: 1;
-                grid-row: span 3;
+            button.sort{
+    
+                background-color: $bgWhite;
+                border: none;
+                padding: 0.4rem 1rem;
+                border-radius: 8px;
+    
+                grid-row:1; 
+                max-width: 10rem;
+                width: 100%;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 600;
+                color: $systemetGreen;
+                font-size: 1rem;
                 @include center;
-                
-                width: 10rem;
-                img{
-                    max-height: 10rem;
-                    max-width: 6rem;
-                    
-                }
-            }
-            
-            .titles{
-                grid-column: 2;
-                grid-row: 1;
-                padding-top: 1rem;
-
-                @include center;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                gap: 0.1rem;
-                
-                >p{
-                    letter-spacing: 1.25px;
-                    font-family: 'Roboto Condensed', sans-serif;
-                    color: $textGrey;
-                    font-size: 0.8rem;
-                    
-                }
-                
-                >h1{
-                    font-size: 1.2rem;
-                    color: $textBlack;
-                    font-weight: 500;
-                }
-                
-                >h2{
-                    font-size: 1.2rem;
-                    color: $textGrey;
-                    font-weight: 400;
-                    letter-spacing: -0.08px;
-                }
-            }
-            
-            .usageTasteContainer{
-                grid-column: 2;
-                grid-row: 2;
-                padding-right: 1rem;
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-                >p{
-                    color: $textBlack;
-                    font-family: "Munson Regular";
-                    font-size: 0.85rem;
-                    
-                }
-            }
-            
-            
-            aside.clocks{
-                width: 7rem;
-                
-                grid-column: 3;
-                grid-row: span 2;
-                
-                @include center;
-                flex-direction: column;
+                flex-direction: row;
+                white-space: nowrap;
                 justify-content: space-between;
-                padding: 2rem 0;
                 
-                border-left: 1px solid $borderGrey;
-                div.clock{
+                &:hover{
+                    background-color: $lightSystemetGreen;
+                    cursor: pointer;
+                }
+                
+                
+                
+            }
+            
+            div{
+                
+                grid-row:1; 
+                @include center;
+                justify-content: flex-end;
+    
+                gap: 0.2rem;
+    
+                p{
+                    margin-right: 0.4rem;
+                    color: $textBlack
+                }
+    
+                button{
+                    background: white;
+                    border: none;
+                    border-radius: 8px;
+                    width: 2.5rem;
+                    height: 2.5rem;
                     @include center;
                     flex-direction: column;
-                    
+    
                     object{
-                        max-width: 1.5rem;
+                        pointer-events: none;
                     }
-                    p{
-                        font-family: 'Roboto Condensed', sans-serif;
-                        color: $textBlack;
-                        letter-spacing: 1.5px;
-                        font-size: 0.65rem;
-                        font-weight: 700;
+                    &:hover{
+                        cursor: pointer;
+                        background: $lightSystemetGreen
                     }
-                    
-                }
-            }
-            footer.volumePrice{
-                grid-column: 2 / span 2;
-
-                grid-row: 3;
-                border-top: 1px solid $borderGrey;
-                @include center;
-                justify-content: space-between;
-                padding-right:2rem ;
-                min-height: 3.25rem;
-                
-                >div{
-                    @include center;
-                    gap: 1rem;
-                    p{
-                        color: $textGrey;
-                        font-size: 0.75rem;
-                    }
-                }
-                
-                
-                h3{
-                    font-weight: 400;
-                    font-size: 1rem;
-                    color: $textBlack;
-                }
-            }
-                
-            
-            
-            
-        }
-
-        &.strippedArticles{
-            width: 100%;
-
-            >a{
-                display: grid;
-                grid-template-rows: auto 3rem;
-                min-height: 0;
-                height: auto;
-                max-width: 42rem;
-                // width: 100%;
-                width: 100%;
-
-                grid-template-columns: 7rem auto auto;
-                figure{
-                    grid-column: 1;
-                    grid-row: span 2;
-                    width: auto;
-                    img{
-                        padding: 2rem 2rem;
-
+    
+                    &.active{
+                        object{
+                            opacity: 0.15;
+                        }
                     }
     
                 }
+            }
+            
+        }
 
-                .titles{
-                    grid-column: 2 / 4;
-                    grid-row: 1;
-                    padding-right: 15rem;
+        section.drinksContainer{
+            @include center;
+            flex-direction:column ;
+            gap: 1.5rem;
+            align-items: flex-start;
+    
+            >a{
+                transition: 0.25s ease-in-out;
+                text-decoration: none;
+                color: black;
+    
+                border: 1px solid #2d29261a;
+                border-radius: 4px;
+                box-shadow: #2d29261a 0px 2px 6px 0px;
+    
+                background-color: white;
+                max-width: 42rem;
+                width: 100%;
+                min-height: 17rem;
+            
+                display: grid;
+                grid-template-columns: 10rem auto 7rem;
+    
+                &:hover{
+                    transform: translateY(-0.18rem);
+                    box-shadow: #2d29261a 0px 2px 16px 0px;
+                    .titles> h2, .titles > h1{
+                        color: $systemetGreen;
+                       
+                        text-decoration: underline;
+                    }
                 }
                 
-                footer.volumePrice{
-                    border: none;
-                    grid-column: 2 / 4;
+                figure{
+                    grid-column: 1;
+                    grid-row: span 3;
+                    @include center;
+                    
+                    width: 10rem;
+                    img{
+                        max-height: 10rem;
+                        max-width: 6rem;
+                        
+                    }
+                }
+                
+                .titles{
+                    grid-column: 2;
+                    grid-row: 1;
+                    padding-top: 1rem;
+    
+                    @include center;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 0.1rem;
+                    
+                    >p{
+                        letter-spacing: 1.25px;
+                        font-family: 'Roboto Condensed', sans-serif;
+                        color: $textGrey;
+                        font-size: 0.8rem;
+                        
+                    }
+                    
+                    >h1{
+                        font-size: 1.2rem;
+                        color: $textBlack;
+                        font-weight: 500;
+                    }
+                    
+                    >h2{
+                        font-size: 1.2rem;
+                        color: $textGrey;
+                        font-weight: 400;
+                        letter-spacing: -0.08px;
+                    }
+                }
+                
+                .usageTasteContainer{
+                    grid-column: 2;
                     grid-row: 2;
+                    padding-right: 1rem;
+                    padding-top: 0.5rem;
+                    padding-bottom: 0.5rem;
+                    >p{
+                        color: $textBlack;
+                        font-family: "Munson Regular";
+                        font-size: 0.85rem;
+                        
+                    }
+                }
+                
+                
+                aside.clocks{
+                    width: 7rem;
+                    
+                    grid-column: 3;
+                    grid-row: span 2;
+                    
+                    @include center;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: 2rem 0;
+                    
+                    border-left: 1px solid $borderGrey;
+                    div.clock{
+                        @include center;
+                        flex-direction: column;
+                        
+                        object{
+                            max-width: 1.5rem;
+                        }
+                        p{
+                            font-family: 'Roboto Condensed', sans-serif;
+                            color: $textBlack;
+                            letter-spacing: 1.5px;
+                            font-size: 0.65rem;
+                            font-weight: 700;
+                        }
+                        
+                    }
+                }
+                footer.volumePrice{
+                    grid-column: 2 / span 2;
+    
+                    grid-row: 3;
+                    border-top: 1px solid $borderGrey;
                     @include center;
                     justify-content: space-between;
-                    align-items: flex-start;
-                    padding: 0.5rem 1rem 0 0 ;
+                    padding-right:2rem ;
+                    min-height: 3.25rem;
+                    
+                    >div{
+                        @include center;
+                        gap: 1rem;
+                        p{
+                            color: $textGrey;
+                            font-size: 0.75rem;
+                        }
+                    }
+                    
+                    
+                    h3{
+                        font-weight: 400;
+                        font-size: 1rem;
+                        color: $textBlack;
+                    }
+                }
+                    
+                
+                
+                
+            }
+    
+            &.strippedArticles{
+                max-width: 42rem;
+                width: 100%;
+                >a{
+                    grid-template-columns:  7rem auto;
+                    min-height: 0;
 
-                }
-                aside.clocks{
-                    display: none;
-                }
 
-                .usageTasteContainer{
-                    display: none;
+                    figure{
+                        grid-column: 1;
+                        grid-row: span 2;
+                        width: auto;
+
+                        img{
+                            padding: 2rem 2rem;
+                        }
+        
+                    }
+    
+                    .title{
+                        grid-column: 2;
+                        grid-row: 1;
+                    }
+    
+                    .usageTasteContainer{
+                        display: none;
+                    }
+    
+                    aside.clocks{
+                        display:  none;
+                    }
+    
+                    footer.volumePrice{
+                        border: none;
+                        grid-column: 2;
+                        grid-row: 2;
+                    }
+    
                 }
+                // >a{
+    
+                //     // width: 100%;
+                //     // max-width: 42rem;
+                //     // display: grid;
+                //     // grid-template-rows: auto 3rem;
+                //     // min-height: 0;
+                //     // height: auto;
+                    
+                    
+    
+                //     // grid-template-columns: 7rem fit-content(100%) auto;
+                //     grid-template-columns: 7rem auto;
+    
+    
+    
+                //     figure{
+                //         grid-column: 1;
+                //         grid-row: span 2;
+                //         width: auto;
+                //         img{
+                //             padding: 2rem 2rem;
+    
+                //         }
+        
+                //     }
+    
+                //     .titles{
+                        
+                //         grid-column: 2 / 3;
+                //         grid-row: 1;
+                //         // padding-right: 15rem;
+                //     }
+                    
+                //     footer.volumePrice{
+                //         border: none;
+                //         grid-column: 2 / 3;
+                //         grid-row: 2;
+                //         @include center;
+                //         justify-content: space-between;
+                //         align-items: flex-start;
+                //         padding: 0.5rem 1rem 0 0 ;
+    
+                //     }
+                //     aside.clocks{
+                //         display: none;
+                //     }
+    
+                //     .usageTasteContainer{
+                //         display: none;
+                //     }
+                // }
             }
         }
     }

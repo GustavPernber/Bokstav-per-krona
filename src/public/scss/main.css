@@ -205,135 +205,12 @@ main#index {
   background-color: #F9F9F9;
   grid-column-gap: 3rem;
   padding: 0 3rem;
-  -ms-grid-rows: 3rem auto;
-      grid-template-rows: 3rem auto;
+  -ms-grid-columns: 30% auto;
+      grid-template-columns: 30% auto;
   margin: 0;
+  width: 100%;
   display: -ms-grid;
   display: grid;
-}
-
-main#index header.searchOptions {
-  -ms-grid-column: 2;
-  grid-column: 2;
-  -ms-grid-row: 1;
-  grid-row: 1;
-  max-width: 42rem;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-}
-
-main#index header.searchOptions > button.filter {
-  background-color: red;
-  display: none;
-}
-
-main#index header.searchOptions button.sort {
-  background-color: #F9F9F9;
-  border: none;
-  padding: 0.4rem 1rem;
-  border-radius: 8px;
-  -ms-grid-row: 1;
-  grid-row: 1;
-  max-width: 10rem;
-  width: 100%;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 600;
-  color: #095741;
-  font-size: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  white-space: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-main#index header.searchOptions button.sort:hover {
-  background-color: #cdead5;
-  cursor: pointer;
-}
-
-main#index header.searchOptions div {
-  -ms-grid-row: 1;
-  grid-row: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  gap: 0.2rem;
-}
-
-main#index header.searchOptions div p {
-  margin-right: 0.4rem;
-  color: #2D2926;
-}
-
-main#index header.searchOptions div button {
-  background: white;
-  border: none;
-  border-radius: 8px;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-main#index header.searchOptions div button object {
-  pointer-events: none;
-}
-
-main#index header.searchOptions div button:hover {
-  cursor: pointer;
-  background: #cdead5;
-}
-
-main#index header.searchOptions div button.active object {
-  opacity: 0.15;
 }
 
 main#index aside.filters {
@@ -403,14 +280,154 @@ main#index aside.filters .dropContainer.show {
   max-height: 7rem;
 }
 
-main#index section.drinksContainer {
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-  justify-self: flex-start;
+main#index > div {
   -ms-grid-column: 2;
   grid-column: 2;
-  -ms-grid-row: 2;
-  grid-row: 2;
+  gap: 1.5rem;
+  max-width: 42rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+main#index > div header.searchOptions {
+  max-width: 42rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+main#index > div header.searchOptions > button.filter {
+  background-color: red;
+  display: none;
+}
+
+main#index > div header.searchOptions button.sort {
+  background-color: #F9F9F9;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  max-width: 10rem;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #095741;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  white-space: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main#index > div header.searchOptions button.sort:hover {
+  background-color: #cdead5;
+  cursor: pointer;
+}
+
+main#index > div header.searchOptions div {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+main#index > div header.searchOptions div p {
+  margin-right: 0.4rem;
+  color: #2D2926;
+}
+
+main#index > div header.searchOptions div button {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main#index > div header.searchOptions div button object {
+  pointer-events: none;
+}
+
+main#index > div header.searchOptions div button:hover {
+  cursor: pointer;
+  background: #cdead5;
+}
+
+main#index > div header.searchOptions div button.active object {
+  opacity: 0.15;
+}
+
+main#index > div section.drinksContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -425,9 +442,12 @@ main#index section.drinksContainer {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 1.5rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-main#index section.drinksContainer > a {
+main#index > div section.drinksContainer > a {
   -webkit-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
   text-decoration: none;
@@ -442,21 +462,23 @@ main#index section.drinksContainer > a {
   min-height: 17rem;
   display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 10rem auto 7rem;
+      grid-template-columns: 10rem auto 7rem;
 }
 
-main#index section.drinksContainer > a:hover {
+main#index > div section.drinksContainer > a:hover {
   -webkit-transform: translateY(-0.18rem);
           transform: translateY(-0.18rem);
   -webkit-box-shadow: #2d29261a 0px 2px 16px 0px;
           box-shadow: #2d29261a 0px 2px 16px 0px;
 }
 
-main#index section.drinksContainer > a:hover .titles > h2, main#index section.drinksContainer > a:hover .titles > h1 {
+main#index > div section.drinksContainer > a:hover .titles > h2, main#index > div section.drinksContainer > a:hover .titles > h1 {
   color: #095741;
   text-decoration: underline;
 }
 
-main#index section.drinksContainer > a figure {
+main#index > div section.drinksContainer > a figure {
   -ms-grid-column: 1;
   grid-column: 1;
   grid-row: span 3;
@@ -472,12 +494,12 @@ main#index section.drinksContainer > a figure {
   width: 10rem;
 }
 
-main#index section.drinksContainer > a figure img {
+main#index > div section.drinksContainer > a figure img {
   max-height: 10rem;
   max-width: 6rem;
 }
 
-main#index section.drinksContainer > a .titles {
+main#index > div section.drinksContainer > a .titles {
   -ms-grid-column: 2;
   grid-column: 2;
   -ms-grid-row: 1;
@@ -505,27 +527,27 @@ main#index section.drinksContainer > a .titles {
   gap: 0.1rem;
 }
 
-main#index section.drinksContainer > a .titles > p {
+main#index > div section.drinksContainer > a .titles > p {
   letter-spacing: 1.25px;
   font-family: 'Roboto Condensed', sans-serif;
   color: #737373;
   font-size: 0.8rem;
 }
 
-main#index section.drinksContainer > a .titles > h1 {
+main#index > div section.drinksContainer > a .titles > h1 {
   font-size: 1.2rem;
   color: #2D2926;
   font-weight: 500;
 }
 
-main#index section.drinksContainer > a .titles > h2 {
+main#index > div section.drinksContainer > a .titles > h2 {
   font-size: 1.2rem;
   color: #737373;
   font-weight: 400;
   letter-spacing: -0.08px;
 }
 
-main#index section.drinksContainer > a .usageTasteContainer {
+main#index > div section.drinksContainer > a .usageTasteContainer {
   -ms-grid-column: 2;
   grid-column: 2;
   -ms-grid-row: 2;
@@ -535,13 +557,13 @@ main#index section.drinksContainer > a .usageTasteContainer {
   padding-bottom: 0.5rem;
 }
 
-main#index section.drinksContainer > a .usageTasteContainer > p {
+main#index > div section.drinksContainer > a .usageTasteContainer > p {
   color: #2D2926;
   font-family: "Munson Regular";
   font-size: 0.85rem;
 }
 
-main#index section.drinksContainer > a aside.clocks {
+main#index > div section.drinksContainer > a aside.clocks {
   width: 7rem;
   -ms-grid-column: 3;
   grid-column: 3;
@@ -566,7 +588,7 @@ main#index section.drinksContainer > a aside.clocks {
   border-left: 1px solid rgba(45, 41, 38, 0.1);
 }
 
-main#index section.drinksContainer > a aside.clocks div.clock {
+main#index > div section.drinksContainer > a aside.clocks div.clock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -582,11 +604,11 @@ main#index section.drinksContainer > a aside.clocks div.clock {
           flex-direction: column;
 }
 
-main#index section.drinksContainer > a aside.clocks div.clock object {
+main#index > div section.drinksContainer > a aside.clocks div.clock object {
   max-width: 1.5rem;
 }
 
-main#index section.drinksContainer > a aside.clocks div.clock p {
+main#index > div section.drinksContainer > a aside.clocks div.clock p {
   font-family: 'Roboto Condensed', sans-serif;
   color: #2D2926;
   letter-spacing: 1.5px;
@@ -594,7 +616,7 @@ main#index section.drinksContainer > a aside.clocks div.clock p {
   font-weight: 700;
 }
 
-main#index section.drinksContainer > a footer.volumePrice {
+main#index > div section.drinksContainer > a footer.volumePrice {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2 / span 2;
@@ -617,7 +639,7 @@ main#index section.drinksContainer > a footer.volumePrice {
   min-height: 3.25rem;
 }
 
-main#index section.drinksContainer > a footer.volumePrice > div {
+main#index > div section.drinksContainer > a footer.volumePrice > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -630,85 +652,60 @@ main#index section.drinksContainer > a footer.volumePrice > div {
   gap: 1rem;
 }
 
-main#index section.drinksContainer > a footer.volumePrice > div p {
+main#index > div section.drinksContainer > a footer.volumePrice > div p {
   color: #737373;
   font-size: 0.75rem;
 }
 
-main#index section.drinksContainer > a footer.volumePrice h3 {
+main#index > div section.drinksContainer > a footer.volumePrice h3 {
   font-weight: 400;
   font-size: 1rem;
   color: #2D2926;
 }
 
-main#index section.drinksContainer.strippedArticles {
-  width: 100%;
-}
-
-main#index section.drinksContainer.strippedArticles > a {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: auto 3rem;
-      grid-template-rows: auto 3rem;
-  min-height: 0;
-  height: auto;
+main#index > div section.drinksContainer.strippedArticles {
   max-width: 42rem;
   width: 100%;
-  -ms-grid-columns: 7rem auto auto;
-      grid-template-columns: 7rem auto auto;
 }
 
-main#index section.drinksContainer.strippedArticles > a figure {
+main#index > div section.drinksContainer.strippedArticles > a {
+  -ms-grid-columns: 7rem auto;
+      grid-template-columns: 7rem auto;
+  min-height: 0;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a figure {
   -ms-grid-column: 1;
   grid-column: 1;
   grid-row: span 2;
   width: auto;
 }
 
-main#index section.drinksContainer.strippedArticles > a figure img {
+main#index > div section.drinksContainer.strippedArticles > a figure img {
   padding: 2rem 2rem;
 }
 
-main#index section.drinksContainer.strippedArticles > a .titles {
+main#index > div section.drinksContainer.strippedArticles > a .title {
   -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-column: 2 / 4;
+  grid-column: 2;
   -ms-grid-row: 1;
   grid-row: 1;
-  padding-right: 15rem;
 }
 
-main#index section.drinksContainer.strippedArticles > a footer.volumePrice {
+main#index > div section.drinksContainer.strippedArticles > a .usageTasteContainer {
+  display: none;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a aside.clocks {
+  display: none;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice {
   border: none;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-column: 2 / 4;
+  grid-column: 2;
   -ms-grid-row: 2;
   grid-row: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  padding: 0.5rem 1rem 0 0;
-}
-
-main#index section.drinksContainer.strippedArticles > a aside.clocks {
-  display: none;
-}
-
-main#index section.drinksContainer.strippedArticles > a .usageTasteContainer {
-  display: none;
 }
 
 @media screen and (max-width: 890px) {

@@ -4,6 +4,8 @@ const dropContainers=document.querySelectorAll('.dropContainer')
 const strippedBtn=document.querySelector('button.stripped')
 const bigArtBtn=document.querySelector('button.bigArticles')
 
+const articlesContainer=document.querySelector('section.drinksContainer')
+
 dropHeaders.forEach((el, i)=>{
     el.addEventListener('click', ()=>{
         const dropContainer=dropContainers[i]
@@ -15,10 +17,10 @@ dropHeaders.forEach((el, i)=>{
 })
 
 strippedBtn.addEventListener('click', ()=>{
-
-    console.log(bigArtBtn.childNodes)
     strippedBtn.classList.remove('active')
     bigArtBtn.classList.add('active')
+
+    articlesContainer.classList.add('strippedArticles')
     
     
 })
@@ -27,5 +29,6 @@ strippedBtn.addEventListener('click', ()=>{
 bigArtBtn.addEventListener('click', ()=>{
     strippedBtn.classList.add('active')
     bigArtBtn.classList.remove('active')
+    articlesContainer.classList.remove('strippedArticles')
 })
 

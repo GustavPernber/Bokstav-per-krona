@@ -95,7 +95,7 @@ main#index{
         
         button.sort{
 
-            background-color: none;
+            background-color: $bgWhite;
             border: none;
             padding: 0.4rem 1rem;
             border-radius: 8px;
@@ -158,12 +158,50 @@ main#index{
         grid-column: 1;
         grid-row: span 2;
         justify-self: flex-end;
-        
-        
-        background: red;
+        border-right: 1px solid $borderGrey;
         height: 80vh;
         width: 15rem;
-        // margin: 0 2rem;
+        
+        .dropHeader{
+            font-size: 1rem;
+            padding: 0.5rem;
+
+            border-bottom: 1px solid $borderGrey;
+            transition: background-color 0.3s;
+            @include center;
+            justify-content: space-between;
+
+            object{
+                pointer-events: none;
+                transition: 0.3s;
+            }
+    
+            &.active{
+                font-weight: 700;
+                object{
+                    transform: rotate(180deg);
+                }
+            }
+
+            &:hover{
+                background-color: $hoverGrey;
+                cursor: pointer;
+            }
+        }
+
+        .dropContainer{
+            max-height:0;
+            // height: 0;
+            overflow: hidden;
+            transition: 0.3s;
+            
+            &.show{
+                transition: 0.3s;
+                // max-height:fit-content;
+                max-height: 7rem;
+                
+            }
+        }
         
     }
     
@@ -187,7 +225,7 @@ main#index{
             border-radius: 4px;
             box-shadow: #2d29261a 0px 2px 6px 0px;
 
-
+            background-color: white;
             max-width: 42rem;
             width: 100%;
             min-height: 17rem;

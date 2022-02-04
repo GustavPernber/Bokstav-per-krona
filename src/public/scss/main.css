@@ -714,25 +714,27 @@ main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice
     -ms-grid-columns: auto;
         grid-template-columns: auto;
     padding: 0 3rem;
-    -ms-grid-rows: fit-content(100%) auto;
-        grid-template-rows: fit-content(100%) auto;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
   }
   main#index aside.filters {
     display: none;
   }
-  main#index header.searchOptions {
-    padding-bottom: 1.5rem;
+  main#index > div {
+    -ms-grid-column-align: center;
+        justify-self: center;
     -ms-grid-column: 1;
     grid-column: 1;
-    -ms-grid-row: 1;
-    grid-row: 1;
+  }
+  main#index > div header.searchOptions {
+    padding-bottom: 1.5rem;
     -ms-grid-column-align: center;
         justify-self: center;
     -ms-grid-rows: 2.5rem fit-content(100%);
         grid-template-rows: 2.5rem fit-content(100%);
     row-gap: 0.8rem;
   }
-  main#index header.searchOptions > button.filter {
+  main#index > div header.searchOptions > button.filter {
     background-color: white;
     border: none;
     -ms-grid-row: 1;
@@ -755,24 +757,18 @@ main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice
     font-family: 'Roboto', sans-serif;
     border-radius: 8px;
   }
-  main#index header.searchOptions > button.filter:hover {
+  main#index > div header.searchOptions > button.filter:hover {
     cursor: pointer;
     background: #cdead5;
   }
-  main#index header.searchOptions button.sort {
+  main#index > div header.searchOptions button.sort {
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
     -ms-grid-row: 2;
     grid-row: 2;
   }
-  main#index header.searchOptions div {
-    -ms-grid-row: 2;
-    grid-row: 2;
-  }
-  main#index section.drinksContainer {
-    -ms-grid-column: 1;
-    grid-column: 1;
+  main#index > div header.searchOptions div {
     -ms-grid-row: 2;
     grid-row: 2;
   }
@@ -827,16 +823,16 @@ p {
     width: 100%;
     padding: 0 1rem;
   }
-  main#index > section.drinksContainer.strippedArticles > a > div.titles {
-    padding-right: 0;
+  main#index > div {
+    gap: 0rem;
   }
-  main#index header.searchOptions {
+  main#index > div header.searchOptions {
     width: 90vw;
   }
-  main#index header.searchOptions > button.filter {
+  main#index > div header.searchOptions > button.filter {
     display: block;
   }
-  main#index section.drinksContainer {
+  main#index > div section.drinksContainer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -852,25 +848,25 @@ p {
             flex-direction: column;
     gap: 1.5rem;
   }
-  main#index section.drinksContainer > a {
+  main#index > div section.drinksContainer > a {
     display: -ms-grid;
     display: grid;
     padding: 0 1.3rem;
     -ms-grid-columns: 4rem auto auto;
         grid-template-columns: 4rem auto auto;
   }
-  main#index section.drinksContainer > a figure {
+  main#index > div section.drinksContainer > a figure {
     width: 100%;
     -ms-grid-column: 1;
     grid-column: 1;
     grid-row: span 2;
     margin-left: -1.3rem;
   }
-  main#index section.drinksContainer > a figure > img {
+  main#index > div section.drinksContainer > a figure > img {
     max-width: 1.5rem;
     max-height: 4rem;
   }
-  main#index section.drinksContainer > a .titles {
+  main#index > div section.drinksContainer > a .titles {
     padding-top: 0.5rem;
     -ms-grid-column: 2;
     -ms-grid-column-span: 2;
@@ -878,10 +874,10 @@ p {
     -ms-grid-row: 1;
     grid-row: 1;
   }
-  main#index section.drinksContainer > a .titles > p {
+  main#index > div section.drinksContainer > a .titles > p {
     font-size: 0.65rem;
   }
-  main#index section.drinksContainer > a footer.volumePrice {
+  main#index > div section.drinksContainer > a footer.volumePrice {
     border: none;
     -ms-grid-column: 2;
     -ms-grid-column-span: 2;
@@ -893,7 +889,7 @@ p {
             align-items: flex-end;
     padding: 1rem 0;
   }
-  main#index section.drinksContainer > a aside.clocks {
+  main#index > div section.drinksContainer > a aside.clocks {
     grid-column: span 3;
     -ms-grid-row: 3;
     grid-row: 3;
@@ -919,16 +915,16 @@ p {
     border-bottom: 1px solid rgba(45, 41, 38, 0.1);
     border-left: none;
   }
-  main#index section.drinksContainer > a .usageTasteContainer {
+  main#index > div section.drinksContainer > a .usageTasteContainer {
     padding: 1rem 0;
     grid-column: span 3;
     -ms-grid-row: 4;
     grid-row: 4;
   }
-  main#index section.drinksContainer > a .usageTasteContainer > p {
+  main#index > div section.drinksContainer > a .usageTasteContainer > p {
     font-size: 0.8rem;
   }
-  main#index section.drinksContainer.strippedArticles a {
+  main#index > div section.drinksContainer.strippedArticles a {
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: auto auto;
@@ -940,7 +936,7 @@ p {
     max-width: 90vw;
     width: 100%;
   }
-  main#index section.drinksContainer.strippedArticles a figure {
+  main#index > div section.drinksContainer.strippedArticles a figure {
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 1;
@@ -962,10 +958,10 @@ p {
         -ms-flex-pack: end;
             justify-content: flex-end;
   }
-  main#index section.drinksContainer.strippedArticles a figure img {
+  main#index > div section.drinksContainer.strippedArticles a figure img {
     padding: 0;
   }
-  main#index section.drinksContainer.strippedArticles a .titles {
+  main#index > div section.drinksContainer.strippedArticles a .titles {
     padding-right: 2rem;
     padding-top: 1rem;
     padding-left: 0;
@@ -977,10 +973,10 @@ p {
     grid-row: 1;
     gap: 0.3rem;
   }
-  main#index section.drinksContainer.strippedArticles a .titles h1, main#index section.drinksContainer.strippedArticles a .titles h2 {
+  main#index > div section.drinksContainer.strippedArticles a .titles h1, main#index > div section.drinksContainer.strippedArticles a .titles h2 {
     font-size: 0.9rem;
   }
-  main#index section.drinksContainer.strippedArticles a footer.volumePrice {
+  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice {
     -ms-grid-column: 2;
     -ms-grid-column-span: 2;
     grid-column: 2 / 4;
@@ -1003,7 +999,7 @@ p {
             align-items: flex-start;
     padding: 0.5rem 0 0 0;
   }
-  main#index section.drinksContainer.strippedArticles a footer.volumePrice > div {
+  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice > div {
     padding-right: 0.3rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1021,13 +1017,13 @@ p {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  main#index section.drinksContainer.strippedArticles a footer.volumePrice > div p {
+  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice > div p {
     white-space: nowrap;
   }
-  main#index section.drinksContainer.strippedArticles a aside.clocks {
+  main#index > div section.drinksContainer.strippedArticles a aside.clocks {
     display: none;
   }
-  main#index section.drinksContainer.strippedArticles a .usageTasteContainer {
+  main#index > div section.drinksContainer.strippedArticles a .usageTasteContainer {
     display: none;
   }
 }

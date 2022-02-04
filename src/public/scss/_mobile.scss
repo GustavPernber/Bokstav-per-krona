@@ -23,177 +23,169 @@
         width: 100%;
         padding: 0 1rem;
 
-        >section.drinksContainer{
+        >div{
+            gap: 0rem;
 
-            &.strippedArticles{
-                >a{
-                    >div.titles{
-                        padding-right: 0;
-                        // background-color: blue;
-                    }
-                }
+            header.searchOptions{
+                width: 90vw;
+                >button.filter{
     
+                    display: block;
+                }
             }
-        }
-
-
-        header.searchOptions{
-            width: 90vw;
-            >button.filter{
-
-                display: block;
-            }
-        }
-
-        section.drinksContainer{
-            @include center;
-            flex-direction:column ;
-            gap: 1.5rem;
-
-            >a{
-                display: grid;
-                padding: 0 1.3rem;
-                grid-template-columns: 4rem auto auto;
-
-                figure{
-                    width: 100%;
-                    grid-column: 1;
-                    grid-row: span 2;
-                    margin-left: -1.3rem;
-                    >img{
-                        max-width: 1.5rem;
-                        max-height: 4rem;
-
-                    }
-                }
-                .titles{
-                    padding-top: 0.5rem;
-                    grid-column: 2 / 4 ;
-                    grid-row: 1;
-                
-
-                    >p{
-                        font-size: 0.65rem;
-                    }
-
-                    // >h1{
-                    //     font-size: 0.9rem;
-                    // }
-
-                    // >h2{
-                    //     font-size: 6rem;
-                    // }
-                }
-
-                
-                footer.volumePrice{
-                    border: none;
-                    grid-column: 2 / 4;
-                    grid-row: 2;
-                    align-items: flex-end;
-                    padding: 1rem 0;
-                }
-                
-                aside.clocks{
-                    grid-column: span 3 ;
-                    grid-row: 3;
-                    @include center;
-                    flex-direction: row;
-                    justify-content: space-around;
-                    width: 100%;
-                    padding: 0.8rem 0;
-                    
-
-                    border-top: 1px solid $borderGrey;
-                    border-right:none ;
-                    border-bottom: 1px solid $borderGrey;
-                    border-left: none;
-
-                    
-                }
-                .usageTasteContainer{
-                    padding: 1rem 0;
-                    // padding: 0;
-                    grid-column: span 3;
-                    grid-row: 4;
-                   
-                    >p{
-
-                        font-size: 0.8rem;
-                    }
-                }
-
-            }
-
-            &.strippedArticles{
-                a{
+    
+    
+            section.drinksContainer{
+                @include center;
+                flex-direction:column ;
+                gap: 1.5rem;
+    
+                >a{
                     display: grid;
-                    grid-template-rows: auto auto;
+                    padding: 0 1.3rem;
                     grid-template-columns: 4rem auto auto;
-
-                    min-height: 0;
-                    height: auto;
-
-                    max-width: 90vw;
-                    width: 100%;
-
+    
                     figure{
+                        width: 100%;
                         grid-column: 1;
-                        grid-row: 1;
-                        @include center;
-                        flex-direction:column ;
-                        justify-content: flex-end;
-                        img{
-                            padding: 0;
+                        grid-row: span 2;
+                        margin-left: -1.3rem;
+                        >img{
+                            max-width: 1.5rem;
+                            max-height: 4rem;
+    
                         }
                     }
-
                     .titles{
-                        padding-right: 2rem;
-                        padding-top: 1rem;
-                        padding-left: 0;
-                        padding-bottom: 0.5rem;
-
-                        grid-column: 2 / 4;
-
+                        padding-top: 0.5rem;
+                        grid-column: 2 / 4 ;
                         grid-row: 1;
-                        gap: 0.3rem;
-
-                        h1, h2{
-                            font-size: 0.9rem;
+                    
+    
+                        >p{
+                            font-size: 0.65rem;
                         }
-
+    
+                        // >h1{
+                        //     font-size: 0.9rem;
+                        // }
+    
+                        // >h2{
+                        //     font-size: 6rem;
+                        // }
                     }
+    
                     
                     footer.volumePrice{
+                        border: none;
                         grid-column: 2 / 4;
                         grid-row: 2;
+                        align-items: flex-end;
+                        padding: 1rem 0;
+                    }
+                    
+                    aside.clocks{
+                        grid-column: span 3 ;
+                        grid-row: 3;
                         @include center;
-                        justify-content: space-between;
-                        align-items: flex-start;
-                        padding: 0.5rem 0 0 0 ;
-                        >div{
-                            padding-right: 0.3rem;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        width: 100%;
+                        padding: 0.8rem 0;
+                        
+    
+                        border-top: 1px solid $borderGrey;
+                        border-right:none ;
+                        border-bottom: 1px solid $borderGrey;
+                        border-left: none;
+    
+                        
+                    }
+                    .usageTasteContainer{
+                        padding: 1rem 0;
+                        // padding: 0;
+                        grid-column: span 3;
+                        grid-row: 4;
+                       
+                        >p{
+    
+                            font-size: 0.8rem;
+                        }
+                    }
+    
+                }
+    
+                &.strippedArticles{
+                    a{
+                        display: grid;
+                        grid-template-rows: auto auto;
+                        grid-template-columns: 4rem auto auto;
+    
+                        min-height: 0;
+                        height: auto;
+    
+                        max-width: 90vw;
+                        width: 100%;
+    
+                        figure{
+                            grid-column: 1;
+                            grid-row: 1;
                             @include center;
-                            justify-content: flex-start;
-                            gap: 0.5rem;
-                            flex-wrap: wrap;
-                            p{
-                                white-space: nowrap;
+                            flex-direction:column ;
+                            justify-content: flex-end;
+                            img{
+                                padding: 0;
                             }
                         }
-
-                    }
-                    aside.clocks{
-                        display: none;
-                    }
-
-                    .usageTasteContainer{
-                        display: none;
+    
+                        .titles{
+                            padding-right: 2rem;
+                            padding-top: 1rem;
+                            padding-left: 0;
+                            padding-bottom: 0.5rem;
+    
+                            grid-column: 2 / 4;
+    
+                            grid-row: 1;
+                            gap: 0.3rem;
+    
+                            h1, h2{
+                                font-size: 0.9rem;
+                            }
+    
+                        }
+                        
+                        footer.volumePrice{
+                            grid-column: 2 / 4;
+                            grid-row: 2;
+                            @include center;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            padding: 0.5rem 0 0 0 ;
+                            >div{
+                                padding-right: 0.3rem;
+                                @include center;
+                                justify-content: flex-start;
+                                gap: 0.5rem;
+                                flex-wrap: wrap;
+                                p{
+                                    white-space: nowrap;
+                                }
+                            }
+    
+                        }
+                        aside.clocks{
+                            display: none;
+                        }
+    
+                        .usageTasteContainer{
+                            display: none;
+                        }
                     }
                 }
+                
             }
-            
         }
+
    } 
 }

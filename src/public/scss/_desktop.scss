@@ -68,10 +68,9 @@ body{
 main#index{
     height: 100vh;
     background-color:$bgWhite ;
-    // height: 100vh;
     grid-column-gap: 3rem;
     padding: 0 3rem;
-    grid-template-rows: 5rem auto;
+    grid-template-rows: 3rem auto;
     margin: 0;
 
     display: grid;
@@ -86,6 +85,7 @@ main#index{
         
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        align-items: start;
         
         >button.filter{
             background-color: red;
@@ -173,12 +173,14 @@ main#index{
 
             object{
                 pointer-events: none;
+                user-select: none;
                 transition: 0.3s;
             }
     
             &.active{
                 font-weight: 700;
-                object{
+
+                object{     
                     transform: rotate(180deg);
                 }
             }
@@ -424,27 +426,46 @@ main#index{
         grid-column-gap: 0;
         grid-template-columns: auto;
         padding: 0 3rem;
+        grid-template-rows: fit-content(100%) auto;
 
         aside.filters{
             display: none;
         }
 
         header.searchOptions{
+            padding-bottom: 1.5rem;
             grid-column: 1;
             grid-row: 1;
             justify-self: center;
-            
+            grid-template-rows: 2.5rem fit-content(100%);   
+            row-gap: 0.8rem;
+
             >button.filter{
-                background-color: red;
+                background-color: white;
+                border: none;
                 grid-row: 1;
                 grid-column: span 2;
-                height: auto;
+                height: 100%;
                 display: block;
+                @include center;
+                font-size: 1rem;
+                color: $systemetGreen;
+                gap: 0.8rem;
+                font-family: 'Roboto', sans-serif;
+                border-radius: 8px;
+
+                &:hover{
+                    cursor: pointer;
+                    background: $lightSystemetGreen;
+                }
+
+
             }
             
             button.sort{
+                align-self: center;
                 grid-row:2; 
-                width: 5rem;
+                
                 
             }
             

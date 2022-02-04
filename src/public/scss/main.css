@@ -205,8 +205,8 @@ main#index {
   background-color: #F9F9F9;
   grid-column-gap: 3rem;
   padding: 0 3rem;
-  -ms-grid-rows: 5rem auto;
-      grid-template-rows: 5rem auto;
+  -ms-grid-rows: 3rem auto;
+      grid-template-rows: 3rem auto;
   margin: 0;
   display: -ms-grid;
   display: grid;
@@ -232,6 +232,9 @@ main#index header.searchOptions {
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
 }
 
 main#index header.searchOptions > button.filter {
@@ -361,6 +364,10 @@ main#index aside.filters .dropHeader {
 
 main#index aside.filters .dropHeader object {
   pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -706,30 +713,57 @@ main#index section.drinksContainer.strippedArticles > a .usageTasteContainer {
     -ms-grid-columns: auto;
         grid-template-columns: auto;
     padding: 0 3rem;
+    -ms-grid-rows: fit-content(100%) auto;
+        grid-template-rows: fit-content(100%) auto;
   }
   main#index aside.filters {
     display: none;
   }
   main#index header.searchOptions {
+    padding-bottom: 1.5rem;
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 1;
     grid-row: 1;
     -ms-grid-column-align: center;
         justify-self: center;
+    -ms-grid-rows: 2.5rem fit-content(100%);
+        grid-template-rows: 2.5rem fit-content(100%);
+    row-gap: 0.8rem;
   }
   main#index header.searchOptions > button.filter {
-    background-color: red;
+    background-color: white;
+    border: none;
     -ms-grid-row: 1;
     grid-row: 1;
     grid-column: span 2;
-    height: auto;
+    height: 100%;
     display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1rem;
+    color: #095741;
+    gap: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 8px;
+  }
+  main#index header.searchOptions > button.filter:hover {
+    cursor: pointer;
+    background: #cdead5;
   }
   main#index header.searchOptions button.sort {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     -ms-grid-row: 2;
     grid-row: 2;
-    width: 5rem;
   }
   main#index header.searchOptions div {
     -ms-grid-row: 2;

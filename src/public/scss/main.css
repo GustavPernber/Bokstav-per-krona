@@ -332,6 +332,10 @@ main#index header.searchOptions div button:hover {
   background: #cdead5;
 }
 
+main#index header.searchOptions div button.active object {
+  opacity: 0.15;
+}
+
 main#index aside.filters {
   -ms-grid-column: 1;
   grid-column: 1;

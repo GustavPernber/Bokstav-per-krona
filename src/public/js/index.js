@@ -1,7 +1,8 @@
-console.log('index')
-
 const dropHeaders=document.querySelectorAll('.dropHeader')
 const dropContainers=document.querySelectorAll('.dropContainer')
+
+const strippedBtn=document.querySelector('button.stripped')
+const bigArtBtn=document.querySelector('button.bigArticles')
 
 dropHeaders.forEach((el, i)=>{
     el.addEventListener('click', ()=>{
@@ -11,5 +12,20 @@ dropHeaders.forEach((el, i)=>{
         el.classList.toggle('active')
 
     })
+})
+
+strippedBtn.addEventListener('click', ()=>{
+
+    console.log(bigArtBtn.childNodes)
+    strippedBtn.classList.remove('active')
+    bigArtBtn.classList.add('active')
+    
+    
+})
+
+
+bigArtBtn.addEventListener('click', ()=>{
+    strippedBtn.classList.add('active')
+    bigArtBtn.classList.remove('active')
 })
 

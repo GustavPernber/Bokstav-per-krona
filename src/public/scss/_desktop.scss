@@ -149,6 +149,13 @@ main#index{
                     cursor: pointer;
                     background: $lightSystemetGreen
                 }
+
+                &.active{
+                    object{
+                        opacity: 0.15;
+                    }
+                }
+
             }
         }
         

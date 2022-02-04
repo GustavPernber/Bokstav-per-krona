@@ -190,7 +190,7 @@ body > header#header nav ul li button:hover {
   transition: 0.3s;
   cursor: pointer;
   border-top: 0 solid rgba(0, 0, 0, 0);
-  border-bottom: 2px solid #537f61;
+  border-bottom: 2px solid #095741;
 }
 
 body > header#header nav ul li button span {
@@ -217,7 +217,6 @@ main#index header.searchOptions {
   grid-column: 2;
   -ms-grid-row: 1;
   grid-row: 1;
-  background-color: lightcoral;
   max-width: 42rem;
   width: 100%;
   display: -webkit-box;
@@ -241,14 +240,93 @@ main#index header.searchOptions > button.filter {
 }
 
 main#index header.searchOptions button.sort {
+  background-color: none;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
   -ms-grid-row: 1;
   grid-row: 1;
-  width: 5rem;
+  max-width: 10rem;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #095741;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  white-space: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main#index header.searchOptions button.sort:hover {
+  background-color: #cdead5;
+  cursor: pointer;
 }
 
 main#index header.searchOptions div {
   -ms-grid-row: 1;
   grid-row: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+main#index header.searchOptions div p {
+  margin-right: 0.4rem;
+  color: #2D2926;
+}
+
+main#index header.searchOptions div button {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main#index header.searchOptions div button object {
+  pointer-events: none;
+}
+
+main#index header.searchOptions div button:hover {
+  cursor: pointer;
+  background: #cdead5;
 }
 
 main#index aside.filters {
@@ -309,7 +387,7 @@ main#index section.drinksContainer > a:hover {
 }
 
 main#index section.drinksContainer > a:hover .titles > h2, main#index section.drinksContainer > a:hover .titles > h1 {
-  color: #537f61;
+  color: #095741;
   text-decoration: underline;
 }
 
@@ -660,8 +738,11 @@ p {
     width: 100%;
     padding: 0 1rem;
   }
-  main#index.strippedArticles header.searchOptions {
-    background-color: gree;
+  main#index > section.drinksContainer.strippedArticles > a > div.titles {
+    padding-right: 0;
+  }
+  main#index header.searchOptions {
+    width: 90vw;
   }
   main#index header.searchOptions > button.filter {
     display: block;

@@ -75,14 +75,11 @@ main#index{
     margin: 0;
 
     display: grid;
-    // grid-template-columns: auto auto ;
-
+   
     header.searchOptions{
         
         grid-column: 2;
         grid-row: 1;
-        
-        background-color: lightcoral;
         max-width: 42rem;
         width: 100%;
         @include center;
@@ -92,18 +89,67 @@ main#index{
         
         >button.filter{
             background-color: red;
-        
             display: none;
+
         }
         
         button.sort{
+
+            background-color: none;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+
             grid-row:1; 
-            width: 5rem;
+            max-width: 10rem;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            color: $systemetGreen;
+            font-size: 1rem;
+            @include center;
+            flex-direction: row;
+            white-space: nowrap;
+            justify-content: space-between;
+
+            &:hover{
+                background-color: $lightSystemetGreen;
+                cursor: pointer;
+            }
+            
+            
             
         }
         
         div{
             grid-row:1; 
+            @include center;
+            justify-content: flex-end;
+
+            gap: 0.2rem;
+
+            p{
+                margin-right: 0.4rem;
+                color: $textBlack
+            }
+
+            button{
+                background: white;
+                border: none;
+                border-radius: 8px;
+                width: 2.5rem;
+                height: 2.5rem;
+                @include center;
+                flex-direction: column;
+
+                object{
+                    pointer-events: none;
+                }
+                &:hover{
+                    cursor: pointer;
+                    background: $lightSystemetGreen
+                }
+            }
         }
         
     }
@@ -303,9 +349,7 @@ main#index{
                         padding: 2rem 2rem;
 
                     }
-                    // img{
-                    //     max-height: 1.4rem;
-                    // }
+    
                 }
 
                 .titles{

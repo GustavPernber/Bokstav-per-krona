@@ -23,15 +23,22 @@
         width: 100%;
         padding: 0 1rem;
 
-        &.strippedArticles{
-            header.searchOptions{
-                background-color: gree;
+        >section.drinksContainer{
+
+            &.strippedArticles{
+                >a{
+                    >div.titles{
+                        padding-right: 0;
+                        // background-color: blue;
+                    }
+                }
+    
             }
         }
 
 
         header.searchOptions{
-            
+            width: 90vw;
             >button.filter{
 
                 display: block;
@@ -47,6 +54,7 @@
                 display: grid;
                 padding: 0 1.3rem;
                 grid-template-columns: 4rem auto auto;
+
                 figure{
                     width: 100%;
                     grid-column: 1;
@@ -62,6 +70,7 @@
                     padding-top: 0.5rem;
                     grid-column: 2 / 4 ;
                     grid-row: 1;
+                
 
                     >p{
                         font-size: 0.65rem;

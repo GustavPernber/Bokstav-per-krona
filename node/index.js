@@ -96,6 +96,12 @@ class APItoDB {
             for (let i = 1; i < products.length; i++) {
                 //För varje produkt:
                 let product = products[i];
+              
+                if(product.productNameBold==="Lisa 1503" && product.productNameThin===null){
+
+                    console.log(product)
+                    throw new Error()
+                }
                 await this.#writeToDb(product);
             }
 
@@ -139,6 +145,7 @@ class APItoDB {
                 assortmentText: product.assortmentText,
                 apk: apk,
                 bpk: bpk,
+                web:product.isWebLaunch
             };
 
             let table = undefined;
@@ -158,7 +165,7 @@ class APItoDB {
                     break;
             }
 
-            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category2, category3, category4, usage, taste, imgUrl, tasteClocks, volume, price, APK, BPK, assortment) VALUES(?,?, ?, ?,?,?,?,?,?,?,?,?,?,?,?)`;
+            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category2, category3, category4, usage, taste, imgUrl, tasteClocks, volume, price, APK, BPK, assortment ) VALUES(?, ?, ?,?,?,?,?,?,?,?,?,?,?,?, ?)`;
             let params = [
                 data.id,
                 data.nameBold,
@@ -210,17 +217,20 @@ class APItoDB {
 }
 
 const APIScript = new APItoDB({
-    dbPath: "C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db",
+    dbPath: "C:/Users/gustav.pernber/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db",
 
     categories: [
-        { level1: "Öl", level2: ["Ale", "Ljus%20lager"]},
+        // { level1: "Öl", level2: ["Ale", "Ljus%20lager"]},
 
-        { level1: "Vin", level2: ["Rosé", "Vitt"]},
+        // { level1: "Vin", level2: ["Rosé", "Vitt"]},
+        { level1: "Vin", level2: ["Rött"]}
         
-        {level1:"Sprit", level2:["Rom", "Likör"]},
+        // {level1:"Sprit", level2:["Rom", "Likör"]},
 
-        {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]}
+        // {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]}
     ],
 });
 
 APIScript.init();
+
+// assortmentText: 'Ordervaror',

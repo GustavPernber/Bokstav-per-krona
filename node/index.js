@@ -158,7 +158,7 @@ class APItoDB {
                     break;
             }
 
-            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category2, category3, category4, usage, taste, imgUrl, tasteClocks, volume, price, APK, BPK) VALUES(?,?, ?, ?,?,?,?,?,?,?,?,?,?,?)`;
+            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category2, category3, category4, usage, taste, imgUrl, tasteClocks, volume, price, APK, BPK, assortment) VALUES(?,?, ?, ?,?,?,?,?,?,?,?,?,?,?,?)`;
             let params = [
                 data.id,
                 data.nameBold,
@@ -174,6 +174,7 @@ class APItoDB {
                 data.price,
                 data.apk,
                 data.bpk,
+                data.assortmentText
             ];
 
             try {

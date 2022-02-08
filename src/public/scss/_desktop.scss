@@ -86,6 +86,11 @@ main#index{
         height: 80vh;
         width: 15rem;
         
+        h1{
+            font-weight: 500;
+            padding-bottom:1.5rem;
+        }
+
         .dropHeader{
             font-size: 1rem;
             padding: 0.5rem;
@@ -265,8 +270,19 @@ main#index{
                     grid-column: 1;
                     grid-row: span 3;
                     @include center;
-                    
                     width: 10rem;
+                    div{
+                        position: absolute;
+                        background-color: $newsOrange;
+                        align-self: flex-start;
+                        padding: 0.2rem;
+                        border-end-end-radius: 4px;
+                        border-bottom-left-radius: 4px;
+
+                        
+                        
+                    }     
+
                     img{
                         max-height: 10rem;
                         max-width: 6rem;

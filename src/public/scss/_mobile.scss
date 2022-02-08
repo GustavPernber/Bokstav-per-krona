@@ -50,6 +50,16 @@
                         grid-column: 1;
                         grid-row: span 2;
                         margin-left: -1.3rem;
+
+                        div{
+                            align-self: flex-start;
+
+                            p{
+                                font-size: 0.8rem;
+                            }
+                        }
+
+
                         >img{
                             max-width: 1.5rem;
                             max-height: 4rem;
@@ -133,6 +143,20 @@
                             @include center;
                             flex-direction:column ;
                             justify-content: flex-end;
+                            
+                            div{
+                                // align-self: flex-start;
+                                justify-self: flex-start;
+                                position: relative;
+                                margin-bottom: 0.3rem;
+                                
+    
+                                p{
+                                    font-size: 0.8rem;
+                                }
+                            }
+
+
                             img{
                                 padding: 0;
                             }

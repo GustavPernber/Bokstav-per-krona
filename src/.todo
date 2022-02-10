@@ -1,10 +1,19 @@
-☐ Typ all backend
-☐ Fixa om bilder ej finns
-☐ Om det är ordervara
-☐ Klockor
-☐
+Backend:
+    ☐ Search queries vid filtrering
 
 Frontend:
+
+    API:
+        ☐ Om det är ordervara
+        ☐ Filtrera
+        ☐ Sortera 
+        ☐ Ladda mer knapp
+        ✔ Klockor @done(22-02-10 21:57)
+
+        JS:
+            ☐ Fixa om bilder ej finns
+
+        Responsivitet:
+            ☐ Search header vid mobile
     ✔ hantera ordervaror @done(22-02-10 20:49)
-    ☐ ladda mer knapp 
 

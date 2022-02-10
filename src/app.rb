@@ -3,6 +3,9 @@ require 'slim'
 require 'sqlite3'
 require 'base64'
 require 'bcrypt'
+
+require_relative 'model.rb'
+
 # require "rerun"
 
 # set :default_content_type, :json
@@ -19,7 +22,8 @@ end
 
 
 
-get('/api')do
+get('/api/drinksLimited')do
     content_type :json
-    return books.to_json
+    drinks=drinks30()
+    return drinks.to_json
 end

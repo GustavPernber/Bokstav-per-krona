@@ -97,11 +97,6 @@ class APItoDB {
                 //För varje produkt:
                 let product = products[i];
               
-                if(product.productNameBold==="Lisa 1503" && product.productNameThin===null){
-
-                    console.log(product)
-                    throw new Error()
-                }
                 await this.#writeToDb(product);
             }
 
@@ -132,12 +127,12 @@ class APItoDB {
                 id: parseInt(product.productId),
                 nameBold: product.productNameBold,
                 nameThin: product.productNameThin,
+                cat1:this.level1,
                 cat2: product.categoryLevel2,
                 cat3: product.categoryLevel3,
                 cat4: product.categoryLevel4,
                 usage: product.usage,
                 taste: product.taste,
-                imgUrl: imgUrl,
                 tasteClocks: tasteClocks,
                 volume: product.volume,
                 price: product.price,
@@ -145,43 +140,43 @@ class APItoDB {
                 assortmentText: product.assortmentText,
                 apk: apk,
                 bpk: bpk,
-                web:product.isWebLaunch
             };
 
-            let table = undefined;
+            let table = "Products";
 
-            switch (this.level1) {
-                case "Vin":
-                    table = "Wine";
-                    break;
-                case "Öl":
-                    table = "Beer";
-                    break;
-                case "Cider%20%26%20blanddrycker":
-                    table = "Cider";
-                    break;
-                case "Sprit":
-                    table = "Liquor";
-                    break;
-            }
+            // switch (this.level1) {
+            //     case "Vin":
+            //         table = "Wine";
+            //         break;
+            //     case "Öl":
+            //         table = "Beer";
+            //         break;
+            //     case "Cider%20%26%20blanddrycker":
+            //         table = "Cider";
+            //         break;
+            //     case "Sprit":
+            //         table = "Liquor";
+            //         break;
+            // }
 
-            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category2, category3, category4, usage, taste, imgUrl, tasteClocks, volume, price, APK, BPK, assortment ) VALUES(?, ?, ?,?,?,?,?,?,?,?,?,?,?,?, ?)`;
+            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category1, category2, category3, category4, usage, taste, tasteClocks, volume, price, APK, BPK, assortment, alcPercentage) VALUES(?,?,?, ?,?,?,?,?,?,?,?,?,?,?,?, ?)`;
             let params = [
                 data.id,
                 data.nameBold,
                 data.nameThin,
+                data.cat1,
                 data.cat2,
                 data.cat3,
                 data.cat4,
                 data.usage,
                 data.taste,
-                data.imgUrl,
                 data.tasteClocks,
                 data.volume,
                 data.price,
                 data.apk,
                 data.bpk,
-                data.assortmentText
+                data.assortmentText,
+                data.alcPercentage
             ];
 
             try {
@@ -217,13 +212,14 @@ class APItoDB {
 }
 
 const APIScript = new APItoDB({
-    dbPath: "C:/Users/gustav.pernber/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db",
+    dbPath: "C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db",
 
     categories: [
         // { level1: "Öl", level2: ["Ale", "Ljus%20lager"]},
+        { level1: "Öl", level2: ["Ale",]},
 
         // { level1: "Vin", level2: ["Rosé", "Vitt"]},
-        { level1: "Vin", level2: ["Rött"]}
+        // { level1: "Vin", level2: ["Rött"]}
         
         // {level1:"Sprit", level2:["Rom", "Likör"]},
 

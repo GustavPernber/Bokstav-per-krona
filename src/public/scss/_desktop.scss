@@ -212,6 +212,7 @@ main#index{
                     position: absolute;
                     background: none;
                     border: none;
+                    
                     &:focus-visible{
                         outline: none;
                     }
@@ -387,12 +388,12 @@ main#index{
                     padding: 2rem 0;
                     
                     border-left: 1px solid $borderGrey;
-                    div.clock{
+                    div{
                         @include center;
                         flex-direction: column;
                         
-                        object{
-                            max-width: 1.5rem;
+                        svg{
+                            max-width: 1.9rem;
                         }
                         p{
                             font-family: 'Roboto Condensed', sans-serif;

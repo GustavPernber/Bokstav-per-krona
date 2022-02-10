@@ -25,10 +25,11 @@ strippedBtn.addEventListener('click', ()=>{
     
 })
 
-
 bigArtBtn.addEventListener('click', ()=>{
     strippedBtn.classList.add('active')
     bigArtBtn.classList.remove('active')
     articlesContainer.classList.remove('strippedArticles')
 })
+
+
 

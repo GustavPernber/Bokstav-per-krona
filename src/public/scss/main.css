@@ -640,7 +640,7 @@ main#index > div section.drinksContainer > a aside.clocks {
   border-left: 1px solid rgba(45, 41, 38, 0.1);
 }
 
-main#index > div section.drinksContainer > a aside.clocks div.clock {
+main#index > div section.drinksContainer > a aside.clocks div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -656,11 +656,11 @@ main#index > div section.drinksContainer > a aside.clocks div.clock {
           flex-direction: column;
 }
 
-main#index > div section.drinksContainer > a aside.clocks div.clock object {
-  max-width: 1.5rem;
+main#index > div section.drinksContainer > a aside.clocks div svg {
+  max-width: 1.9rem;
 }
 
-main#index > div section.drinksContainer > a aside.clocks div.clock p {
+main#index > div section.drinksContainer > a aside.clocks div p {
   font-family: 'Roboto Condensed', sans-serif;
   color: #2D2926;
   letter-spacing: 1.5px;

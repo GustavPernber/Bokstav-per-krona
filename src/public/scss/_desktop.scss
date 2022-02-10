@@ -384,20 +384,22 @@ main#index{
                     
                     @include center;
                     flex-direction: column;
-                    justify-content: space-between;
-                    padding: 2rem 0;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    
                     
                     border-left: 1px solid $borderGrey;
                     div{
                         @include center;
                         flex-direction: column;
-                        
+                        gap: 0.1rem;
                         svg{
-                            max-width: 1.9rem;
+                            max-width: 1.4rem;
                         }
                         p{
                             font-family: 'Roboto Condensed', sans-serif;
                             color: $textBlack;
+                            text-transform: uppercase;
                             letter-spacing: 1.5px;
                             font-size: 0.65rem;
                             font-weight: 700;

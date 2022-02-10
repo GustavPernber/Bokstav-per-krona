@@ -164,29 +164,66 @@ main#index{
     
             }
             
-            button.sort{
-    
-                background-color: $bgWhite;
+            form.sort{
+                
+                
+                align-self: center;
+
                 border: none;
-                padding: 0.4rem 1rem;
-                border-radius: 8px;
-    
+                
                 grid-row:1; 
-                max-width: 10rem;
-                width: 100%;
-                font-family: 'Roboto', sans-serif;
-                font-weight: 600;
+                
                 color: $systemetGreen;
-                font-size: 1rem;
+                
                 @include center;
                 flex-direction: row;
                 white-space: nowrap;
-                justify-content: space-between;
+                justify-content: right;
+                height: 2.5rem;
+                max-width: 10rem;
                 
                 &:hover{
                     background-color: $lightSystemetGreen;
-                    cursor: pointer;
+                    border-radius: 8px;
                 }
+                
+                object{
+                    margin-right: 1rem;
+                    z-index: 10;
+                    
+                }
+
+                select{
+                    @include center;
+                    padding-left: 0.8rem;
+                    border-radius: 8px;
+                    width: 100%;
+                    z-index: 5;
+                    
+                    height: 2.5rem;
+                    max-width: 10rem;
+
+                    color: $systemetGreen;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    
+                    appearance: none;
+                    position: absolute;
+                    background: none;
+                    border: none;
+                    &:focus-visible{
+                        outline: none;
+                    }
+
+                    
+                   
+                    
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
                 
                 
                 
@@ -414,6 +451,7 @@ main#index{
 
                         img{
                             padding: 2rem 2rem;
+                            max-height: 9rem;
                         }
         
                     }

@@ -338,19 +338,13 @@ main#index > div header.searchOptions > button.filter {
   display: none;
 }
 
-main#index > div header.searchOptions button.sort {
-  background-color: #F9F9F9;
+main#index > div header.searchOptions form.sort {
+  -ms-flex-item-align: center;
+      align-self: center;
   border: none;
-  padding: 0.4rem 1rem;
-  border-radius: 8px;
   -ms-grid-row: 1;
   grid-row: 1;
-  max-width: 10rem;
-  width: 100%;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 600;
   color: #095741;
-  font-size: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -365,13 +359,56 @@ main#index > div header.searchOptions button.sort {
       -ms-flex-direction: row;
           flex-direction: row;
   white-space: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  height: 2.5rem;
+  max-width: 10rem;
 }
 
-main#index > div header.searchOptions button.sort:hover {
+main#index > div header.searchOptions form.sort:hover {
   background-color: #cdead5;
+  border-radius: 8px;
+}
+
+main#index > div header.searchOptions form.sort object {
+  margin-right: 1rem;
+  z-index: 10;
+}
+
+main#index > div header.searchOptions form.sort select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 0.8rem;
+  border-radius: 8px;
+  width: 100%;
+  z-index: 5;
+  height: 2.5rem;
+  max-width: 10rem;
+  color: #095741;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: absolute;
+  background: none;
+  border: none;
+}
+
+main#index > div header.searchOptions form.sort select:focus-visible {
+  outline: none;
+}
+
+main#index > div header.searchOptions form.sort select:hover {
   cursor: pointer;
 }
 
@@ -698,6 +735,7 @@ main#index > div section.drinksContainer.strippedArticles > a figure {
 
 main#index > div section.drinksContainer.strippedArticles > a figure img {
   padding: 2rem 2rem;
+  max-height: 9rem;
 }
 
 main#index > div section.drinksContainer.strippedArticles > a .title {

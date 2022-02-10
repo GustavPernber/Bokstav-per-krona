@@ -41,8 +41,15 @@ main#index
         header.searchOptions
             button.filter Filtrera 
                 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 16" type="filter" height="20" width="20" class="css-1tzyzy6 e1vdopyw9"><path d="M10 8.17a3.001 3.001 0 010 5.66V15a1 1 0 11-2 0v-1.17a3.001 3.001 0 010-5.66V1a1 1 0 012 0v7.17zM9 12a1 1 0 100-2 1 1 0 000 2zM4 7.83V15a1 1 0 11-2 0V7.83a3.001 3.001 0 010-5.66V1a1 1 0 012 0v1.17a3.001 3.001 0 010 5.66zM3 4a1 1 0 100 2 1 1 0 000-2zm13 3.83V15a1 1 0 11-2 0V7.83a3.001 3.001 0 010-5.66V1a1 1 0 112 0v1.17a3.001 3.001 0 010 5.66zM15 4a1 1 0 100 2 1 1 0 000-2z" fill="#095741"></path></svg>
-            button.sort Sortera efter 
-                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" type="swap-up-down" class="css-uu50z e1wjyngk1" width="24"  height="24" ><path d="M7.517 4.124a.996.996 0 01.901-.032 1 1 0 01.368.285l2.92 2.915a.999.999 0 010 1.415c-.39.39-1.025.39-1.416 0L9 7.419V17a1 1 0 11-2 0V7.42L5.71 8.706c-.391.39-1.026.39-1.417 0a.999.999 0 010-1.414l2.923-2.917a1.013 1.013 0 01.3-.252zm8 15.752a1 1 0 01-.301-.252l-2.922-2.917a.999.999 0 010-1.414 1.003 1.003 0 011.416 0L15 16.581V7a1 1 0 112 0v9.581l1.29-1.288a1.003 1.003 0 011.416 0 .999.999 0 010 1.415l-2.92 2.915a.995.995 0 01-.367.285.997.997 0 01-.902-.032z" fill="#095741"></path></svg>
+            
+            
+            form.sort 
+                select name="sort" 
+                    option value="hej"Sortera efter  
+                    option value="hej1"hej1  
+                object data="img/sort-arrows.svg" type="image/svg+xml" 
+
+            
             div 
                 p Välj vy:
                 button.stripped.active

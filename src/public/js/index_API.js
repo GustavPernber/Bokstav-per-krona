@@ -204,13 +204,26 @@ productArticles.init(1)
 loadMoreBtn.init()
 
 
-// class Filter{
-//     constructor(){
+class Filter{
+    constructor(name, min, max){
 
-//     }
+    }
 
+    //Rensar tidigare
+    clear(){
 
-// }
+    }
+
+    //Uppdaterar params
+    update(){
+
+    }
+
+    //hämtar produkter med nya params
+    get(){
+
+    }
+}
 
 
 //Har högsta och lägsta

@@ -29,7 +29,7 @@ get('/api/drinksLimited')do
     priceMin=params[:priceMin].to_i
 
     alcMax=14
-    alcMin=12
+    alcMin=13
 
     queries=[
         {   column: "price",
@@ -42,8 +42,6 @@ get('/api/drinksLimited')do
         },
         
     ]
-
-    p queries
 
     content_type :json
     drinks=drinksLimited(pageNum, queries)

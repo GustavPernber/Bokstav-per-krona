@@ -26,14 +26,11 @@ def drinksLimited(pagenum, queries)
 
     dbQuery="SELECT * FROM products #{ranges} ORDER BY apk DESC LIMIT ? OFFSET ?"
 
-    p dbQuery
     params<<limit
     params<<offset
 
-    p params
-
     result=db.execute(dbQuery, params)
-    p result
+
 
     return result
 end

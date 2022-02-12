@@ -4,7 +4,6 @@ const productArticles={
 
     drinksContainer:document.querySelector('section.drinksContainer'),
 
-
     tasteClocks:{
 
         svgClock:{
@@ -34,7 +33,7 @@ const productArticles={
                         return "Fruktsyra"
                         break;
         
-                    case "Sweetnes":
+                    case "Sweetness":
                         return "Sötma"
                         break;
         
@@ -48,7 +47,9 @@ const productArticles={
                 }
             }
             let array=clockString.split(', T')
+            
             let newArr=[]
+
             array.forEach(element => {
                 let pair=element.split('Clock')[1]
                 let obj={
@@ -59,13 +60,18 @@ const productArticles={
     
                 
             });
+
             return newArr
         },
     
         htmlClocks(clockString){
+            if (clockString===""){
+                return ""
+            }
+
             let clocksArray=this.clocks(clockString)
             let htmlArray=[]
-        
+
             clocksArray.forEach(clockObj=>{
                 let clockString=`<div> ${this.svgClock[clockObj.value]} <p> ${clockObj.name}</p> </div>`
                 htmlArray.push(clockString)
@@ -76,23 +82,33 @@ const productArticles={
                                   
     },
 
-    async getDrinks(){
+    assortment(assortment){
+        let htmlOrder='<div class="orderStock"><p>Ordevara</p></div>'
+        if(assortment==="Ordervaror"){
+            return htmlOrder
+        }else{
+            return ""
+        }
+    },
 
-        console.log('fetching...')
-        const response=await fetch('/api/drinksLimited')
+    async getDrinks(){
+        console.log('Fetching...')
+        const response=await fetch('/api/drinksLimited/page=98')
         const data=await response.json()
-        console.log('done fetching')
+        console.log('Done fetching')
         return data
     },
 
     async renderDrinks(products){
-        console.log('rendering')
+        console.log('Rendering...')
 
         products.forEach(product => {
             let apk=parseFloat(product.APK).toPrecision(3)
             let imgUrl=`https://product-cdn.systembolaget.se/productimages/${product.id}/${product.id}_200.png`
 
             let clocks=this.tasteClocks.htmlClocks(product.tasteClocks)
+
+            let orderStock=this.assortment(product.assortment)
 
             let nameThin;
             if (product.nameThin===null) {
@@ -101,20 +117,35 @@ const productArticles={
                 nameThin=product.nameThin
             }
 
+            let usage;
+            if (product.usage===null){
+                usage=""
+            }else{
+                usage=product.usage
+            }
+
+            let taste;
+            if (product.taste===null){
+                taste=""
+            }else{
+                taste=product.taste
+            }
+
             this.drinksContainer.insertAdjacentHTML('afterbegin', `<a href="systembolaget.se"> 
 
                 <figure>
+                    ${orderStock}
                     <img alt="" src="${imgUrl}">
                 </figure>
                 
                 <div class="titles">
-                    <p>${product.category2}, ${product.category3}</p>
+                    <p>${product.category1}, ${product.category2}, ${product.category3}</p>
                     <h1>${product.nameBold}</h1>
                     <h2>${nameThin}</h2>
                 </div>
             
                 <div class="usageTasteContainer">
-                    <p> ${product.taste} ${product.usage}
+                    <p> ${taste} ${usage}
                     </p>
                 </div>
             
@@ -128,30 +159,20 @@ const productArticles={
                 </footer>
             
                 <aside class="clocks">
-                    
+ 
                     ${clocks}
-
-                    
-                    
-                    
                     </aside>
-                    </a>`
+                </a>`
             )
 
         });
-                    // <div>
-                    //     ${this.clocks[1]}
-                    //     <p>SÖTMA</p>
-                    // </div>
-                    // <div>
-                    //     ${this.clocks[1]}
-                    //     <p>SÖTMA</p>
-                    // </div>
-                    // <div>
-                    //     ${this.clocks[1]}
-                    //     <p>SÖTMA</p>
-                    // </div>
-        console.log('rendering done')
+
+        console.log('Rendering done')
+    },
+
+    async loadMore(){
+        console.log('GETTING MORE')
+        this.init()
     },
 
     async init(){
@@ -161,9 +182,30 @@ const productArticles={
 
 }
 
+const loadMoreBtn={
+
+    element:document.querySelector('section.drinksContainer > button'),
+    counts:0,
+
+    init(){
+
+        this.element.addEventListener('click', ()=>{
+            this.counts+=1
+            console.log(this.counts)
+            productArticles.loadMore(this.counts)
+        })
 
 
-productArticles.init()
+    }
+
+    
+}
+
+loadMoreBtn.init()
+
+// productArticles.init()
+
+
 
 
 // <div class="clock">

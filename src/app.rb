@@ -22,8 +22,11 @@ end
 
 
 
-get('/api/drinksLimited')do
-    content_type :json
-    drinks=drinks30()
-    return drinks.to_json
+get('/api/drinksLimited/page=:page')do
+    page=params[:page].to_i
+    puts "LOL"
+    p page
+    # content_type :json
+    # drinks=drinksLimited(page)
+    # return drinks.to_json
 end

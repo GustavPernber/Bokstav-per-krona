@@ -1,10 +1,12 @@
 @import './variables'; 
 @import './typography';
 
+
 body{
     @include center;
     flex-direction: column;
     justify-content: flex-start;
+
     >header#header{
      
         @include center;
@@ -276,7 +278,29 @@ main#index{
             flex-direction:column ;
             gap: 1.5rem;
             align-items: flex-start;
-    
+
+            padding-bottom: 8rem;
+            >button{
+                @include center;
+
+                width: 8rem;
+                height: 3rem;
+                border-radius: 99999px;
+
+                font-size: 1rem;
+                font-weight: 600;
+                
+                color: white;
+                align-self: center;
+                background: $systemetGreen;
+                border: none;
+
+                &:hover{
+                    background-color: $hoverSystemetGreen;
+                    cursor: pointer;
+                }
+            }
+
             >a{
                 transition: 0.25s ease-in-out;
                 text-decoration: none;
@@ -309,16 +333,17 @@ main#index{
                     grid-row: span 3;
                     @include center;
                     width: 10rem;
+
                     div{
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 0.9rem;
+
                         position: absolute;
                         background-color: $newsOrange;
                         align-self: flex-start;
-                        padding: 0.2rem;
-                        border-end-end-radius: 4px;
-                        border-bottom-left-radius: 4px;
+                        padding: 0.3rem;
 
-                        
-                        
                     }     
 
                     img{

@@ -4,9 +4,13 @@ def dbConnection()
     return db
 end
 
-def drinks30()
+def drinksLimited(pagenum)
     db=dbConnection()
-    result=db.execute("SELECT * FROM products LIMIT 40")
+
+    offset=10*pagenum
+    limit=10
+
+    result=db.execute("SELECT * FROM products ORDER BY apk DESC LIMIT ? OFFSET ?", limit, offset)
 
     return result
 end

@@ -91,16 +91,22 @@ const productArticles={
         }
     },
 
-    async getDrinks(){
-        console.log('Fetching...')
-        const response=await fetch('/api/drinksLimited/page=98')
+    async getDrinks(pageNum){
+        console.log('getDrinks, Fetching...')
+
+        let url=`/api/drinksLimited/page=${pageNum}`
+        console.log("🚀 ~ getDrinks ~ url", url)
+
+        const response=await fetch(url)
         const data=await response.json()
-        console.log('Done fetching')
+
+        console.log('getDrinks, Done fetching')
+
         return data
     },
 
     async renderDrinks(products){
-        console.log('Rendering...')
+        console.log('rednerDrinks, Rendering...')
 
         products.forEach(product => {
             let apk=parseFloat(product.APK).toPrecision(3)
@@ -131,7 +137,7 @@ const productArticles={
                 taste=product.taste
             }
 
-            this.drinksContainer.insertAdjacentHTML('afterbegin', `<a href="systembolaget.se"> 
+            this.drinksContainer.insertAdjacentHTML('beforeend', `<a href="systembolaget.se"> 
 
                 <figure>
                     ${orderStock}
@@ -170,13 +176,8 @@ const productArticles={
         console.log('Rendering done')
     },
 
-    async loadMore(){
-        console.log('GETTING MORE')
-        this.init()
-    },
-
-    async init(){
-        let data= await this.getDrinks()
+    async init(pageNum){
+        let data= await this.getDrinks(pageNum)
         this.renderDrinks(data)
     },
 
@@ -184,108 +185,20 @@ const productArticles={
 
 const loadMoreBtn={
 
-    element:document.querySelector('section.drinksContainer > button'),
-    counts:0,
+    element:document.querySelector('#index > div > button.loadMore'),
+    counts:1,
 
     init(){
 
         this.element.addEventListener('click', ()=>{
             this.counts+=1
-            console.log(this.counts)
-            productArticles.loadMore(this.counts)
+            productArticles.init(this.counts)
         })
 
-
     }
-
     
 }
 
+
+productArticles.init(1)
 loadMoreBtn.init()
-
-// productArticles.init()
-
-
-
-
-// <div class="clock">
-//                         <object data="img/clocks/clock-1.svg" type="image/svg+xml"></object>
-//                         <p>SÖTMA</p>
-//                     </div>
-//                     <div class="clock">
-//                         <object data="img/clocks/clock-1.svg" type="image/svg+xml"></object><p>SÖTMA</p>
-//                     </div>
-//                     <div class="clock"><object data="img/clocks/clock-1.svg" type="image/svg+xml"></object><p>SÖTMA</p>
-//                     </div>
-
-
-
-
-// function renderDrinks(){
-
-
-// }
-
-
-
-// const drinksContainer= document.querySelector('section.drinksContainer')
-// drinksContainer.insertAdjacentHTML('afterbegin', 
-
-// `<a href="systembolaget.se"> 
-
-//     <figure>
-//         <div class="orderStock">
-//             <p>Ordevara</p>
-//         </div>
-//         <img alt="" src="https://product-cdn.systembolaget.se/productimages/24624904/24624904_200.png">
-//     </figure>
-
-//     <div class="titles">
-//         <p>VITT FRISKT &amp; FRUKTIGT </p>
-//         <h1>VID-A</h1>
-//         <h2>Organic Suavignong Blanc</h2>
-//     </div>
-
-//     <div class="usageTasteContainer">
-//         <p> något aromatisk, mycket frisk smak med inslag av päron, örter, krusbär och citrus. 
-//         Serveras vid 8-10°C som aperitif eller till rätter av fisk eller skaldjur, gärna sallader.
-//         </p>
-//     </div>
-
-//     <footer class="volumePrice">
-//         <div>
-//             <p><strong>APK: 2.019 </strong></p>
-//             <p>750 ml</p>
-//             <p>12%</p>
-//         </div>
-//         <h3>89:-</h3>
-//     </footer>
-
-//     <aside class="clocks">
-//         <div class="clock">
-//             <object data="img/clocks/clock-1.svg" type="image/svg+xml"></object>
-//             <p>SÖTMA</p>
-//         </div>
-//         <div class="clock">
-//             <object data="img/clocks/clock-1.svg" type="image/svg+xml"></object><p>SÖTMA</p>
-//         </div>
-//         <div class="clock"><object data="img/clocks/clock-1.svg" type="image/svg+xml"></object><p>SÖTMA</p>
-//         </div>
-//     </aside>
-//     </a>`
-// )
-
-
-
-//             drinksContainer.addEventListener('click', ()=>{
-//     console.log('click');
-// })
-// getDrinks()
-
-
-// fetch('/api/30drinks')
-// .then(resp=>{
-    
-//     return resp.json()
-// })
-// .then(data=>console.log(data))

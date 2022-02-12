@@ -8,7 +8,7 @@ def drinksLimited(pagenum)
     db=dbConnection()
 
     offset=10*pagenum
-    limit=10
+    limit=2
 
     result=db.execute("SELECT * FROM products ORDER BY apk DESC LIMIT ? OFFSET ?", limit, offset)
 

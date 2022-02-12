@@ -23,10 +23,9 @@ end
 
 
 get('/api/drinksLimited/page=:page')do
-    page=params[:page].to_i
-    puts "LOL"
-    p page
-    # content_type :json
-    # drinks=drinksLimited(page)
-    # return drinks.to_json
+    pageNum=params[:page].to_i
+    p pageNum
+    content_type :json
+    drinks=drinksLimited(pageNum)
+    return drinks.to_json
 end

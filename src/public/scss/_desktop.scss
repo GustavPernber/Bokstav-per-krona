@@ -279,27 +279,6 @@ main#index{
             gap: 1.5rem;
             align-items: flex-start;
 
-            padding-bottom: 8rem;
-            >button{
-                @include center;
-
-                width: 8rem;
-                height: 3rem;
-                border-radius: 99999px;
-
-                font-size: 1rem;
-                font-weight: 600;
-                
-                color: white;
-                align-self: center;
-                background: $systemetGreen;
-                border: none;
-
-                &:hover{
-                    background-color: $hoverSystemetGreen;
-                    cursor: pointer;
-                }
-            }
 
             >a{
                 transition: 0.25s ease-in-out;
@@ -558,6 +537,28 @@ main#index{
                 // }
             }
         }
+
+        >button.loadMore{
+            @include center;
+
+            width: 8rem;
+            height: 3rem;
+            border-radius: 99999px;
+
+            font-size: 1rem;
+            font-weight: 600;
+            
+            color: white;
+            align-self: center;
+            background: $systemetGreen;
+            border: none;
+
+            &:hover{
+                background-color: $hoverSystemetGreen;
+                cursor: pointer;
+            }
+        }
+
     }
 }
 

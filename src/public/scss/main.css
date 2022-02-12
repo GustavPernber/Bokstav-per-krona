@@ -487,34 +487,6 @@ main#index > div section.drinksContainer {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding-bottom: 8rem;
-}
-
-main#index > div section.drinksContainer > button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 8rem;
-  height: 3rem;
-  border-radius: 99999px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: white;
-  -ms-flex-item-align: center;
-      align-self: center;
-  background: #095741;
-  border: none;
-}
-
-main#index > div section.drinksContainer > button:hover {
-  background-color: #537F61;
-  cursor: pointer;
 }
 
 main#index > div section.drinksContainer > a {
@@ -788,6 +760,33 @@ main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice
   grid-column: 2;
   -ms-grid-row: 2;
   grid-row: 2;
+}
+
+main#index > div > button.loadMore {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 99999px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: #095741;
+  border: none;
+}
+
+main#index > div > button.loadMore:hover {
+  background-color: #537F61;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 890px) {

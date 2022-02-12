@@ -223,6 +223,19 @@ main#index aside.filters {
   width: 15rem;
 }
 
+main#index aside.filters .price {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 main#index aside.filters h1 {
   font-weight: 500;
   padding-bottom: 1.5rem;
@@ -277,6 +290,41 @@ main#index aside.filters .dropContainer {
   overflow: hidden;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer {
+  width: 100%;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound {
+  height: 10px;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-connect {
+  background: red;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px;
+  /* half the width */
+  border-radius: 9px;
 }
 
 main#index aside.filters .dropContainer.show {

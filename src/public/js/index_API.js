@@ -83,8 +83,8 @@ const productArticles={
     },
 
     assortment(assortment){
-        let htmlOrder='<div class="orderStock"><p>Ordevara</p></div>'
-        if(assortment==="Ordervaror"){
+        let htmlOrder='<div class="orderStock"><p>Ordeleta</p></div>'
+        if(assortment==="Orderletor"){
             return htmlOrder
         }else{
             return ""
@@ -199,7 +199,6 @@ const loadMoreBtn={
     
 }
 
-
 productArticles.init(1)
 loadMoreBtn.init()
 
@@ -224,6 +223,97 @@ class Filter{
 
     }
 }
+
+class Slider{
+    constructor({sliderSelector, minSelector, maxSelector}){
+        this.inputs=[document.querySelector(minSelector), document.querySelector(maxSelector)]
+        this.slider=document.querySelector(sliderSelector)
+
+        let slider=this.slider
+        noUiSlider.create(this.slider, {
+            start: [20, 80],
+            connect: true,
+            tooltips:true,
+        
+            range: {
+                'min': 0,
+                'max': 100
+            }
+        });
+
+        this.slider.noUiSlider.on('update', (values, handle)=>{
+            this.inputs[handle].value=values[handle]
+        })
+
+
+        this.inputs.forEach((input, handle)=>{
+            input.addEventListener('change', function () {
+                slider.noUiSlider.setHandle(handle, this.value);
+            });
+        
+            input.addEventListener('keydown', function (e) {
+        
+                let values = slider.noUiSlider.get();
+                let value = Number(values[handle]);
+        
+                let steps = slider.noUiSlider.steps();
+                let step = steps[handle];
+        
+                let position;
+        
+                // 13 is enter,
+                // 38 is key up,
+                // 40 is key down.
+                switch (e.which) {
+        
+                    case 13:
+                        slider.noUiSlider.setHandle(handle, this.value);
+                        break;
+        
+                    case 38:
+        
+                        // Get step to go increase slider value (up)
+                        position = step[1];
+        
+                        // false = no step is set
+                        if (position === false) {
+                            position = 1;
+                        }
+        
+                        // null = edge of slider
+                        if (position !== null) {
+                            slider.noUiSlider.setHandle(handle, value + position);
+                        }
+        
+                        break;
+        
+                    case 40:
+        
+                        position = step[0];
+        
+                        if (position === false) {
+                            position = 1;
+                        }
+        
+                        if (position !== null) {
+                            slider.noUiSlider.setHandle(handle, value - position);
+                        }
+        
+                        break;
+                }
+            });
+        })
+    }
+
+    
+
+}
+
+const priceSlider= new Slider({
+    sliderSelector:"#priceSlider", 
+    minSelector:"#priceMin", 
+    maxSelector: "#priceMax"})
+
 
 
 //Har högsta och lägsta

@@ -88,6 +88,14 @@ main#index{
         height: 80vh;
         width: 15rem;
         
+        .price{
+            height: 100%;
+            @include center;
+
+        }
+        
+        
+
         h1{
             font-weight: 500;
             padding-bottom:1.5rem;
@@ -124,13 +132,39 @@ main#index{
 
         .dropContainer{
             max-height:0;
-            // height: 0;
+
             overflow: hidden;
             transition: 0.3s;
             
+
+            flex-direction: column;
+            @include center;
+            gap: 1rem;
+
+            div.sliderContainer{
+                width: 100%;
+
+                .sliderRound{
+                    height: 10px;
+        
+                    .noUi-connect{
+                        background: red;
+                    }
+        
+                    .noUi-handle{
+                        height: 18px;
+                        width: 18px;
+                        top: -5px;
+                        right: -9px; /* half the width */
+                        border-radius: 9px;
+                    }
+        
+                }
+            }
+
+
             &.show{
                 transition: 0.3s;
-                // max-height:fit-content;
                 max-height: 7rem;
                 
             }

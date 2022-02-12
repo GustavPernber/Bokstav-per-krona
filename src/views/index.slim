@@ -18,9 +18,13 @@ main#index
         .dropHeader 
             p Pris
             object data="img/collapse-arrow.svg" type="image/svg+xml" 
-        .dropContainer.Price
-            ul
-                div#slider
+        .dropContainer.price.show
+            div.sliderContainer
+                div.sliderRound#priceSlider
+
+            div.inputContainer
+                input#priceMin type="text"/
+                input#priceMax type="text"/
 
         .dropHeader 
             p Volym
@@ -92,5 +96,5 @@ main#index
 
 
 script src="js/index_ui.js" 
-script src="js/index_API.js" 
 script src="js/nouislider.min.js" 
+script src="js/index_API.js" 

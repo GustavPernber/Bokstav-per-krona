@@ -4,13 +4,36 @@ def dbConnection()
     return db
 end
 
-def drinksLimited(pagenum)
+def drinksLimited(pagenum, queries)
     db=dbConnection()
 
     offset=10*pagenum
     limit=2
 
-    result=db.execute("SELECT * FROM products ORDER BY apk DESC LIMIT ? OFFSET ?", limit, offset)
+    ranges="WHERE "
+    params=[]
+
+    queries.each_with_index do |column, i|
+        string="#{column[:column]} BETWEEN ? AND ?"
+        params<<column[:min]
+        params<<column[:max]
+
+        if i!=queries.length-1
+            string+=" AND "
+        end
+        ranges+=string
+    end
+
+    dbQuery="SELECT * FROM products #{ranges} ORDER BY apk DESC LIMIT ? OFFSET ?"
+
+    p dbQuery
+    params<<limit
+    params<<offset
+
+    p params
+
+    result=db.execute(dbQuery, params)
+    p result
 
     return result
 end

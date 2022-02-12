@@ -1,13 +1,13 @@
 Backend:
     ☐ Search queries vid filtrering
-    ☐ Visa olika många (pages)
+    ✔ Visa olika många (pages) @done(22-02-12 16:06)
 
 Frontend:
 
     API:
         ☐ Filtrera
         ☐ Sortera 
-        ☐ Ladda mer knapp (ladda in dynamiskt)
+        ✔ Ladda mer knapp (ladda in dynamiskt) @done(22-02-12 16:05)
         ✔ Fixa om taste och usage e null @done(22-02-12 14:15)
         ✔ Om det är ordervara @done(22-02-12 14:14)
         ✔ Klockor @done(22-02-10 21:57)

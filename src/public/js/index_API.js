@@ -94,7 +94,7 @@ const productArticles={
     async getDrinks(pageNum){
         console.log('getDrinks, Fetching...')
 
-        let url=`/api/drinksLimited/page=${pageNum}`
+        let url=`/api/drinksLimited?page=${pageNum}&priceMax=100&priceMin=50`
         console.log("🚀 ~ getDrinks ~ url", url)
 
         const response=await fetch(url)
@@ -202,3 +202,24 @@ const loadMoreBtn={
 
 productArticles.init(1)
 loadMoreBtn.init()
+
+
+// class Filter{
+//     constructor(){
+
+//     }
+
+
+// }
+
+
+//Har högsta och lägsta
+//Query metod skicka params
+//Välja en range
+
+
+//Filter pris:
+//Vilken har högt/lägst pris
+//all artiklar ska raderas.
+//Spara params-> 
+//Fetch med para

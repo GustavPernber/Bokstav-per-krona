@@ -22,10 +22,30 @@ end
 
 
 
-get('/api/drinksLimited/page=:page')do
+get('/api/drinksLimited')do
     pageNum=params[:page].to_i
-    p pageNum
+
+    priceMax=params[:priceMax].to_i
+    priceMin=params[:priceMin].to_i
+
+    alcMax=14
+    alcMin=12
+
+    queries=[
+        {   column: "price",
+            max: priceMax,
+            min: priceMin
+        },
+        {   column: "alcPercentage",
+            max: alcMax,
+            min: alcMin
+        },
+        
+    ]
+
+    p queries
+
     content_type :json
-    drinks=drinksLimited(pageNum)
+    drinks=drinksLimited(pageNum, queries)
     return drinks.to_json
 end

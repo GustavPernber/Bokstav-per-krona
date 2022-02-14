@@ -1,0 +1,17 @@
+$textGrey:#737373;
+$textBlack:#2D2926;
+$borderGrey:rgba(45, 41, 38, 0.1);
+$bgWhite:#F9F9F9;
+$systemetGreen:#095741;
+$lightSystemetGreen: rgb(205, 234, 213);
+$hoverSystemetGreen:#537F61;
+
+$hoverGrey: rgba(45, 41, 38, 0.1);
+$newsOrange:#f08d60;
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

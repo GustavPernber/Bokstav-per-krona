@@ -19,9 +19,6 @@ get('/')do
     slim(:index)
 end
 
-
-
-
 get('/api/drinksLimited')do
     pageNum=params[:page].to_i
 

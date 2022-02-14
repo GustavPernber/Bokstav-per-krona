@@ -1,0 +1,657 @@
+@import './variables'; 
+@import './typography';
+
+
+body{
+    @include center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    >header#header{
+     
+        @include center;
+        height: 5rem;
+        border-bottom: 2px solid $borderGrey;
+        width: 100%;
+
+        nav{
+            @include center;
+         
+            width: 100%;
+            height: 100%;
+            ul{
+                height: 100%;
+             
+                @include center;
+                justify-content: space-between;
+                width: 100%;
+                list-style: none;
+                
+                li{
+                    height: 100%;
+                    width: 100%;
+                  
+                    @include center;
+
+                    button{
+                        border: none;
+                        height: 100%;
+                        @include center;
+                        background: none;
+                        width: 100%;
+                        transition: 1s;
+                        border-top:0 solid rgba(0, 0, 0, 0) ;
+                        border-bottom: 0 solid rgba(0, 0, 0, 0) ;
+                        padding: 0 1rem;
+
+                        &:hover{
+                            transition: 0.3s;
+                            
+                            cursor: pointer;
+                            border-top:0 solid rgba(0, 0, 0, 0) ;
+                            border-bottom: 2px solid $systemetGreen;
+                        }
+
+                        span{
+                            letter-spacing: 0.5px;
+                            font-family: 'Roboto Condensed', sans-serif;
+                            font-size: 1rem;
+                            font-weight: 400;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+    background-color:$bgWhite ;
+}
+
+main#index{
+    height: 100vh;
+    background-color:$bgWhite ;
+    grid-column-gap: 3rem;
+    padding: 0 3rem;
+    grid-template-columns: 30% auto;
+    margin: 0;
+    width: 100%;
+
+    display: grid;
+   
+    
+    
+    aside.filters{
+        grid-column: 1;
+        grid-row: span 2;
+        justify-self: flex-end;
+        border-right: 1px solid $borderGrey;
+        height: 80vh;
+        width: 15rem;
+        
+        .price{
+            height: 100%;
+            @include center;
+
+        }
+        
+        
+
+        h1{
+            font-weight: 500;
+            padding-bottom:1.5rem;
+        }
+
+        .dropHeader{
+            font-size: 1rem;
+            padding: 0.5rem;
+
+            border-bottom: 1px solid $borderGrey;
+            transition: background-color 0.3s;
+            @include center;
+            justify-content: space-between;
+
+            object{
+                pointer-events: none;
+                user-select: none;
+                transition: 0.3s;
+            }
+    
+            &.active{
+                font-weight: 700;
+
+                object{     
+                    transform: rotate(180deg);
+                }
+            }
+
+            &:hover{
+                background-color: $hoverGrey;
+                cursor: pointer;
+            }
+        }
+
+        .dropContainer{
+            max-height:0;
+
+            overflow: hidden;
+            transition: 0.3s;
+            
+
+            flex-direction: column;
+            @include center;
+            gap: 1rem;
+
+            div.sliderContainer{
+                width: 100%;
+
+                .sliderRound{
+                    height: 10px;
+        
+                    .noUi-connect{
+                        background: red;
+                    }
+        
+                    .noUi-handle{
+                        height: 18px;
+                        width: 18px;
+                        top: -5px;
+                        right: -9px; /* half the width */
+                        border-radius: 9px;
+                    }
+        
+                }
+            }
+
+
+            &.show{
+                transition: 0.3s;
+                max-height: 7rem;
+                
+            }
+        }
+        
+    }
+    
+    >div{
+        grid-column: 2;
+        gap: 1.5rem;
+
+        max-width: 42rem;
+        width: 100%;
+       
+        @include center;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        header.searchOptions{
+        
+            max-width: 42rem;
+            width: 100%;
+            @include center;
+            
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: start;
+            
+            >button.filter{
+                background-color: red;
+                display: none;
+    
+            }
+            
+            form.sort{
+                
+                
+                align-self: center;
+
+                border: none;
+                
+                grid-row:1; 
+                
+                color: $systemetGreen;
+                
+                @include center;
+                flex-direction: row;
+                white-space: nowrap;
+                justify-content: right;
+                height: 2.5rem;
+                max-width: 10rem;
+                
+                &:hover{
+                    background-color: $lightSystemetGreen;
+                    border-radius: 8px;
+                }
+                
+                object{
+                    margin-right: 1rem;
+                    z-index: 10;
+                    
+                }
+
+                select{
+                    @include center;
+                    padding-left: 0.8rem;
+                    border-radius: 8px;
+                    width: 100%;
+                    z-index: 5;
+                    
+                    height: 2.5rem;
+                    max-width: 10rem;
+
+                    color: $systemetGreen;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    
+                    appearance: none;
+                    position: absolute;
+                    background: none;
+                    border: none;
+                    
+                    &:focus-visible{
+                        outline: none;
+                    }
+
+                    
+                   
+                    
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+                
+                
+                
+            }
+            
+            div{
+                
+                grid-row:1; 
+                @include center;
+                justify-content: flex-end;
+    
+                gap: 0.2rem;
+    
+                p{
+                    margin-right: 0.4rem;
+                    color: $textBlack
+                }
+    
+                button{
+                    background: white;
+                    border: none;
+                    border-radius: 8px;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    @include center;
+                    flex-direction: column;
+    
+                    object{
+                        pointer-events: none;
+                    }
+                    &:hover{
+                        cursor: pointer;
+                        background: $lightSystemetGreen
+                    }
+    
+                    &.active{
+                        object{
+                            opacity: 0.15;
+                        }
+                    }
+    
+                }
+            }
+            
+        }
+
+        section.drinksContainer{
+            @include center;
+            flex-direction:column ;
+            gap: 1.5rem;
+            align-items: flex-start;
+
+
+            >a{
+                transition: 0.25s ease-in-out;
+                text-decoration: none;
+                color: black;
+    
+                border: 1px solid #2d29261a;
+                border-radius: 4px;
+                box-shadow: #2d29261a 0px 2px 6px 0px;
+    
+                background-color: white;
+                max-width: 42rem;
+                width: 100%;
+                min-height: 17rem;
+            
+                display: grid;
+                grid-template-columns: 10rem auto 7rem;
+    
+                &:hover{
+                    transform: translateY(-0.18rem);
+                    box-shadow: #2d29261a 0px 2px 16px 0px;
+                    .titles> h2, .titles > h1{
+                        color: $systemetGreen;
+                    
+                        text-decoration: underline;
+                    }
+                }
+                
+                figure{
+                    grid-column: 1;
+                    grid-row: span 3;
+                    @include center;
+                    width: 10rem;
+
+                    div{
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 0.9rem;
+
+                        position: absolute;
+                        background-color: $newsOrange;
+                        align-self: flex-start;
+                        padding: 0.3rem;
+
+                    }     
+
+                    img{
+                        max-height: 10rem;
+                        max-width: 6rem;
+                        
+                    }
+                }
+                
+                .titles{
+                    grid-column: 2;
+                    grid-row: 1;
+                    padding-top: 1rem;
+    
+                    @include center;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 0.1rem;
+                    
+                    >p{
+                        letter-spacing: 1.25px;
+                        font-family: 'Roboto Condensed', sans-serif;
+                        color: $textGrey;
+                        font-size: 0.8rem;
+                        
+                    }
+                    
+                    >h1{
+                        font-size: 1.2rem;
+                        color: $textBlack;
+                        font-weight: 500;
+                    }
+                    
+                    >h2{
+                        font-size: 1.2rem;
+                        color: $textGrey;
+                        font-weight: 400;
+                        letter-spacing: -0.08px;
+                    }
+                }
+                
+                .usageTasteContainer{
+                    grid-column: 2;
+                    grid-row: 2;
+                    padding-right: 1rem;
+                    padding-top: 0.5rem;
+                    padding-bottom: 0.5rem;
+                    >p{
+                        color: $textBlack;
+                        font-family: "Munson Regular";
+                        font-size: 0.85rem;
+                        
+                    }
+                }
+                
+                
+                aside.clocks{
+                    width: 7rem;
+                    
+                    grid-column: 3;
+                    grid-row: span 2;
+                    
+                    @include center;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    
+                    
+                    border-left: 1px solid $borderGrey;
+                    div{
+                        @include center;
+                        flex-direction: column;
+                        gap: 0.1rem;
+                        svg{
+                            max-width: 1.4rem;
+                        }
+                        p{
+                            font-family: 'Roboto Condensed', sans-serif;
+                            color: $textBlack;
+                            text-transform: uppercase;
+                            letter-spacing: 1.5px;
+                            font-size: 0.65rem;
+                            font-weight: 700;
+                        }
+                        
+                    }
+                }
+                footer.volumePrice{
+                    grid-column: 2 / span 2;
+    
+                    grid-row: 3;
+                    border-top: 1px solid $borderGrey;
+                    @include center;
+                    justify-content: space-between;
+                    padding-right:2rem ;
+                    min-height: 3.25rem;
+                    
+                    >div{
+                        @include center;
+                        gap: 1rem;
+                        p{
+                            color: $textGrey;
+                            font-size: 0.75rem;
+                        }
+                    }
+                    
+                    
+                    h3{
+                        font-weight: 400;
+                        font-size: 1rem;
+                        color: $textBlack;
+                    }
+                }
+                    
+                
+                
+                
+            }
+    
+            &.strippedArticles{
+                max-width: 42rem;
+                width: 100%;
+                >a{
+                    grid-template-columns:  7rem auto;
+                    min-height: 0;
+
+
+                    figure{
+                        grid-column: 1;
+                        grid-row: span 2;
+                        width: auto;
+
+                        img{
+                            padding: 2rem 2rem;
+                            max-height: 9rem;
+                        }
+        
+                    }
+    
+                    .title{
+                        grid-column: 2;
+                        grid-row: 1;
+                    }
+    
+                    .usageTasteContainer{
+                        display: none;
+                    }
+    
+                    aside.clocks{
+                        display:  none;
+                    }
+    
+                    footer.volumePrice{
+                        border: none;
+                        grid-column: 2;
+                        grid-row: 2;
+                    }
+    
+                }
+                // >a{
+    
+                //     // width: 100%;
+                //     // max-width: 42rem;
+                //     // display: grid;
+                //     // grid-template-rows: auto 3rem;
+                //     // min-height: 0;
+                //     // height: auto;
+                    
+                    
+    
+                //     // grid-template-columns: 7rem fit-content(100%) auto;
+                //     grid-template-columns: 7rem auto;
+    
+    
+    
+                //     figure{
+                //         grid-column: 1;
+                //         grid-row: span 2;
+                //         width: auto;
+                //         img{
+                //             padding: 2rem 2rem;
+    
+                //         }
+        
+                //     }
+    
+                //     .titles{
+                        
+                //         grid-column: 2 / 3;
+                //         grid-row: 1;
+                //         // padding-right: 15rem;
+                //     }
+                    
+                //     footer.volumePrice{
+                //         border: none;
+                //         grid-column: 2 / 3;
+                //         grid-row: 2;
+                //         @include center;
+                //         justify-content: space-between;
+                //         align-items: flex-start;
+                //         padding: 0.5rem 1rem 0 0 ;
+    
+                //     }
+                //     aside.clocks{
+                //         display: none;
+                //     }
+    
+                //     .usageTasteContainer{
+                //         display: none;
+                //     }
+                // }
+            }
+        }
+
+        >button.loadMore{
+            @include center;
+
+            width: 8rem;
+            height: 3rem;
+            border-radius: 99999px;
+
+            font-size: 1rem;
+            font-weight: 600;
+            
+            color: white;
+            align-self: center;
+            background: $systemetGreen;
+            border: none;
+
+            &:hover{
+                background-color: $hoverSystemetGreen;
+                cursor: pointer;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 890px){
+    main#index{
+
+        grid-column-gap: 0;
+        grid-template-columns: auto;
+        padding: 0 3rem;
+        grid-template-rows: auto;
+   
+        aside.filters{
+            display: none;
+        }
+
+        >div{
+            justify-self: center;
+            grid-column: 1;
+            header.searchOptions{
+                padding-bottom: 1.5rem;
+                justify-self: center;
+                grid-template-rows: 2.5rem fit-content(100%);   
+                row-gap: 0.8rem;
+    
+                >button.filter{
+                    background-color: white;
+                    border: none;
+                    grid-row: 1;
+                    grid-column: span 2;
+                    height: 100%;
+                    display: block;
+                    @include center;
+                    font-size: 1rem;
+                    color: $systemetGreen;
+                    gap: 0.8rem;
+                    font-family: 'Roboto', sans-serif;
+                    border-radius: 8px;
+    
+                    &:hover{
+                        cursor: pointer;
+                        background: $lightSystemetGreen;
+                    }
+    
+    
+                }
+                
+                button.sort{
+                    align-self: center;
+                    grid-row:2; 
+                    
+                    
+                }
+                
+                div{
+                    grid-row:2; 
+                }
+    
+            }
+
+        }
+    }
+}

@@ -1,0 +1,1181 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@font-face {
+  font-family: "Munson Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Regular"), url("font/munson_roman.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Italic"), url("font/munson_italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Bold"), url("font/munson_bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Bold Italic"), url("font/munson_bolditalic.woff") format("woff");
+}
+
+:root {
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+  font-family: "Munson Regular";
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: "Munson Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Regular"), url("font/munson_roman.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Italic"), url("font/munson_italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Bold"), url("font/munson_bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Bold Italic"), url("font/munson_bolditalic.woff") format("woff");
+}
+
+:root {
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+  font-family: "Munson Regular";
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: #F9F9F9;
+}
+
+body > header#header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 5rem;
+  border-bottom: 2px solid rgba(45, 41, 38, 0.1);
+  width: 100%;
+}
+
+body > header#header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+body > header#header nav ul {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  list-style: none;
+}
+
+body > header#header nav ul li {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body > header#header nav ul li button {
+  border: none;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: none;
+  width: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  border-top: 0 solid rgba(0, 0, 0, 0);
+  border-bottom: 0 solid rgba(0, 0, 0, 0);
+  padding: 0 1rem;
+}
+
+body > header#header nav ul li button:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  border-top: 0 solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid #095741;
+}
+
+body > header#header nav ul li button span {
+  letter-spacing: 0.5px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+main#index {
+  height: 100vh;
+  background-color: #F9F9F9;
+  grid-column-gap: 3rem;
+  padding: 0 3rem;
+  -ms-grid-columns: 30% auto;
+      grid-template-columns: 30% auto;
+  margin: 0;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+}
+
+main#index aside.filters {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  grid-row: span 2;
+  justify-self: flex-end;
+  border-right: 1px solid rgba(45, 41, 38, 0.1);
+  height: 80vh;
+  width: 15rem;
+}
+
+main#index aside.filters .price {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main#index aside.filters h1 {
+  font-weight: 500;
+  padding-bottom: 1.5rem;
+}
+
+main#index aside.filters .dropHeader {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(45, 41, 38, 0.1);
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main#index aside.filters .dropHeader object {
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main#index aside.filters .dropHeader.active {
+  font-weight: 700;
+}
+
+main#index aside.filters .dropHeader.active object {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+main#index aside.filters .dropHeader:hover {
+  background-color: rgba(45, 41, 38, 0.1);
+  cursor: pointer;
+}
+
+main#index aside.filters .dropContainer {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer {
+  width: 100%;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound {
+  height: 10px;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-connect {
+  background: red;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px;
+  /* half the width */
+  border-radius: 9px;
+}
+
+main#index aside.filters .dropContainer.show {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  max-height: 7rem;
+}
+
+main#index > div {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  gap: 1.5rem;
+  max-width: 42rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+main#index > div header.searchOptions {
+  max-width: 42rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+main#index > div header.searchOptions > button.filter {
+  background-color: red;
+  display: none;
+}
+
+main#index > div header.searchOptions form.sort {
+  -ms-flex-item-align: center;
+      align-self: center;
+  border: none;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  color: #095741;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  white-space: nowrap;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  height: 2.5rem;
+  max-width: 10rem;
+}
+
+main#index > div header.searchOptions form.sort:hover {
+  background-color: #cdead5;
+  border-radius: 8px;
+}
+
+main#index > div header.searchOptions form.sort object {
+  margin-right: 1rem;
+  z-index: 10;
+}
+
+main#index > div header.searchOptions form.sort select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 0.8rem;
+  border-radius: 8px;
+  width: 100%;
+  z-index: 5;
+  height: 2.5rem;
+  max-width: 10rem;
+  color: #095741;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: absolute;
+  background: none;
+  border: none;
+}
+
+main#index > div header.searchOptions form.sort select:focus-visible {
+  outline: none;
+}
+
+main#index > div header.searchOptions form.sort select:hover {
+  cursor: pointer;
+}
+
+main#index > div header.searchOptions div {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+main#index > div header.searchOptions div p {
+  margin-right: 0.4rem;
+  color: #2D2926;
+}
+
+main#index > div header.searchOptions div button {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main#index > div header.searchOptions div button object {
+  pointer-events: none;
+}
+
+main#index > div header.searchOptions div button:hover {
+  cursor: pointer;
+  background: #cdead5;
+}
+
+main#index > div header.searchOptions div button.active object {
+  opacity: 0.15;
+}
+
+main#index > div section.drinksContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+main#index > div section.drinksContainer > a {
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  text-decoration: none;
+  color: black;
+  border: 1px solid #2d29261a;
+  border-radius: 4px;
+  -webkit-box-shadow: #2d29261a 0px 2px 6px 0px;
+          box-shadow: #2d29261a 0px 2px 6px 0px;
+  background-color: white;
+  max-width: 42rem;
+  width: 100%;
+  min-height: 17rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10rem auto 7rem;
+      grid-template-columns: 10rem auto 7rem;
+}
+
+main#index > div section.drinksContainer > a:hover {
+  -webkit-transform: translateY(-0.18rem);
+          transform: translateY(-0.18rem);
+  -webkit-box-shadow: #2d29261a 0px 2px 16px 0px;
+          box-shadow: #2d29261a 0px 2px 16px 0px;
+}
+
+main#index > div section.drinksContainer > a:hover .titles > h2, main#index > div section.drinksContainer > a:hover .titles > h1 {
+  color: #095741;
+  text-decoration: underline;
+}
+
+main#index > div section.drinksContainer > a figure {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  grid-row: span 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 10rem;
+}
+
+main#index > div section.drinksContainer > a figure div {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: absolute;
+  background-color: #f08d60;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 0.3rem;
+}
+
+main#index > div section.drinksContainer > a figure img {
+  max-height: 10rem;
+  max-width: 6rem;
+}
+
+main#index > div section.drinksContainer > a .titles {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  padding-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0.1rem;
+}
+
+main#index > div section.drinksContainer > a .titles > p {
+  letter-spacing: 1.25px;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #737373;
+  font-size: 0.8rem;
+}
+
+main#index > div section.drinksContainer > a .titles > h1 {
+  font-size: 1.2rem;
+  color: #2D2926;
+  font-weight: 500;
+}
+
+main#index > div section.drinksContainer > a .titles > h2 {
+  font-size: 1.2rem;
+  color: #737373;
+  font-weight: 400;
+  letter-spacing: -0.08px;
+}
+
+main#index > div section.drinksContainer > a .usageTasteContainer {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+main#index > div section.drinksContainer > a .usageTasteContainer > p {
+  color: #2D2926;
+  font-family: "Munson Regular";
+  font-size: 0.85rem;
+}
+
+main#index > div section.drinksContainer > a aside.clocks {
+  width: 7rem;
+  -ms-grid-column: 3;
+  grid-column: 3;
+  grid-row: span 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  border-left: 1px solid rgba(45, 41, 38, 0.1);
+}
+
+main#index > div section.drinksContainer > a aside.clocks div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.1rem;
+}
+
+main#index > div section.drinksContainer > a aside.clocks div svg {
+  max-width: 1.4rem;
+}
+
+main#index > div section.drinksContainer > a aside.clocks div p {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #2D2926;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+main#index > div section.drinksContainer > a footer.volumePrice {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2 / span 2;
+  -ms-grid-row: 3;
+  grid-row: 3;
+  border-top: 1px solid rgba(45, 41, 38, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 2rem;
+  min-height: 3.25rem;
+}
+
+main#index > div section.drinksContainer > a footer.volumePrice > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+main#index > div section.drinksContainer > a footer.volumePrice > div p {
+  color: #737373;
+  font-size: 0.75rem;
+}
+
+main#index > div section.drinksContainer > a footer.volumePrice h3 {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #2D2926;
+}
+
+main#index > div section.drinksContainer.strippedArticles {
+  max-width: 42rem;
+  width: 100%;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a {
+  -ms-grid-columns: 7rem auto;
+      grid-template-columns: 7rem auto;
+  min-height: 0;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a figure {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  grid-row: span 2;
+  width: auto;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a figure img {
+  padding: 2rem 2rem;
+  max-height: 9rem;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a .title {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a .usageTasteContainer {
+  display: none;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a aside.clocks {
+  display: none;
+}
+
+main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice {
+  border: none;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+main#index > div > button.loadMore {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 99999px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: #095741;
+  border: none;
+}
+
+main#index > div > button.loadMore:hover {
+  background-color: #537F61;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 890px) {
+  main#index {
+    grid-column-gap: 0;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    padding: 0 3rem;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+  }
+  main#index aside.filters {
+    display: none;
+  }
+  main#index > div {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-grid-column: 1;
+    grid-column: 1;
+  }
+  main#index > div header.searchOptions {
+    padding-bottom: 1.5rem;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-grid-rows: 2.5rem fit-content(100%);
+        grid-template-rows: 2.5rem fit-content(100%);
+    row-gap: 0.8rem;
+  }
+  main#index > div header.searchOptions > button.filter {
+    background-color: white;
+    border: none;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    grid-column: span 2;
+    height: 100%;
+    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1rem;
+    color: #095741;
+    gap: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 8px;
+  }
+  main#index > div header.searchOptions > button.filter:hover {
+    cursor: pointer;
+    background: #cdead5;
+  }
+  main#index > div header.searchOptions button.sort {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+  main#index > div header.searchOptions div {
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+}
+
+@font-face {
+  font-family: "Munson Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Regular"), url("font/munson_roman.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Italic"), url("font/munson_italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Bold"), url("font/munson_bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Munson Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Munson Bold Italic"), url("font/munson_bolditalic.woff") format("woff");
+}
+
+:root {
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+  font-family: "Munson Regular";
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 560px) {
+  body > header#header nav ul li button span {
+    font-size: 0.8rem;
+  }
+  main#index {
+    width: 100%;
+    padding: 0 1rem;
+  }
+  main#index > div {
+    gap: 0rem;
+  }
+  main#index > div header.searchOptions {
+    width: 90vw;
+  }
+  main#index > div header.searchOptions > button.filter {
+    display: block;
+  }
+  main#index > div section.drinksContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 1.5rem;
+  }
+  main#index > div section.drinksContainer > a {
+    display: -ms-grid;
+    display: grid;
+    padding: 0 1.3rem;
+    -ms-grid-columns: 4rem auto auto;
+        grid-template-columns: 4rem auto auto;
+  }
+  main#index > div section.drinksContainer > a figure {
+    width: 100%;
+    -ms-grid-column: 1;
+    grid-column: 1;
+    grid-row: span 2;
+    margin-left: -1.3rem;
+  }
+  main#index > div section.drinksContainer > a figure div {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+  main#index > div section.drinksContainer > a figure div p {
+    font-size: 0.8rem;
+  }
+  main#index > div section.drinksContainer > a figure > img {
+    max-width: 1.5rem;
+    max-height: 4rem;
+  }
+  main#index > div section.drinksContainer > a .titles {
+    padding-top: 0.5rem;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2 / 4;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  main#index > div section.drinksContainer > a .titles > p {
+    font-size: 0.65rem;
+  }
+  main#index > div section.drinksContainer > a footer.volumePrice {
+    border: none;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2 / 4;
+    -ms-grid-row: 2;
+    grid-row: 2;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    padding: 1rem 0;
+  }
+  main#index > div section.drinksContainer > a aside.clocks {
+    grid-column: span 3;
+    -ms-grid-row: 3;
+    grid-row: 3;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 100%;
+    padding: 0.8rem 0;
+    border-top: 1px solid rgba(45, 41, 38, 0.1);
+    border-right: none;
+    border-bottom: 1px solid rgba(45, 41, 38, 0.1);
+    border-left: none;
+  }
+  main#index > div section.drinksContainer > a .usageTasteContainer {
+    padding: 1rem 0;
+    grid-column: span 3;
+    -ms-grid-row: 4;
+    grid-row: 4;
+  }
+  main#index > div section.drinksContainer > a .usageTasteContainer > p {
+    font-size: 0.8rem;
+  }
+  main#index > div section.drinksContainer.strippedArticles a {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+    -ms-grid-columns: 4rem auto auto;
+        grid-template-columns: 4rem auto auto;
+    min-height: 0;
+    height: auto;
+    max-width: 90vw;
+    width: 100%;
+  }
+  main#index > div section.drinksContainer.strippedArticles a figure {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  main#index > div section.drinksContainer.strippedArticles a figure div {
+    justify-self: flex-start;
+    position: relative;
+    margin-bottom: 0.3rem;
+  }
+  main#index > div section.drinksContainer.strippedArticles a figure div p {
+    font-size: 0.8rem;
+  }
+  main#index > div section.drinksContainer.strippedArticles a figure img {
+    padding: 0;
+  }
+  main#index > div section.drinksContainer.strippedArticles a .titles {
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-left: 0;
+    padding-bottom: 0.5rem;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2 / 4;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    gap: 0.3rem;
+  }
+  main#index > div section.drinksContainer.strippedArticles a .titles h1, main#index > div section.drinksContainer.strippedArticles a .titles h2 {
+    font-size: 0.9rem;
+  }
+  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2 / 4;
+    -ms-grid-row: 2;
+    grid-row: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 0.5rem 0 0 0;
+  }
+  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice > div {
+    padding-right: 0.3rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    gap: 0.5rem;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice > div p {
+    white-space: nowrap;
+  }
+  main#index > div section.drinksContainer.strippedArticles a aside.clocks {
+    display: none;
+  }
+  main#index > div section.drinksContainer.strippedArticles a .usageTasteContainer {
+    display: none;
+  }
+}
+
+*, html {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=main.css.map */

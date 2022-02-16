@@ -4,16 +4,17 @@ main#index
     
     aside.filters 
         h1 Filtrera
-        .dropHeader
-            p Alkoholhalt
-            object data="img/collapse-arrow.svg" type="image/svg+xml" 
-        .dropContainer
-            ul
-                li 1
-                li 2
-                li 3
-                li 4
-                li 5
+        .filterWrapper
+            .dropHeader
+                p Alkoholhalt
+                object data="img/collapse-arrow.svg" type="image/svg+xml" 
+            .dropContainer
+                ul
+                    li 1
+                    li 2
+                    li 3
+                    li 4
+                    li 5
 
         .dropHeader 
             p Pris
@@ -21,21 +22,21 @@ main#index
         .dropContainer.price.show
             div.sliderContainer
                 div.sliderRound#priceSlider
+                div.inputContainer
+                    input#priceMin type="text"/
+                    input#priceMax type="text"/
 
-            div.inputContainer
-                input#priceMin type="text"/
-                input#priceMax type="text"/
 
-        .dropHeader 
-            p Volym
-            object data="img/collapse-arrow.svg" type="image/svg+xml" 
-        .dropContainer
-            ul
-                li 1
-                li 2
-                li 3
-                li 4
-                li 5
+        / .dropHeader 
+        /     p Volym
+        /     object data="img/collapse-arrow.svg" type="image/svg+xml" 
+        / .dropContainer
+        /     ul
+        /         li 1
+        /         li 2
+        /         li 3
+        /         li 4
+        /         li 5
 
     div
         header.searchOptions

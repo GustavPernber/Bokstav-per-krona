@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+// import React from 'react'
 import {ReactComponent as CollapseArrow} from './img/collapse-arrow.svg';
+import Nouislider from "nouislider-react";
+import "nouislider/distribute/nouislider.css";
 
 class Header extends Component{
   render(){
@@ -45,6 +48,7 @@ function DropFilterSlider(props){
   )
     
 }
+
 // class DropFilterSlider extends Component {
 //   constructor(props) {
 //     super(props);
@@ -69,6 +73,61 @@ class DropHeader extends Component {
   
 }
 
+class Slider extends Component{
+  constructor(props) {
+    super(props);
+    this.minInput=this.props.filter.minTag
+    this.maxInput=this.props.filter.maxTag
+
+    this.handleSlider=this.handleSlider.bind(this)
+    this.handleInput=this.handleInput.bind(this)
+
+    this.state={
+      minVal:this.props.start[0],
+      maxVal:this.props.start[1]
+    }
+  }
+  
+  handleInput(e){
+    console.log(e)
+  }
+
+  handleSlider(value){
+    this.setState({
+      minVal:value[0],
+      maxVal:value[1]
+    })
+  }
+
+  render(){
+    return(
+        <div className='sliderContainer'>
+            {/* <p>{this.props.filter}</p> */}
+            <input
+              name={this.minInput}
+              value={this.state.minVal}
+              onChange={this.handleInput}
+            />
+            {/* <input
+              name={this.maxInput}
+              value={this.state.maxVal}
+            /> */}
+
+            <Nouislider onSlide={this.handleSlider} range={this.props.range} start={this.props.start} ></Nouislider>
+        </div>
+    )
+  }
+}
+// noUiSlider.create(this.slider, {
+//   start: [20, 80],
+//   connect: true,
+//   tooltips:true,
+
+//   range: {
+//       'min': 0,
+//       'max': 100
+//   }
+// });
 class SliderFilter extends Component{
   constructor(props) {
     super(props);
@@ -80,13 +139,9 @@ class SliderFilter extends Component{
   
   render(){
     return(
-      <div>
-        <p onClick={()=> this.setState({show:"lol2"})}>
-          click
-        </p>
-        <p>
-          {this.state.show}
-        </p>
+      <div className='filterWrapper'>
+        <DropHeader title={this.props.filter.title}></DropHeader>
+        <Slider filter={this.props.filter} range={{min:0, max:100}} start={[20, 80]}></Slider>
       </div>
     )
   }
@@ -101,8 +156,8 @@ class Filters extends Component {
     
     this.state={
       slideFilters:[
-        { max: "alcMax",
-          min:"alcMin",
+        { maxTag: "alcMax",
+          minTag:"alcMin",
           title:"Alkoholhalt",
         }
       ]

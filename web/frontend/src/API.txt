@@ -1,0 +1,5 @@
+/api/drinksLimited => Returns limited amounts of drinks
+Params=>
+?page={pageNum}&
+priceMax={priceMax}&priceMin={priceMin}
+&alcMax={alcMax}&alcMin={alcMin}

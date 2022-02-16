@@ -1,0 +1,264 @@
+section.drinksContainer{
+    @include center;
+    flex-direction:column ;
+    gap: 1.5rem;
+    align-items: flex-start;
+
+
+    >a{
+        transition: 0.25s ease-in-out;
+        text-decoration: none;
+        color: black;
+
+        border: 1px solid #2d29261a;
+        border-radius: 4px;
+        box-shadow: #2d29261a 0px 2px 6px 0px;
+
+        background-color: white;
+        max-width: 42rem;
+        width: 100%;
+        min-height: 17rem;
+    
+        display: grid;
+        grid-template-columns: 10rem auto 7rem;
+
+        &:hover{
+            transform: translateY(-0.18rem);
+            box-shadow: #2d29261a 0px 2px 16px 0px;
+            .titles> h2, .titles > h1{
+                color: $systemetGreen;
+            
+                text-decoration: underline;
+            }
+        }
+        
+        figure{
+            grid-column: 1;
+            grid-row: span 3;
+            @include center;
+            width: 10rem;
+
+            div{
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 0.9rem;
+
+                position: absolute;
+                background-color: $newsOrange;
+                align-self: flex-start;
+                padding: 0.3rem;
+
+            }     
+
+            img{
+                max-height: 10rem;
+                max-width: 6rem;
+                
+            }
+        }
+        
+        .titles{
+            grid-column: 2;
+            grid-row: 1;
+            padding-top: 1rem;
+
+            @include center;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 0.1rem;
+            
+            >p{
+                letter-spacing: 1.25px;
+                font-family: 'Roboto Condensed', sans-serif;
+                color: $textGrey;
+                font-size: 0.8rem;
+                
+            }
+            
+            >h1{
+                font-size: 1.2rem;
+                color: $textBlack;
+                font-weight: 500;
+            }
+            
+            >h2{
+                font-size: 1.2rem;
+                color: $textGrey;
+                font-weight: 400;
+                letter-spacing: -0.08px;
+            }
+        }
+        
+        .usageTasteContainer{
+            grid-column: 2;
+            grid-row: 2;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            >p{
+                color: $textBlack;
+                font-family: "Munson Regular";
+                font-size: 0.85rem;
+                
+            }
+        }
+        
+        
+        aside.clocks{
+            width: 7rem;
+            
+            grid-column: 3;
+            grid-row: span 2;
+            
+            @include center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5rem;
+            
+            
+            border-left: 1px solid $borderGrey;
+            div{
+                @include center;
+                flex-direction: column;
+                gap: 0.1rem;
+                svg{
+                    max-width: 1.4rem;
+                }
+                p{
+                    font-family: 'Roboto Condensed', sans-serif;
+                    color: $textBlack;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                }
+                
+            }
+        }
+        footer.volumePrice{
+            grid-column: 2 / span 2;
+
+            grid-row: 3;
+            border-top: 1px solid $borderGrey;
+            @include center;
+            justify-content: space-between;
+            padding-right:2rem ;
+            min-height: 3.25rem;
+            
+            >div{
+                @include center;
+                gap: 1rem;
+                p{
+                    color: $textGrey;
+                    font-size: 0.75rem;
+                }
+            }
+            
+            
+            h3{
+                font-weight: 400;
+                font-size: 1rem;
+                color: $textBlack;
+            }
+        }
+            
+        
+        
+        
+    }
+
+    &.strippedArticles{
+        max-width: 42rem;
+        width: 100%;
+        >a{
+            grid-template-columns:  7rem auto;
+            min-height: 0;
+
+
+            figure{
+                grid-column: 1;
+                grid-row: span 2;
+                width: auto;
+
+                img{
+                    padding: 2rem 2rem;
+                    max-height: 9rem;
+                }
+
+            }
+
+            .title{
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .usageTasteContainer{
+                display: none;
+            }
+
+            aside.clocks{
+                display:  none;
+            }
+
+            footer.volumePrice{
+                border: none;
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+        }
+        // >a{
+
+        //     // width: 100%;
+        //     // max-width: 42rem;
+        //     // display: grid;
+        //     // grid-template-rows: auto 3rem;
+        //     // min-height: 0;
+        //     // height: auto;
+            
+            
+
+        //     // grid-template-columns: 7rem fit-content(100%) auto;
+        //     grid-template-columns: 7rem auto;
+
+
+
+        //     figure{
+        //         grid-column: 1;
+        //         grid-row: span 2;
+        //         width: auto;
+        //         img{
+        //             padding: 2rem 2rem;
+
+        //         }
+
+        //     }
+
+        //     .titles{
+                
+        //         grid-column: 2 / 3;
+        //         grid-row: 1;
+        //         // padding-right: 15rem;
+        //     }
+            
+        //     footer.volumePrice{
+        //         border: none;
+        //         grid-column: 2 / 3;
+        //         grid-row: 2;
+        //         @include center;
+        //         justify-content: space-between;
+        //         align-items: flex-start;
+        //         padding: 0.5rem 1rem 0 0 ;
+
+        //     }
+        //     aside.clocks{
+        //         display: none;
+        //     }
+
+        //     .usageTasteContainer{
+        //         display: none;
+        //     }
+        // }
+    }
+}

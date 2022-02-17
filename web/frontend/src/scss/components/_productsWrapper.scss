@@ -114,14 +114,16 @@ section.drinksContainer{
             @include center;
             flex-direction: column;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
             
-            
+            img{
+                max-width: 1.4rem;
+            }
             border-left: 1px solid $borderGrey;
             div{
                 @include center;
                 flex-direction: column;
-                gap: 0.1rem;
+                gap: 0.4rem;
                 svg{
                     max-width: 1.4rem;
                 }

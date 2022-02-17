@@ -14,7 +14,8 @@ Frontend:
         ☐ Sortera 
 
         Produkter:
-            ☐ Ladda produkter dynamiskt
+            ✔ Ladda produkter @done(22-02-17 17:51)
+            ☐ Ladda produkter knapp
 
             ☐ Produkter laddar in, gråa
             ☐ Om bilder ej finns 
@@ -34,5 +35,5 @@ Frontend:
 
 Next up:
     ✔ Filter till egen fil @done(22-02-17 15:24)
-    ☐ produkter dynamiskt
-    ☐ Fixa filter
+    ✔ produkter dynamiskt @done(22-02-17 17:50)
+    ☐ Fixa stripped articles knapp

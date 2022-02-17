@@ -55,6 +55,60 @@ class ViewOptions extends Component {
     }
 }
 
+function Product(props){
+    let imgUrl=`https://product-cdn.systembolaget.se/productimages/${props.product.id}/${props.product.id}_200.png`
+    let apk=parseFloat(props.product.APK).toPrecision(3)
+
+    let nameThin;
+    if (props.product.nameThin===null) {
+        nameThin=""
+    } else {
+        nameThin=props.product.nameThin
+    }
+
+    let usage;
+    if (props.product.usage===null){
+        usage=""
+    }else{
+        usage=props.product.usage
+    }
+
+    let taste;
+    if (props.product.taste===null){
+        taste=""
+    }else{
+        taste=props.product.taste
+    }
+
+    return(
+        <a href='systembolaget.se'>
+            <figure>
+                <img src={imgUrl}/>
+            </figure>
+
+            <div className='titles'>
+                <p>{props.product.category1}, {props.product.category2}, {props.product.category3}</p>
+                <h1>{props.product.nameBold}</h1>
+                <h2>{nameThin}</h2>
+            </div>
+
+            <div className='usageTasteContainer'>
+                <p>{taste} {usage}</p>
+            </div>
+            
+            <footer className='volumePrice'>
+                <div>
+                    <p><strong>APK: {apk}</strong></p>
+                    <p>{props.product.volume}</p>
+                    <p>{props.product.alcPercentage}</p>
+                </div>
+                <h3>{props.product.price} :-</h3>
+            </footer>
+
+        </a>
+    )
+    
+}
 
 class ProductsContainer extends Component{
     constructor(props) {
@@ -63,15 +117,13 @@ class ProductsContainer extends Component{
       this.state = {
          products: []
       }
-      this.getProducts()
+      
     }
 
-    async setProducts(){
-        const value=[{ key:'lol'}]
-        this.setState({
-            products:value
-        })
+    componentDidMount(){
+        this.getProducts()
     }
+
     async getProducts(){
         console.log('Fetching...')
         let url=`http://localhost:4567/api/drinksLimited?page=1&priceMax=100&priceMin=50`
@@ -88,10 +140,14 @@ class ProductsContainer extends Component{
     }
 
     render(){
-        console.log(this.state.products)
+        console.log('Products:', this.state.products)
+
         return(
             <section className='drinksContainer'>
-                {/* <p>{this.state.products}</p> */}
+                {this.state.products.map((product, i)=>{
+                    return (<Product key={product.id} product={product}></Product>)
+                })}
+
             </section>
         )
     }

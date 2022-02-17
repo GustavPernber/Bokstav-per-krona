@@ -429,7 +429,7 @@ main#index > div header.searchOptions form.sort:hover {
   border-radius: 8px;
 }
 
-main#index > div header.searchOptions form.sort object {
+main#index > div header.searchOptions form.sort svg {
   margin-right: 1rem;
   z-index: 10;
 }
@@ -514,7 +514,7 @@ main#index > div header.searchOptions div button {
           flex-direction: column;
 }
 
-main#index > div header.searchOptions div button object {
+main#index > div header.searchOptions div button svg {
   pointer-events: none;
 }
 
@@ -523,7 +523,7 @@ main#index > div header.searchOptions div button:hover {
   background: #cdead5;
 }
 
-main#index > div header.searchOptions div button.active object {
+main#index > div header.searchOptions div button.notActive svg {
   opacity: 0.15;
 }
 

@@ -173,7 +173,7 @@ main#index{
                     border-radius: 8px;
                 }
                 
-                object{
+                svg{
                     margin-right: 1rem;
                     z-index: 10;
                     
@@ -238,7 +238,7 @@ main#index{
                     @include center;
                     flex-direction: column;
     
-                    object{
+                    svg{
                         pointer-events: none;
                     }
                     &:hover{
@@ -246,8 +246,8 @@ main#index{
                         background: $lightSystemetGreen
                     }
     
-                    &.active{
-                        object{
+                    &.notActive{
+                        svg{
                             opacity: 0.15;
                         }
                     }

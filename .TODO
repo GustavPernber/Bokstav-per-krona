@@ -18,6 +18,8 @@ Frontend:
     JS:
         ☐ Fixa om bilder ej finns
         ☐ Loading
+    React:
+        ☐ Lift state up i sliders för att visa om de är ändrade
 
     Responsivitet:
         ☐ Search header vid mobile

@@ -47,8 +47,6 @@ class DropHeader extends Component {
   
 }
 
-
-
 class Slider extends Component{
   constructor(props) {
     super(props);
@@ -58,7 +56,6 @@ class Slider extends Component{
     this.maxVal=this.props.filter.maxVal
 
     this.range={min:this.minVal, max:this.maxVal}
-    console.log(this.range)
     this.min=this.props.filter.minTag
     this.max=this.props.filter.maxTag
 
@@ -73,31 +70,57 @@ class Slider extends Component{
       //TODO fixa start värden
       start:[this.minVal, this.maxVal]
     }
-    
-    console.log('state:', this.state)
   }
   
 
   handleSlider(value){
     this.setState({
       [this.min]:value[0],
-      [this.max]:value[1]
-
+      [this.max]:value[1],
     })
+
+    this.props.update(parseFloat(this.state[this.min]) ,parseFloat(this.state[this.max]) )
   }
 
   handleInputBlur(e){
     const value=e.target.value
 
-    this.setState((state, props)=>({
-      [e.target.name]: parseFloat(value),
-    }))
+    if (value>this.maxVal || value<this.minVal) {
 
-    this.setState((state, props)=>({
-      start:[state[this.min], state[this.max]]
-    }))
+      this.setState(()=>({
+        [this.min]:this.minVal,
+        [this.max]:this.maxVal,
+        start:[this.minVal, this.maxVal]
 
+      }))
 
+    }else if(value>this.state[this.max] || value<this.state[this.min] ){
+      this.setState({
+        [this.min]:value,
+        [this.max]:value,
+      })
+
+      this.setState((state, props)=>({
+        start:[state[this.min], state[this.max]]
+      }))
+
+      //Call update function
+      this.props.update(this.state[this.min], this.state[this.max])
+    } else {
+
+      this.setState((state, props)=>({
+        [e.target.name]: parseFloat(value),
+      }))
+      
+      this.setState((state, props)=>({
+        start:[state[this.min], state[this.max]]
+      }))
+
+      //Call update
+      this.props.update(this.state[this.min], this.state[this.max])
+    }
+
+    
   }
 
   handleInputKey(e){
@@ -118,7 +141,6 @@ class Slider extends Component{
   render(){
     return(
         <div className='sliderContainer'>
-            {/* <p>{this.props.filter}</p> */}
             <input
               type="number"
               name={this.min}
@@ -147,7 +169,7 @@ class Slider extends Component{
 class SliderFilter extends Component{
   constructor(props) {
     super(props);
-    
+
     this.state={
       show:"lol"
     }
@@ -157,8 +179,7 @@ class SliderFilter extends Component{
     return(
       <div className='filterWrapper'>
         <DropHeader title={this.props.filter.title}></DropHeader>
-        <Slider filter={this.props.filter}></Slider>
-        {/* <NewSlider filter={this.props.filter} range={{min:0, max:100}} start={[20, 80]}></NewSlider> */}
+        <Slider update={this.props.update} filter={this.props.filter}></Slider>
       </div>
     )
   }
@@ -168,13 +189,20 @@ class SliderFilter extends Component{
 
 
 class Filters extends Component {
+  
   constructor(props){
     super(props)
-    
+    this.handleSliderUpdate=this.handleSliderUpdate.bind(this)
+
     this.state={
+      hasChanged:false,
+
       slideFilters:[
         { maxVal:70,
           minVal:2,
+
+          minCurrent:2,
+          maxCurrent:70,
 
           steps:0.5,
 
@@ -187,21 +215,78 @@ class Filters extends Component {
     }
   }
 
+  handleSliderUpdate(index, min, max){
+    let newFilter=this.state.slideFilters.slice()
+
+    newFilter[index].minCurrent=min
+    newFilter[index].maxCurrent=max
+
+    this.setState(()=>({
+      slideFilters:newFilter
+    }))
+
+    if(min!=this.state.slideFilters[index].minVal || max!=this.state.slideFilters[index].maxVal){
+      this.setState(()=>({
+        hasChanged:true
+      }))
+    }else{
+      this.setState(()=>({
+        hasChanged:false
+      }))
+
+    }
+
+    // console.log('org', this.state.test)
+
+
+      
+    // const newTest= this.state.test.slice()
+
+    // console.log('new', newTest)
+
+
+    // newTest[index].value+=1
+    // this.setState(()=>({
+    //   test:newTest
+    // }))
+
+
+    // setTimeout(() => {
+      
+    //   console.log(this.state.test)
+    // }, 100);
+    // const newSlideFilters=this.state.slideFilters.concat()
+    // console.log(newSlideFilters)
+    // newSlideFilters[inde]
+    // this.setState({
+    //   test: [
+    //     ...this.state.test,
+    //     {
+    //       value:3
+    //     }
+    //   ]
+        
+    // })
+    // })
+
+  }
+
   render() {
+    let button
     return (
       <aside className='filters'>
         <h1>Filtrera</h1>
-        {console.log(this.state)}
 
         {this.state.slideFilters.map((filter, i)=>{
-          console.log(filter
-          )
+
           return(
-            <SliderFilter className='filterWrapper' 
+            <SliderFilter update={(min, max)=> this.handleSliderUpdate(i, min, max)} className='filterWrapper' 
             key={filter.title} 
             filter={filter} />
           )
         })}
+        {this.state.hasChanged ? <button>Filterera</button> : 'lol' }
+        
         
 
       </aside>
@@ -216,7 +301,6 @@ class Main extends React.Component{
     return(
       <main id="index">
         <Filters>
-
         </Filters>
 
         <div>

@@ -33,32 +33,6 @@ class Header extends Component{
 
 }
 
-function DropFilterSlider(props){
-
-  return (
-    <div className='dropContainer show'>
-      <ul>
-        <li>{props.isShow}</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-      </ul>
-    </div>    
-  )
-    
-}
-
-// class DropFilterSlider extends Component {
-//   constructor(props) {
-//     super(props);
-    
-//   }
-  
-
-// }
-
-
 class DropHeader extends Component {
 
   render(){
@@ -73,9 +47,7 @@ class DropHeader extends Component {
   
 }
 
-class NewSlider extends Component{
 
-}
 
 class Slider extends Component{
   constructor(props) {
@@ -98,9 +70,11 @@ class Slider extends Component{
     this.state={
       [this.min]:this.minVal,
       [this.max]:this.maxVal,
-      
+      //TODO fixa start värden
       start:[this.minVal, this.maxVal]
     }
+    
+    console.log('state:', this.state)
   }
   
 
@@ -122,25 +96,23 @@ class Slider extends Component{
     this.setState((state, props)=>({
       start:[state[this.min], state[this.max]]
     }))
-    console.log(e.type)
+
 
   }
 
   handleInputKey(e){
     if(e.key=== 'Enter'){
-      console.log('enter')
+      this.handleInputBlur(e)
     }
   }
 
   handleInputChange(e){
 
     const value=parseFloat(e.target.value)
-    console.log('value:')
-    console.log(value)
-
-    this.setState({
+    this.setState((state, props)=>({
       [e.target.name]:value
-    })
+    }))
+
   }
 
   render(){
@@ -154,31 +126,24 @@ class Slider extends Component{
 
               onKeyUp={this.handleInputKey}
               onBlur={this.handleInputBlur}
-              // defaultValue={this.minVal}
-              // value={this.state[this.min]}
               onChange={this.handleInputChange}
             />
-            {/* <input
+            <input
               type="number"
               name={this.max}
               value={this.state[this.max]}
-              onChange={this.handleInput}
-            /> */}
+
+              onKeyUp={this.handleInputKey}
+              onBlur={this.handleInputBlur}
+              onChange={this.handleInputChange}
+            />
+
             <Nouislider onSlide={this.handleSlider} step={this.props.filter.steps} start={this.state.start} range={this.range}></Nouislider>
         </div>
     )
   }
 }
-// noUiSlider.create(this.slider, {
-//   start: [20, 80],
-//   connect: true,
-//   tooltips:true,
 
-//   range: {
-//       'min': 0,
-//       'max': 100
-//   }
-// });
 class SliderFilter extends Component{
   constructor(props) {
     super(props);

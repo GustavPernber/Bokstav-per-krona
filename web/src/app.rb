@@ -6,9 +6,11 @@ require 'bcrypt'
 
 require_relative 'model.rb'
 
-# require "rerun"
 
-# set :default_content_type, :json
+before do
+    headers 'Access-Control-Allow-Origin' => '*'
+end
+
 
 books=[
     {name:"lol", id:1},

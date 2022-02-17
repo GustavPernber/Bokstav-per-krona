@@ -26,14 +26,39 @@ class Sort extends Component {
 }
 
 class ArticleType extends Component{
+    constructor(props) {
+        super(props)
+        
+        this.changeViewSmall=this.changeViewSmall.bind(this)
+        this.changeViewBig=this.changeViewBig.bind(this)
+
+        this.state = {
+            smallActive:true
+        }
+    }
+
+    changeViewSmall(){
+        this.setState({
+            smallActive: false
+        })
+    }
+
+    changeViewBig(){
+        this.setState({
+            smallActive: true
+        })
+    }
+
+    // onClick={this.props.viewTypeChange}
     render(){
         return(
             <div>
                 <p>Välj vy:</p>
-                <button className="stripped notActive">
+                <button onClick={this.changeViewSmall} className={`stripped ${this.state.smallActive ? "notActive" : ""}`}>
                     <SmallArticlesIcon></SmallArticlesIcon>
                 </button>
-                <button className="bigArticles">
+
+                <button onClick={this.changeViewBig} className={`bigArticles ${this.state.smallActive ? "" : "notActive"}`}>
                     <BigArticlesIcon></BigArticlesIcon>
                 </button>
             </div>
@@ -42,13 +67,17 @@ class ArticleType extends Component{
 }
 
 class ViewOptions extends Component {
+    constructor(props) {
+      super(props)
+    }
+
     render() {
         return (
             <header className='searchOptions'>
 
                 <Sort></Sort>
                 
-                <ArticleType></ArticleType>
+                <ArticleType viewTypeChange={this.props.viewTypeChange}></ArticleType>
 
             </header>
         );
@@ -238,6 +267,16 @@ class ProductsContainer extends Component{
 
 export default class Products extends Component {
 
+    constructor(props) {
+      super(props)
+        
+      this.handleViewChange=this.handleViewChange.bind(this)
+
+    }
+
+    handleViewChange(){
+        console.log('change')
+    }
 
     render() {
         return (

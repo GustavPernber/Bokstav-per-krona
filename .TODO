@@ -1,42 +1,37 @@
 Backend:
+    ☐ Gör om i node
     ☐ Search queries vid filtrering
-    ✔ Visa olika många (pages) @done(22-02-12 16:06)
+    ☐ Hosting
 
 Frontend:
 
-    API:
-        ☐ Filtrera
-        ☐ Sortera 
-            ☐ Vid ändring av filterering visa knapp
-            ☐ Skicka params till fetch
-            ☐ Visa max värde 
-        ✔ Ladda mer knapp (ladda in dynamiskt) @done(22-02-12 16:05)
-        ✔ Fixa om taste och usage e null @done(22-02-12 14:15)
-        ✔ Om det är ordervara @done(22-02-12 14:14)
-        ✔ Klockor @done(22-02-10 21:57)
-
-    JS:
-        ☐ Fixa om bilder ej finns
-        ☐ Loading
     React:
-        ☐ Lift state up i sliders för att visa om de är ändrade
+        ☐ Visa laddning ikoner
+        ☐ Filtrera
+            ☐ Skicka params till fetch
+            ☐ Filteringsknapp
+            ☐ (Dynamiska maxvärden)
+        ☐ Sortera 
 
-    Responsivitet:
-        ☐ Search header vid mobile
-        ☐ Visa filter vid mobile
+        Produkter:
+            ☐ Ladda produkter dynamiskt
+
+            ☐ Produkter laddar in, gråa
+            ☐ Om bilder ej finns 
+    
+    Styling:
+        CSS:
+            ☐ Styling för sliders
+        Responsivitet:
+            ☐ Search header vid mobile
+            ☐ Visa filter vid mobile
     Misc:
-        ☐ Filter aside fixed??
-        ☐ De olika filtrerna
         ☐ Länka till systemet
         ☐ Visa kronor synaggare med ören å sånt
-        ☐ Byt object taggar mot svg taggar för bättre laoding times
-        
-    Riktig misc:
-        ☐ Favicon
-        ☐ TS
-    ✔ hantera ordervaror @done(22-02-10 20:49)
+        Riktig misc:
+            ☐ Favicon
+            ☐ TS
 
 Next up:
-    ☐ Fortsätt med sliders
-        ☐ Styling
-        ☐ Skicka params
+    ☐ Fixa filter
+    ☐ produkter dynamiskt

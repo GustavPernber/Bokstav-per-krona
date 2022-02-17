@@ -140,6 +140,8 @@ class APItoDB {
                 assortmentText: product.assortmentText,
                 apk: apk,
                 bpk: bpk,
+                vintage:product.vintage,
+                productNumber:product.productNumber
             };
 
             let table = "Products";
@@ -159,9 +161,11 @@ class APItoDB {
             //         break;
             // }
 
-            let query = `INSERT INTO ${table} (id, nameBold, nameThin, category1, category2, category3, category4, usage, taste, tasteClocks, volume, price, APK, BPK, assortment, alcPercentage) VALUES(?,?,?, ?,?,?,?,?,?,?,?,?,?,?,?, ?)`;
+            let query = `INSERT INTO ${table} (id, productNumber, vintage, nameBold, nameThin, category1, category2, category3, category4, usage, taste, tasteClocks, volume, price, APK, BPK, assortment, alcPercentage) VALUES(?,?,?,?,?, ?,?,?,?,?,?,?,?,?,?,?,?, ?)`;
             let params = [
                 data.id,
+                data.productNumber,
+                data.vintage,
                 data.nameBold,
                 data.nameThin,
                 data.cat1,
@@ -212,7 +216,7 @@ class APItoDB {
 }
 
 const APIScript = new APItoDB({
-    dbPath: "C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK/node/db/db.db",
+    dbPath: "C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK-react-branch/api-scraper/db/db.db",
 
     categories: [
         // { level1: "Öl", level2: ["Ale", "Ljus%20lager"]},

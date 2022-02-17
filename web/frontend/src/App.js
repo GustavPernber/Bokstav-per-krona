@@ -73,29 +73,73 @@ class DropHeader extends Component {
   
 }
 
+class NewSlider extends Component{
+
+}
+
 class Slider extends Component{
   constructor(props) {
     super(props);
-    this.minInput=this.props.filter.minTag
-    this.maxInput=this.props.filter.maxTag
+
+
+    this.minVal=this.props.filter.minVal
+    this.maxVal=this.props.filter.maxVal
+
+    this.range={min:this.minVal, max:this.maxVal}
+    console.log(this.range)
+    this.min=this.props.filter.minTag
+    this.max=this.props.filter.maxTag
 
     this.handleSlider=this.handleSlider.bind(this)
-    this.handleInput=this.handleInput.bind(this)
+    this.handleInputBlur=this.handleInputBlur.bind(this)
+    this.handleInputKey=this.handleInputKey.bind(this)
+    this.handleInputChange=this.handleInputChange.bind(this)
 
     this.state={
-      minVal:this.props.start[0],
-      maxVal:this.props.start[1]
+      [this.min]:this.minVal,
+      [this.max]:this.maxVal,
+      
+      start:[this.minVal, this.maxVal]
     }
   }
   
-  handleInput(e){
-    console.log(e)
-  }
 
   handleSlider(value){
     this.setState({
-      minVal:value[0],
-      maxVal:value[1]
+      [this.min]:value[0],
+      [this.max]:value[1]
+
+    })
+  }
+
+  handleInputBlur(e){
+    const value=e.target.value
+
+    this.setState((state, props)=>({
+      [e.target.name]: parseFloat(value),
+    }))
+
+    this.setState((state, props)=>({
+      start:[state[this.min], state[this.max]]
+    }))
+    console.log(e.type)
+
+  }
+
+  handleInputKey(e){
+    if(e.key=== 'Enter'){
+      console.log('enter')
+    }
+  }
+
+  handleInputChange(e){
+
+    const value=parseFloat(e.target.value)
+    console.log('value:')
+    console.log(value)
+
+    this.setState({
+      [e.target.name]:value
     })
   }
 
@@ -104,16 +148,23 @@ class Slider extends Component{
         <div className='sliderContainer'>
             {/* <p>{this.props.filter}</p> */}
             <input
-              name={this.minInput}
-              value={this.state.minVal}
-              onChange={this.handleInput}
+              type="number"
+              name={this.min}
+              value={this.state[this.min]}
+
+              onKeyUp={this.handleInputKey}
+              onBlur={this.handleInputBlur}
+              // defaultValue={this.minVal}
+              // value={this.state[this.min]}
+              onChange={this.handleInputChange}
             />
             {/* <input
-              name={this.maxInput}
-              value={this.state.maxVal}
+              type="number"
+              name={this.max}
+              value={this.state[this.max]}
+              onChange={this.handleInput}
             /> */}
-
-            <Nouislider onSlide={this.handleSlider} range={this.props.range} start={this.props.start} ></Nouislider>
+            <Nouislider onSlide={this.handleSlider} step={this.props.filter.steps} start={this.state.start} range={this.range}></Nouislider>
         </div>
     )
   }
@@ -141,7 +192,8 @@ class SliderFilter extends Component{
     return(
       <div className='filterWrapper'>
         <DropHeader title={this.props.filter.title}></DropHeader>
-        <Slider filter={this.props.filter} range={{min:0, max:100}} start={[20, 80]}></Slider>
+        <Slider filter={this.props.filter}></Slider>
+        {/* <NewSlider filter={this.props.filter} range={{min:0, max:100}} start={[20, 80]}></NewSlider> */}
       </div>
     )
   }
@@ -156,8 +208,14 @@ class Filters extends Component {
     
     this.state={
       slideFilters:[
-        { maxTag: "alcMax",
+        { maxVal:70,
+          minVal:2,
+
+          steps:0.5,
+
+          maxTag: "alcMax",
           minTag:"alcMin",
+
           title:"Alkoholhalt",
         }
       ]

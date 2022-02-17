@@ -43,3 +43,4 @@ Next up:
     ✔ Filter till egen fil @done(22-02-17 15:24)
     ✔ produkter dynamiskt @done(22-02-17 17:50)
     ☐ Fixa stripped articles knapp
+        ☐ Lyft up state från knappar till container

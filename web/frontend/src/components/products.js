@@ -156,6 +156,11 @@ function Product(props){
 
     let productUrl=`https://www.systembolaget.se/produkt/${props.product.category1}/${productUrlName}`
 
+    let vintage=""
+    if(props.product.vintage!=null){
+        vintage=`, ${props.product.vintage}`
+    }
+
     return(
         <a href={productUrl}>
             <figure>
@@ -165,7 +170,7 @@ function Product(props){
             <div className='titles'>
                 <p>{props.product.category1}, {props.product.category2}, {props.product.category3}</p>
                 <h1>{props.product.nameBold}</h1>
-                <h2>{nameThin}</h2>
+                <h2>{nameThin} {vintage}</h2>
             </div>
 
             <div className='usageTasteContainer'>
@@ -234,12 +239,10 @@ class ProductsContainer extends Component{
 export default class Products extends Component {
 
 
-
     render() {
         return (
             <div>
-
-                <ViewOptions></ViewOptions>
+                <ViewOptions viewTypeChange={this.handleViewChange}></ViewOptions>
                 <ProductsContainer></ProductsContainer>
                 {/* <loadMoreBtn></loadMoreBtn> */}
             </div>

@@ -30,8 +30,8 @@ get('/api/drinksLimited')do
     priceMax=params[:priceMax].to_i
     priceMin=params[:priceMin].to_i
 
-    alcMax=14
-    alcMin=13
+    alcMax=20
+    alcMin=1
 
     queries=[
         {   column: "price",

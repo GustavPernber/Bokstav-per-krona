@@ -28,9 +28,7 @@ def drinksLimited(pagenum, queries)
 
     params<<limit
     params<<offset
-
     result=db.execute(dbQuery, params)
-
-
+ 
     return result
 end

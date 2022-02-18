@@ -1,7 +1,7 @@
 API-Scraper:
     ☐ Lägg till vintage
     ☐ Productnumber för url
-
+   
 Backend:
     ☐ Gör om i node
     ☐ Search queries vid filtrering
@@ -10,21 +10,26 @@ Backend:
 Frontend:
 
     React:
-        ☐ Visa laddning ikoner
-        ☐ Filtrera
-            ☐ Filter show/hide 
-            ☐ Skicka params till fetch
-            ☐ Filteringsknapp
-            ☐ (Dynamiska maxvärden)
+        ☐ Laddnings animationer
         ☐ Sortera 
 
-        Produkter:
-            ☐ Product url category 1 för cide annan för url
-            ✔ Ladda produkter @done(22-02-17 17:51)
-            ☐ Ladda produkter knapp
+        Filter:
+            ☐ Filter show/hide 
+            ☐ Filteringsknapp
+            ☐ (Dynamiska maxvärden)
 
+        Produkter:
+            ☐ Fixa produkt url för cider
             ☐ Produkter laddar in, gråa
             ☐ Om bilder ej finns 
+
+            Fetch:
+                ☐ pages
+                ☐ Skicka params till fetch
+                
+            ✔ Ladda produkter @done(22-02-17 17:51)
+            ✔ Ladda produkter knapp @done(22-02-18 02:43)
+
     
     Styling:
         CSS:
@@ -33,14 +38,10 @@ Frontend:
             ☐ Search header vid mobile
             ☐ Visa filter vid mobile
     Misc:
-        ☐ Länka till systemet
+        ✔ Länka till systemet @done(22-02-18 02:44)
         ☐ Visa kronor synaggare med ören å sånt
         Riktig misc:
             ☐ Favicon
             ☐ TS
 
 Next up:
-    ✔ Filter till egen fil @done(22-02-17 15:24)
-    ✔ produkter dynamiskt @done(22-02-17 17:50)
-    ☐ Fixa stripped articles knapp
-        ☐ Lyft up state från knappar till container

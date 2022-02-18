@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import {ReactComponent as FilterIcon} from '../img/filter-settings.svg';
 import {ReactComponent as SortArrows} from '../img/sort-arrows.svg';
 import {ReactComponent as SmallArticlesIcon} from '../img/smallArticles.svg';
@@ -33,32 +34,37 @@ class ArticleType extends Component{
         this.changeViewBig=this.changeViewBig.bind(this)
 
         this.state = {
-            smallActive:true
+            smallActive:false
         }
     }
 
     changeViewSmall(){
         this.setState({
-            smallActive: false
-        })
-    }
-
-    changeViewBig(){
-        this.setState({
             smallActive: true
         })
+
+        this.props.viewTypeChange('small')
+        
+        
+    }
+    
+    changeViewBig(){
+        this.setState({
+            smallActive: false
+        })
+        this.props.viewTypeChange('big')
     }
 
-    // onClick={this.props.viewTypeChange}
+ 
     render(){
         return(
             <div>
                 <p>Välj vy:</p>
-                <button onClick={this.changeViewSmall} className={`stripped ${this.state.smallActive ? "notActive" : ""}`}>
+                <button onClick={this.changeViewSmall} className={`stripped ${this.state.smallActive ? "" : "notActive"}`}>
                     <SmallArticlesIcon></SmallArticlesIcon>
                 </button>
 
-                <button onClick={this.changeViewBig} className={`bigArticles ${this.state.smallActive ? "" : "notActive"}`}>
+                <button onClick={this.changeViewBig} className={`bigArticles ${this.state.smallActive ? "notActive" : ""}`}>
                     <BigArticlesIcon></BigArticlesIcon>
                 </button>
             </div>
@@ -67,9 +73,6 @@ class ArticleType extends Component{
 }
 
 class ViewOptions extends Component {
-    constructor(props) {
-      super(props)
-    }
 
     render() {
         return (
@@ -83,6 +86,8 @@ class ViewOptions extends Component {
         );
     }
 }
+
+
 
 class TasteClocks extends Component{
     constructor(props) {
@@ -227,7 +232,7 @@ class ProductsContainer extends Component{
       super(props)
     
       this.state = {
-         products: []
+        products: []
       }
       
     }
@@ -241,21 +246,25 @@ class ProductsContainer extends Component{
         let url=`http://localhost:4567/api/drinksLimited?page=1&priceMax=100&priceMin=50`
         const response=await fetch(url)
         const data=await response.json()
-
+        console.log(data)
         console.log('Done fetching')
-        // let value = [{ key:'lol'}]
         
+        let newData= this.state.products.concat(data)
+        console.log(newData)
         this.setState({
-            products:data
+            products:newData
         })
         
     }
 
+    testFunc(){
+        console.log('in products')
+    }
+
     render(){
         console.log('Products:', this.state.products)
-
         return(
-            <section className='drinksContainer'>
+            <section className={`drinksContainer ${this.props.isSmall ? "strippedArticles" : ""}`}>
                 {this.state.products.map((product, i)=>{
                     return (<Product key={product.id} product={product}></Product>)
                 })}
@@ -265,6 +274,18 @@ class ProductsContainer extends Component{
     }
 }
 
+
+class LoadMoreBtn extends Component {
+    render() {
+        return (
+            <button onClick={()=>this.props.loadMore()} className='loadMore'>
+                <p>Visa fler</p>
+            </button>
+        );
+    }
+}
+
+
 export default class Products extends Component {
 
     constructor(props) {
@@ -272,18 +293,30 @@ export default class Products extends Component {
         
       this.handleViewChange=this.handleViewChange.bind(this)
 
+      this.state={
+        isSmall:false
+      }
     }
 
-    handleViewChange(){
-        console.log('change')
+    handleViewChange(type){
+        console.log(type)
+        if (type==="small") {
+            this.setState({
+                isSmall:true
+            })
+        } else {
+            this.setState({
+                isSmall:false
+            })
+        }
     }
 
     render() {
         return (
             <div>
                 <ViewOptions viewTypeChange={this.handleViewChange}></ViewOptions>
-                <ProductsContainer></ProductsContainer>
-                {/* <loadMoreBtn></loadMoreBtn> */}
+                <ProductsContainer ref={instance=>{this.productContainer=instance}} isSmall={this.state.isSmall}></ProductsContainer>
+                <LoadMoreBtn loadMore={()=>this.productContainer.getProducts()}></LoadMoreBtn>
             </div>
         )
     }

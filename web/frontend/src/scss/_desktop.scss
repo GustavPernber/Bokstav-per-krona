@@ -176,6 +176,7 @@ main#index{
                 svg{
                     margin-right: 1rem;
                     z-index: 10;
+                    pointer-events: none;
                     
                 }
 
@@ -203,9 +204,6 @@ main#index{
                         outline: none;
                     }
 
-                    
-                   
-                    
                     &:hover{
                         cursor: pointer;
                     }

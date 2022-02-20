@@ -1,11 +1,14 @@
 const axios = require("axios");
-const sqlite3 = require("sqlite3");
-
+const mongoose=require('mongoose')
+require('dotenv').config()
+const Product=require('./models/Product')
 
 class APItoDB {
     constructor({ dbPath, categories }) {
         this.dbPath = dbPath;
         this.categories = categories;
+
+        this.Product=
 
         this.amountList = {};
         this.config = {
@@ -14,15 +17,8 @@ class APItoDB {
             },
         };
 
-        this.db = new sqlite3.Database(this.dbPath, (err) => {
-            if (err) {
-                console.log("DB CONNECTION ERROR");
-                console.error(err.message);
-                throw new Error();
-            } else {
-                console.log("Connected to the database.");
-            }
-        });
+        mongoose.connect(this.dbPath)
+
     }
 
     async init() {
@@ -78,7 +74,7 @@ class APItoDB {
                 }
 
                 if (response.data.products.length < 1) {
-                    console.log("All pages completed for:", level1, level2);
+                    console.log("All pages completed for:", level1,',', level2);
                     maxPages = true;
                     resolve();
                 } else {
@@ -91,7 +87,7 @@ class APItoDB {
 
     //Behandlar en page. Ca30 produkter
     #singlePage(products) {
-        //Har en lista med objekt. 30objekt vanligtvis
+        //Har en lista med objekt. 30objekt vanligtvis (förutom vid slutet)
         return new Promise(async (resolve, reject) => {
             for (let i = 1; i < products.length; i++) {
                 //För varje produkt:
@@ -105,11 +101,8 @@ class APItoDB {
         });
     }
 
-    //Tar in en produkt objekt och skriver den till databasen om den inte redan finns
-    #writeToDb(product) {
-        //Skriver till databasen om objektet ej redan finns
-
-        return new Promise(async (resolve, reject) => {
+    #writeToDb(product){
+        return new Promise(async(resolve, reject)=>{
             let imgUrl = null;
             if (product.images.length > 0) {
                 imgUrl = `${product.images[0].imageUrl}_200.png`;
@@ -118,98 +111,61 @@ class APItoDB {
             const apk = (product.alcoholPercentage * 0.01 * product.volume) / product.price;
             const bpk = `${product.productNameBold} ${product.productNameThin}`.replace(/\s+/g, "").length / product.price;
 
-            let tasteClocks = "";
-            for (let i = 0; i < product.tasteClocks.length; i++) {
-                tasteClocks += `${product.tasteClocks[i].key}:${product.tasteClocks[i].value}, `;
-            }
-
             const data = {
-                id: parseInt(product.productId),
+                productId: parseInt(product.productId),
+                productNumber: parseInt(product.productNumber),
                 nameBold: product.productNameBold,
                 nameThin: product.productNameThin,
+                vintage:product.vintage,
                 cat1:this.level1,
                 cat2: product.categoryLevel2,
                 cat3: product.categoryLevel3,
                 cat4: product.categoryLevel4,
                 usage: product.usage,
                 taste: product.taste,
-                tasteClocks: tasteClocks,
+                tasteClocks: product.tasteClocks,
                 volume: product.volume,
                 price: product.price,
                 alcPercentage: product.alcoholPercentage,
                 assortmentText: product.assortmentText,
                 apk: apk,
                 bpk: bpk,
-                vintage:product.vintage,
-                productNumber:product.productNumber
             };
 
-            let table = "Products";
-
- 
-            let query = `INSERT INTO ${table} (id, productNumber, vintage, nameBold, nameThin, category1, category2, category3, category4, usage, taste, tasteClocks, volume, price, APK, BPK, assortment, alcPercentage) VALUES(?,?,?,?,?, ?,?,?,?,?,?,?,?,?,?,?,?, ?)`;
-            let params = [
-                data.id,
-                data.productNumber,
-                data.vintage,
-                data.nameBold,
-                data.nameThin,
-                data.cat1,
-                data.cat2,
-                data.cat3,
-                data.cat4,
-                data.usage,
-                data.taste,
-                data.tasteClocks,
-                data.volume,
-                data.price,
-                data.apk,
-                data.bpk,
-                data.assortmentText,
-                data.alcPercentage
-            ];
-
             try {
-                await this.#queryPromise(query, params);
-                this.amountList[this.keyString] += 1;
+                await Product.create(data)
+                this.amountList[this.keyString]+=1
             } catch (error) {
-                if(error.errno===19){ //Unique constraint failed
-                    console.log("DUPLICATE DETECTED:", data.id, data.nameBold);
-
+                if(error.code===11000){
+                    console.log("DUPLICATE DETECTED:", data.productId, data.nameBold);
+                    
                 }else{
+                    console.log(data)
                     console.log(error)
                     reject()
                 }
             }
+            
 
-            console.log(this.amountList);
-            resolve();
-        });
+            console.log(this.amountList)
+            resolve()
+        
+        
+        })
     }
 
-    //Skickar query med params till SQL Db. Returnerar ett promise så att async/await i funktionen över funkar
-    #queryPromise(query, params) {
-        return new Promise((resolve, reject) => {
-            this.db.all(query, params, (err, rows) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(rows[0]);
-                }
-            });
-        });
-    }
+   
 }
 
 const APIScript = new APItoDB({
-    dbPath: "C:/Users/Gustav/Google_Drive/VS_Code/Till_prog/BPK-react-branch/api-scraper/db/db.db",
+    dbPath: process.env.DB_URI,
 
     categories: [
         // { level1: "Öl", level2: ["Ale", "Ljus%20lager"]},
         { level1: "Öl", level2: ["Ale",]},
 
         // { level1: "Vin", level2: ["Rosé", "Vitt"]},
-        // { level1: "Vin", level2: ["Rött"]}
+        { level1: "Vin", level2: ["Rött"]}
         
         // {level1:"Sprit", level2:["Rom", "Likör"]},
 

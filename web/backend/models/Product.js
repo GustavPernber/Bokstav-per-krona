@@ -2,10 +2,14 @@ const mongoose=require('mongoose')
 
 const ProductSchema= new mongoose.Schema({
     
-    id: {
+    productId: {
         type: Number,
-        // required: true,
+        required: true,
         unique:true
+    },
+    productNumber: {
+        type:Number,
+        required:true
     },
     nameBold: {
         type: String,
@@ -14,6 +18,10 @@ const ProductSchema= new mongoose.Schema({
     nameThin: {
         type: String,
         required: false
+    },
+    vintage: {
+        type:String,
+        required:false
     },
     cat1:{
         type:String,
@@ -40,8 +48,8 @@ const ProductSchema= new mongoose.Schema({
         required:false
     }, 
     tasteClocks: {
-        type:String,
-        required:false
+        type:Array,
+        
     }, 
     volume: {
         type:Number,
@@ -67,14 +75,6 @@ const ProductSchema= new mongoose.Schema({
         type:Number,
         required:false
     },
-    vintage: {
-        type:String,
-        required:false
-    },
-    productNumber: {
-        type:Number,
-        required:true
-    }
     
 })
 

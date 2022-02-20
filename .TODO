@@ -1,11 +1,16 @@
-API-Scraper:
-    ☐ Lägg till vintage
-    ☐ Productnumber för url
    
 Backend:
-    ☐ Gör om i node
+    ☐ Limit
+    ☐ Offset
+    ✔ Gör om i node @done(22-02-20 16:56)
     ☐ Search queries vid filtrering
-    ☐ Hosting
+        ✔ Price @done(22-02-20 16:56)
+        ✔ Alc @done(22-02-20 16:56)
+        ✔ Volume @done(22-02-20 16:56)
+        ☐ (Ordervara)
+    ✔ Hosting @done(22-02-20 15:47)
+    ✔ MongoDB @done(22-02-20 16:09)
+    ☐ Byt password i mongoDB
 
 Frontend:
 
@@ -17,6 +22,7 @@ Frontend:
             ☐ Filter show/hide 
             ☐ Filteringsknapp
             ☐ (Dynamiska maxvärden)
+            ☐ Filtera bort ordervaror
 
         Produkter:
             ☐ Fixa produkt url för cider
@@ -45,4 +51,4 @@ Frontend:
             ☐ TS
 
 Next up:
-    ☐ Backend till node
+    ☐ Filteringar till server api i frontend

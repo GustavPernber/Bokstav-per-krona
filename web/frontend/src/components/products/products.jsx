@@ -18,55 +18,23 @@ class TasteClocks extends Component{
        
     }
 
-<<<<<<< HEAD:web/frontend/src/components/products/products.jsx
-    clockArray(clockString){
-        const switchName=(name)=>{
-            switch (name) {
-                case "Body":
-                    return "Fyllighet"
-
-                case "Roughness":
-                    return "Strävhet"
-
-                case "Fruitacid":
-                    return "Fruktsyra"
-    
-                case "Sweetness":
-                    return "Sötma"
-    
-                case "Bitter":
-                    return "Beska"
-            
-                default:
-                    return `NOT KNOWN ${name}`
-            }
-        }
-        let array=clockString.split(', T')
-=======
     switchName(name){
         switch (name) {
             case "TasteClockBody":
                 return "Fyllighet"
-                break;
             case "TasteClockRoughness":
                 return "Strävhet"
-                break;
             case "TasteClockFruitacid":
                 return "Fruktsyra"
-                break;
 
             case "TasteClockSweetness":
                 return "Sötma"
-                break;
 
             case "TasteClockBitter":
                 return "Beska"
-                break;
->>>>>>> 95f0bfd701e947f1e7fcf7f306ebdc6f7735f94b:web/frontend/src/components/products.jsx
         
             default:
                 return `NOT KNOWN ${name}`
-                break;
         }
     }
 
@@ -218,12 +186,8 @@ class ProductsContainer extends Component{
 
     async getProducts(){
         console.log('Fetching...')
-<<<<<<< HEAD:web/frontend/src/components/products/products.jsx
-        let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
-=======
         let url=`http://localhost:8080/api/productsLimited`
         // let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
->>>>>>> 95f0bfd701e947f1e7fcf7f306ebdc6f7735f94b:web/frontend/src/components/products.jsx
         const response=await fetch(url)
         const data=await response.json()
         console.log(data)

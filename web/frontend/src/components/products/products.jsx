@@ -56,7 +56,15 @@ function Product(props){
     let imgUrl=`https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`
     let apk=parseFloat(props.product.apk).toPrecision(3)
 
-    let nameAndVintage=props.product.vintage!==null ? `${props.product.nameThin}, ${props.product.vintage}` : props.product.nameThin
+    let nameAndVintage;
+    if (props.product.vintage===null && props.product.nameThin===null) {
+        nameAndVintage=""
+    } else if(props.product.nameThin===null) {
+        nameAndVintage=props.product.vintage
+    }else{
+        nameAndVintage=`${props.product.nameThin}, ${props.product.vintage}`
+    }
+
     
     let productUrlName=`${props.product.nameBold.replace(/\s+/g, '-').toLowerCase()}-${props.product.productNumber}`
 

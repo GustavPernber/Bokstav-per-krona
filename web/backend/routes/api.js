@@ -60,4 +60,8 @@ router.get('/productsLimited', async (req, res)=>{
     res.json(products)
 })
 
+router.get('/', (req, res)=>{
+    res.send('api index')
+})
+
 module.exports = router

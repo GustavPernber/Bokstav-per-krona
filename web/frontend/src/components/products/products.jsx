@@ -1,88 +1,12 @@
 import React, { Component } from 'react'
 
-import {ReactComponent as FilterIcon} from '../img/filter-settings.svg';
-import {ReactComponent as SortArrows} from '../img/sort-arrows.svg';
-import {ReactComponent as SmallArticlesIcon} from '../img/smallArticles.svg';
-import {ReactComponent as BigArticlesIcon} from '../img/bigArticles.svg';
 
-
-class Sort extends Component {
-  render() {
-    return (
-      <>
-        <button className='filter'>
-            Filtrera
-            <FilterIcon></FilterIcon>
-        </button>
-
-        <form className='sort'>
-            <select name='sort'>
-                <option> Sortera efter</option>
-            </select>
-            <SortArrows></SortArrows>
-        </form>
-      </>
-    )
-  }
-}
-
-class ArticleType extends Component{
-    constructor(props) {
-        super(props)
-        
-        this.changeViewSmall=this.changeViewSmall.bind(this)
-        this.changeViewBig=this.changeViewBig.bind(this)
-
-        this.state = {
-            smallActive:false
-        }
-    }
-
-    changeViewSmall(){
-        this.setState({
-            smallActive: true
-        })
-
-        this.props.viewTypeChange('small')
-        
-        
-    }
-    
-    changeViewBig(){
-        this.setState({
-            smallActive: false
-        })
-        this.props.viewTypeChange('big')
-    }
-
- 
-    render(){
-        return(
-            <div>
-                <p>Välj vy:</p>
-                <button onClick={this.changeViewSmall} className={`stripped ${this.state.smallActive ? "" : "notActive"}`}>
-                    <SmallArticlesIcon></SmallArticlesIcon>
-                </button>
-
-                <button onClick={this.changeViewBig} className={`bigArticles ${this.state.smallActive ? "notActive" : ""}`}>
-                    <BigArticlesIcon></BigArticlesIcon>
-                </button>
-            </div>
-        )
-    }
-}
-
-class ViewOptions extends Component {
-
+class LoadMoreBtn extends Component {
     render() {
         return (
-            <header className='searchOptions'>
-
-                <Sort></Sort>
-                
-                <ArticleType viewTypeChange={this.props.viewTypeChange}></ArticleType>
-
-            </header>
+            <button onClick={()=>this.props.loadMore()} className='loadMore'>
+                <p>Visa fler</p>
+            </button>
         );
     }
 }
@@ -94,6 +18,31 @@ class TasteClocks extends Component{
        
     }
 
+<<<<<<< HEAD:web/frontend/src/components/products/products.jsx
+    clockArray(clockString){
+        const switchName=(name)=>{
+            switch (name) {
+                case "Body":
+                    return "Fyllighet"
+
+                case "Roughness":
+                    return "Strävhet"
+
+                case "Fruitacid":
+                    return "Fruktsyra"
+    
+                case "Sweetness":
+                    return "Sötma"
+    
+                case "Bitter":
+                    return "Beska"
+            
+                default:
+                    return `NOT KNOWN ${name}`
+            }
+        }
+        let array=clockString.split(', T')
+=======
     switchName(name){
         switch (name) {
             case "TasteClockBody":
@@ -113,6 +62,7 @@ class TasteClocks extends Component{
             case "TasteClockBitter":
                 return "Beska"
                 break;
+>>>>>>> 95f0bfd701e947f1e7fcf7f306ebdc6f7735f94b:web/frontend/src/components/products.jsx
         
             default:
                 return `NOT KNOWN ${name}`
@@ -268,8 +218,12 @@ class ProductsContainer extends Component{
 
     async getProducts(){
         console.log('Fetching...')
+<<<<<<< HEAD:web/frontend/src/components/products/products.jsx
+        let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
+=======
         let url=`http://localhost:8080/api/productsLimited`
         // let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
+>>>>>>> 95f0bfd701e947f1e7fcf7f306ebdc6f7735f94b:web/frontend/src/components/products.jsx
         const response=await fetch(url)
         const data=await response.json()
         console.log(data)
@@ -300,50 +254,4 @@ class ProductsContainer extends Component{
     }
 }
 
-
-class LoadMoreBtn extends Component {
-    render() {
-        return (
-            <button onClick={()=>this.props.loadMore()} className='loadMore'>
-                <p>Visa fler</p>
-            </button>
-        );
-    }
-}
-
-
-export default class Products extends Component {
-
-    constructor(props) {
-      super(props)
-        
-      this.handleViewChange=this.handleViewChange.bind(this)
-
-      this.state={
-        isSmall:false
-      }
-    }
-
-    handleViewChange(type){
-        console.log(type)
-        if (type==="small") {
-            this.setState({
-                isSmall:true
-            })
-        } else {
-            this.setState({
-                isSmall:false
-            })
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <ViewOptions viewTypeChange={this.handleViewChange}></ViewOptions>
-                <ProductsContainer ref={instance=>{this.productContainer=instance}} isSmall={this.state.isSmall}></ProductsContainer>
-                <LoadMoreBtn loadMore={()=>this.productContainer.getProducts()}></LoadMoreBtn>
-            </div>
-        )
-    }
-}
+export {ProductsContainer, LoadMoreBtn}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Filters from './components/filter'
-import Products from './components/products'
+import Products from './components/products/main'
 
 class Header extends Component{
   render(){
@@ -15,7 +15,7 @@ class Header extends Component{
               <button className="beer"><span>Öl</span></button>
             </li>
             <li>
-              <button className="liqour"><span>Sprit</span></button>
+              <button className="liquor"><span>Sprit</span></button>
             </li>
             <li>
               <button className="cider">

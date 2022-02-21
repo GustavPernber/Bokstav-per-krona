@@ -21,8 +21,9 @@ Frontend:
         Filter:
             ☐ Filter show/hide 
             ☐ Filteringsknapp
-            ☐ (Dynamiska maxvärden)
             ☐ Filtera bort ordervaror
+            ☐ "Uppdate has changed" att checka alla filter
+            ☐ Sätt current och previous till samma vid component mount
 
         Produkter:
             ☐ Fixa produkt url för cider
@@ -31,7 +32,7 @@ Frontend:
 
             Fetch:
                 ☐ pages
-                ☐ Skicka params till fetch
+                ✔ Skicka params till fetch @done(22-02-21 22:39)
                 
             ✔ Ladda produkter @done(22-02-17 17:51)
             ✔ Ladda produkter knapp @done(22-02-18 02:43)
@@ -51,4 +52,6 @@ Frontend:
             ☐ TS
 
 Next up:
-    ☐ Filteringar till server api i frontend
+    ☐ Filtering:
+        ☐ Rensa "gamla" produkter vid filtrering
+        ☐ Pages

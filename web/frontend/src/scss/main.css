@@ -546,6 +546,7 @@ main#index > div section.drinksContainer {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  width: 100%;
 }
 
 main#index > div section.drinksContainer > a {

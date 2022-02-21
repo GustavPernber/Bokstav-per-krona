@@ -50,6 +50,13 @@ function validateQueries(query){
         
         newQuery["alcMin"]= query.alcMin<standard.alcMin ? standard.alcMin : query.alcMin
         newQuery["alcMax"]= query.alcMax>standard.alcMax ? standard.alcMax : query.alcMax
+        
+        for(key in newQuery){
+            if(newQuery[key]===undefined || null){
+                newQuery[key]=standard[key]
+            }
+        }
+
     
     } catch (error) {
         console.error(error)
@@ -67,10 +74,10 @@ router.get('/productsLimited', async (req, res)=>{
 
     
     const query=validateQueries(req.query)
-
+    console.log(query)
 
     const limit=2
-    const offset=(1*req.query.page)-1
+    const offset=(1*query.page)-1
 
     const products= await Product.find()
     .skip(offset).limit(limit)

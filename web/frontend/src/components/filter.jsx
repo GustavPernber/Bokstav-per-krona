@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {ReactComponent as CollapseArrow} from '../img/collapse-arrow.svg';
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
+import { LoadMoreBtn } from './products/products';
 
 class DropHeader extends Component {
 
@@ -158,75 +159,132 @@ render(){
 
 export default class Filters extends Component {
 
-constructor(props){
-    super(props)
-    this.handleSliderUpdate=this.handleSliderUpdate.bind(this)
+    constructor(props){
+        super(props)
+        this.handleSliderUpdate=this.handleSliderUpdate.bind(this)
+        this.handleLoadMore=this.handleLoadMore.bind(this)
 
-    this.state={
-    hasChanged:false,
+        this.state={
+        hasChanged:false,
 
-    slideFilters:[
-        { maxVal:70,
-        minVal:2,
+        filters:{
+            slideFilters:[
+            {
+                maxTag: "alcMax",
+                minTag:"alcMin",
 
-        minCurrent:2,
-        maxCurrent:70,
+                title:"Alkoholhalt",
 
-        steps:0.5,
+                maxVal:90,    
+                minVal:0,
 
-        maxTag: "alcMax",
-        minTag:"alcMin",
+                minPrevious:0,
+                maxPrevious:90,
 
-        title:"Alkoholhalt",
+                minCurrent:0,
+                maxCurrent:90,
+
+                steps:0.5,
+
+            },
+            {
+                maxTag: "priceMax",
+                minTag:"priceMin",
+
+                title:"Pris",
+
+                maxVal:400000,    
+                minVal:0,
+
+                minPrevious:0,
+                maxPrevious:400000,
+
+                minCurrent:0,
+                maxCurrent:400000,
+
+                steps:1,
+
+            },
+            {
+                maxTag: "volumeMax",
+                minTag:"volumeMin",
+
+                title:"Volym",
+
+                maxVal:40000,    
+                minVal:0,
+
+                minPrevious:0,
+                maxPrevious:40000,
+
+                minCurrent:0,
+                maxCurrent:40000,
+
+                steps:1,
+
+            },
+        ]}
+        
         }
-    ]
-    }
-}
-
-handleSliderUpdate(index, min, max){
-    let newFilter=this.state.slideFilters.slice()
-
-    newFilter[index].minCurrent=min
-    newFilter[index].maxCurrent=max
-
-    this.setState(()=>({
-    slideFilters:newFilter
-    }))
-
-    if(min!=this.state.slideFilters[index].minVal || max!=this.state.slideFilters[index].maxVal){
-    this.setState(()=>({
-        hasChanged:true
-    }))
-    }else{
-    this.setState(()=>({
-        hasChanged:false
-    }))
-
     }
 
+    handleSliderUpdate(index, min, max){
+        let newFilter=this.state.filters.slideFilters.slice()
 
-}
+        newFilter[index].minCurrent=min
+        newFilter[index].maxCurrent=max
 
-render() {
-    return (
-    <aside className='filters'>
-        <h1>Filtrera</h1>
+        this.setState(()=>({
+        slideFilters:newFilter
+        }))
 
-        {this.state.slideFilters.map((filter, i)=>{
+        //Checka alla
+        if(min!==this.state.filters.slideFilters[index].minPrevious || max!==this.state.filters.slideFilters[index].maxPrevious){
+            this.setState(()=>({
+                hasChanged:true
+            }))
+        }else{
+            this.setState(()=>({
+                hasChanged:false
+        }))
 
-        return(
-            <SliderFilter update={(min, max)=> this.handleSliderUpdate(i, min, max)} className='filterWrapper' 
-            key={filter.title} 
-            filter={filter} />
+        }
+
+
+    }
+
+    handleLoadMore(){
+
+        const newSlideFilters=this.state.filters.slideFilters.slice()
+        
+        this.props.loadMore(this.state.filters)
+        newSlideFilters.map((filter,i)=>{
+            filter["minPrevious"]=filter["minCurrent"]
+            filter["maxPrevious"]=filter["maxCurrent"]
+        })
+
+    }
+
+    render() {
+        return (
+        <aside className='filters'>
+            <h1>Filtrera</h1>
+
+            {this.state.filters.slideFilters.map((filter, i)=>{
+
+            return(
+                <SliderFilter update={(min, max)=> this.handleSliderUpdate(i, min, max)} className='filterWrapper' 
+                key={filter.title} 
+                filter={filter} />
+            )
+            })}
+            {this.state.hasChanged ? <button onClick={this.handleLoadMore}>Filterera</button> : 'lol' }
+            
+            
+
+        </aside>
         )
-        })}
-        {this.state.hasChanged ? <button>Filterera</button> : 'lol' }
-        
-        
-
-    </aside>
-    )
-}
+    }
 }
 
 

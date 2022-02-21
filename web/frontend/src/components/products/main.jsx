@@ -15,7 +15,6 @@ export default class Products extends Component {
     }
 
     handleViewChange(type){
-        console.log(type)
         if (type==="small") {
             this.setState({
                 isSmall:true
@@ -27,11 +26,12 @@ export default class Products extends Component {
         }
     }
 
+
     render() {
         return (
             <div>
                 <ViewOptions viewTypeChange={this.handleViewChange}></ViewOptions>
-                <ProductsContainer ref={instance=>{this.productContainer=instance}} isSmall={this.state.isSmall}></ProductsContainer>
+                <ProductsContainer ref={instance=>{this.productContainer=instance}} filters={this.props.filters} isSmall={this.state.isSmall}></ProductsContainer>
                 <LoadMoreBtn loadMore={()=>this.productContainer.getProducts()}></LoadMoreBtn>
             </div>
         )

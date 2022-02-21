@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 
 
 class LoadMoreBtn extends Component {
@@ -13,10 +13,6 @@ class LoadMoreBtn extends Component {
 
 
 class TasteClocks extends Component{
-    constructor(props) {
-        super(props)
-       
-    }
 
     switchName(name){
         switch (name) {
@@ -56,87 +52,15 @@ class TasteClocks extends Component{
 
 }
 
-// class TasteClocks-OLD extends Component{
-//     constructor(props) {
-//         super(props);
-        
-//         this.clockString=this.props.clockString
-//     }
-
-//     clockArray(clockString){
-        
-//         let array=clockString.split(', T')
-        
-//         let newArr=[]
-
-//         array.forEach(element => {
-//             let pair=element.split('Clock')[1]
-//             let obj={
-//                 name: switchName(pair.split(':')[0]),
-//                 value:parseInt(pair.split(':')[1])
-//             }
-//             newArr.push(obj)
-
-            
-//         });
-
-//         return newArr
-//     }
-
-//     render(){
-//         if(this.clockString===""){
-//             return (<aside className='clocks'></aside>)
-//         }
-//         let clockArray=this.clockArray(this.clockString)
-//         return(
-//             <aside className='clocks'>
-//                 {clockArray.map((clockObj)=>{
-//                     return(
-//                         <div key={clockObj.name}> 
-//                             <img  src={`../img/clocks/clock-${clockObj.value}.svg`} alt="Taste clock"></img>
-//                             <p>{clockObj.name}</p>
-//                         </div>
-//                     )
-//                 })}
-//             </aside>
-//         )
-//     }
-    
-// }
-
 function Product(props){
-    let imgUrl=`https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_200.png`
+    let imgUrl=`https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`
     let apk=parseFloat(props.product.apk).toPrecision(3)
 
-    let nameThin;
-    if (props.product.nameThin===null) {
-        nameThin=""
-    } else {
-        nameThin=props.product.nameThin
-    }
-
-    let usage;
-    if (props.product.usage===null){
-        usage=""
-    }else{
-        usage=props.product.usage
-    }
-
-    let taste;
-    if (props.product.taste===null){
-        taste=""
-    }else{
-        taste=props.product.taste
-    }
-
+    let nameAndVintage=props.product.vintage!==null ? `${props.product.nameThin}, ${props.product.vintage}` : props.product.nameThin
+    
     let productUrlName=`${props.product.nameBold.replace(/\s+/g, '-').toLowerCase()}-${props.product.productNumber}`
 
     let productUrl=`https://www.systembolaget.se/produkt/${props.product.cat1}/${productUrlName}`
-
-    let vintage=""
-    if(props.product.vintage!=null){
-        vintage=`, ${props.product.vintage}`
-    }
 
     return(
         <a href={productUrl}>
@@ -147,11 +71,11 @@ function Product(props){
             <div className='titles'>
                 <p>{props.product.cat1}, {props.product.cat2}, {props.product.cat3}</p>
                 <h1>{props.product.nameBold}</h1>
-                <h2>{nameThin} {vintage}</h2>
+                <h2>{nameAndVintage}</h2>
             </div>
 
             <div className='usageTasteContainer'>
-                <p>{taste} {usage}</p>
+                <p>{props.product.taste} {props.product.usage}</p>
             </div>
             
             <footer className='volumePrice'>
@@ -170,6 +94,8 @@ function Product(props){
     
 }
 
+
+//FETCH
 class ProductsContainer extends Component{
     constructor(props) {
       super(props)
@@ -184,19 +110,33 @@ class ProductsContainer extends Component{
         this.getProducts()
     }
 
-    async getProducts(){
+    componentDidUpdate(prevProps, prevState){
+
+        if (this.props.filters!==null && prevProps.filters !== this.props.filters) {
+
+            //clear products, send filters to fetch
+            let urlArr=[]
+            this.props.filters.slideFilters.forEach((filter, i)=>{
+                urlArr.push(`${filter.minTag}=${filter.minCurrent}&${filter.maxTag}=${filter.maxCurrent}`)
+            })
+            this.getProducts(urlArr.join('&'))
+
+
+        }
+    }
+
+    async getProducts(queries=""){
         console.log('Fetching...')
         try {
-            
-            let url=`http://localhost:8080/api/productsLimited`
-            // let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
+ 
+            // let url=`http://localhost:8080/api/productsLimited?page=1&priceMin=100&priceMax=400&`
+            let url=`http://localhost:8080/api/productsLimited?${queries}`
+            console.log(url)
             const response=await fetch(url)
             const data=await response.json()
-            console.log(data)
-            console.log('Done fetching')
+            console.log('Done fetching: ', data)
             
             let newData= this.state.products.concat(data)
-            console.log(newData)
             this.setState({
                 products:newData
             })
@@ -206,19 +146,16 @@ class ProductsContainer extends Component{
         }
         
     }
-
-    testFunc(){
-        console.log('in products')
-    }
-
+    
+    
     render(){
-        console.log('Products:', this.state.products)
         return(
             <section className={`drinksContainer ${this.props.isSmall ? "strippedArticles" : ""}`}>
                 {this.state.products.map((product, i)=>{
-                    return (<Product key={product.id} product={product}></Product>)
+                    return (<Product key={product.productId} product={product}></Product>)
                 })}
 
+            
             </section>
         )
     }

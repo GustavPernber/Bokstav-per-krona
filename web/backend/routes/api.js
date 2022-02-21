@@ -6,38 +6,58 @@ const mongoose=require('mongoose')
 require('dotenv').config()
 
 function validateQueries(query){
-
-    const defaults=[
-        {page:1},
-
-        {priceMin:0},
-        {priceMax:800000},
-
-        {volumeMin:0},
-        {volumeMax:40000},
-
-        {alcMin:0},
-        {alcMax:90},
-
-    ]
-
     let newQuery={}
-    if(query.page===undefined || query.page<1 || query.page > 333){
-        newQuery["page"]=defaults.page
-    }
+    try {
+    
+        for (let key in query){
+            if(Array.isArray(query[key])){
+                query[key]=query[key][0]
+            }
 
-    console.log
-    defaults.forEach(element => {
-
-        const key=Object.keys(element)
-        if (query[key]===undefined){
-            newQuery[key]=element[key]
-        }else{
-            newQuery[key]=parseFloat(query[key])
+            query[key]=parseFloat(query[key])
+            
         }
-        // console.log(Object.keys(element))
-    });
 
+
+        const standard={
+            
+            page: 1,
+
+            priceMin: 0,
+            priceMax: 400000,
+
+            volumeMin: 0,
+            volumeMax: 40000,
+
+            alcMin: 0,
+            alcMax: 90
+            
+        }
+
+
+        if(query.page===undefined || query.page<1 || query.page > 333 || typeof(query.page)!=Number ){
+            newQuery["page"]=standard.page
+        }else{
+            newQuery["page"]=query.page
+
+        }
+
+        newQuery["priceMin"]= query.priceMin<standard.priceMin ? standard.priceMin : query.priceMin
+        newQuery["priceMax"]= query.priceMax>standard.priceMax ? standard.priceMax : query.priceMax
+        
+        newQuery["volumeMin"]= query.volumeMin<standard.volumeMin ? standard.volumeMin : query.volumeMin
+        newQuery["volumeMax"]= query.volumeMax>standard.volumeMax ? standard.volumeMax : query.volumeMax
+        
+        newQuery["alcMin"]= query.alcMin<standard.alcMin ? standard.alcMin : query.alcMin
+        newQuery["alcMax"]= query.alcMax>standard.alcMax ? standard.alcMax : query.alcMax
+    
+    } catch (error) {
+        console.error(error)
+        console.log('QUERY VALIDATION ERROR')
+        newQuery=standard
+    }
+    
+    
     return newQuery
 
 }
@@ -45,14 +65,16 @@ function validateQueries(query){
 router.get('/productsLimited', async (req, res)=>{
     mongoose.connect(process.env.DB_URI)
 
+    
     const query=validateQueries(req.query)
+
 
     const limit=2
     const offset=(1*req.query.page)-1
 
-    const products=
-    await Product.find()
+    const products= await Product.find()
     .skip(offset).limit(limit)
+
     .where("price").gte(query.priceMin).lte(query.priceMax)
     .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
     .where("volume").gte(query.volumeMin).lte(query.volumeMax)

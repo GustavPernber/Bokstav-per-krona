@@ -186,18 +186,24 @@ class ProductsContainer extends Component{
 
     async getProducts(){
         console.log('Fetching...')
-        let url=`http://localhost:8080/api/productsLimited`
-        // let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
-        const response=await fetch(url)
-        const data=await response.json()
-        console.log(data)
-        console.log('Done fetching')
-        
-        let newData= this.state.products.concat(data)
-        console.log(newData)
-        this.setState({
-            products:newData
-        })
+        try {
+            
+            let url=`http://localhost:8080/api/productsLimited`
+            // let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
+            const response=await fetch(url)
+            const data=await response.json()
+            console.log(data)
+            console.log('Done fetching')
+            
+            let newData= this.state.products.concat(data)
+            console.log(newData)
+            this.setState({
+                products:newData
+            })
+        } catch (error) {
+            console.error(error)
+            console.log('Failed to fetch from server!')
+        }
         
     }
 

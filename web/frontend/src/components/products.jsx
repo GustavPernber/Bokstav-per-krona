@@ -88,82 +88,107 @@ class ViewOptions extends Component {
 }
 
 
-
 class TasteClocks extends Component{
     constructor(props) {
-        super(props);
-        
-        this.clockString=this.props.clockString
+        super(props)
+       
     }
 
-    clockArray(clockString){
-        const switchName=(name)=>{
-            switch (name) {
-                case "Body":
-                    return "Fyllighet"
-                    break;
-                case "Roughness":
-                    return "Strävhet"
-                    break;
-                case "Fruitacid":
-                    return "Fruktsyra"
-                    break;
-    
-                case "Sweetness":
-                    return "Sötma"
-                    break;
-    
-                case "Bitter":
-                    return "Beska"
-                    break;
-            
-                default:
-                    return `NOT KNOWN ${name}`
-                    break;
-            }
-        }
-        let array=clockString.split(', T')
+    switchName(name){
+        switch (name) {
+            case "TasteClockBody":
+                return "Fyllighet"
+                break;
+            case "TasteClockRoughness":
+                return "Strävhet"
+                break;
+            case "TasteClockFruitacid":
+                return "Fruktsyra"
+                break;
+
+            case "TasteClockSweetness":
+                return "Sötma"
+                break;
+
+            case "TasteClockBitter":
+                return "Beska"
+                break;
         
-        let newArr=[]
-
-        array.forEach(element => {
-            let pair=element.split('Clock')[1]
-            let obj={
-                name: switchName(pair.split(':')[0]),
-                value:parseInt(pair.split(':')[1])
-            }
-            newArr.push(obj)
-
-            
-        });
-
-        return newArr
+            default:
+                return `NOT KNOWN ${name}`
+                break;
+        }
     }
 
     render(){
-        if(this.clockString===""){
-            return (<aside className='clocks'></aside>)
-        }
-        let clockArray=this.clockArray(this.clockString)
+
         return(
             <aside className='clocks'>
-                {clockArray.map((clockObj)=>{
+                {this.props.clockList.map((clockObj)=>{
                     return(
-                        <div key={clockObj.name}> 
+                        <div key={clockObj.key}> 
                             <img  src={`../img/clocks/clock-${clockObj.value}.svg`} alt="Taste clock"></img>
-                            <p>{clockObj.name}</p>
+                            <p>{this.switchName(clockObj.key)}</p>
                         </div>
                     )
                 })}
             </aside>
         )
     }
-    
+
 }
 
+// class TasteClocks-OLD extends Component{
+//     constructor(props) {
+//         super(props);
+        
+//         this.clockString=this.props.clockString
+//     }
+
+//     clockArray(clockString){
+        
+//         let array=clockString.split(', T')
+        
+//         let newArr=[]
+
+//         array.forEach(element => {
+//             let pair=element.split('Clock')[1]
+//             let obj={
+//                 name: switchName(pair.split(':')[0]),
+//                 value:parseInt(pair.split(':')[1])
+//             }
+//             newArr.push(obj)
+
+            
+//         });
+
+//         return newArr
+//     }
+
+//     render(){
+//         if(this.clockString===""){
+//             return (<aside className='clocks'></aside>)
+//         }
+//         let clockArray=this.clockArray(this.clockString)
+//         return(
+//             <aside className='clocks'>
+//                 {clockArray.map((clockObj)=>{
+//                     return(
+//                         <div key={clockObj.name}> 
+//                             <img  src={`../img/clocks/clock-${clockObj.value}.svg`} alt="Taste clock"></img>
+//                             <p>{clockObj.name}</p>
+//                         </div>
+//                     )
+//                 })}
+//             </aside>
+//         )
+//     }
+    
+// }
+
 function Product(props){
-    let imgUrl=`https://product-cdn.systembolaget.se/productimages/${props.product.id}/${props.product.id}_200.png`
-    let apk=parseFloat(props.product.APK).toPrecision(3)
+    let imgUrl=`https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_200.png`
+    let apk=parseFloat(props.product.apk).toPrecision(3)
 
     let nameThin;
     if (props.product.nameThin===null) {
@@ -188,7 +213,7 @@ function Product(props){
 
     let productUrlName=`${props.product.nameBold.replace(/\s+/g, '-').toLowerCase()}-${props.product.productNumber}`
 
-    let productUrl=`https://www.systembolaget.se/produkt/${props.product.category1}/${productUrlName}`
+    let productUrl=`https://www.systembolaget.se/produkt/${props.product.cat1}/${productUrlName}`
 
     let vintage=""
     if(props.product.vintage!=null){
@@ -202,7 +227,7 @@ function Product(props){
             </figure>
 
             <div className='titles'>
-                <p>{props.product.category1}, {props.product.category2}, {props.product.category3}</p>
+                <p>{props.product.cat1}, {props.product.cat2}, {props.product.cat3}</p>
                 <h1>{props.product.nameBold}</h1>
                 <h2>{nameThin} {vintage}</h2>
             </div>
@@ -220,7 +245,7 @@ function Product(props){
                 <h3>{props.product.price} :-</h3>
             </footer>
 
-            <TasteClocks clockString={props.product.tasteClocks}></TasteClocks>
+            <TasteClocks clockList={props.product.tasteClocks}></TasteClocks>
 
         </a>
     )
@@ -243,7 +268,8 @@ class ProductsContainer extends Component{
 
     async getProducts(){
         console.log('Fetching...')
-        let url=`http://localhost:4567/api/drinksLimited?page=1&priceMax=100&priceMin=50`
+        let url=`http://localhost:8080/api/productsLimited`
+        // let url=`http://localhost:8080/api/drinksLimited?page=1&priceMax=100&priceMin=50`
         const response=await fetch(url)
         const data=await response.json()
         console.log(data)

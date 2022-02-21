@@ -23,7 +23,7 @@ function validateQueries(query){
 
     let newQuery={}
     if(query.page===undefined || query.page<1 || query.page > 333){
-        newQuery[page]=defaults.page
+        newQuery["page"]=defaults.page
     }
 
     console.log
@@ -46,7 +46,6 @@ router.get('/productsLimited', async (req, res)=>{
     mongoose.connect(process.env.DB_URI)
 
     const query=validateQueries(req.query)
-    // console.log(query)
 
     const limit=2
     const offset=(1*req.query.page)-1

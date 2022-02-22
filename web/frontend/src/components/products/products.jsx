@@ -61,6 +61,8 @@ function Product(props){
         nameAndVintage=""
     } else if(props.product.nameThin===null) {
         nameAndVintage=props.product.vintage
+    }else if(props.product.vintage===null){
+        nameAndVintage=props.product.nameThin
     }else{
         nameAndVintage=`${props.product.nameThin}, ${props.product.vintage}`
     }
@@ -138,7 +140,7 @@ class ProductsContainer extends Component{
         try {
  
             // let url=`http://localhost:8080/api/productsLimited?page=1&priceMin=100&priceMax=400&`
-            let url=`http://localhost:8080/api/productsLimited?${queries}`
+            let url=`http://localhost:8080/api/productsLimited?page=${this.props.pageNum}&${queries}`
             console.log(url)
             const response=await fetch(url)
             const data=await response.json()

@@ -8,10 +8,22 @@ export default class Products extends Component {
       super(props)
         
       this.handleViewChange=this.handleViewChange.bind(this)
+      this.handleLoadMore=this.handleLoadMore.bind(this)
 
       this.state={
+        pageNum:1,
         isSmall:false
       }
+    }
+
+    async handleLoadMore(){
+        await this.setState((state)=>({
+            pageNum:state.pageNum+1
+        }))
+        
+        
+        this.productContainer.getProducts()
+        
     }
 
     handleViewChange(type){
@@ -31,8 +43,8 @@ export default class Products extends Component {
         return (
             <div>
                 <ViewOptions viewTypeChange={this.handleViewChange}></ViewOptions>
-                <ProductsContainer ref={instance=>{this.productContainer=instance}} filters={this.props.filters} isSmall={this.state.isSmall}></ProductsContainer>
-                <LoadMoreBtn loadMore={()=>this.productContainer.getProducts()}></LoadMoreBtn>
+                <ProductsContainer pageNum={this.state.pageNum} ref={instance=>{this.productContainer=instance}} filters={this.props.filters} isSmall={this.state.isSmall}></ProductsContainer>
+                <LoadMoreBtn loadMore={this.handleLoadMore}></LoadMoreBtn>
             </div>
         )
     }

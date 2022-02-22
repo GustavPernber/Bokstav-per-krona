@@ -35,7 +35,7 @@ function validateQueries(query){
         }
 
 
-        if(query.page===undefined || query.page<1 || query.page > 333 || typeof(query.page)!=Number ){
+        if(query.page===undefined || query.page<1 || query.page > 333 || typeof(query.page)!= "number" ){
             newQuery["page"]=standard.page
         }else{
             newQuery["page"]=query.page
@@ -74,10 +74,8 @@ router.get('/productsLimited', async (req, res)=>{
 
     
     const query=validateQueries(req.query)
-    console.log(query)
-
     const limit=2
-    const offset=(1*query.page)-1
+    const offset=(limit*query.page)-limit
 
     const products= await Product.find()
     .skip(offset).limit(limit)

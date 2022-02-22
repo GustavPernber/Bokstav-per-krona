@@ -146,7 +146,6 @@ class SliderFilter extends Component {
 	}
 
     handleHeaderClick(){
-        console.log('click')
         this.setState({
             show:!this.state.show
         })
@@ -165,17 +164,54 @@ class SliderFilter extends Component {
 	}
 }
 
+class OrderStockFilter extends Component{
+    constructor(props) {
+		super(props);
+        this.handleHeaderClick=this.handleHeaderClick.bind(this)
+        this.state={
+            show:true
+        }
+	}
+
+
+    handleHeaderClick(){
+        this.setState({
+            show:!this.state.show
+        })
+    }
+
+    render(){
+        return(
+            <div className="filterWrapper">
+				<DropHeader onClick={this.handleHeaderClick} title={this.props.filter.title}></DropHeader>
+                <div className={`dropContainer ${this.state.show ? "show" : ""}`}>
+                    <div className="input-option">
+                        <input onChange={()=>{this.props.update("show")}} type={"radio"} name={"orderStock"} id="showOrderStock"/>
+                        <label for="showOrderStock">Visa ordervaror</label>
+                    </div>
+
+                    <div className="input-option">
+                        <input onChange={()=>{this.props.update("hide")}} type={"radio"} name={"orderStock"} id="hideOrderStock"/>
+                        <label for="hideOrderStock">Dölj ordervaror</label>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
 export default class Filters extends Component {
 	constructor(props) {
 		super(props);
 		this.handleSliderUpdate = this.handleSliderUpdate.bind(this);
 		this.handleLoadMore = this.handleLoadMore.bind(this);
-
+        this.handleOrderStockUpdate=this.handleOrderStockUpdate.bind(this)
 		this.state = {
 			hasChanged: false,
             changedArray:null,
 
 			filters: {
+                showOrderStock:{value:false, prevValue: false, title:"Ordervaror"},
 				slideFilters: [
 					{
 						maxTag: "alcMax",
@@ -297,6 +333,16 @@ export default class Filters extends Component {
 		});
 	}
 
+    handleOrderStockUpdate(value){
+        let newFilters={...this.state.filters}
+        newFilters.showOrderStock.value= value==="show" ? true : false
+        this.setState({
+            filters:newFilters,
+            hasChanged:true
+        })
+
+    }
+
 	render() {
 		return (
 			<aside className="filters">
@@ -314,6 +360,8 @@ export default class Filters extends Component {
 						/>
 					);
 				})}
+                <OrderStockFilter update={this.handleOrderStockUpdate} filter={this.state.filters.showOrderStock}></OrderStockFilter>
+
 				{this.state.hasChanged ? (
 					<button onClick={this.handleLoadMore}>Filterera</button>
 				) : (

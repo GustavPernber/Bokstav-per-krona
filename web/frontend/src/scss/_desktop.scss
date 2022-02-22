@@ -19,6 +19,7 @@ body{
     }
 }
 
+
 main#index{
     height: 100vh;
     background-color:$bgWhite ;
@@ -41,11 +42,8 @@ main#index{
         .price{
             height: 100%;
             @include center;
-
         }
         
-        
-
         h1{
             font-weight: 500;
             padding-bottom:1.5rem;

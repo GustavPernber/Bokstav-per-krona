@@ -23,6 +23,7 @@ Frontend:
             ☐ Filtera bort ordervaror
             ✔ "Uppdate has changed" att checka alla filter @done(22-02-22 11:28)
             ☐ Sätt current och previous till samma vid component mount
+            ☐ Rotera pil vid show
 
         Produkter:
             ☐ Fixa produkt url för cider

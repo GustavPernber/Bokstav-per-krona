@@ -75,6 +75,9 @@ function Product(props){
     return(
         <a href={productUrl}>
             <figure>
+                {props.product.assortmentText!=="Ordervara" ? "" : 
+                <div className='orderStock'><p>Ordervara</p></div> }
+
                 <img src={imgUrl} alt="Produktbild"/>
             </figure>
 
@@ -123,8 +126,10 @@ class ProductsContainer extends Component{
     componentDidUpdate(prevProps, prevState){
 
         if (this.props.filters!==null && prevProps.filters !== this.props.filters) {
+            this.setState({
+                products:[]
+            })
 
-            //clear products, send filters to fetch
             let urlArr=[]
             this.props.filters.slideFilters.forEach((filter, i)=>{
                 urlArr.push(`${filter.minTag}=${filter.minCurrent}&${filter.maxTag}=${filter.maxCurrent}`)

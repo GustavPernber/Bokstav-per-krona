@@ -20,7 +20,6 @@ Frontend:
 
         Filter:
             ☐ Filter show/hide 
-            ☐ Filteringsknapp
             ☐ Filtera bort ordervaror
             ✔ "Uppdate has changed" att checka alla filter @done(22-02-22 11:28)
             ☐ Sätt current och previous till samma vid component mount
@@ -41,6 +40,7 @@ Frontend:
     Styling:
         CSS:
             ☐ Styling för sliders
+            ☐ Filter knapp
         Responsivitet:
             ☐ Search header vid mobile
             ☐ Visa filter vid mobile
@@ -52,6 +52,6 @@ Frontend:
             ☐ TS
 
 Next up:
-    ☐ Filtering:
+    ✔ Filtering: @done(22-02-22 11:32)
         ✔ Pages @done(22-02-22 11:02)
-        ☐ Rensa "gamla" produkter vid filtrering
+        ✔ Rensa "gamla" produkter vid filtrering @done(22-02-22 11:32)

@@ -104,31 +104,33 @@ class Slider extends Component {
 
 	render() {
 		return (
-			<div className="sliderContainer">
-				<input
-					type="number"
-					name={this.min}
-					value={this.state[this.min]}
-					onKeyUp={this.handleInputKey}
-					onBlur={this.handleInputBlur}
-					onChange={this.handleInputChange}
-				/>
-				<input
-					type="number"
-					name={this.max}
-					value={this.state[this.max]}
-					onKeyUp={this.handleInputKey}
-					onBlur={this.handleInputBlur}
-					onChange={this.handleInputChange}
-				/>
+            <div className={`dropContainer ${this.props.show ? "show" : ""}`}>
+                <div className="sliderContainer">
+                    <input
+                        type="number"
+                        name={this.min}
+                        value={this.state[this.min]}
+                        onKeyUp={this.handleInputKey}
+                        onBlur={this.handleInputBlur}
+                        onChange={this.handleInputChange}
+                    />
+                    <input
+                        type="number"
+                        name={this.max}
+                        value={this.state[this.max]}
+                        onKeyUp={this.handleInputKey}
+                        onBlur={this.handleInputBlur}
+                        onChange={this.handleInputChange}
+                    />
 
-				<Nouislider
-					onSlide={this.handleSlider}
-					step={this.props.filter.steps}
-					start={this.state.start}
-					range={this.range}
-				></Nouislider>
-			</div>
+                    <Nouislider
+                        onSlide={this.handleSlider}
+                        step={this.props.filter.steps}
+                        start={this.state.start}
+                        range={this.range}
+                    ></Nouislider>
+                </div>
+            </div>
 		);
 	}
 }
@@ -137,16 +139,24 @@ class SliderFilter extends Component {
 	constructor(props) {
 		super(props);
 
+        this.handleHeaderClick=this.handleHeaderClick.bind(this)
 		this.state = {
-			show: "lol",
+			show: false,
 		};
 	}
+
+    handleHeaderClick(){
+        console.log('click')
+        this.setState({
+            show:!this.state.show
+        })
+    }
 
 	render() {
 		return (
 			<div className="filterWrapper">
-				<DropHeader title={this.props.filter.title}></DropHeader>
-				<Slider
+				<DropHeader onClick={this.handleHeaderClick} title={this.props.filter.title}></DropHeader>
+				<Slider show={this.state.show}
 					update={this.props.update}
 					filter={this.props.filter}
 				></Slider>

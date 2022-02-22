@@ -1,7 +1,7 @@
    
 Backend:
     ☐ Limit
-    ☐ Offset
+    ✔ Offset @done(22-02-22 11:02)
     ✔ Gör om i node @done(22-02-20 16:56)
     ☐ Search queries vid filtrering
         ✔ Price @done(22-02-20 16:56)
@@ -22,7 +22,7 @@ Frontend:
             ☐ Filter show/hide 
             ☐ Filteringsknapp
             ☐ Filtera bort ordervaror
-            ☐ "Uppdate has changed" att checka alla filter
+            ✔ "Uppdate has changed" att checka alla filter @done(22-02-22 11:28)
             ☐ Sätt current och previous till samma vid component mount
 
         Produkter:
@@ -31,7 +31,7 @@ Frontend:
             ☐ Om bilder ej finns 
 
             Fetch:
-                ☐ pages
+                ✔ pages @done(22-02-22 11:02)
                 ✔ Skicka params till fetch @done(22-02-21 22:39)
                 
             ✔ Ladda produkter @done(22-02-17 17:51)
@@ -53,5 +53,5 @@ Frontend:
 
 Next up:
     ☐ Filtering:
-        ☐ Pages
+        ✔ Pages @done(22-02-22 11:02)
         ☐ Rensa "gamla" produkter vid filtrering

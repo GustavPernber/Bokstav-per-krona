@@ -1,36 +1,53 @@
 @import './variables'; 
 @import './typography';
 
-@media screen and (max-width: 560px){
+@media screen and (max-width: 600px){
 
     body{
         >header#header{
-            nav{
-                ul{
-                    li{
-                        button{
-                            span{
-                                font-size: 0.8rem;
-                            }
-                        }
-                    }
+            button{
+
+                span{
+        
+                    font-size: 0.8rem;
                 }
             }
+
         }
+        
     }
 
    main#index{
         width: 100%;
         padding: 0 1rem;
 
+
         >div{
             gap: 0rem;
 
             header.searchOptions{
                 width: 90vw;
-                >button.filter{
-    
-                    display: block;
+
+                form.sort{
+                    max-width: 9rem;
+                    select{
+                        padding: 0;
+                        font-size: 0.9rem;
+                        max-width: 8rem;
+                    }
+                }
+                // >button.filter{
+                    
+                //     display: block;
+                // }
+
+                div{
+                    margin: auto 0 auto 0;
+                    font-size: 0.85rem;
+                    button{
+                        max-width: 2rem;
+                        max-height: 2rem;
+                    }
                 }
             }
     
@@ -49,13 +66,13 @@
                         width: 100%;
                         grid-column: 1;
                         grid-row: span 2;
-                        margin-left: -1.3rem;
+                        margin-left: -0.9rem;
 
                         div{
                             align-self: flex-start;
 
                             p{
-                                font-size: 0.8rem;
+                                font-size: 0.6rem;
                             }
                         }
 
@@ -66,23 +83,18 @@
     
                         }
                     }
-                    .titles{
-                        padding-top: 0.5rem;
+                    div.titles{
+                        
+                        padding-top: 0.8rem;
                         grid-column: 2 / 4 ;
                         grid-row: 1;
                     
     
                         >p{
-                            font-size: 0.65rem;
+                            font-size: 0.8rem;
                         }
     
-                        // >h1{
-                        //     font-size: 0.9rem;
-                        // }
-    
-                        // >h2{
-                        //     font-size: 6rem;
-                        // }
+
                     }
     
                     
@@ -92,6 +104,24 @@
                         grid-row: 2;
                         align-items: flex-end;
                         padding: 1rem 0;
+                        margin-right: -1rem;
+
+                        h3{
+                            font-size: 0.9rem;
+                            white-space: nowrap;
+                        }
+                        >div{
+                            white-space: nowrap;
+                            gap: 0.7rem;
+                            
+                            >p:nth-child(1){
+                                white-space:normal;
+
+                            }
+                            
+                        }
+                        gap: 0.5rem;
+                        background-color: lightblue;
                     }
                     
                     aside.clocks{
@@ -139,21 +169,21 @@
     
                         figure{
                             grid-column: 1;
-                            grid-row: 1;
+                            grid-row: span 2;
                             @include center;
                             flex-direction:column ;
-                            justify-content: flex-end;
+                            position: relative;
                             
                             div{
-                                // align-self: flex-start;
-                                justify-self: flex-start;
-                                position: relative;
-                                margin-bottom: 0.3rem;
+                                top:0;
+                                // justify-self: flex-start;
+                                // position: relative;
+                                // margin-bottom: 0.3rem;
                                 
     
-                                p{
-                                    font-size: 0.8rem;
-                                }
+                                // p{
+                                //     font-size: 0.8rem;
+                                // }
                             }
 
 
@@ -163,7 +193,7 @@
                         }
     
                         .titles{
-                            padding-right: 2rem;
+                            padding-right: 0;
                             padding-top: 1rem;
                             padding-left: 0;
                             padding-bottom: 0.5rem;
@@ -173,9 +203,9 @@
                             grid-row: 1;
                             gap: 0.3rem;
     
-                            h1, h2{
-                                font-size: 0.9rem;
-                            }
+                            // h1, h2{
+                            //     font-size: 0.9rem;
+                            // }
     
                         }
                         

@@ -5,7 +5,7 @@
 body{
     @include center;
     flex-direction: column;
-    justify-content: flex-start;
+    // justify-content: flex-start;
     background-color:$bgWhite ;
 
     #root{
@@ -23,9 +23,9 @@ body{
 main#index{
     height: 100vh;
     background-color:$bgWhite ;
-    grid-column-gap: 3rem;
-    padding: 0 3rem;
-    grid-template-columns: 30% auto;
+    grid-column-gap: 3rem ;
+    padding: 0 0rem 0 3rem;
+    grid-template-columns: 1fr minmax(1rem, 42rem) 1fr;
     margin: 0;
     width: 100%;
 
@@ -33,7 +33,7 @@ main#index{
    
     aside.filters{
         grid-column: 1;
-        grid-row: span 2;
+        grid-row: 1;
         justify-self: flex-end;
         border-right: 1px solid $borderGrey;
         height: 80vh;
@@ -121,7 +121,7 @@ main#index{
     }
     
     >div{
-        grid-column: 2;
+        grid-column:  2;
         gap: 1.5rem;
 
         max-width: 42rem;
@@ -294,6 +294,8 @@ main#index{
         >div{
             justify-self: center;
             grid-column: 1;
+            
+
             header.searchOptions{
                 padding-bottom: 1.5rem;
                 justify-self: center;
@@ -303,11 +305,14 @@ main#index{
                 >button.filter{
                     background-color: white;
                     border: none;
+
                     grid-row: 1;
                     grid-column: span 2;
+
                     height: 100%;
                     display: block;
                     @include center;
+
                     font-size: 1rem;
                     color: $systemetGreen;
                     gap: 0.8rem;
@@ -322,7 +327,7 @@ main#index{
     
                 }
                 
-                button.sort{
+                form.sort{
                     align-self: center;
                     grid-row:2; 
                     

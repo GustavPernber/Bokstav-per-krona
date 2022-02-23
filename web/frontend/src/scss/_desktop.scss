@@ -90,21 +90,40 @@ main#index{
             gap: 1rem;
 
             div.sliderContainer{
-                width: 100%;
-
+                width: 90%;
+                background-color: lightblue;
+                padding-bottom: 1rem;
                 .sliderRound{
-                    height: 10px;
+
+                    .noUi-target{
+                        height: 8px;
+                        border: none;
+                    }
+                    // height: 5px;
         
-                    .noUi-connect{
-                        background: red;
+                    .noUi-connects{
+                        background: $systemetFilterGreen;
                     }
         
+                    // .noUi-touch-area{
+                    //     height: 18px;
+                    //     width: 18px;
+                    //     top: -5px;
+                    //     right: -9px; /* half the width */
+                    //     border-radius: 9px;
+                    // }
                     .noUi-handle{
-                        height: 18px;
-                        width: 18px;
-                        top: -5px;
+
+                        height: 21px;
+                        width: 21px;
+                        position: absolute;
+                        top: -7§px;
                         right: -9px; /* half the width */
-                        border-radius: 9px;
+                        border-radius: 9999999px;
+
+                        &::after, &::before{
+                            display: none;
+                        }
                     }
         
                 }

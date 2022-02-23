@@ -122,13 +122,14 @@ class Slider extends Component {
                         onBlur={this.handleInputBlur}
                         onChange={this.handleInputChange}
                     />
-
+					<div className="sliderRound">
                     <Nouislider
                         onSlide={this.handleSlider}
                         step={this.props.filter.steps}
                         start={this.state.start}
                         range={this.range}
                     ></Nouislider>
+					</div>
                 </div>
             </div>
 		);
@@ -141,7 +142,7 @@ class SliderFilter extends Component {
 
         this.handleHeaderClick=this.handleHeaderClick.bind(this)
 		this.state = {
-			show: false,
+			show: true,
 		};
 	}
 
@@ -363,9 +364,9 @@ export default class Filters extends Component {
                 <OrderStockFilter update={this.handleOrderStockUpdate} filter={this.state.filters.showOrderStock}></OrderStockFilter>
 
 				{this.state.hasChanged ? (
-					<button onClick={this.handleLoadMore}>Filterera</button>
+					<button className="update-filters" onClick={this.handleLoadMore}>Filterera</button>
 				) : (
-					"lol"
+					<button className="update-filters" onClick={this.handleLoadMore}>Filterera</button>
 				)}
 			</aside>
 		);

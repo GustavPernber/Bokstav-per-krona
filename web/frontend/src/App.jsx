@@ -48,6 +48,10 @@ class Main extends React.Component {
 	}
 
 	handleLoadMore(filters) {
+		if (this.state.showMobile) {
+			this.handleMobileShowFilters()
+		}
+
 		this.setState((state, props)=>({
 
 			filters: {...filters}
@@ -56,7 +60,7 @@ class Main extends React.Component {
 	}
 
 	handleMobileShowFilters(){
-		console.log('show filters')
+		console.log('chnaging')
 		this.setState({
 			showMobile:!this.state.showMobile
 		})
@@ -65,7 +69,7 @@ class Main extends React.Component {
 	render() {
 		return (
 			<main id="index">
-				<Filters showMobile={this.state.showMobile} loadMore={this.handleLoadMore}></Filters>
+				<Filters changeMobileShow={this.handleMobileShowFilters} showMobile={this.state.showMobile} loadMore={this.handleLoadMore}></Filters>
 
 				<Products mobileFilters={this.handleMobileShowFilters} filters={this.state.filters}></Products>
 			</main>

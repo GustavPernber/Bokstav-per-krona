@@ -42,6 +42,10 @@ main#index {
 		height: 80vh;
 		width: 15rem;
 
+        >button.close-filters{
+            display: none;
+        }
+
 		div.button-container {
 			@include center;
 
@@ -189,6 +193,7 @@ main#index {
 						// top: -7px;
 						right: -9px; /* half the width */
 						border-radius: 9999999px;
+                        cursor: pointer;
 
 						&::after,
 						&::before {
@@ -361,7 +366,39 @@ main#index {
 		aside.filters {
 			display: none;
 
-            &
+            &.show-mobile{
+                background-color: $bgWhite;
+                top: 0;
+                right: 0;
+
+                display: block;
+                position: fixed;
+                height: 100vh;
+                width: 100%;
+                z-index: 20;
+                padding: 3rem;
+
+                button.close-filters{
+                    @include center;
+                    flex-direction: row;
+
+                    position: absolute;
+                    right: 3rem;
+
+                    background: none;
+                    gap: 0.5rem;
+
+                    border: none;
+                    cursor: pointer;
+                    
+                    >p:nth-child(2){
+                        font-weight: 600;
+                        font-size: 0.7rem;
+                    }
+                    
+                }
+
+            }
 		}
 
 		> div {

@@ -311,8 +311,6 @@ export default class Filters extends Component {
 		};
 	}
 
-	handleMobileShow(){}
-
 	componentDidMount() {
 		this.setState({
 			changedArray: Array(this.state.filters.slideFilters.length).fill(
@@ -370,6 +368,7 @@ export default class Filters extends Component {
 				false
 			),
 		});
+		
 		this.props.loadMore(this.state.filters);
 		newSlideFilters.map((filter, i) => {
 			filter["minPrevious"] = filter["minCurrent"];
@@ -388,9 +387,14 @@ export default class Filters extends Component {
 
 	render() {
 		return (
-			// <aside className={`filters ${this.props.showMobile ? "true" : "false" }`}>
+			<aside className={`filters ${this.props.showMobile ? "show-mobile" : ""}`}>
+				
+				<button onClick={this.props.changeMobileShow} className="close-filters">
+					<p>Stäng</p><p>x</p>
+				</button>
 
-			<aside className={`filters show-mobile`}>
+				
+			
 				<h1>Filtrera</h1>
 
 				{this.state.filters.slideFilters.map((filter, i) => {
@@ -416,7 +420,7 @@ export default class Filters extends Component {
 						className="update-filters"
 						onClick={this.handleLoadMore}
 					>
-						Filterera
+						Uppdatera filter
 					</button>
 				) : (
 					<button

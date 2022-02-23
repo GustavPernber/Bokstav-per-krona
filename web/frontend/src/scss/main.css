@@ -208,19 +208,21 @@ body #root #app > header#header nav ul li button span {
 }
 
 main#index {
-  height: 100vh;
   background-color: #F9F9F9;
   grid-column-gap: 3rem;
-  padding: 0 0rem 0 3rem;
+  padding: 0 0 3rem 3rem;
   -ms-grid-columns: 1fr minmax(1rem, 42rem) 1fr;
       grid-template-columns: 1fr minmax(1rem, 42rem) 1fr;
-  margin: 0;
+  margin: 2.5rem 0 0 0;
   width: 100%;
   display: -ms-grid;
   display: grid;
 }
 
 main#index aside.filters {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 3rem;
   -ms-grid-column: 1;
   grid-column: 1;
   -ms-grid-row: 1;

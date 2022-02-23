@@ -39,9 +39,11 @@ class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleLoadMore = this.handleLoadMore.bind(this);
-
+		this.handleMobileShowFilters=this.handleMobileShowFilters.bind(this)
+		
 		this.state = {
 			filters: null,
+			showMobile:false
 		};
 	}
 
@@ -53,13 +55,19 @@ class Main extends React.Component {
 
 	}
 
+	handleMobileShowFilters(){
+		console.log('show filters')
+		this.setState({
+			showMobile:!this.state.showMobile
+		})
+	}
   
 	render() {
 		return (
 			<main id="index">
-				<Filters loadMore={this.handleLoadMore}></Filters>
+				<Filters showMobile={this.state.showMobile} loadMore={this.handleLoadMore}></Filters>
 
-				<Products filters={this.state.filters}></Products>
+				<Products mobileFilters={this.handleMobileShowFilters} filters={this.state.filters}></Products>
 			</main>
 		);
 	}

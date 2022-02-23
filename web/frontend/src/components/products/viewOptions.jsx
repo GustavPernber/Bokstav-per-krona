@@ -8,10 +8,12 @@ import {ReactComponent as BigArticlesIcon} from '../../img/bigArticles.svg';
 
 
 class Sort extends Component {
+
+
     render() {
       return (
         <>
-          <button className='filter'>
+          <button onClick={this.props.mobileFilters} className='filter'>
               Filtrera
               <FilterIcon></FilterIcon>
           </button>
@@ -79,7 +81,7 @@ export default class ViewOptions extends Component {
         return (
             <header className='searchOptions'>
 
-                <Sort></Sort>
+                <Sort mobileFilters={this.props.mobileFilters} ></Sort>
                 
                 <ArticleType viewTypeChange={this.props.viewTypeChange}></ArticleType>
 

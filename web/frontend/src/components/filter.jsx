@@ -154,7 +154,7 @@ class SliderFilter extends Component {
 
 		this.handleHeaderClick = this.handleHeaderClick.bind(this);
 		this.state = {
-			show: true,
+			show: false,
 		};
 	}
 
@@ -215,7 +215,7 @@ class OrderStockFilter extends Component {
 							name={"orderStock"}
 							id="showOrderStock"
 						/>
-						<label for="showOrderStock">Visa ordervaror</label>
+						<label htmlFor="showOrderStock">Visa ordervaror</label>
 					</div>
 
 					<div className="input-option">
@@ -227,7 +227,7 @@ class OrderStockFilter extends Component {
 							name={"orderStock"}
 							id="hideOrderStock"
 						/>
-						<label for="hideOrderStock">Dölj ordervaror</label>
+						<label htmlFor="hideOrderStock">Dölj ordervaror</label>
 					</div>
 				</div>
 			</div>
@@ -311,6 +311,8 @@ export default class Filters extends Component {
 		};
 	}
 
+	handleMobileShow(){}
+
 	componentDidMount() {
 		this.setState({
 			changedArray: Array(this.state.filters.slideFilters.length).fill(
@@ -386,7 +388,9 @@ export default class Filters extends Component {
 
 	render() {
 		return (
-			<aside className="filters">
+			// <aside className={`filters ${this.props.showMobile ? "true" : "false" }`}>
+
+			<aside className={`filters show-mobile`}>
 				<h1>Filtrera</h1>
 
 				{this.state.filters.slideFilters.map((filter, i) => {

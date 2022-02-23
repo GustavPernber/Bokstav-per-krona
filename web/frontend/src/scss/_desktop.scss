@@ -19,22 +19,22 @@ body {
 }
 
 main#index {
-	height: 100vh;
+    
+
 	background-color: $bgWhite;
 	grid-column-gap: 3rem;
-	padding: 0 0rem 0 3rem;
+	padding: 0 0 3rem 3rem;
 	grid-template-columns: 1fr minmax(1rem, 42rem) 1fr;
-	margin: 0;
+	margin: 2.5rem 0 0 0;
+
 	width: 100%;
 
 	display: grid;
 
 	aside.filters {
-		// @include center;
-		// flex-direction: column;
-		// justify-content: flex-start;
-		// align-items: flex-start;
 
+        position: sticky;
+        top: 3rem;
 		grid-column: 1;
 		grid-row: 1;
 		justify-self: flex-end;
@@ -360,6 +360,8 @@ main#index {
 
 		aside.filters {
 			display: none;
+
+            &
 		}
 
 		> div {

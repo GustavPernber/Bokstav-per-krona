@@ -42,7 +42,7 @@ export default class Products extends Component {
     render() {
         return (
             <div>
-                <ViewOptions viewTypeChange={this.handleViewChange}></ViewOptions>
+                <ViewOptions mobileFilters={this.props.mobileFilters} viewTypeChange={this.handleViewChange}></ViewOptions>
                 <ProductsContainer pageNum={this.state.pageNum} ref={instance=>{this.productContainer=instance}} filters={this.props.filters} isSmall={this.state.isSmall}></ProductsContainer>
                 <LoadMoreBtn loadMore={this.handleLoadMore}></LoadMoreBtn>
             </div>

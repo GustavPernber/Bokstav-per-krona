@@ -231,6 +231,46 @@ main#index aside.filters {
   width: 15rem;
 }
 
+main#index aside.filters div.button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main#index aside.filters div.button-container button.update-filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 99999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: #095741;
+  border: none;
+  font-family: 'Roboto';
+}
+
+main#index aside.filters div.button-container button.update-filters:hover {
+  background-color: #537F61;
+  cursor: pointer;
+}
+
 main#index aside.filters .price {
   height: 100%;
   display: -webkit-box;
@@ -321,7 +361,7 @@ main#index aside.filters .dropContainer div.sliderContainer {
 }
 
 main#index aside.filters .dropContainer div.sliderContainer p {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 0.9rem;
 }
 
@@ -380,7 +420,7 @@ main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .ran
   width: 4.2rem;
   height: 2rem;
   font-weight: 600;
-  font-family: 'roboto';
+  font-family: "roboto";
 }
 
 main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper input::-webkit-inner-spin-button, main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper input::-webkit-outer-spin-button {
@@ -533,7 +573,7 @@ main#index > div header.searchOptions form.sort select {
   height: 2.5rem;
   max-width: 10rem;
   color: #095741;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 1rem;
   -webkit-appearance: none;
@@ -987,7 +1027,7 @@ main#index > div > button.loadMore:hover {
     font-size: 1rem;
     color: #095741;
     gap: 0.8rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     border-radius: 8px;
   }
   main#index > div header.searchOptions > button.filter:hover {

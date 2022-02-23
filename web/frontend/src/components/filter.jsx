@@ -406,6 +406,7 @@ export default class Filters extends Component {
 					filter={this.state.filters.showOrderStock}
 				></OrderStockFilter>
 
+				<div className="button-container">
 				{this.state.hasChanged ? (
 					<button
 						className="update-filters"
@@ -418,9 +419,10 @@ export default class Filters extends Component {
 						className="update-filters"
 						onClick={this.handleLoadMore}
 					>
-						Filterera
+						Uppdatera filter
 					</button>
 				)}
+				</div>
 			</aside>
 		);
 	}

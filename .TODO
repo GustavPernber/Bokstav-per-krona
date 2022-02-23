@@ -17,6 +17,7 @@ Frontend:
     React:
         ☐ Laddnings animationer
         ☐ Sortera 
+        ☐ Sliders laggar vid snabba förändringar
 
         Filter:
             ✔ Filter show/hide @done(22-02-22 11:48)
@@ -40,9 +41,9 @@ Frontend:
     
     Styling:
         CSS:
-            ☐ inputs för filter
-            ✔ Styling för sliders @done(22-02-23 21:05)
-            ☐ Filter knapp
+            ✔ inputs för filter @done(22-02-23 22:07)
+            ✔ Styling för sliders @done(22-02-23 22:07)
+            ✔ Filter knapp @done(22-02-23 22:07)
         Responsivitet:
             ✔ Search header vid mobile @done(22-02-23 21:05)
             ☐ Visa filter vid mobile

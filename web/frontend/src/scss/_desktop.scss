@@ -82,7 +82,7 @@ main#index{
             max-height:0;
 
             overflow: hidden;
-            transition: 0.3s;
+            transition: max-height 0.3s;
             
 
             flex-direction: column;
@@ -90,34 +90,81 @@ main#index{
             gap: 1rem;
 
             div.sliderContainer{
+                padding: 0.3rem;
                 width: 90%;
-                background-color: lightblue;
                 padding-bottom: 1rem;
+                p{
+                    font-family: 'Roboto Condensed', sans-serif;
+                    font-size: 0.9rem;
+                }
+
+                
+                .inputs-wrapper{
+                    margin-bottom: 1.5rem;
+                    @include center;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    
+                    .range-input-wrapper{
+                        display: grid;
+                        gap: 0.3rem;
+                        >p:nth-child(1){
+                            
+                            grid-row: 1;
+                            grid-column: 1;
+                        }
+                        
+                        >p:nth-child(3){
+                            
+                            grid-row: 2;
+                            grid-column: 2;
+                            align-self: center;
+                        }
+                        
+                        input{
+                            &::-webkit-inner-spin-button, &::-webkit-outer-spin-button{
+                                appearance: none;
+                                margin: 0;
+                            }
+                            padding-right:0.3rem ;
+
+                            text-align: right;
+                            grid-column: 1;
+                            grid-row: 2;
+                            @include inputBorder;
+                            border-radius: 4px;
+                            width: 4.2rem;
+                            height: 2rem;
+                            font-weight: 600;
+                            font-family: 'roboto';
+                        }
+                    }
+
+                }    
+                
+
                 .sliderRound{
 
                     .noUi-target{
                         height: 8px;
                         border: none;
                     }
-                    // height: 5px;
         
-                    .noUi-connects{
+        
+                    .noUi-connect{
                         background: $systemetFilterGreen;
                     }
+                    .noUi-connects{
+                        background-color: $bgSliderGrey;
+                    }
         
-                    // .noUi-touch-area{
-                    //     height: 18px;
-                    //     width: 18px;
-                    //     top: -5px;
-                    //     right: -9px; /* half the width */
-                    //     border-radius: 9px;
-                    // }
                     .noUi-handle{
-
+                        background-color: white;
+                        box-shadow: none;
                         height: 21px;
                         width: 21px;
                         position: absolute;
-                        top: -7§px;
+                        // top: -7px;
                         right: -9px; /* half the width */
                         border-radius: 9999999px;
 
@@ -131,8 +178,10 @@ main#index{
 
 
             &.show{
-                transition: 0.3s;
-                max-height: 7rem;
+                
+                transition: max-height 0.3s;
+                max-height: 10rem;
+                
                 
             }
         }

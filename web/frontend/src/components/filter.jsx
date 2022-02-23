@@ -104,34 +104,46 @@ class Slider extends Component {
 
 	render() {
 		return (
-            <div className={`dropContainer ${this.props.show ? "show" : ""}`}>
-                <div className="sliderContainer">
-                    <input
-                        type="number"
-                        name={this.min}
-                        value={this.state[this.min]}
-                        onKeyUp={this.handleInputKey}
-                        onBlur={this.handleInputBlur}
-                        onChange={this.handleInputChange}
-                    />
-                    <input
-                        type="number"
-                        name={this.max}
-                        value={this.state[this.max]}
-                        onKeyUp={this.handleInputKey}
-                        onBlur={this.handleInputBlur}
-                        onChange={this.handleInputChange}
-                    />
-					<div className="sliderRound">
-                    <Nouislider
-                        onSlide={this.handleSlider}
-                        step={this.props.filter.steps}
-                        start={this.state.start}
-                        range={this.range}
-                    ></Nouislider>
+			<div className={`dropContainer ${this.props.show ? "show" : ""}`}>
+				<div className="sliderContainer">
+					<div className="inputs-wrapper">
+						<div className="range-input-wrapper">
+							<p>Från</p>
+							<input
+								type="number"
+								name={this.min}
+								value={this.state[this.min]}
+								onKeyUp={this.handleInputKey}
+								onBlur={this.handleInputBlur}
+								onChange={this.handleInputChange}
+							/>
+							<p>{this.props.filter.unit}</p>
+						</div>
+						<div className="range-input-wrapper">
+							<p>Till</p>
+							<input
+								type="number"
+								name={this.max}
+								value={this.state[this.max]}
+								onKeyUp={this.handleInputKey}
+								onBlur={this.handleInputBlur}
+								onChange={this.handleInputChange}
+							/>
+							<p>{this.props.filter.unit}</p>
+						</div>
 					</div>
-                </div>
-            </div>
+
+					<div className="sliderRound">
+						<Nouislider
+							connect
+							onSlide={this.handleSlider}
+							step={this.props.filter.steps}
+							start={this.state.start}
+							range={this.range}
+						></Nouislider>
+					</div>
+				</div>
+			</div>
 		);
 	}
 }
@@ -140,23 +152,27 @@ class SliderFilter extends Component {
 	constructor(props) {
 		super(props);
 
-        this.handleHeaderClick=this.handleHeaderClick.bind(this)
+		this.handleHeaderClick = this.handleHeaderClick.bind(this);
 		this.state = {
 			show: true,
 		};
 	}
 
-    handleHeaderClick(){
-        this.setState({
-            show:!this.state.show
-        })
-    }
+	handleHeaderClick() {
+		this.setState({
+			show: !this.state.show,
+		});
+	}
 
 	render() {
 		return (
 			<div className="filterWrapper">
-				<DropHeader onClick={this.handleHeaderClick} title={this.props.filter.title}></DropHeader>
-				<Slider show={this.state.show}
+				<DropHeader
+					onClick={this.handleHeaderClick}
+					title={this.props.filter.title}
+				></DropHeader>
+				<Slider
+					show={this.state.show}
 					update={this.props.update}
 					filter={this.props.filter}
 				></Slider>
@@ -165,40 +181,58 @@ class SliderFilter extends Component {
 	}
 }
 
-class OrderStockFilter extends Component{
-    constructor(props) {
+class OrderStockFilter extends Component {
+	constructor(props) {
 		super(props);
-        this.handleHeaderClick=this.handleHeaderClick.bind(this)
-        this.state={
-            show:true
-        }
+		this.handleHeaderClick = this.handleHeaderClick.bind(this);
+		this.state = {
+			show: true,
+		};
 	}
 
+	handleHeaderClick() {
+		this.setState({
+			show: !this.state.show,
+		});
+	}
 
-    handleHeaderClick(){
-        this.setState({
-            show:!this.state.show
-        })
-    }
+	render() {
+		return (
+			<div className="filterWrapper">
+				<DropHeader
+					onClick={this.handleHeaderClick}
+					title={this.props.filter.title}
+				></DropHeader>
+				<div
+					className={`dropContainer ${this.state.show ? "show" : ""}`}
+				>
+					<div className="input-option">
+						<input
+							onChange={() => {
+								this.props.update("show");
+							}}
+							type={"radio"}
+							name={"orderStock"}
+							id="showOrderStock"
+						/>
+						<label for="showOrderStock">Visa ordervaror</label>
+					</div>
 
-    render(){
-        return(
-            <div className="filterWrapper">
-				<DropHeader onClick={this.handleHeaderClick} title={this.props.filter.title}></DropHeader>
-                <div className={`dropContainer ${this.state.show ? "show" : ""}`}>
-                    <div className="input-option">
-                        <input onChange={()=>{this.props.update("show")}} type={"radio"} name={"orderStock"} id="showOrderStock"/>
-                        <label for="showOrderStock">Visa ordervaror</label>
-                    </div>
-
-                    <div className="input-option">
-                        <input onChange={()=>{this.props.update("hide")}} type={"radio"} name={"orderStock"} id="hideOrderStock"/>
-                        <label for="hideOrderStock">Dölj ordervaror</label>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+					<div className="input-option">
+						<input
+							onChange={() => {
+								this.props.update("hide");
+							}}
+							type={"radio"}
+							name={"orderStock"}
+							id="hideOrderStock"
+						/>
+						<label for="hideOrderStock">Dölj ordervaror</label>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default class Filters extends Component {
@@ -206,15 +240,20 @@ export default class Filters extends Component {
 		super(props);
 		this.handleSliderUpdate = this.handleSliderUpdate.bind(this);
 		this.handleLoadMore = this.handleLoadMore.bind(this);
-        this.handleOrderStockUpdate=this.handleOrderStockUpdate.bind(this)
+		this.handleOrderStockUpdate = this.handleOrderStockUpdate.bind(this);
 		this.state = {
 			hasChanged: false,
-            changedArray:null,
+			changedArray: null,
 
 			filters: {
-                showOrderStock:{value:false, prevValue: false, title:"Ordervaror"},
+				showOrderStock: {
+					value: false,
+					prevValue: false,
+					title: "Ordervaror",
+				},
 				slideFilters: [
 					{
+						unit: "%",
 						maxTag: "alcMax",
 						minTag: "alcMin",
 
@@ -232,6 +271,7 @@ export default class Filters extends Component {
 						steps: 0.5,
 					},
 					{
+						unit: "kr",
 						maxTag: "priceMax",
 						minTag: "priceMin",
 
@@ -249,6 +289,7 @@ export default class Filters extends Component {
 						steps: 1,
 					},
 					{
+						unit: "ml",
 						maxTag: "volumeMax",
 						minTag: "volumeMin",
 
@@ -270,11 +311,13 @@ export default class Filters extends Component {
 		};
 	}
 
-    componentDidMount(){
-        this.setState({
-            changedArray:Array(this.state.filters.slideFilters.length).fill(false)
-        })
-    }
+	componentDidMount() {
+		this.setState({
+			changedArray: Array(this.state.filters.slideFilters.length).fill(
+				false
+			),
+		});
+	}
 
 	handleSliderUpdate(index, min, max) {
 		let newFilter = this.state.filters.slideFilters.slice();
@@ -287,46 +330,44 @@ export default class Filters extends Component {
 		}));
 
 		//Checka alla
-        this.state.filters.slideFilters.forEach((filter, i)=>{
-            
-            if (
-                filter.minCurrent !== filter.minPrevious ||
-                filter.maxCurrent !== filter.maxPrevious
-            ) {
-                let changeArray=this.state.slideFilters
-                changeArray[i]=true
-                this.setState(() => ({
-                    changedArray:changeArray
-                }));
-            } else {
-                let changeArray=this.state.slideFilters
-                changeArray[i]=false
-                this.setState(() => ({
-                    changedArray:changeArray
-                }));
-            }
-        })
+		this.state.filters.slideFilters.forEach((filter, i) => {
+			if (
+				filter.minCurrent !== filter.minPrevious ||
+				filter.maxCurrent !== filter.maxPrevious
+			) {
+				let changeArray = this.state.slideFilters;
+				changeArray[i] = true;
+				this.setState(() => ({
+					changedArray: changeArray,
+				}));
+			} else {
+				let changeArray = this.state.slideFilters;
+				changeArray[i] = false;
+				this.setState(() => ({
+					changedArray: changeArray,
+				}));
+			}
+		});
 
-        if (this.state.changedArray.includes(true)) {
-            this.setState({
-                hasChanged:true
-            })
-        } else {
-            this.setState({
-                hasChanged:false
-            })
-           
-            
-        }
-
+		if (this.state.changedArray.includes(true)) {
+			this.setState({
+				hasChanged: true,
+			});
+		} else {
+			this.setState({
+				hasChanged: false,
+			});
+		}
 	}
 
 	handleLoadMore() {
 		const newSlideFilters = this.state.filters.slideFilters.slice();
-        this.setState({
-            hasChanged:false,
-            changedArray:Array(this.state.filters.slideFilters.length).fill(false)
-        })
+		this.setState({
+			hasChanged: false,
+			changedArray: Array(this.state.filters.slideFilters.length).fill(
+				false
+			),
+		});
 		this.props.loadMore(this.state.filters);
 		newSlideFilters.map((filter, i) => {
 			filter["minPrevious"] = filter["minCurrent"];
@@ -334,15 +375,14 @@ export default class Filters extends Component {
 		});
 	}
 
-    handleOrderStockUpdate(value){
-        let newFilters={...this.state.filters}
-        newFilters.showOrderStock.value= value==="show" ? true : false
-        this.setState({
-            filters:newFilters,
-            hasChanged:true
-        })
-
-    }
+	handleOrderStockUpdate(value) {
+		let newFilters = { ...this.state.filters };
+		newFilters.showOrderStock.value = value === "show" ? true : false;
+		this.setState({
+			filters: newFilters,
+			hasChanged: true,
+		});
+	}
 
 	render() {
 		return (
@@ -361,12 +401,25 @@ export default class Filters extends Component {
 						/>
 					);
 				})}
-                <OrderStockFilter update={this.handleOrderStockUpdate} filter={this.state.filters.showOrderStock}></OrderStockFilter>
+				<OrderStockFilter
+					update={this.handleOrderStockUpdate}
+					filter={this.state.filters.showOrderStock}
+				></OrderStockFilter>
 
 				{this.state.hasChanged ? (
-					<button className="update-filters" onClick={this.handleLoadMore}>Filterera</button>
+					<button
+						className="update-filters"
+						onClick={this.handleLoadMore}
+					>
+						Filterera
+					</button>
 				) : (
-					<button className="update-filters" onClick={this.handleLoadMore}>Filterera</button>
+					<button
+						className="update-filters"
+						onClick={this.handleLoadMore}
+					>
+						Filterera
+					</button>
 				)}
 			</aside>
 		);

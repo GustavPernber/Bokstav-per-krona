@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
@@ -297,8 +296,8 @@ main#index aside.filters .dropHeader:hover {
 main#index aside.filters .dropContainer {
   max-height: 0;
   overflow: hidden;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-transition: max-height 0.3s;
+  transition: max-height 0.3s;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -316,9 +315,78 @@ main#index aside.filters .dropContainer {
 }
 
 main#index aside.filters .dropContainer div.sliderContainer {
+  padding: 0.3rem;
   width: 90%;
-  background-color: lightblue;
   padding-bottom: 1rem;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.9rem;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper {
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper {
+  display: -ms-grid;
+  display: grid;
+  gap: 0.3rem;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper > p:nth-child(1) {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper > p:nth-child(3) {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper input {
+  padding-right: 0.3rem;
+  text-align: right;
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  border: 1px solid rgba(45, 41, 38, 0.65);
+  border-radius: 4px;
+  width: 4.2rem;
+  height: 2rem;
+  font-weight: 600;
+  font-family: 'roboto';
+}
+
+main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper input::-webkit-inner-spin-button, main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+  margin: 0;
 }
 
 main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-target {
@@ -326,15 +394,21 @@ main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-t
   border: none;
 }
 
-main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-connects {
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-connect {
   background: #328564;
 }
 
+main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-connects {
+  background-color: #EBEBEA;
+}
+
 main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-handle {
+  background-color: white;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   height: 21px;
   width: 21px;
   position: absolute;
-  top: -7§px;
   right: -9px;
   /* half the width */
   border-radius: 9999999px;
@@ -345,9 +419,9 @@ main#index aside.filters .dropContainer div.sliderContainer .sliderRound .noUi-h
 }
 
 main#index aside.filters .dropContainer.show {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  max-height: 7rem;
+  -webkit-transition: max-height 0.3s;
+  transition: max-height 0.3s;
+  max-height: 10rem;
 }
 
 main#index > div {

@@ -3,11 +3,11 @@ Backend:
     ☐ Limit
     ✔ Offset @done(22-02-22 11:02)
     ✔ Gör om i node @done(22-02-20 16:56)
-    ☐ Search queries vid filtrering
+    ✔ Search queries vid filtrering @done(22-02-24 21:27)
         ✔ Price @done(22-02-20 16:56)
         ✔ Alc @done(22-02-20 16:56)
         ✔ Volume @done(22-02-20 16:56)
-        ☐ (Ordervara)
+        ✔ (Ordervara) @done(22-02-24 21:27)
     ✔ Hosting @done(22-02-20 15:47)
     ✔ MongoDB @done(22-02-20 16:09)
     ☐ Byt password i mongoDB
@@ -16,6 +16,7 @@ Frontend:
 
     React:
         ☐ Sortera 
+        ☐ Header knappar
         ☐ No products found message/om inga mer finns
         ☐ Laddnings animationer
         ☐ Sliders laggar vid snabba förändringar
@@ -57,8 +58,6 @@ Frontend:
             ☐ TS
 
 Next up:
-    ✔ Filtering: @done(22-02-22 11:32)
-        ✔ Pages @done(22-02-22 11:02)
-        ✔ Rensa "gamla" produkter vid filtrering @done(22-02-22 11:32)
-    ✔ Fäll ihop filter @done(22-02-22 11:48)
     ☐ Ordervara filter
+        ☐ få in filter i uri för fetch i frontend. Backend klar. showOrderStock=false
+    ☐ Header knappar att fungera

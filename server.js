@@ -13,10 +13,10 @@ app.use(express.json())
 const ApiRouter =require('./routes/api')
 app.use('/api', ApiRouter)
 
-app.use(express.static(path.join(__dirname, '../frontend')))
+app.use(express.static(path.join(__dirname, '/frontend')))
 
 app.get('/', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../frontend', 'index.html'))
+    res.sendFile(path.join(__dirname, '/frontend', 'index.html'))
 })
 
 app.listen(port, () => {

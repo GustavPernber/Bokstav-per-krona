@@ -1,5 +1,4 @@
 # Bokstav-per-krona 
-*React WIP*
 
 **Absolut aldrig någonsin i livet alkohol per krona!**
 

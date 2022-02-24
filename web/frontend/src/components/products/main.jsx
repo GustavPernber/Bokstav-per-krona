@@ -26,6 +26,17 @@ export default class Products extends Component {
         
     }
 
+    componentDidUpdate(prevProps){
+
+        if(prevProps.filters != this.props.filters){
+            console.log('in if')
+            this.setState(()=>({
+                pageNum:1
+            }))
+        }
+        
+    }
+
     handleViewChange(type){
         if (type==="small") {
             this.setState({

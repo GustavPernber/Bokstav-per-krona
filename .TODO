@@ -15,17 +15,18 @@ Backend:
 Frontend:
 
     React:
-        ☐ Laddnings animationer
         ☐ Sortera 
+        ☐ No products found message/om inga mer finns
+        ☐ Laddnings animationer
         ☐ Sliders laggar vid snabba förändringar
         ✔ Filters ska fällas ihop för mobile vid stäng @done(22-02-24 17:49)
 
         Filter:
-            ✔ Filter show/hide @done(22-02-22 11:48)
             ☐ Filtera bort ordervaror
+            ☐ Rotera pil vid show
+            ✔ Filter show/hide @done(22-02-22 11:48)
             ✔ "Uppdate has changed" att checka alla filter @done(22-02-22 11:28)
             ☐ Sätt current och previous till samma vid component mount
-            ☐ Rotera pil vid show
 
         Produkter:
             ☐ Fixa produkt url för cider

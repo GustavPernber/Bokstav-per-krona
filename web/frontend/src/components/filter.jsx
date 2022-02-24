@@ -185,6 +185,7 @@ class OrderStockFilter extends Component {
 	constructor(props) {
 		super(props);
 		this.handleHeaderClick = this.handleHeaderClick.bind(this);
+
 		this.state = {
 			show: true,
 		};
@@ -206,7 +207,7 @@ class OrderStockFilter extends Component {
 				<div
 					className={`dropContainer ${this.state.show ? "show" : ""}`}
 				>
-					<div className="input-option">
+					{/* <div className="input-option">
 						<input
 							onChange={() => {
 								this.props.update("show");
@@ -216,14 +217,13 @@ class OrderStockFilter extends Component {
 							id="showOrderStock"
 						/>
 						<label htmlFor="showOrderStock">Visa ordervaror</label>
-					</div>
+					</div> */}
 
 					<div className="input-option">
 						<input
-							onChange={() => {
-								this.props.update("hide");
-							}}
-							type={"radio"}
+							onChange={this.props.update}
+							// onChange={this.props.update}
+							type={"checkBox"}
 							name={"orderStock"}
 							id="hideOrderStock"
 						/>
@@ -247,8 +247,8 @@ export default class Filters extends Component {
 
 			filters: {
 				showOrderStock: {
-					value: false,
-					prevValue: false,
+					value: true,
+					prevValue: true,
 					title: "Ordervaror",
 				},
 				slideFilters: [
@@ -368,7 +368,7 @@ export default class Filters extends Component {
 				false
 			),
 		});
-		
+
 		this.props.loadMore(this.state.filters);
 		newSlideFilters.map((filter, i) => {
 			filter["minPrevious"] = filter["minCurrent"];
@@ -376,25 +376,37 @@ export default class Filters extends Component {
 		});
 	}
 
-	handleOrderStockUpdate(value) {
+	handleOrderStockUpdate() {
+		console.log("click");
+		console.log(this.state.filters.showOrderStock);
 		let newFilters = { ...this.state.filters };
-		newFilters.showOrderStock.value = value === "show" ? true : false;
-		this.setState({
+
+		newFilters.showOrderStock.value =
+			!this.state.filters.showOrderStock.value;
+		this.setState((state, props) => ({
 			filters: newFilters,
 			hasChanged: true,
-		});
+		}));
+		setTimeout(() => {
+			console.log(this.state.filters.showOrderStock);
+		}, 100);
 	}
 
 	render() {
 		return (
-			<aside className={`filters ${this.props.showMobile ? "show-mobile" : ""}`}>
-				
-				<button onClick={this.props.changeMobileShow} className="close-filters">
-					<p>Stäng</p><p>x</p>
+			<aside
+				className={`filters ${
+					this.props.showMobile ? "show-mobile" : ""
+				}`}
+			>
+				<button
+					onClick={this.props.changeMobileShow}
+					className="close-filters"
+				>
+					<p>Stäng</p>
+					<p>x</p>
 				</button>
 
-				
-			
 				<h1>Filtrera</h1>
 
 				{this.state.filters.slideFilters.map((filter, i) => {
@@ -415,21 +427,16 @@ export default class Filters extends Component {
 				></OrderStockFilter>
 
 				<div className="button-container">
-				{this.state.hasChanged ? (
-					<button
-						className="update-filters"
-						onClick={this.handleLoadMore}
-					>
-						Uppdatera filter
-					</button>
-				) : (
-					<button
-						className="update-filters"
-						onClick={this.handleLoadMore}
-					>
-						Uppdatera filter
-					</button>
-				)}
+					{this.state.hasChanged ? (
+						<button
+							className="update-filters"
+							onClick={this.handleLoadMore}
+						>
+							Uppdatera filter
+						</button>
+					) : (
+						""
+					)}
 				</div>
 			</aside>
 		);

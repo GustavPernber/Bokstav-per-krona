@@ -123,7 +123,7 @@ class ProductsContainer extends Component{
         this.getProducts()
     }
 
-    componentDidUpdate(prevProps, prevState){
+    async componentDidUpdate(prevProps, prevState){
 
         if (this.props.filters!==null && prevProps.filters !== this.props.filters) {
             this.setState({
@@ -134,18 +134,20 @@ class ProductsContainer extends Component{
             this.props.filters.slideFilters.forEach((filter, i)=>{
                 urlArr.push(`${filter.minTag}=${filter.minCurrent}&${filter.maxTag}=${filter.maxCurrent}`)
             })
-            this.getProducts(urlArr.join('&'))
-
+            this.getProducts(urlArr.join('&'), true)
+            // console.log(this.props.pageNum, true)
 
         }
     }
 
-    async getProducts(queries=""){
+    async getProducts(queries="", firstPage=false){
         console.log('Fetching...')
         try {
- 
-            // let url=`http://localhost:8080/api/productsLimited?page=1&priceMin=100&priceMax=400&`
-            let url=`http://localhost:8080/api/productsLimited?page=${this.props.pageNum}&${queries}`
+            const pageNum= firstPage ? 1 : this.props.pageNum
+
+            // console.log(pageNum)
+
+            let url=`http://localhost:8080/api/productsLimited?page=${pageNum}&${queries}`
             // let url=`${window.location}api/productsLimited?page=${this.props.pageNum}&${queries}`
             console.log(url)
             const response=await fetch(url)

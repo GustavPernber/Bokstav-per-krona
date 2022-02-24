@@ -48,14 +48,18 @@ class Main extends React.Component {
 	}
 
 	handleLoadMore(filters) {
-		if (this.state.showMobile) {
-			this.handleMobileShowFilters()
-		}
+		//remove filters view on mobile
+		// if (this.state.showMobile) {
+		// 	this.handleMobileShowFilters()
+		// }
 
+		//Sets state to current filters
+		//reset page
+		console.log('load more')
 		this.setState((state, props)=>({
 
 			filters: {...filters}
-    }))
+   		}))
 
 	}
 

@@ -377,15 +377,15 @@ export default class Filters extends Component {
 	}
 
 	handleOrderStockUpdate() {
-		console.log("click");
-		console.log(this.state.filters.showOrderStock);
+
 		let newFilters = { ...this.state.filters };
 
-		newFilters.showOrderStock.value =
-			!this.state.filters.showOrderStock.value;
+		newFilters.showOrderStock.value =! this.state.filters.showOrderStock.value;
+		let changed=newFilters.showOrderStock.value != newFilters.showOrderStock.prevValue 
+
 		this.setState((state, props) => ({
 			filters: newFilters,
-			hasChanged: true,
+			hasChanged: changed,
 		}));
 		setTimeout(() => {
 			console.log(this.state.filters.showOrderStock);

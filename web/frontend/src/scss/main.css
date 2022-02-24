@@ -415,6 +415,7 @@ main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .ran
 }
 
 main#index aside.filters .dropContainer div.sliderContainer .inputs-wrapper .range-input-wrapper input {
+  -moz-appearance: textfield;
   padding-right: 0.3rem;
   text-align: right;
   -ms-grid-column: 1;
@@ -544,12 +545,12 @@ main#index > div header.searchOptions form.sort {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  white-space: nowrap;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 2.5rem;
   max-width: 10rem;
+  position: relative;
 }
 
 main#index > div header.searchOptions form.sort:hover {
@@ -558,7 +559,8 @@ main#index > div header.searchOptions form.sort:hover {
 }
 
 main#index > div header.searchOptions form.sort svg {
-  margin-right: 1rem;
+  position: absolute;
+  right: 1rem;
   z-index: 10;
   pointer-events: none;
 }
@@ -586,7 +588,6 @@ main#index > div header.searchOptions form.sort select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  position: absolute;
   background: none;
   border: none;
 }
@@ -1031,10 +1032,11 @@ main#index > div > button.loadMore:hover {
     gap: 0.5rem;
     border: none;
     cursor: pointer;
+    font-size: 1.1rem;
   }
   main#index aside.filters.show-mobile button.close-filters > p:nth-child(2) {
     font-weight: 600;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
   main#index > div {
     -ms-grid-column-align: center;
@@ -1137,21 +1139,26 @@ p {
   }
   main#index {
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 1rem 3rem 1rem;
   }
   main#index > div {
     gap: 0rem;
   }
   main#index > div header.searchOptions {
     width: 90vw;
+    -webkit-column-gap: 0.3rem;
+            column-gap: 0.3rem;
   }
   main#index > div header.searchOptions form.sort {
     max-width: 9rem;
   }
-  main#index > div header.searchOptions form.sort select {
-    padding: 0;
+  main#index > div header.searchOptions form.sort > select {
+    padding-left: 0.3rem;
     font-size: 0.9rem;
-    max-width: 8rem;
+  }
+  main#index > div header.searchOptions form.sort svg {
+    right: 0.3rem;
+    height: 1.5rem;
   }
   main#index > div header.searchOptions div {
     margin: auto 0 auto 0;
@@ -1160,6 +1167,9 @@ p {
   main#index > div header.searchOptions div button {
     max-width: 2rem;
     max-height: 2rem;
+  }
+  main#index > div > button.loadMore {
+    margin-top: 2rem;
   }
   main#index > div section.drinksContainer {
     display: -webkit-box;
@@ -1379,5 +1389,13 @@ p {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+button {
+  color: #2D2926;
+}
+
+span {
+  color: #2D2926;
 }
 /*# sourceMappingURL=main.css.map */

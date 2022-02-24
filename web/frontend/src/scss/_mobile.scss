@@ -19,7 +19,7 @@
 
    main#index{
         width: 100%;
-        padding: 0 1rem;
+        padding: 0 1rem 3rem 1rem;
 
         
 
@@ -28,13 +28,20 @@
 
             header.searchOptions{
                 width: 90vw;
+                column-gap: 0.3rem;
 
                 form.sort{
+                    // background-color: green;
                     max-width: 9rem;
-                    select{
-                        padding: 0;
+                    >select{
+                        padding-left: 0.3rem;
                         font-size: 0.9rem;
-                        max-width: 8rem;
+                        // max-width: 8rem;
+                    }
+
+                    svg{
+                        right: 0.3rem;
+                        height: 1.5rem;
                     }
                 }
                 // >button.filter{
@@ -52,7 +59,10 @@
                 }
             }
     
-    
+            >button.loadMore{
+                margin-top: 2rem
+            }
+
             section.drinksContainer{
                 @include center;
                 flex-direction:column ;

@@ -149,10 +149,12 @@ main#index {
 							grid-column: 2;
 							align-self: center;
 						}
-
 						input {
+							-moz-appearance: textfield;
+
 							&::-webkit-inner-spin-button,
 							&::-webkit-outer-spin-button {
+
 								appearance: none;
 								margin: 0;
 							}
@@ -238,6 +240,7 @@ main#index {
 
 			form.sort {
 				align-self: center;
+				// background-color: red;
 
 				border: none;
 
@@ -247,10 +250,12 @@ main#index {
 
 				@include center;
 				flex-direction: row;
-				white-space: nowrap;
-				justify-content: right;
+				// white-space: nowrap;
+
+				justify-content: space-between;
 				height: 2.5rem;
 				max-width: 10rem;
+				position: relative;
 
 				&:hover {
 					background-color: $lightSystemetGreen;
@@ -258,14 +263,18 @@ main#index {
 				}
 
 				svg {
-					margin-right: 1rem;
+					position: absolute;
+					right: 1rem;
+					// margin-right: 1rem;
 					z-index: 10;
 					pointer-events: none;
 				}
 
 				select {
+					// background-color: lightgreen;
 					@include center;
 					padding-left: 0.8rem;
+
 					border-radius: 8px;
 					width: 100%;
 					z-index: 5;
@@ -279,7 +288,8 @@ main#index {
 					font-size: 1rem;
 
 					appearance: none;
-					position: absolute;
+					// position: absolute;
+
 					background: none;
 					border: none;
 
@@ -390,10 +400,11 @@ main#index {
 
                     border: none;
                     cursor: pointer;
-                    
+					font-size: 1.1rem;
+
                     >p:nth-child(2){
                         font-weight: 600;
-                        font-size: 0.7rem;
+                        font-size: 0.9rem;
                     }
                     
                 }

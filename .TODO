@@ -18,7 +18,7 @@ Frontend:
         ☐ Laddnings animationer
         ☐ Sortera 
         ☐ Sliders laggar vid snabba förändringar
-        ☐ Filters ska fällas ihop för mobile vid stäng
+        ✔ Filters ska fällas ihop för mobile vid stäng @done(22-02-24 17:49)
 
         Filter:
             ✔ Filter show/hide @done(22-02-22 11:48)

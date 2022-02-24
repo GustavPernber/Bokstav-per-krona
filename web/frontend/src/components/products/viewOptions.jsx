@@ -21,6 +21,7 @@ class Sort extends Component {
           <form className='sort'>
               <select name='sort'>
                   <option> Sortera efter</option>
+                  <option> filter</option>
               </select>
               <SortArrows></SortArrows>
           </form>

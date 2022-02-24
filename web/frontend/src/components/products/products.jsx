@@ -145,7 +145,7 @@ class ProductsContainer extends Component{
         try {
  
             // let url=`http://localhost:8080/api/productsLimited?page=1&priceMin=100&priceMax=400&`
-            let url=`http://localhost:8080/api/productsLimited?page=${this.props.pageNum}&${queries}`
+            let url=`${window.location}/api/productsLimited?page=${this.props.pageNum}&${queries}`
             console.log(url)
             const response=await fetch(url)
             const data=await response.json()

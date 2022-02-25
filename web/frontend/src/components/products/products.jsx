@@ -73,7 +73,7 @@ function Product(props){
     let productUrl=`https://www.systembolaget.se/produkt/${props.product.cat1}/${productUrlName}`
 
     return(
-        <a href={productUrl } className={props.product.assortmentText!=="Ordervara" ? "" : "order-stock-product"}>
+        <a href={productUrl } className={props.product.assortmentText!=="Ordervaror" ? "" : "order-stock-product"}>
             <figure>
                 {/* {props.product.assortmentText!=="Ordervara" ? "" : 
                 <div className='orderStock'><p>Ordervara</p></div> } */}
@@ -102,7 +102,7 @@ function Product(props){
 
             <TasteClocks clockList={props.product.tasteClocks}></TasteClocks>
 
-            {props.product.assortmentText!=="Ordervara" ? "" : 
+            {props.product.assortmentText!=="Ordervaror" ? "" : 
                 
                 <div className='order-stock-flag'>
                 <div className='order-p-container'><p>Ordervara</p>

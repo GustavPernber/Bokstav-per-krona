@@ -55,6 +55,7 @@ main#index {
 
 				font-size: 0.9rem;
 				font-weight: 500;
+				margin-top: 1.7rem;
 
 				color: white;
 				align-self: center;
@@ -117,6 +118,47 @@ main#index {
 			flex-direction: column;
 			@include center;
 			gap: 1rem;
+
+			&.order-stock-drop{
+				// transition: background-color 0.1s;
+				transition: max-height 0.2s;
+				&:hover{
+					transition: background-color 0.1s;
+					background-color: $hoverGrey;
+				}
+
+				div.input-option{
+					height: 3rem;
+	
+					@include center;
+					// background-color: red;
+					width: 85%;
+					justify-content: flex-start;
+					gap: 0.5rem;
+	
+					label{
+						font-size: 0.85rem;
+						width: 100%;
+						height: 100%;
+						@include center;
+						justify-content: flex-start;
+
+						&:hover{
+							cursor: pointer;
+						}
+					}
+					input#hideOrderStock{
+						// height: 5rem;
+						// background-color: black;
+						transform: scale(1.3);
+						// padding: 10px;
+
+						&:hover{
+							cursor: pointer;
+						}
+					}
+				}
+			}
 
 			div.sliderContainer {
 				padding: 0.3rem;
@@ -202,6 +244,11 @@ main#index {
 			}
 
 			&.show {
+
+				&.order-stock-drop{
+
+					transition: max-height 0.5s;
+				}
 				transition: max-height 0.3s;
 				max-height: 10rem;
 			}

@@ -119,7 +119,7 @@ router.get('/productsLimited', async (req, res)=>{
         .where("price").gte(query.priceMin).lte(query.priceMax)
         .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
         .where("volume").gte(query.volumeMin).lte(query.volumeMax)
-        .where("assortmentText").ne("Ordervara")
+        .where("assortmentText").ne("Ordervaror")
         .sort(query.sortBy)
     }
 

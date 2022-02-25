@@ -205,20 +205,8 @@ class OrderStockFilter extends Component {
 					title={this.props.filter.title}
 				></DropHeader>
 				<div
-					className={`dropContainer ${this.state.show ? "show" : ""}`}
+					className={`dropContainer order-stock-drop ${this.state.show ? "show" : ""}`}
 				>
-					{/* <div className="input-option">
-						<input
-							onChange={() => {
-								this.props.update("show");
-							}}
-							type={"radio"}
-							name={"orderStock"}
-							id="showOrderStock"
-						/>
-						<label htmlFor="showOrderStock">Visa ordervaror</label>
-					</div> */}
-
 					<div className="input-option">
 						<input
 							onChange={this.props.update}
@@ -362,19 +350,20 @@ export default class Filters extends Component {
 
 	handleLoadMore() {
 		const newSlideFilters = this.state.filters.slideFilters.slice();
-		let filters={...this.state.filters}
-		filters.showOrderStock.prevValue=!this.state.filters.showOrderStock.prevValue
+		let filters = { ...this.state.filters };
+		filters.showOrderStock.prevValue =
+			!this.state.filters.showOrderStock.prevValue;
 
 		this.setState({
 			hasChanged: false,
 			changedArray: Array(this.state.filters.slideFilters.length).fill(
 				false
 			),
-			filters:filters
+			filters: filters,
 		});
 
 		this.props.loadMore(this.state.filters);
-		
+
 		newSlideFilters.map((filter, i) => {
 			filter["minPrevious"] = filter["minCurrent"];
 			filter["maxPrevious"] = filter["maxCurrent"];
@@ -382,14 +371,16 @@ export default class Filters extends Component {
 	}
 
 	handleOrderStockUpdate() {
-
 		let newFilters = { ...this.state.filters };
 
 		// newFilters.showOrderStock.prevValue = this.state.filters.showOrderStock.value
-		newFilters.showOrderStock.value =! this.state.filters.showOrderStock.value;
+		newFilters.showOrderStock.value =
+			!this.state.filters.showOrderStock.value;
 
-		let changed=newFilters.showOrderStock.value != newFilters.showOrderStock.prevValue 
-		console.log(changed)
+		let changed =
+			newFilters.showOrderStock.value !=
+			newFilters.showOrderStock.prevValue;
+		console.log(changed);
 
 		this.setState((state, props) => ({
 			filters: newFilters,

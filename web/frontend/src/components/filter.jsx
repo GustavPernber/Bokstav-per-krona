@@ -362,14 +362,19 @@ export default class Filters extends Component {
 
 	handleLoadMore() {
 		const newSlideFilters = this.state.filters.slideFilters.slice();
+		let filters={...this.state.filters}
+		filters.showOrderStock.prevValue=!this.state.filters.showOrderStock.prevValue
+
 		this.setState({
 			hasChanged: false,
 			changedArray: Array(this.state.filters.slideFilters.length).fill(
 				false
 			),
+			filters:filters
 		});
 
 		this.props.loadMore(this.state.filters);
+		
 		newSlideFilters.map((filter, i) => {
 			filter["minPrevious"] = filter["minCurrent"];
 			filter["maxPrevious"] = filter["maxCurrent"];
@@ -380,15 +385,17 @@ export default class Filters extends Component {
 
 		let newFilters = { ...this.state.filters };
 
-		newFilters.showOrderStock.prevValue = this.state.filters.showOrderStock.value
+		// newFilters.showOrderStock.prevValue = this.state.filters.showOrderStock.value
 		newFilters.showOrderStock.value =! this.state.filters.showOrderStock.value;
 
 		let changed=newFilters.showOrderStock.value != newFilters.showOrderStock.prevValue 
+		console.log(changed)
 
 		this.setState((state, props) => ({
 			filters: newFilters,
 			hasChanged: changed,
 		}));
+
 		setTimeout(() => {
 			console.log(this.state.filters.showOrderStock);
 		}, 100);

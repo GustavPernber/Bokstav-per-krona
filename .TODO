@@ -15,15 +15,18 @@ Backend:
 Frontend:
 
     React:
+        ☐ Header ovan header
         ☐ Sortera 
         ☐ Header knappar
         ☐ No products found message/om inga mer finns
         ☐ Laddnings animationer
         ☐ Sliders laggar vid snabba förändringar
+        ☐ Efter nya filter så applicerar loadmore ej filter
         ✔ Filters ska fällas ihop för mobile vid stäng @done(22-02-24 17:49)
-
+        
         Filter:
-            ☐ Filtera bort ordervaror
+            ☐ Fixa max/min values i filter
+            ✔ Filtera bort ordervaror @done(22-02-25 18:25)
             ☐ Rotera pil vid show
             ✔ Filter show/hide @done(22-02-22 11:48)
             ✔ "Uppdate has changed" att checka alla filter @done(22-02-22 11:28)
@@ -58,6 +61,17 @@ Frontend:
             ☐ TS
 
 Next up:
-    ☐ Ordervara filter
-        ☐ få in filter i uri för fetch i frontend. Backend klar. showOrderStock=false
+    ✔ Ordervara filter @done(22-02-25 18:25)
+        ✔ få in filter i uri för fetch i frontend. Backend klar. showOrderStock=false @done(22-02-25 18:20)
+        ✔ Reset page on filter update @done(22-02-25 18:25)
+        ✔ update filter knapp vid ordervara visa igen @done(22-02-25 18:23)
+    ☐ Sortera
+        ☐ APK
+        ☐ Pris
+            ☐ lägst
+            ☐ Högst
+        ☐ Alkoholhalt
+    ☐ Meddelanden för ladda mer
+        ☐ inga produkter hittades
+        ☐ server fel försök igen 
     ☐ Header knappar att fungera

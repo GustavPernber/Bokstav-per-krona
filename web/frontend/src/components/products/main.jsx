@@ -26,10 +26,10 @@ export default class Products extends Component {
         
     }
 
+    //On filter update
     componentDidUpdate(prevProps){
 
         if(prevProps.filters != this.props.filters){
-            console.log('in if')
             this.setState(()=>({
                 pageNum:1
             }))

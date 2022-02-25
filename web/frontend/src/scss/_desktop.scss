@@ -19,8 +19,6 @@ body {
 }
 
 main#index {
-    
-
 	background-color: $bgWhite;
 	grid-column-gap: 3rem;
 	padding: 0 0 3rem 3rem;
@@ -32,9 +30,8 @@ main#index {
 	display: grid;
 
 	aside.filters {
-
-        position: sticky;
-        top: 3rem;
+		position: sticky;
+		top: 3rem;
 		grid-column: 1;
 		grid-row: 1;
 		justify-self: flex-end;
@@ -42,9 +39,9 @@ main#index {
 		height: 80vh;
 		width: 15rem;
 
-        >button.close-filters{
-            display: none;
-        }
+		> button.close-filters {
+			display: none;
+		}
 
 		div.button-container {
 			@include center;
@@ -63,7 +60,7 @@ main#index {
 				align-self: center;
 				background: $systemetGreen;
 				border: none;
-                font-family: 'Roboto';
+				font-family: "Roboto";
 
 				&:hover {
 					background-color: $hoverSystemetGreen;
@@ -154,7 +151,6 @@ main#index {
 
 							&::-webkit-inner-spin-button,
 							&::-webkit-outer-spin-button {
-
 								appearance: none;
 								margin: 0;
 							}
@@ -195,7 +191,7 @@ main#index {
 						// top: -7px;
 						right: -9px; /* half the width */
 						border-radius: 9999999px;
-                        cursor: pointer;
+						cursor: pointer;
 
 						&::after,
 						&::before {
@@ -238,75 +234,89 @@ main#index {
 				display: none;
 			}
 
-			form.sort {
-				align-self: center;
-				// background-color: red;
-
-				border: none;
-
+			div.sort-container {
 				grid-row: 1;
-
-				color: $systemetGreen;
-
 				@include center;
-				flex-direction: row;
-				// white-space: nowrap;
-
+				flex-direction: column;
+				align-items: flex-start;
 				justify-content: space-between;
-				height: 2.5rem;
-				max-width: 10rem;
-				position: relative;
-
-				&:hover {
-					background-color: $lightSystemetGreen;
-					border-radius: 8px;
-				}
-
-				svg {
-					position: absolute;
-					right: 1rem;
-					// margin-right: 1rem;
-					z-index: 10;
-					pointer-events: none;
-				}
-
-				select {
-					// background-color: lightgreen;
-					@include center;
+				
+				p.sort-p{
+					font-size: 0.8rem;
 					padding-left: 0.8rem;
+				}
+				form.sort {
+					// align-self: center;
+					// background-color: red;
 
-					border-radius: 8px;
-					width: 100%;
-					z-index: 5;
-
-					height: 2.5rem;
-					max-width: 10rem;
-
-					color: $systemetGreen;
-					font-family: "Roboto", sans-serif;
-					font-weight: 600;
-					font-size: 1rem;
-
-					appearance: none;
-					// position: absolute;
-
-					background: none;
 					border: none;
 
-					&:focus-visible {
-						outline: none;
-					}
+
+					color: $systemetGreen;
+
+					@include center;
+					flex-direction: row;
+					// white-space: nowrap;
+
+					justify-content: space-between;
+					height: 2.5rem;
+					width: 10rem;
+					position: relative;
 
 					&:hover {
-						cursor: pointer;
+						background-color: $lightSystemetGreen;
+						border-radius: 8px;
+					}
+
+					svg {
+						position: absolute;
+						right: 1rem;
+						// margin-right: 1rem;
+						z-index: 10;
+						pointer-events: none;
+					}
+
+					select {
+						// background-color: lightgreen;
+						@include center;
+						padding-left: 0.8rem;
+
+						border-radius: 8px;
+						width: 100%;
+						z-index: 5;
+
+						height: 2.5rem;
+						// max-width: 15rem;
+
+						color: $systemetGreen;
+						font-family: "Roboto", sans-serif;
+						font-weight: 600;
+						font-size: 1rem;
+
+						appearance: none;
+						// position: absolute;
+
+						background: none;
+						border: none;
+
+						&:focus-visible {
+							outline: none;
+						}
+
+						&:hover {
+							cursor: pointer;
+						}
 					}
 				}
 			}
 
-			div {
+			div.article-type {
 				grid-row: 1;
 				@include center;
 				justify-content: flex-end;
+				align-self: flex-end;
+				transform: translateY(-0.3rem);
+				// padding-bottom: 0.7rem;
 
 				gap: 0.2rem;
 
@@ -376,40 +386,38 @@ main#index {
 		aside.filters {
 			display: none;
 
-            &.show-mobile{
-                background-color: $bgWhite;
-                top: 0;
-                right: 0;
+			&.show-mobile {
+				background-color: $bgWhite;
+				top: 0;
+				right: 0;
 
-                display: block;
-                position: fixed;
-                height: 100vh;
-                width: 100%;
-                z-index: 20;
-                padding: 3rem;
+				display: block;
+				position: fixed;
+				height: 100vh;
+				width: 100%;
+				z-index: 20;
+				padding: 3rem;
 
-                button.close-filters{
-                    @include center;
-                    flex-direction: row;
+				button.close-filters {
+					@include center;
+					flex-direction: row;
 
-                    position: absolute;
-                    right: 3rem;
+					position: absolute;
+					right: 3rem;
 
-                    background: none;
-                    gap: 0.5rem;
+					background: none;
+					gap: 0.5rem;
 
-                    border: none;
-                    cursor: pointer;
+					border: none;
+					cursor: pointer;
 					font-size: 1.1rem;
 
-                    >p:nth-child(2){
-                        font-weight: 600;
-                        font-size: 0.9rem;
-                    }
-                    
-                }
-
-            }
+					> p:nth-child(2) {
+						font-weight: 600;
+						font-size: 0.9rem;
+					}
+				}
+			}
 		}
 
 		> div {
@@ -445,12 +453,15 @@ main#index {
 					}
 				}
 
-				form.sort {
-					align-self: center;
+				>div.sort-container{
+
 					grid-row: 2;
 				}
+				// form.sort {
+				// 	align-self: center;
+				// }
 
-				div {
+				div.article-type {
 					grid-row: 2;
 				}
 			}

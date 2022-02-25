@@ -50,11 +50,11 @@
                 // }
 
                 div{
-                    margin: auto 0 auto 0;
+                    // margin: auto 0 auto 0;
                     font-size: 0.85rem;
                     button{
-                        max-width: 2rem;
-                        max-height: 2rem;
+                        max-width: 2.2rem;
+                        max-height: 2.2rem;
                     }
                 }
             }
@@ -72,7 +72,18 @@
                     display: grid;
                     padding: 0 1.3rem;
                     grid-template-columns: 4rem auto auto;
-    
+                    
+                    &.order-stock-product{
+
+                        >div.order-stock-flag{
+                            padding: 0;
+                            >div.order-p-container{
+                                width: 100%;
+                                
+                            }
+                        }
+                    }
+
                     figure{
                         width: 100%;
                         grid-column: 1;
@@ -167,7 +178,7 @@
                 }
     
                 &.strippedArticles{
-                    a{
+                    >a{
                         display: grid;
                         grid-template-rows: auto auto;
                         grid-template-columns: 4rem auto auto;
@@ -178,6 +189,20 @@
                         max-width: 90vw;
                         width: 100%;
     
+                        &.order-stock-product{
+                            >div.order-stock-flag{
+
+                                grid-column: span 3;
+                            }
+                            // >div.order-stock-flag{
+                            //     padding: 0;
+                            //     >div.order-p-container{
+                            //         width: 100%;
+                                    
+                            //     }
+                            // }
+                        }
+
                         figure{
                             grid-column: 1;
                             grid-row: span 2;

@@ -269,7 +269,7 @@ main#index aside.filters div.button-container button.update-filters {
       align-self: center;
   background: #095741;
   border: none;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 main#index aside.filters div.button-container button.update-filters:hover {
@@ -525,12 +525,37 @@ main#index > div header.searchOptions > button.filter {
   display: none;
 }
 
-main#index > div header.searchOptions form.sort {
-  -ms-flex-item-align: center;
-      align-self: center;
-  border: none;
+main#index > div header.searchOptions div.sort-container {
   -ms-grid-row: 1;
   grid-row: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main#index > div header.searchOptions div.sort-container p.sort-p {
+  font-size: 0.8rem;
+  padding-left: 0.8rem;
+}
+
+main#index > div header.searchOptions div.sort-container form.sort {
+  border: none;
   color: #095741;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -549,23 +574,23 @@ main#index > div header.searchOptions form.sort {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 2.5rem;
-  max-width: 10rem;
+  width: 10rem;
   position: relative;
 }
 
-main#index > div header.searchOptions form.sort:hover {
+main#index > div header.searchOptions div.sort-container form.sort:hover {
   background-color: #cdead5;
   border-radius: 8px;
 }
 
-main#index > div header.searchOptions form.sort svg {
+main#index > div header.searchOptions div.sort-container form.sort svg {
   position: absolute;
   right: 1rem;
   z-index: 10;
   pointer-events: none;
 }
 
-main#index > div header.searchOptions form.sort select {
+main#index > div header.searchOptions div.sort-container form.sort select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -580,7 +605,6 @@ main#index > div header.searchOptions form.sort select {
   width: 100%;
   z-index: 5;
   height: 2.5rem;
-  max-width: 10rem;
   color: #095741;
   font-family: "Roboto", sans-serif;
   font-weight: 600;
@@ -592,15 +616,15 @@ main#index > div header.searchOptions form.sort select {
   border: none;
 }
 
-main#index > div header.searchOptions form.sort select:focus-visible {
+main#index > div header.searchOptions div.sort-container form.sort select:focus-visible {
   outline: none;
 }
 
-main#index > div header.searchOptions form.sort select:hover {
+main#index > div header.searchOptions div.sort-container form.sort select:hover {
   cursor: pointer;
 }
 
-main#index > div header.searchOptions div {
+main#index > div header.searchOptions div.article-type {
   -ms-grid-row: 1;
   grid-row: 1;
   display: -webkit-box;
@@ -615,15 +639,19 @@ main#index > div header.searchOptions div {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transform: translateY(-0.3rem);
+          transform: translateY(-0.3rem);
   gap: 0.2rem;
 }
 
-main#index > div header.searchOptions div p {
+main#index > div header.searchOptions div.article-type p {
   margin-right: 0.4rem;
   color: #2D2926;
 }
 
-main#index > div header.searchOptions div button {
+main#index > div header.searchOptions div.article-type button {
   background: white;
   border: none;
   border-radius: 8px;
@@ -644,16 +672,16 @@ main#index > div header.searchOptions div button {
           flex-direction: column;
 }
 
-main#index > div header.searchOptions div button svg {
+main#index > div header.searchOptions div.article-type button svg {
   pointer-events: none;
 }
 
-main#index > div header.searchOptions div button:hover {
+main#index > div header.searchOptions div.article-type button:hover {
   cursor: pointer;
   background: #cdead5;
 }
 
-main#index > div header.searchOptions div button.notActive svg {
+main#index > div header.searchOptions div.article-type button.notActive svg {
   opacity: 0.15;
 }
 
@@ -698,6 +726,58 @@ main#index > div section.drinksContainer > a {
   display: grid;
   -ms-grid-columns: 10rem auto 7rem;
       grid-template-columns: 10rem auto 7rem;
+}
+
+main#index > div section.drinksContainer > a.order-stock-product {
+  background-color: #e7e6e6;
+}
+
+main#index > div section.drinksContainer > a.order-stock-product div.order-stock-flag {
+  grid-column: span 3;
+  height: 2.5rem;
+  padding: 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main#index > div section.drinksContainer > a.order-stock-product div.order-stock-flag div.order-p-container {
+  border-top: 1px solid rgba(45, 41, 38, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+main#index > div section.drinksContainer > a.order-stock-product div.order-stock-flag div.order-p-container p {
+  border-radius: 4px;
+  height: 60%;
+  font-family: 'Roboto Condensed';
+  font-weight: 500;
+  background-color: #f08d60;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
 }
 
 main#index > div section.drinksContainer > a:hover {
@@ -923,6 +1003,10 @@ main#index > div section.drinksContainer.strippedArticles > a {
   min-height: 0;
 }
 
+main#index > div section.drinksContainer.strippedArticles > a > div.order-stock-flag {
+  grid-column: span 2;
+}
+
 main#index > div section.drinksContainer.strippedArticles > a figure {
   -ms-grid-column: 1;
   grid-column: 1;
@@ -1079,14 +1163,11 @@ main#index > div > button.loadMore:hover {
     cursor: pointer;
     background: #cdead5;
   }
-  main#index > div header.searchOptions form.sort {
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+  main#index > div header.searchOptions > div.sort-container {
     -ms-grid-row: 2;
     grid-row: 2;
   }
-  main#index > div header.searchOptions div {
+  main#index > div header.searchOptions div.article-type {
     -ms-grid-row: 2;
     grid-row: 2;
   }
@@ -1161,12 +1242,11 @@ p {
     height: 1.5rem;
   }
   main#index > div header.searchOptions div {
-    margin: auto 0 auto 0;
     font-size: 0.85rem;
   }
   main#index > div header.searchOptions div button {
-    max-width: 2rem;
-    max-height: 2rem;
+    max-width: 2.2rem;
+    max-height: 2.2rem;
   }
   main#index > div > button.loadMore {
     margin-top: 2rem;
@@ -1193,6 +1273,12 @@ p {
     padding: 0 1.3rem;
     -ms-grid-columns: 4rem auto auto;
         grid-template-columns: 4rem auto auto;
+  }
+  main#index > div section.drinksContainer > a.order-stock-product > div.order-stock-flag {
+    padding: 0;
+  }
+  main#index > div section.drinksContainer > a.order-stock-product > div.order-stock-flag > div.order-p-container {
+    width: 100%;
   }
   main#index > div section.drinksContainer > a figure {
     width: 100%;
@@ -1283,7 +1369,7 @@ p {
   main#index > div section.drinksContainer > a .usageTasteContainer > p {
     font-size: 0.8rem;
   }
-  main#index > div section.drinksContainer.strippedArticles a {
+  main#index > div section.drinksContainer.strippedArticles > a {
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: auto auto;
@@ -1295,7 +1381,10 @@ p {
     max-width: 90vw;
     width: 100%;
   }
-  main#index > div section.drinksContainer.strippedArticles a figure {
+  main#index > div section.drinksContainer.strippedArticles > a.order-stock-product > div.order-stock-flag {
+    grid-column: span 3;
+  }
+  main#index > div section.drinksContainer.strippedArticles > a figure {
     -ms-grid-column: 1;
     grid-column: 1;
     grid-row: span 2;
@@ -1314,13 +1403,13 @@ p {
             flex-direction: column;
     position: relative;
   }
-  main#index > div section.drinksContainer.strippedArticles a figure div {
+  main#index > div section.drinksContainer.strippedArticles > a figure div {
     top: 0;
   }
-  main#index > div section.drinksContainer.strippedArticles a figure img {
+  main#index > div section.drinksContainer.strippedArticles > a figure img {
     padding: 0;
   }
-  main#index > div section.drinksContainer.strippedArticles a .titles {
+  main#index > div section.drinksContainer.strippedArticles > a .titles {
     padding-right: 0;
     padding-top: 1rem;
     padding-left: 0;
@@ -1332,7 +1421,7 @@ p {
     grid-row: 1;
     gap: 0.3rem;
   }
-  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice {
+  main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice {
     -ms-grid-column: 2;
     -ms-grid-column-span: 2;
     grid-column: 2 / 4;
@@ -1355,7 +1444,7 @@ p {
             align-items: flex-start;
     padding: 0.5rem 0 0 0;
   }
-  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice > div {
+  main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice > div {
     padding-right: 0.3rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1373,13 +1462,13 @@ p {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  main#index > div section.drinksContainer.strippedArticles a footer.volumePrice > div p {
+  main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice > div p {
     white-space: nowrap;
   }
-  main#index > div section.drinksContainer.strippedArticles a aside.clocks {
+  main#index > div section.drinksContainer.strippedArticles > a aside.clocks {
     display: none;
   }
-  main#index > div section.drinksContainer.strippedArticles a .usageTasteContainer {
+  main#index > div section.drinksContainer.strippedArticles > a .usageTasteContainer {
     display: none;
   }
 }

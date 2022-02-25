@@ -380,7 +380,9 @@ export default class Filters extends Component {
 
 		let newFilters = { ...this.state.filters };
 
+		newFilters.showOrderStock.prevValue = this.state.filters.showOrderStock.value
 		newFilters.showOrderStock.value =! this.state.filters.showOrderStock.value;
+
 		let changed=newFilters.showOrderStock.value != newFilters.showOrderStock.prevValue 
 
 		this.setState((state, props) => ({

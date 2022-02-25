@@ -15,6 +15,7 @@ section.drinksContainer{
         border-radius: 4px;
         box-shadow: #2d29261a 0px 2px 6px 0px;
 
+        
         background-color: white;
         
         max-width: 42rem;
@@ -24,6 +25,42 @@ section.drinksContainer{
     
         display: grid;
         grid-template-columns: 10rem auto 7rem;
+
+        &.order-stock-product{
+            background-color: rgb(231, 230, 230);
+
+            div.order-stock-flag{
+                // border-top: 1px solid $borderGrey;
+                // border-top-width: 5rem;
+                grid-column: span 3;
+                height: 2.5rem;
+                padding: 0 2rem;
+                // background-color: red;
+                @include center;
+                
+                div.order-p-container{
+                    border-top: 1px solid $borderGrey;
+                    @include center;
+
+                    width: 100%;
+                    height: 100%;
+                    // background-color: green;
+                    p{
+                        border-radius: 4px;
+                        height: 60%;
+                        font-family: 'Roboto Condensed';
+                        font-weight: 500;
+                        background-color: $newsOrange;
+                        @include center;
+                        // max-width: 10rem;
+                        width: 100%;
+                    }
+                }
+            }
+            // width: 80%;
+            // padding: 0 2rem;
+
+        }
 
         &:hover{
             transform: translateY(-0.18rem);
@@ -37,6 +74,7 @@ section.drinksContainer{
         }
         
         figure{
+
             grid-column: 1;
             grid-row: span 3;
             @include center;
@@ -168,7 +206,8 @@ section.drinksContainer{
                 color: $textBlack;
             }
         }
-            
+          
+        
         
         
         
@@ -181,6 +220,9 @@ section.drinksContainer{
             grid-template-columns:  7rem auto;
             min-height: 0;
 
+            >div.order-stock-flag{
+                grid-column: span 2;
+            }
 
             figure{
                 grid-column: 1;

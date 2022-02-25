@@ -73,10 +73,10 @@ function Product(props){
     let productUrl=`https://www.systembolaget.se/produkt/${props.product.cat1}/${productUrlName}`
 
     return(
-        <a href={productUrl}>
+        <a href={productUrl } className={props.product.assortmentText!=="Ordervara" ? "" : "order-stock-product"}>
             <figure>
-                {props.product.assortmentText!=="Ordervara" ? "" : 
-                <div className='orderStock'><p>Ordervara</p></div> }
+                {/* {props.product.assortmentText!=="Ordervara" ? "" : 
+                <div className='orderStock'><p>Ordervara</p></div> } */}
 
                 <img src={imgUrl} alt="Produktbild"/>
             </figure>
@@ -102,6 +102,14 @@ function Product(props){
 
             <TasteClocks clockList={props.product.tasteClocks}></TasteClocks>
 
+            {props.product.assortmentText!=="Ordervara" ? "" : 
+                
+                <div className='order-stock-flag'>
+                <div className='order-p-container'><p>Ordervara</p>
+                </div>
+                </div>
+            }
+
         </a>
     )
     
@@ -119,10 +127,12 @@ class ProductsContainer extends Component{
       
     }
 
+    //Körs på direkten en gång
     componentDidMount(){
         this.getProducts()
     }
 
+    //körs när filter uppdateras
     async componentDidUpdate(prevProps, prevState){
 
         if (this.props.filters!==null && prevProps.filters !== this.props.filters) {
@@ -142,12 +152,19 @@ class ProductsContainer extends Component{
 
     async getProducts(queries="", firstPage=false){
         console.log('Fetching...')
+
         try {
+
             const pageNum= firstPage ? 1 : this.props.pageNum
+            let orderStock="showOrderStock=true"
+            if(this.props.filters!==null){
+
+                orderStock= this.props.filters.showOrderStock.value ? "showOrderStock=true" : "showOrderStock=false"
+            }
 
             // console.log(pageNum)
 
-            let url=`http://localhost:8080/api/productsLimited?page=${pageNum}&${queries}`
+            let url=`http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${queries}`
             // let url=`${window.location}api/productsLimited?page=${this.props.pageNum}&${queries}`
             console.log(url)
             const response=await fetch(url)

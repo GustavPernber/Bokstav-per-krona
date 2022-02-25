@@ -134,6 +134,8 @@ class ProductsContainer extends Component{
 
     //körs när filter uppdateras
     async componentDidUpdate(prevProps, prevState){
+        
+
 
         if (this.props.filters!==null && prevProps.filters !== this.props.filters) {
             this.setState({
@@ -147,7 +149,29 @@ class ProductsContainer extends Component{
             this.getProducts(urlArr.join('&'), true)
             // console.log(this.props.pageNum, true)
 
+        }else if(this.props.sortBy!==prevProps.sortBy){
+            //Om det är sort som har uppdaterats
+
+            //Rensa produkter.
+            this.setState({
+                products:[]
+            })
+
+            let urlArr=[]
+            if(this.props.filters!==null){
+                this.props.filters.slideFilters.forEach((filter, i)=>{
+                    urlArr.push(`${filter.minTag}=${filter.minCurrent}&${filter.maxTag}=${filter.maxCurrent}`)
+                })
+            }
+
+            urlArr.push(`sortBy=${this.props.sortBy}`)
+            this.getProducts(urlArr.join('&'), true)
+
+
+            //bygg query
+            //Fetch
         }
+
     }
 
     async getProducts(queries="", firstPage=false){

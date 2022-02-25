@@ -6,6 +6,7 @@ import { ReactComponent as SmallArticlesIcon } from "../../img/smallArticles.svg
 import { ReactComponent as BigArticlesIcon } from "../../img/bigArticles.svg";
 
 class Sort extends Component {
+
 	render() {
 		return (
 			<>
@@ -17,10 +18,10 @@ class Sort extends Component {
 				<div className="sort-container">
 					<p className="sort-p">Sortera efter:</p>
 					<form className="sort">
-						<select name="sort">
-							<option>APK</option>
-							<option>Lägsta pris</option>
-							<option>Alkoholhalt</option>
+						<select onChange={this.props.sortUpdate} name="sort">
+							<option value="apk">APK</option>
+							<option value={"priceAsc"}>Lägsta pris</option>
+							<option value={"alcAsc"}>Alkoholhalt</option>
 						</select>
 						<SortArrows></SortArrows>
 					</form>
@@ -87,7 +88,7 @@ export default class ViewOptions extends Component {
 	render() {
 		return (
 			<header className="searchOptions">
-				<Sort mobileFilters={this.props.mobileFilters}></Sort>
+				<Sort sortUpdate={this.props.sortUpdate} mobileFilters={this.props.mobileFilters}></Sort>
 
 				<ArticleType
 					viewTypeChange={this.props.viewTypeChange}

@@ -9,10 +9,12 @@ export default class Products extends Component {
         
       this.handleViewChange=this.handleViewChange.bind(this)
       this.handleLoadMore=this.handleLoadMore.bind(this)
-
+        this.sortUpdate=this.sortUpdate.bind(this)
+        
       this.state={
         pageNum:1,
-        isSmall:false
+        isSmall:false,
+        sortBy:"apk"
       }
     }
 
@@ -24,6 +26,12 @@ export default class Products extends Component {
         
         this.productContainer.getProducts()
         
+    }
+
+    sortUpdate(e){
+        this.setState({
+            sortBy: e.target.value
+        })
     }
 
     //On filter update
@@ -53,8 +61,8 @@ export default class Products extends Component {
     render() {
         return (
             <div>
-                <ViewOptions mobileFilters={this.props.mobileFilters} viewTypeChange={this.handleViewChange}></ViewOptions>
-                <ProductsContainer pageNum={this.state.pageNum} ref={instance=>{this.productContainer=instance}} filters={this.props.filters} isSmall={this.state.isSmall}></ProductsContainer>
+                <ViewOptions sortUpdate={this.sortUpdate} mobileFilters={this.props.mobileFilters} viewTypeChange={this.handleViewChange}></ViewOptions>
+                <ProductsContainer sortBy={this.state.sortBy} pageNum={this.state.pageNum} ref={instance=>{this.productContainer=instance}} filters={this.props.filters} isSmall={this.state.isSmall}></ProductsContainer>
                 <LoadMoreBtn loadMore={this.handleLoadMore}></LoadMoreBtn>
             </div>
         )

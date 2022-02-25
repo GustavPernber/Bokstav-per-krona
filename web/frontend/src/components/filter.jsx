@@ -187,7 +187,7 @@ class OrderStockFilter extends Component {
 		this.handleHeaderClick = this.handleHeaderClick.bind(this);
 
 		this.state = {
-			show: true,
+			show: false,
 		};
 	}
 

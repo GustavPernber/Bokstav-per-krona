@@ -89,6 +89,8 @@ function validateQueries(query){
 }
 
 router.get('/productsLimited', async (req, res)=>{
+    // res.json([])
+    // return
     mongoose.connect(process.env.DB_URI)
     const query=validateQueries(req.query)
 

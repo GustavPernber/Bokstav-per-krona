@@ -123,7 +123,7 @@ class ProductsContainer extends Component{
     
       this.state = {
         products: [],
-        url:""
+        url:"",
       }
       
     }
@@ -177,12 +177,9 @@ class ProductsContainer extends Component{
         this.getProducts()
     }
 
-    
-
-
-
     async getProducts(firstPage=false){
         console.log('Fetching...')
+
 
         try {
 
@@ -202,15 +199,23 @@ class ProductsContainer extends Component{
             console.log(url)
             const response=await fetch(url)
             const data=await response.json()
-            console.log('Done fetching: ', data)
-            
-            let newData= this.state.products.concat(data)
-            this.setState({
-                products:newData
-            })
+            if(data.length>0){
+                this.props.fetchSucces()
+                console.log('Done fetching: ', data)
+                let newData= this.state.products.concat(data)
+                this.setState({
+                    products:newData
+                })
+            }else{
+                console.log('No products found!')
+                //Sätt i state 
+                //Rensa staten vid update
+                this.props.noProductsFound()
+            }
         } catch (error) {
             console.error(error)
             console.log('Failed to fetch from server!')
+            this.props.fetchHasFailed()
         }
         
     }
@@ -219,9 +224,12 @@ class ProductsContainer extends Component{
     render(){
         return(
             <section className={`drinksContainer ${this.props.isSmall ? "strippedArticles" : ""}`}>
-                {this.state.products.map((product, i)=>{
+
+                {this.props.fetchFail===false ? this.state.products.map((product, i)=>{
                     return (<Product key={product.productId} product={product}></Product>)
-                })}
+                }) : ""}
+
+                
 
             
             </section>

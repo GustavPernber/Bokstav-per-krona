@@ -534,8 +534,8 @@ main#index aside.filters .dropContainer.show {
 }
 
 main#index aside.filters .dropContainer.show.order-stock-drop {
-  -webkit-transition: max-height 0.5s;
-  transition: max-height 0.5s;
+  -webkit-transition: max-height 0.6s ease-out;
+  transition: max-height 0.6s ease-out;
 }
 
 main#index > div {
@@ -799,6 +799,8 @@ main#index > div section.drinksContainer > a.order-stock-product {
 }
 
 main#index > div section.drinksContainer > a.order-stock-product div.order-stock-flag {
+  -ms-flex-item-align: center;
+      align-self: center;
   grid-column: span 3;
   height: 2.5rem;
   padding: 0 2rem;
@@ -1112,6 +1114,28 @@ main#index > div section.drinksContainer.strippedArticles > a footer.volumePrice
   grid-column: 2;
   -ms-grid-row: 2;
   grid-row: 2;
+}
+
+main#index > div div.fetch-err-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main#index > div div.fetch-err-container p {
+  font-weight: 600;
+}
+
+main#index > div div.fetch-err-container a {
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 main#index > div > button.loadMore {

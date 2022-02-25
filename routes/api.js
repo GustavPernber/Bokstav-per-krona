@@ -3,6 +3,7 @@ const router = express.Router()
 const Product=require('../models/Product')
 
 const mongoose=require('mongoose')
+const { where } = require('../models/Product')
 require('dotenv').config()
 
 function validateQueries(query){
@@ -10,11 +11,14 @@ function validateQueries(query){
     try {
     
         for (let key in query){
-            if(Array.isArray(query[key])){
-                query[key]=query[key][0]
-            }
+            if(["showOrderStock", "sortBy"].includes(key)===false){
 
-            query[key]=parseFloat(query[key])
+                if(Array.isArray(query[key])){
+                    query[key]=query[key][0]
+                }
+    
+                query[key]=parseFloat(query[key])
+            }
             
         }
 
@@ -30,38 +34,53 @@ function validateQueries(query){
             volumeMax: 40000,
 
             alcMin: 0,
-            alcMax: 90
-            
+            alcMax: 90,
+            sortBy:{"apk":-1}
         }
-
 
         if(query.page===undefined || query.page<1 || query.page > 333 || typeof(query.page)!= "number" ){
             newQuery["page"]=standard.page
         }else{
             newQuery["page"]=query.page
-
         }
 
-        newQuery["priceMin"]= query.priceMin<standard.priceMin ? standard.priceMin : query.priceMin
-        newQuery["priceMax"]= query.priceMax>standard.priceMax ? standard.priceMax : query.priceMax
+        ["price", "volume", "alc"].forEach((filterName)=>{
+            newQuery[`${filterName}Min`]= query[`${filterName}Min`]<standard[`${filterName}Min`] ? standard[`${filterName}Min`] : query[`${filterName}Min`]
+            newQuery[`${filterName}Max`]= query[`${filterName}Max`]>standard[`${filterName}Max`] ? standard[`${filterName}Max`] : query[`${filterName}Max`]
+        })
         
-        newQuery["volumeMin"]= query.volumeMin<standard.volumeMin ? standard.volumeMin : query.volumeMin
-        newQuery["volumeMax"]= query.volumeMax>standard.volumeMax ? standard.volumeMax : query.volumeMax
-        
-        newQuery["alcMin"]= query.alcMin<standard.alcMin ? standard.alcMin : query.alcMin
-        newQuery["alcMax"]= query.alcMax>standard.alcMax ? standard.alcMax : query.alcMax
-        
+        if (query.showOrderStock==='false') {
+            newQuery["showOrderStock"]=false
+        } else {
+            newQuery["showOrderStock"]=true  
+        }
+
+        // ["apk", "priceAsc", "alcAsc"]
+        if (query.sortBy==="apk") {
+            newQuery["sortBy"]={"apk": -1}
+
+        } else if(query.sortBy==="priceAsc"){
+            newQuery["sortBy"]={"price": 1}
+            
+        }else if(query.sortBy==="alcAsc"){
+            newQuery["sortBy"]={"alcPercentage": -1}
+
+        }else{
+            newQuery["sortBy"]=standard.sortBy
+        }
+
         for(key in newQuery){
             if(newQuery[key]===undefined || null){
                 newQuery[key]=standard[key]
             }
         }
 
-    
+        
+
     } catch (error) {
         console.error(error)
         console.log('QUERY VALIDATION ERROR')
-        newQuery=standard
+        return [false, error]
     }
     
     
@@ -70,19 +89,43 @@ function validateQueries(query){
 }
 
 router.get('/productsLimited', async (req, res)=>{
+    // res.json([])
+    // return
     mongoose.connect(process.env.DB_URI)
+    const query=validateQueries(req.query)
 
     
-    const query=validateQueries(req.query)
+    if(query[0]===false){
+        res.send(false)
+        return
+    }
+
     const limit=2
     const offset=(limit*query.page)-limit
 
-    const products= await Product.find()
-    .skip(offset).limit(limit)
 
-    .where("price").gte(query.priceMin).lte(query.priceMax)
-    .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
-    .where("volume").gte(query.volumeMin).lte(query.volumeMax)
+    let products
+    if (query.showOrderStock) {
+        //Ordervaror ska visas
+        products= await Product.find()
+        .skip(offset).limit(limit)
+
+        .where("price").gte(query.priceMin).lte(query.priceMax)
+        .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
+        .where("volume").gte(query.volumeMin).lte(query.volumeMax)
+        .sort(query.sortBy)
+    } else {
+        products= await Product.find()
+        .skip(offset).limit(limit)
+        
+        .where("price").gte(query.priceMin).lte(query.priceMax)
+        .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
+        .where("volume").gte(query.volumeMin).lte(query.volumeMax)
+        .where("assortmentText").ne("Ordervaror")
+        .sort(query.sortBy)
+    }
+
+    // .where("assortmentText").ne("Ordervara")
 
     res.json(products)
 })

@@ -11,7 +11,7 @@ function validateQueries(query){
     try {
     
         for (let key in query){
-            if(key!="showOrderStock"){
+            if(["showOrderStock", "sortBy"].includes(key)===false){
 
                 if(Array.isArray(query[key])){
                     query[key]=query[key][0]
@@ -34,15 +34,14 @@ function validateQueries(query){
             volumeMax: 40000,
 
             alcMin: 0,
-            alcMax: 90
-            
+            alcMax: 90,
+            sortBy:{"apk":-1}
         }
 
         if(query.page===undefined || query.page<1 || query.page > 333 || typeof(query.page)!= "number" ){
             newQuery["page"]=standard.page
         }else{
             newQuery["page"]=query.page
-
         }
 
         ["price", "volume", "alc"].forEach((filterName)=>{
@@ -53,18 +52,31 @@ function validateQueries(query){
         if (query.showOrderStock==='false') {
             newQuery["showOrderStock"]=false
         } else {
-            newQuery["showOrderStock"]=true
-            
+            newQuery["showOrderStock"]=true  
         }
 
-        
+        // ["apk", "priceAsc", "alcAsc"]
+        if (query.sortBy==="apk") {
+            newQuery["sortBy"]={"apk": -1}
+
+        } else if(query.sortBy==="priceAsc"){
+            newQuery["sortBy"]={"price": 1}
+            
+        }else if(query.sortBy==="alcAsc"){
+            newQuery["sortBy"]={"alcPercentage": -1}
+
+        }else{
+            newQuery["sortBy"]=standard.sortBy
+        }
+
         for(key in newQuery){
             if(newQuery[key]===undefined || null){
                 newQuery[key]=standard[key]
             }
         }
 
-    
+        
+
     } catch (error) {
         console.error(error)
         console.log('QUERY VALIDATION ERROR')
@@ -78,9 +90,9 @@ function validateQueries(query){
 
 router.get('/productsLimited', async (req, res)=>{
     mongoose.connect(process.env.DB_URI)
-
     const query=validateQueries(req.query)
 
+    
     if(query[0]===false){
         res.send(false)
         return
@@ -99,14 +111,16 @@ router.get('/productsLimited', async (req, res)=>{
         .where("price").gte(query.priceMin).lte(query.priceMax)
         .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
         .where("volume").gte(query.volumeMin).lte(query.volumeMax)
+        .sort(query.sortBy)
     } else {
         products= await Product.find()
         .skip(offset).limit(limit)
-
+        
         .where("price").gte(query.priceMin).lte(query.priceMax)
         .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
         .where("volume").gte(query.volumeMin).lte(query.volumeMax)
         .where("assortmentText").ne("Ordervara")
+        .sort(query.sortBy)
     }
 
     // .where("assortmentText").ne("Ordervara")

@@ -24,14 +24,14 @@ export default class Products extends Component {
         }))
         
         
-        this.productContainer.getProducts()
+        this.productContainer.loadMore()
         
     }
 
-    sortUpdate(e){
-        this.setState({
+    async sortUpdate(e){
+        await this.setState(()=>({
             sortBy: e.target.value
-        })
+        }))
     }
 
     //On filter update

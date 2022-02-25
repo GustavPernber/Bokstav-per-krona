@@ -54,7 +54,7 @@ class TasteClocks extends Component{
 
 function Product(props){
     let imgUrl=`https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`
-    let apk=parseFloat(props.product.apk).toPrecision(3)
+    let apk=parseFloat(props.product.apk).toPrecision(4)
 
     let nameAndVintage;
     if (props.product.vintage===null && props.product.nameThin===null) {
@@ -122,7 +122,8 @@ class ProductsContainer extends Component{
       super(props)
     
       this.state = {
-        products: []
+        products: [],
+        url:""
       }
       
     }
@@ -134,53 +135,61 @@ class ProductsContainer extends Component{
 
     //körs när filter uppdateras
     async componentDidUpdate(prevProps, prevState){
-        
-
-
         if (this.props.filters!==null && prevProps.filters !== this.props.filters) {
-            this.setState({
-                products:[]
-            })
 
             let urlArr=[]
             this.props.filters.slideFilters.forEach((filter, i)=>{
                 urlArr.push(`${filter.minTag}=${filter.minCurrent}&${filter.maxTag}=${filter.maxCurrent}`)
             })
-            this.getProducts(urlArr.join('&'), true)
-            // console.log(this.props.pageNum, true)
-
+            urlArr.push(`sortBy=${this.props.sortBy}`)
+            await this.setState(()=>({
+                products:[],
+                url:urlArr.join('&')
+            }))
+            
+            this.getProducts(true)
+            
+            
         }else if(this.props.sortBy!==prevProps.sortBy){
-            //Om det är sort som har uppdaterats
-
-            //Rensa produkter.
-            this.setState({
-                products:[]
-            })
-
+            
+            
             let urlArr=[]
             if(this.props.filters!==null){
+
                 this.props.filters.slideFilters.forEach((filter, i)=>{
                     urlArr.push(`${filter.minTag}=${filter.minCurrent}&${filter.maxTag}=${filter.maxCurrent}`)
                 })
             }
-
             urlArr.push(`sortBy=${this.props.sortBy}`)
-            this.getProducts(urlArr.join('&'), true)
 
+            await this.setState(()=>({
+                products:[],
+                url:urlArr.join('&')
+            }))
 
-            //bygg query
-            //Fetch
+            this.getProducts()
+        
         }
-
+        
     }
 
-    async getProducts(queries="", firstPage=false){
+    loadMore(){
+        this.getProducts()
+    }
+
+    
+
+
+
+    async getProducts(firstPage=false){
         console.log('Fetching...')
 
         try {
 
             const pageNum= firstPage ? 1 : this.props.pageNum
+
             let orderStock="showOrderStock=true"
+
             if(this.props.filters!==null){
 
                 orderStock= this.props.filters.showOrderStock.value ? "showOrderStock=true" : "showOrderStock=false"
@@ -188,7 +197,7 @@ class ProductsContainer extends Component{
 
             // console.log(pageNum)
 
-            let url=`http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${queries}`
+            let url=`http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`
             // let url=`${window.location}api/productsLimited?page=${this.props.pageNum}&${queries}`
             console.log(url)
             const response=await fetch(url)

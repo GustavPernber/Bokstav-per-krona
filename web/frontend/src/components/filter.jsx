@@ -232,11 +232,13 @@ export default class Filters extends Component {
 		this.state = {
 			hasChanged: false,
 			changedArray: null,
+			
 
 			filters: {
 				showOrderStock: {
 					value: true,
 					prevValue: true,
+					changed:false,
 					title: "Ordervaror",
 				},
 				slideFilters: [
@@ -337,15 +339,9 @@ export default class Filters extends Component {
 			}
 		});
 
-		if (this.state.changedArray.includes(true)) {
-			this.setState({
-				hasChanged: true,
-			});
-		} else {
-			this.setState({
-				hasChanged: false,
-			});
-		}
+
+		this.checkChange()
+
 	}
 
 	handleLoadMore() {
@@ -370,26 +366,38 @@ export default class Filters extends Component {
 		});
 	}
 
-	handleOrderStockUpdate() {
+	async handleOrderStockUpdate(e) {
+		
 		let newFilters = { ...this.state.filters };
+		newFilters.showOrderStock.value = !e.target.checked;
 
-		// newFilters.showOrderStock.prevValue = this.state.filters.showOrderStock.value
-		newFilters.showOrderStock.value =
-			!this.state.filters.showOrderStock.value;
+		let hasChanged = newFilters.showOrderStock.value !== this.state.filters.showOrderStock.prevValue
 
-		let changed =
-			newFilters.showOrderStock.value !=
-			newFilters.showOrderStock.prevValue;
-		console.log(changed);
-
-		this.setState((state, props) => ({
+		newFilters.showOrderStock.changed = hasChanged
+		await this.setState((state, props) => ({
 			filters: newFilters,
-			hasChanged: changed,
+
 		}));
 
-		setTimeout(() => {
-			console.log(this.state.filters.showOrderStock);
-		}, 100);
+		this.checkChange()
+	
+	}
+
+	checkChange(){
+
+		let hasChanged;
+		if(this.state.filters.showOrderStock.changed===true || this.state.changedArray.includes(true)){
+			hasChanged=true
+		}else{
+			hasChanged=false
+		}
+
+		this.setState({
+			hasChanged:hasChanged
+		})
+		
+
+		
 	}
 
 	render() {

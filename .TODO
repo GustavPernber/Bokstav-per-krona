@@ -1,79 +1,31 @@
-   
-Backend:
-    ☐ Limit
-    ✔ Offset @done(22-02-22 11:02)
-    ✔ Gör om i node @done(22-02-20 16:56)
-    ✔ Search queries vid filtrering @done(22-02-24 21:27)
-        ✔ Price @done(22-02-20 16:56)
-        ✔ Alc @done(22-02-20 16:56)
-        ✔ Volume @done(22-02-20 16:56)
-        ✔ (Ordervara) @done(22-02-24 21:27)
-    ✔ Hosting @done(22-02-20 15:47)
-    ✔ MongoDB @done(22-02-20 16:09)
-    ☐ Byt password i mongoDB
+Final touches:
+    ☐ Fyll DB
+    ☐ Limit i backend
+    ☐ PW till mongodb byte
+    ☐ Favicon 
+    ☐ HTML document title
 
 Frontend:
 
-    React:
-        ☐ Header ovan header
-        ☐ Header knappar
-        ☐ No products found message/om inga mer finns
-        ☐ Laddnings animationer
-        ☐ Sliders laggar vid snabba förändringar
-        ✔ Efter nya filter så applicerar loadmore ej filter @done(22-02-25 23:27)
-        ✔ Sortera @done(22-02-25 22:55)
-        ✔ Filters ska fällas ihop för mobile vid stäng @done(22-02-24 17:49)
+    1:@critical
+        ☐ Fungerande header knappar
+        ☐ Rotera pil för filter vid show
         
-        Filter:
-            ☐ Fixa max/min values i filter
-            ✔ Filtera bort ordervaror @done(22-02-25 18:25)
-            ☐ Rotera pil vid show
-            ✔ Filter show/hide @done(22-02-22 11:48)
-            ✔ "Uppdate has changed" att checka alla filter @done(22-02-22 11:28)
-            ☐ Sätt current och previous till samma vid component mount
+    2:@high
+        ☐ sub-header ovan header
+        ☐ Tweaka min/max values inlagda i filter
+        ☐ Om bilder ej finns, placeholder
+        ☐ Laddningsanimation vid fetch
+        ☐ Kontrollera responsivitet
+    3:@low
+        ☐ Sätt current och prev till samma vid filter mount
+        ☐ Kontrollera URL för cider
+        ☐ Visa priset snyggare
 
-        Produkter:
-            ☐ Fixa produkt url för cider
-            ☐ Produkter laddar in, gråa
-            ☐ Om bilder ej finns 
+Misc:
 
-            Fetch:
-                ✔ pages @done(22-02-22 11:02)
-                ✔ Skicka params till fetch @done(22-02-21 22:39)
-                
-            ✔ Ladda produkter @done(22-02-17 17:51)
-            ✔ Ladda produkter knapp @done(22-02-18 02:43)
 
-    
-    Styling:
-        CSS:
-            ✔ inputs för filter @done(22-02-23 22:07)
-            ✔ Styling för sliders @done(22-02-23 22:07)
-            ✔ Filter knapp @done(22-02-23 22:07)
-        Responsivitet:
-            ✔ Search header vid mobile @done(22-02-23 21:05)
-            ✔ Visa filter vid mobile @done(22-02-23 23:49)
-    Misc:
-        ✔ Länka till systemet @done(22-02-18 02:44)
-        ☐ Visa kronor synaggare med ören å sånt
-        Riktig misc:
-            ☐ Favicon
-            ☐ TS
-
-Next up:
-    ✔ Ordervara filter @done(22-02-25 18:25)
-        ✔ få in filter i uri för fetch i frontend. Backend klar. showOrderStock=false @done(22-02-25 18:20)
-        ✔ Reset page on filter update @done(22-02-25 18:25)
-        ✔ update filter knapp vid ordervara visa igen @done(22-02-25 18:23)
-    ✔ Sortera @done(22-02-25 22:55)
-        ✔ APK @done(22-02-25 22:55)
-        ✔ Pris @done(22-02-25 22:55)
-            ✔ lägst @done(22-02-25 22:55)
-            ✔ Högst @done(22-02-25 22:55)
-        ✔ Alkoholhalt @done(22-02-25 22:55)
-        ✔ Backend @done(22-02-25 22:55)
-    ✔ Hide ordervara filteringsknapp gömmer sig ej @done(22-02-25 23:36)
-    ☐ Meddelanden för ladda mer
-        ☐ inga produkter hittades
-        ☐ server fel försök igen 
-    ☐ Header knappar att fungera
+Future:
+    ☐ Filtering på cat2
+    ☐ Lazy loading
+    ☐ Sliders laggar lite vid snabbhet

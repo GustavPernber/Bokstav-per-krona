@@ -162,13 +162,13 @@ const APIScript = new APItoDB({
 
     categories: [
         // { level1: "Öl", level2: ["Ale", "Ljus%20lager"]},
-        { level1: "Öl", level2: ["Ale",]},
+        // { level1: "Öl", level2: ["Ale",]},
 
         // { level1: "Vin", level2: ["Rosé", "Vitt"]},
-        { level1: "Vin", level2: ["Rött"]}        
-        // {level1:"Sprit", level2:["Rom", "Likör"]},
+        // { level1: "Vin", level2: ["Rött"]}        
+        {level1:"Sprit", level2:["Rom"]},
 
-        // {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]}
+        {level1:"Cider%20%26%20blanddrycker",level2:["Cider"]}
     ],
 });
 

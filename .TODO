@@ -10,20 +10,20 @@ Frontend:
 
     1:@critical
         ✔ Rotera pil för filter vid show @done(22-02-26 17:13)
-        ☐ Fungerande header knappar
+        ✔ Fungerande header knappar @done(22-02-26 19:07)
             ✔ Pass till fetch @done(22-02-26 18:27)
             ✔ Reset page @done(22-02-26 18:27)
-            ☐ Backend
+            ✔ Backend @done(22-02-26 19:07)
         
     2:@high
         ☐ Styling för aktiv knapp
-        ☐ Visa alla knapp i header
+        ☐ "Visa alla" knapp i header
         ☐ sub-header ovan header
         ☐ Tweaka min/max values inlagda i filter
         ☐ Om bilder ej finns, placeholder
         ☐ Kontrollera responsivitet
     3:@low
-        ☐ Kontrollera URL för cider
+        ✔ Kontrollera URL för cider @done(22-02-26 19:17)
         
 Misc:
 

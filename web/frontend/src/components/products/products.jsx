@@ -69,7 +69,12 @@ function Product(props) {
 		.replace(/\s+/g, "-")
 		.toLowerCase()}-${props.product.productNumber}`;
 
-	let productUrl = `https://www.systembolaget.se/produkt/${props.product.cat1}/${productUrlName}`;
+    let cat1NameURL=props.product.cat1==="Cider%20%26%20blanddrycker" ? "cider-blanddrycker" : props.product.cat1
+
+	let productUrl = `https://www.systembolaget.se/produkt/${cat1NameURL}/${productUrlName}`;
+    
+    let cat1Name = props.product.cat1==="Cider%20%26%20blanddrycker" ? "Cider & blanddryck" : props.product.cat1
+
 
 	return (
 		<a
@@ -89,7 +94,7 @@ function Product(props) {
 
 			<div className="titles">
 				<p>
-					{props.product.cat1}, {props.product.cat2},{" "}
+					{cat1Name}, {props.product.cat2},{" "}
 					{props.product.cat3}
 				</p>
 				<h1>{props.product.nameBold}</h1>

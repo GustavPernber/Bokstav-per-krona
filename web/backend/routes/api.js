@@ -77,7 +77,7 @@ function validateQueries(query){
             newQuery["cat1"]={cat1:"Öl"}
             
         }else if(query.cat1==="cider"){
-            newQuery["cat1"]={cat1:"Cider & blanddrycker"}
+            newQuery["cat1"]={cat1:"Cider%20%26%20blanddrycker"}
             
         }else if(query.cat1==="sprit"){
             newQuery["cat1"]={cat1:"Sprit"}

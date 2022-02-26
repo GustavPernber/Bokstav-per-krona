@@ -9,17 +9,17 @@ class Header extends Component {
 				<nav>
 					<ul>
 						<li>
-							<button onClick={()=>this.props.updateFilter('wine')} className="wine">
+							<button onClick={()=>this.props.updateFilter('vin')} className="wine">
 								<span>Vin</span>
 							</button>
 						</li>
 						<li>
-							<button onClick={()=>this.props.updateFilter('beer')} className="beer">
+							<button onClick={()=>this.props.updateFilter('öl')} className="beer">
 								<span>Öl</span>
 							</button>
 						</li>
 						<li>
-							<button onClick={()=>this.props.updateFilter('liquor')} className="liquor">
+							<button onClick={()=>this.props.updateFilter('sprit')} className="liquor">
 								<span>Sprit</span>
 							</button>
 						</li>

@@ -4,6 +4,7 @@ Final touches:
     ☐ PW till mongodb byte
     ☐ Favicon 
     ☐ HTML document title
+    ☐ query validation sortera för sprit och cider
 
 Frontend:
 
@@ -26,7 +27,7 @@ Frontend:
         
 Misc:
 
-Bugs:
+Issues:
     ☐ Vara ko upp två gånger äcen om bara en finns i databas. Inga filter sortBy apk
 
 Future:

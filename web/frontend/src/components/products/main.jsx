@@ -93,6 +93,8 @@ export default class Products extends Component {
 					viewTypeChange={this.handleViewChange}
 				></ViewOptions>
 				<ProductsContainer
+					catFilter={this.props.catFilter}
+
 					noProductsFound={this.handleNoProducts}
 					fetchSucces={this.handleFetchSucces}
 					fetchHasFailed={this.handleFetchFail}

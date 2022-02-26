@@ -7,7 +7,7 @@ import { LoadMoreBtn } from "./products/products";
 class DropHeader extends Component {
 	render() {
 		return (
-			<div onClick={this.props.onClick} className="dropHeader">
+			<div onClick={this.props.onClick} className={`dropHeader ${this.props.isShow ? "active" : "" }`}>
 				<p>{this.props.title}</p>
 				<CollapseArrow></CollapseArrow>
 			</div>
@@ -167,7 +167,7 @@ class SliderFilter extends Component {
 	render() {
 		return (
 			<div className="filterWrapper">
-				<DropHeader
+				<DropHeader isShow={this.state.show}
 					onClick={this.handleHeaderClick}
 					title={this.props.filter.title}
 				></DropHeader>
@@ -200,7 +200,7 @@ class OrderStockFilter extends Component {
 	render() {
 		return (
 			<div className="filterWrapper">
-				<DropHeader
+				<DropHeader isShow={this.state.show}
 					onClick={this.handleHeaderClick}
 					title={this.props.filter.title}
 				></DropHeader>

@@ -8,24 +8,25 @@ Final touches:
 Frontend:
 
     1:@critical
+        ✔ Rotera pil för filter vid show @done(22-02-26 17:13)
         ☐ Fungerande header knappar
-        ☐ Rotera pil för filter vid show
         
     2:@high
         ☐ sub-header ovan header
         ☐ Tweaka min/max values inlagda i filter
         ☐ Om bilder ej finns, placeholder
-        ☐ Laddningsanimation vid fetch
         ☐ Kontrollera responsivitet
     3:@low
-        ☐ Sätt current och prev till samma vid filter mount
         ☐ Kontrollera URL för cider
-        ☐ Visa priset snyggare
-
+        
 Misc:
 
 
 Future:
+    ☐ Laddningsanimation vid fetch
+    ☐ Sätt current och prev till samma vid filter mount
+    ☐ Visa priset snyggare
+    ☐ Kollapsa filter för mobile vid stäng
     ☐ Filtering på cat2
     ☐ Lazy loading
     ☐ Sliders laggar lite vid snabbhet

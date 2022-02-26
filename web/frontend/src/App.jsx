@@ -9,22 +9,22 @@ class Header extends Component {
 				<nav>
 					<ul>
 						<li>
-							<button className="wine">
+							<button onClick={()=>this.props.updateFilter('wine')} className="wine">
 								<span>Vin</span>
 							</button>
 						</li>
 						<li>
-							<button className="beer">
+							<button onClick={()=>this.props.updateFilter('beer')} className="beer">
 								<span>Öl</span>
 							</button>
 						</li>
 						<li>
-							<button className="liquor">
+							<button onClick={()=>this.props.updateFilter('liquor')} className="liquor">
 								<span>Sprit</span>
 							</button>
 						</li>
 						<li>
-							<button className="cider">
+							<button onClick={()=>this.props.updateFilter('cider')} className="cider">
 								<span>Cider & Blanddryck</span>
 							</button>
 						</li>
@@ -48,15 +48,7 @@ class Main extends React.Component {
 	}
 
 	handleLoadMore(filters) {
-		//remove filters view on mobile
-		// if (this.state.showMobile) {
-		// 	this.handleMobileShowFilters()
-		// }
-
-		//Sets state to current filters
-		//reset page
-		console.log('load more')
-		this.setState((state, props)=>({
+		this.setState(()=>({
 
 			filters: {...filters}
    		}))
@@ -64,7 +56,6 @@ class Main extends React.Component {
 	}
 
 	handleMobileShowFilters(){
-		console.log('chnaging')
 		this.setState({
 			showMobile:!this.state.showMobile
 		})
@@ -75,19 +66,44 @@ class Main extends React.Component {
 			<main id="index">
 				<Filters changeMobileShow={this.handleMobileShowFilters} showMobile={this.state.showMobile} loadMore={this.handleLoadMore}></Filters>
 
-				<Products mobileFilters={this.handleMobileShowFilters} filters={this.state.filters}></Products>
+				<Products catFilter={this.props.catFilter} mobileFilters={this.handleMobileShowFilters} filters={this.state.filters}></Products>
 			</main>
 		);
 	}
 }
 
-function App() {
-	return (
-		<div id="app">
-			<Header></Header>
-			<Main></Main>
-		</div>
-	);
+class App extends Component {
+
+	constructor(props) {
+	  super(props)
+	  this.handleHeaderChange=this.handleHeaderChange.bind(this)
+
+	  this.state={
+		  catFilter:null,
+
+	  }
+	}
+
+	handleHeaderChange(name){
+		if(name!== this.state.catFilter){
+			console.log('in app update  cat filter')
+			this.setState({
+				
+				catFilter:name
+			})
+		}
+
+	}
+
+	render(){
+
+		return (
+			<div id="app">
+				<Header updateFilter={this.handleHeaderChange}></Header>
+				<Main catFilter={this.state.catFilter} ></Main>
+			</div>
+		);
+	}
 }
 
 export default App;

@@ -135,7 +135,11 @@ class ProductsContainer extends Component{
 
     //körs när filter uppdateras
     async componentDidUpdate(prevProps, prevState){
+        // console.log('update')
+        // console.log(this.props.catFilter)
         if (this.props.filters!==null && prevProps.filters !== this.props.filters) {
+            //Om filter uppdateras
+            
 
             let urlArr=[]
             this.props.filters.slideFilters.forEach((filter, i)=>{
@@ -151,7 +155,7 @@ class ProductsContainer extends Component{
             
             
         }else if(this.props.sortBy!==prevProps.sortBy){
-            
+            //om sort uupdateras
             
             let urlArr=[]
             if(this.props.filters!==null){
@@ -168,7 +172,10 @@ class ProductsContainer extends Component{
             }))
 
             this.getProducts()
-        
+        }else if(this.props.catFilter !== prevProps.catFilter){
+            //Om kategori filter har uppdaterats
+            
+            console.log('cat update')
         }
         
     }

@@ -10,8 +10,13 @@ Frontend:
     1:@critical
         ✔ Rotera pil för filter vid show @done(22-02-26 17:13)
         ☐ Fungerande header knappar
+            ✔ Pass till fetch @done(22-02-26 18:27)
+            ✔ Reset page @done(22-02-26 18:27)
+            ☐ Backend
         
     2:@high
+        ☐ Styling för aktiv knapp
+        ☐ Visa alla knapp i header
         ☐ sub-header ovan header
         ☐ Tweaka min/max values inlagda i filter
         ☐ Om bilder ej finns, placeholder
@@ -21,6 +26,8 @@ Frontend:
         
 Misc:
 
+Bugs:
+    ☐ Vara ko upp två gånger äcen om bara en finns i databas. Inga filter sortBy apk
 
 Future:
     ☐ Laddningsanimation vid fetch

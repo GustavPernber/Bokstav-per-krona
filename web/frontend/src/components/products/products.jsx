@@ -139,31 +139,25 @@ class ProductsContainer extends Component {
 		};
 	}
 
-	//Körs på direkten en gång
+
 	componentDidMount() {
 		this.getProducts();
 	}
 
-	//körs när filter uppdateras
 	async componentDidUpdate(prevProps, prevState) {
-		// console.log('update')
-		// console.log(this.props.catFilter)
+
 		if (this.props.filters !== null && prevProps.filters !== this.props.filters) {
 			//Om filter uppdateras
-
             await this.updateURL()
 			this.getProducts(true);
 		} else if (this.props.sortBy !== prevProps.sortBy) {
             //om sort uupdateras
-            
-			
-            
             await this.updateURL()
 			this.getProducts();
 		} else if (this.props.catFilter !== prevProps.catFilter) {
+			//Om kategori filter har uppdaterats
             await this.updateURL()
             this.getProducts();
-			//Om kategori filter har uppdaterats
 			
 		}
 	}
@@ -206,8 +200,6 @@ class ProductsContainer extends Component {
 					? "showOrderStock=true"
 					: "showOrderStock=false";
 			}
-
-			// console.log(pageNum)
 
 			let url = `http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`;
 			// let url=`${window.location}api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`

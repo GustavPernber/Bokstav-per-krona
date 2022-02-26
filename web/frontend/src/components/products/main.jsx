@@ -41,7 +41,7 @@ export default class Products extends Component {
 
 	//On filter update
 	componentDidUpdate(prevProps) {
-		if (prevProps.filters != this.props.filters) {
+		if (prevProps.filters !== this.props.filters || prevProps.catFilter !== this.props.catFilter) {
 			this.setState(() => ({
 				pageNum: 1,
 			}));

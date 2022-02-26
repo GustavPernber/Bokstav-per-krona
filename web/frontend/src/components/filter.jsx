@@ -210,7 +210,6 @@ class OrderStockFilter extends Component {
 					<div className="input-option">
 						<input
 							onChange={this.props.update}
-							// onChange={this.props.update}
 							type={"checkBox"}
 							name={"orderStock"}
 							id="hideOrderStock"

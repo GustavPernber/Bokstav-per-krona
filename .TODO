@@ -21,9 +21,9 @@ Frontend:
         ✔ Tweaka min/max values inlagda i filter @done(22-02-27 01:42)
         ✔ Kontrollera responsivitet @done(22-02-27 02:11)
     3:@low
-        ☐ Om bilder ej finns, placeholder
         ☐ sub-header ovan header
         ☐ Loading korrekt när man byter filter eller cat1
+        ✔ Om bilder ej finns, placeholder @done(22-02-27 16:26)
         ✔ Kontrollera URL för cider @done(22-02-26 19:17)
         
 Misc:

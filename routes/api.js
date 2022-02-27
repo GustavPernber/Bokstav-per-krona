@@ -11,7 +11,7 @@ function validateQueries(query){
     try {
     
         for (let key in query){
-            if(["showOrderStock", "sortBy"].includes(key)===false){
+            if(["showOrderStock", "sortBy", "cat1"].includes(key)===false){
 
                 if(Array.isArray(query[key])){
                     query[key]=query[key][0]
@@ -35,7 +35,8 @@ function validateQueries(query){
 
             alcMin: 0,
             alcMax: 90,
-            sortBy:{"apk":-1}
+            sortBy:{"apk":-1},
+            cat1:{}
         }
 
         if(query.page===undefined || query.page<1 || query.page > 333 || typeof(query.page)!= "number" ){
@@ -69,6 +70,22 @@ function validateQueries(query){
             newQuery["sortBy"]=standard.sortBy
         }
 
+        if(query.cat1==="vin"){
+            newQuery["cat1"]={cat1:"Vin"}
+            
+        }else if(query.cat1==="öl"){
+            newQuery["cat1"]={cat1:"Öl"}
+            
+        }else if(query.cat1==="cider"){
+            newQuery["cat1"]={cat1:"Cider%20%26%20blanddrycker"}
+            
+        }else if(query.cat1==="sprit"){
+            newQuery["cat1"]={cat1:"Sprit"}
+
+        }else{
+            newQuery["cat1"]=standard.cat1
+        }
+
         for(key in newQuery){
             if(newQuery[key]===undefined || null){
                 newQuery[key]=standard[key]
@@ -92,7 +109,9 @@ router.get('/productsLimited', async (req, res)=>{
     // res.json([])
     // return
     mongoose.connect(process.env.DB_URI)
+    // console.log(req.query)
     const query=validateQueries(req.query)
+    // console.log(query)
 
     
     if(query[0]===false){
@@ -100,22 +119,27 @@ router.get('/productsLimited', async (req, res)=>{
         return
     }
 
-    const limit=2
+    const limit=30
     const offset=(limit*query.page)-limit
+
+
+
 
 
     let products
     if (query.showOrderStock) {
+        // let var1="cat1"
         //Ordervaror ska visas
-        products= await Product.find()
+        products= await Product.find(query.cat1)
         .skip(offset).limit(limit)
 
         .where("price").gte(query.priceMin).lte(query.priceMax)
         .where("alcPercentage").gte(query.alcMin).lte(query.alcMax)
         .where("volume").gte(query.volumeMin).lte(query.volumeMax)
+        // .where('cat1').equals("")
         .sort(query.sortBy)
     } else {
-        products= await Product.find()
+        products= await Product.find(query.cat1)
         .skip(offset).limit(limit)
         
         .where("price").gte(query.priceMin).lte(query.priceMax)

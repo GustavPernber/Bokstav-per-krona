@@ -297,24 +297,31 @@ export default class Filters extends Component {
 
 						steps: 1,
 					},
-					// {
-					// 	unit: "ml",
-					// 	maxTag: "volumeMax",
-					// 	minTag: "volumeMin",
+					{
+						unit: "ml",
+						maxTag: "volumeMax",
+						minTag: "volumeMin",
 
-					// 	title: "Volym",
+						title: "Volym",
 
-					// 	maxVal: 40000,
-					// 	minVal: 0,
+						maxVal: 30000,
+						minVal: 0,
 
-					// 	minPrevious: 0,
-					// 	maxPrevious: 40000,
+						minPrevious: 0,
+						maxPrevious: 30000,
 
-					// 	minCurrent: 0,
-					// 	maxCurrent: 40000,
+						minCurrent: 0,
+						maxCurrent: 30000,
 
-					// 	steps: 1,
-					// },
+						range:{
+							'min':[0,],
+							'30%':[500, 5],
+							'30%':[3500, 10],
+							'max':[30000, 20]
+						},
+
+						steps: 1,
+					},
 				],
 			},
 		};

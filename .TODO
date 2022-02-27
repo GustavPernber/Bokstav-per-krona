@@ -18,7 +18,7 @@ Frontend:
     2:@high
         ✔ Styling för aktiv knapp @done(22-02-27 01:00)
         ✔ "Visa alla" knapp i header @done(22-02-27 01:00)
-        ☐ Tweaka min/max values inlagda i filter
+        ✔ Tweaka min/max values inlagda i filter @done(22-02-27 01:42)
         ☐ Kontrollera responsivitet
     3:@low
         ☐ sub-header ovan header

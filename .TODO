@@ -4,7 +4,7 @@ Final touches:
     ☐ PW till mongodb byte
     ☐ Favicon 
     ☐ HTML document title
-    ☐ query validation sortera för sprit och cider
+    ✔ query validation sortera för sprit och cider @done(22-02-26 19:21)
 
 Frontend:
 
@@ -16,13 +16,14 @@ Frontend:
             ✔ Backend @done(22-02-26 19:07)
         
     2:@high
-        ☐ Styling för aktiv knapp
-        ☐ "Visa alla" knapp i header
-        ☐ sub-header ovan header
+        ✔ Styling för aktiv knapp @done(22-02-27 01:00)
+        ✔ "Visa alla" knapp i header @done(22-02-27 01:00)
         ☐ Tweaka min/max values inlagda i filter
-        ☐ Om bilder ej finns, placeholder
         ☐ Kontrollera responsivitet
     3:@low
+        ☐ sub-header ovan header
+        ☐ Om bilder ej finns, placeholder
+        ☐ Loading korrekt när man byter filter eller cat1
         ✔ Kontrollera URL för cider @done(22-02-26 19:17)
         
 Misc:

@@ -22,7 +22,8 @@ class Slider extends Component {
 		this.minVal = this.props.filter.minVal;
 		this.maxVal = this.props.filter.maxVal;
 
-		this.range = { min: this.minVal, max: this.maxVal };
+		// this.range = { min: this.minVal, max: this.maxVal };
+		this.range=this.props.filter.range
 		this.min = this.props.filter.minTag;
 		this.max = this.props.filter.maxTag;
 
@@ -40,9 +41,14 @@ class Slider extends Component {
 	}
 
 	handleSlider(value) {
+
+		let fixValue=0
+		if(this.props.filter.steps===0.5){
+			fixValue=2
+		}
 		this.setState({
-			[this.min]: value[0],
-			[this.max]: value[1],
+			[this.min]: parseFloat(value[0]).toFixed(fixValue),
+			[this.max]: parseFloat(value[1]).toFixed(fixValue),
 		});
 
 		this.props.update(
@@ -248,14 +254,19 @@ export default class Filters extends Component {
 
 						title: "Alkoholhalt",
 
-						maxVal: 90,
+						maxVal: 80,
 						minVal: 0,
 
 						minPrevious: 0,
-						maxPrevious: 90,
+						maxPrevious: 80,
 
 						minCurrent: 0,
-						maxCurrent: 90,
+						maxCurrent: 80,
+
+						range:{
+							'min':[0],
+							'max':[80]
+						},
 
 						steps: 0.5,
 					},
@@ -266,35 +277,44 @@ export default class Filters extends Component {
 
 						title: "Pris",
 
-						maxVal: 400000,
+						maxVal: 379000,
 						minVal: 0,
 
 						minPrevious: 0,
-						maxPrevious: 400000,
+						maxPrevious: 379000,
 
 						minCurrent: 0,
-						maxCurrent: 400000,
+						maxCurrent: 379000,
+
+						range:{
+							'min':[0,],
+							'20%':[100, 5],
+							'30%':[500, 10],
+							'50%':[4000, 20],
+							'90%':[300000, 20],
+							'max':[379000, 20]
+						},
 
 						steps: 1,
 					},
-					{
-						unit: "ml",
-						maxTag: "volumeMax",
-						minTag: "volumeMin",
+					// {
+					// 	unit: "ml",
+					// 	maxTag: "volumeMax",
+					// 	minTag: "volumeMin",
 
-						title: "Volym",
+					// 	title: "Volym",
 
-						maxVal: 40000,
-						minVal: 0,
+					// 	maxVal: 40000,
+					// 	minVal: 0,
 
-						minPrevious: 0,
-						maxPrevious: 40000,
+					// 	minPrevious: 0,
+					// 	maxPrevious: 40000,
 
-						minCurrent: 0,
-						maxCurrent: 40000,
+					// 	minCurrent: 0,
+					// 	maxCurrent: 40000,
 
-						steps: 1,
-					},
+					// 	steps: 1,
+					// },
 				],
 			},
 		};

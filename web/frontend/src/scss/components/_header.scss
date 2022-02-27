@@ -1,7 +1,7 @@
     >header#header{
      
         @include center;
-        height: 5rem;
+        height: 4rem;
         border-bottom: 2px solid $borderGrey;
         width: 100%;
 
@@ -30,7 +30,7 @@
                         @include center;
                         background: none;
                         width: 100%;
-                        transition: 1s;
+                        transition: 0.2s;
                         border-top:0 solid rgba(0, 0, 0, 0) ;
                         border-bottom: 0 solid rgba(0, 0, 0, 0) ;
                         padding: 0 1rem;
@@ -42,8 +42,17 @@
                             border-top:0 solid rgba(0, 0, 0, 0) ;
                             border-bottom: 2px solid $systemetGreen;
                         }
+                        
+                        &.active{
+                            // border-top:0 solid rgba(0, 0, 0, 0) ;
+                            // border-bottom: 2px solid $systemetGreen;
+                            background-color: $lightSystemetGreen;
+                            // background: red;
+
+                        }
 
                         span{
+                            pointer-events: none;
                             letter-spacing: 0.5px;
                             font-family: 'Roboto Condensed', sans-serif;
                             font-size: 1rem;

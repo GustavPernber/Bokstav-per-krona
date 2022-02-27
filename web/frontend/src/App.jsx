@@ -3,28 +3,49 @@ import Filters from "./components/filter";
 import Products from "./components/products/main";
 
 class Header extends Component {
+	constructor(props) {
+	  super(props)
+		this.handleHeaderClick=this.handleHeaderClick.bind(this)
+	  this.state = {
+		active:'all '
+	  }
+	}
+
+	handleHeaderClick(e, filter){
+		const className=e.target.className
+		this.setState({
+			active:className
+		})
+		this.props.updateFilter(filter)
+	}
+
 	render() {
 		return (
 			<header id="header">
 				<nav>
 					<ul>
 						<li>
-							<button onClick={()=>this.props.updateFilter('vin')} className="wine">
+							<button onClick={(e)=>this.handleHeaderClick(e, 'all')} className={`all ${this.state.active==="all " ? "active" : ""}`}>
+								<span>Visa alla</span>
+							</button>
+						</li>
+						<li>
+							<button  onClick={(e)=>this.handleHeaderClick(e, 'vin')} className={`wine ${this.state.active==="wine " ? "active" : ""}`}>
 								<span>Vin</span>
 							</button>
 						</li>
 						<li>
-							<button onClick={()=>this.props.updateFilter('öl')} className="beer">
+							<button  onClick={(e)=>this.handleHeaderClick(e, 'öl')} className={`beer ${this.state.active==="beer " ? "active" : ""}`}>
 								<span>Öl</span>
 							</button>
 						</li>
 						<li>
-							<button onClick={()=>this.props.updateFilter('sprit')} className="liquor">
+							<button  onClick={(e)=>this.handleHeaderClick(e, 'sprit')} className={`liquor ${this.state.active==="liquor " ? "active" : ""}`} >
 								<span>Sprit</span>
 							</button>
 						</li>
 						<li>
-							<button onClick={()=>this.props.updateFilter('cider')} className="cider">
+							<button  onClick={(e)=>this.handleHeaderClick(e, 'cider')} className={`cider ${this.state.active==="cider " ? "active" : ""}`} >
 								<span>Cider & Blanddryck</span>
 							</button>
 						</li>

@@ -120,7 +120,7 @@ body #root #app > header#header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 5rem;
+  height: 4rem;
   border-bottom: 2px solid rgba(45, 41, 38, 0.1);
   width: 100%;
 }
@@ -185,8 +185,8 @@ body #root #app > header#header nav ul li button {
           align-items: center;
   background: none;
   width: 100%;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
   border-top: 0 solid rgba(0, 0, 0, 0);
   border-bottom: 0 solid rgba(0, 0, 0, 0);
   padding: 0 1rem;
@@ -200,7 +200,12 @@ body #root #app > header#header nav ul li button:hover {
   border-bottom: 2px solid #095741;
 }
 
+body #root #app > header#header nav ul li button.active {
+  background-color: #cdead5;
+}
+
 body #root #app > header#header nav ul li button span {
+  pointer-events: none;
   letter-spacing: 0.5px;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1rem;

@@ -9,24 +9,23 @@
 
 ---
 
-### Route:
-`{host}/api/drinksLimited` 
-
+### GET {host}/api/drinksLimited 
+ 
 Returns limited amount of products. For example 30 products:
 
 ### Params:
 
 * #### Pagenumber
-`page={PAGENUMBER}`  
-Pagenumber=1 will return 30 products and pagenumber=2 will return the next 30 products after that.
+    `page={PAGENUMBER}`  
+    Pagenumber=1 will return 30 products and pagenumber=2 will return the next 30 products after that.
 
 * #### Price
-`priceMin={MIN PRICE}`
-`priceMax={MAX PRICE}`
+    `priceMin={MIN PRICE}`
+    `priceMax={MAX PRICE}`
 
 * #### Alcohol
-`alcMin={MIN ALC PERCENTAGE}`
-`alcMax={MAX ALC PERCENTAGE}`
+    `alcMin={MIN ALC PERCENTAGE}`
+    `alcMax={MAX ALC PERCENTAGE}`
 
   
 ---

@@ -73,7 +73,6 @@ class APItoDB {
                     console.error(error);
                     reject();
                 }
-                console.log(response.data.products.length)
                 if (response.data.products.length < 1) {
                     console.log("All pages completed for:", level1,',', level2);
                     maxPages = true;
@@ -162,17 +161,15 @@ const APIScript = new APItoDB({
     dbPath: process.env.DB_URI,
 
     categories: [
-        // { level1: "Öl", level2: ["Ale", "Ljus%20lager", "Syrlig%20öl", "Porter%20%26%20Stout", "Mellanmörk%20%26%20Mörk%20lager", "Veteöl", "Annan%20öl"]}, //Complete
+        { level1: "Öl", level2: ["Ale", "Ljus%20lager", "Syrlig%20öl", "Porter%20%26%20Stout", "Mellanmörk%20%26%20Mörk%20lager", "Veteöl", "Annan%20öl"]},
 
-        // {level1: "Vin", level2: ["Rött", "Rosé", "Vitt", "Mousserande", "Vinlåda", "Starkvin", "Smaksatt%20vin%20%26%20fruktvin", "Vermouth", "Glögg%20och%20Glühwein", "Sake", "Aperitif"]} //WIP
+        {level1: "Vin", level2: ["Rött", "Rosé", "Vitt", "Mousserande", "Vinlåda", "Starkvin", "Smaksatt%20vin%20%26%20fruktvin", "Vermouth", "Glögg%20och%20Glühwein", "Sake", "Aperitif"]} ,
       
-        // {level1:"Sprit", level2:["Whisky", "Rom", "Likör", "Gin%20%26%20Genever", "Akvavit%20%26%20Kryddat%20brännvin", 
-        // "Cognac", "Vodka%20%26%20Okryddat%20brännvin", "Grappa%20%26%20Marc", "Tequila%20%26%20Mezcal", "Armagnac%20%26%20Brandy","Smaksatt%20sprit",  "Bitter", 
-        // "Frukt%20%26%20Druvsprit", "Calvados", "Drinkar%20%26%20Cocktails", "Punsch", "Anissprit", "Sprit%20av%20flera%20typer"]},
+        {level1:"Sprit", level2:["Whisky", "Rom", "Likör", "Gin%20%26%20Genever", "Akvavit%20%26%20Kryddat%20brännvin", 
+        "Cognac", "Vodka%20%26%20Okryddat%20brännvin", "Grappa%20%26%20Marc", "Tequila%20%26%20Mezcal", "Armagnac%20%26%20Brandy","Smaksatt%20sprit",  "Bitter", 
+        "Frukt%20%26%20Druvsprit", "Calvados", "Drinkar%20%26%20Cocktails", "Punsch", "Anissprit", "Sprit%20av%20flera%20typer"]},
 
-
-        // {level1:"Sprit", level2:["Whisky"]}
-        // {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]} 
+        {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]} 
     ],
 });
 

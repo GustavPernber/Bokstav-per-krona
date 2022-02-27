@@ -32,6 +32,7 @@ Issues:
     ☐ Vara ko upp två gånger äcen om bara en finns i databas. Inga filter sortBy apk
 
 Future:
+    ☐ Search
     ☐ Laddningsanimation vid fetch
     ☐ Sätt current och prev till samma vid filter mount
     ☐ Visa priset snyggare

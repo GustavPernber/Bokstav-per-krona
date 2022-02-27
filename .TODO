@@ -1,6 +1,6 @@
 Final touches:
     ☐ Fyll DB
-    ☐ Limit i backend
+    ✔ Limit i backend @done(22-02-27 02:13)
     ☐ PW till mongodb byte
     ☐ Favicon 
     ☐ HTML document title
@@ -19,7 +19,7 @@ Frontend:
         ✔ Styling för aktiv knapp @done(22-02-27 01:00)
         ✔ "Visa alla" knapp i header @done(22-02-27 01:00)
         ✔ Tweaka min/max values inlagda i filter @done(22-02-27 01:42)
-        ☐ Kontrollera responsivitet
+        ✔ Kontrollera responsivitet @done(22-02-27 02:11)
     3:@low
         ☐ sub-header ovan header
         ☐ Om bilder ej finns, placeholder

@@ -109,9 +109,9 @@ router.get('/productsLimited', async (req, res)=>{
     // res.json([])
     // return
     mongoose.connect(process.env.DB_URI)
-    console.log(req.query)
+    // console.log(req.query)
     const query=validateQueries(req.query)
-    console.log(query)
+    // console.log(query)
 
     
     if(query[0]===false){
@@ -119,7 +119,7 @@ router.get('/productsLimited', async (req, res)=>{
         return
     }
 
-    const limit=2
+    const limit=30
     const offset=(limit*query.page)-limit
 
 

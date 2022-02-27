@@ -3,13 +3,14 @@
 **Absolut aldrig någonsin i livet alkohol per krona!**
 
 ## API documentation
+**No CORS**
 
 *Example*
 `http://localhost:4567/api/drinksLimited??page=2&priceMax=100&priceMin=10&alcMax=20&alcMin=9`
 
 ---
 
-### GET {host}/api/drinksLimited 
+### GET /api/drinksLimited 
  
 Returns limited amount of products. For example 30 products:
 

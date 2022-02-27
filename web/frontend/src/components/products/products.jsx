@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 class LoadMoreBtn extends Component {
 	render() {
@@ -53,8 +53,11 @@ class TasteClocks extends Component {
 }
 
 function Product(props) {
-	let imgUrl = `https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`;
+	const [imgUrl, setImgUrl] = useState(`https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`);
+
+	// let imgUrl = `https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`;
 	let apk = parseFloat(props.product.apk).toPrecision(4);
+
 
 	let nameAndVintage;
 	if (props.product.vintage === null && props.product.nameThin === null) {
@@ -88,10 +91,7 @@ function Product(props) {
 			}
 		>
 			<figure>
-				{/* {props.product.assortmentText!=="Ordervara" ? "" : 
-                <div className='orderStock'><p>Ordervara</p></div> } */}
-
-				<img src={imgUrl} alt="Produktbild" />
+				<img onError={()=>setImgUrl('/img/placeholder-wine-bottle.png')} src={imgUrl} alt="Produktbild" />
 			</figure>
 
 			<div className="titles">
@@ -208,8 +208,8 @@ class ProductsContainer extends Component {
 					: "showOrderStock=false";
 			}
 
-			// let url = `http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`;
-			let url=`${window.location}api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`
+			let url = `http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`;
+			// let url=`${window.location}api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`
 			console.log(url);
 			const response = await fetch(url);
 			const data = await response.json();

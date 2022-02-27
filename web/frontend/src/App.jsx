@@ -7,7 +7,7 @@ class Header extends Component {
 	  super(props)
 		this.handleHeaderClick=this.handleHeaderClick.bind(this)
 	  this.state = {
-		active:'all '
+		active:'all'
 	  }
 	}
 
@@ -46,7 +46,7 @@ class Header extends Component {
 						</li>
 						<li>
 							<button  onClick={(e)=>this.handleHeaderClick(e, 'cider')} className={`cider ${this.state.active==="cider " ? "active" : ""}`} >
-								<span>Cider & Blanddryck</span>
+								<span>Cider <p id="blanddryck">&nbsp;& Blanddryck</p></span>
 							</button>
 						</li>
 					</ul>

@@ -158,6 +158,7 @@ body #root #app > header#header nav ul {
 }
 
 body #root #app > header#header nav ul li {
+  border-right: 1px solid rgba(45, 41, 38, 0.1);
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -169,6 +170,26 @@ body #root #app > header#header nav ul li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+body #root #app > header#header nav ul li:last-child button span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body #root #app > header#header nav ul li:last-child button span p#blanddryck {
+  white-space: nowrap;
 }
 
 body #root #app > header#header nav ul li button {
@@ -1312,8 +1333,22 @@ p {
 }
 
 @media screen and (max-width: 600px) {
-  body > header#header button span {
-    font-size: 0.8rem;
+  body > #root > #app header#header > nav > ul {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  body > #root > #app header#header > nav > ul > li {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    width: auto;
+  }
+  body > #root > #app header#header > nav > ul > li p#blanddryck {
+    display: none;
+  }
+  body > #root > #app header#header > nav > ul > li > button > span {
+    font-size: 0.85rem;
   }
   main#index {
     width: 100%;
@@ -1392,7 +1427,7 @@ p {
     font-size: 0.6rem;
   }
   main#index > div section.drinksContainer > a figure > img {
-    max-width: 1.5rem;
+    max-width: 2rem;
     max-height: 4rem;
   }
   main#index > div section.drinksContainer > a div.titles {

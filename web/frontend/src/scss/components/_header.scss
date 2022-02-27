@@ -17,13 +17,26 @@
                 justify-content: space-between;
                 width: 100%;
                 list-style: none;
-                
                 li{
+                    
+                    border-right:1px solid $borderGrey ;
                     height: 100%;
                     width: 100%;
                   
                     @include center;
 
+                    
+                    &:last-child{
+                        button{
+                            span{
+                                @include center;
+                                flex-direction: row;
+                                p#blanddryck{
+                                    white-space: nowrap;
+                                }
+                            }
+                        }
+                    }
                     button{
                         border: none;
                         height: 100%;
@@ -42,6 +55,7 @@
                             border-top:0 solid rgba(0, 0, 0, 0) ;
                             border-bottom: 2px solid $systemetGreen;
                         }
+                        
                         
                         &.active{
                             // border-top:0 solid rgba(0, 0, 0, 0) ;

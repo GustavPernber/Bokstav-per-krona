@@ -4,18 +4,45 @@
 @media screen and (max-width: 600px){
 
     body{
-        >header#header{
-            button{
+        >#root{
+            >#app{
+                header#header > nav >ul{
+                    justify-content: space-between;
+                    >li{
+                        p#blanddryck{
+                            display: none;
+                        }
+                        flex-grow: 1;
+                        // border-right:none;
+                        // border: 1px solid red;
+                        // width: max-content;
+                        width: auto;
+                        >button{
 
-                span{
-        
-                    font-size: 0.8rem;
+                            >span{
+                                font-size: 0.85rem;
+                            }
+                        }
+                    }
+                    
+                    
+                    
                 }
-            }
 
+            } 
         }
-        
     }
+    // header#header{
+    //     button{
+
+    //         span{
+    
+    //         }
+    //     }
+
+    // }
+        
+    
 
    main#index{
         width: 100%;
@@ -100,7 +127,7 @@
 
 
                         >img{
-                            max-width: 1.5rem;
+                            max-width: 2rem;
                             max-height: 4rem;
     
                         }

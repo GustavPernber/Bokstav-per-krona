@@ -63,6 +63,7 @@ class APItoDB {
 
             for (let i = 1; maxPages === false; i++) {
                 try {
+                    // console.log(`https://api-extern.systembolaget.se/sb-api-ecommerce/v1/productsearch/search?categoryLevel1=${level1}&categoryLevel2=${level2}&page=${i}`)
                     response = await axios.get(
                         `https://api-extern.systembolaget.se/sb-api-ecommerce/v1/productsearch/search?categoryLevel1=${level1}&categoryLevel2=${level2}&page=${i}`,
                         this.config
@@ -72,7 +73,7 @@ class APItoDB {
                     console.error(error);
                     reject();
                 }
-
+                console.log(response.data.products.length)
                 if (response.data.products.length < 1) {
                     console.log("All pages completed for:", level1,',', level2);
                     maxPages = true;
@@ -89,7 +90,7 @@ class APItoDB {
     #singlePage(products) {
         //Har en lista med objekt. 30objekt vanligtvis (förutom vid slutet)
         return new Promise(async (resolve, reject) => {
-            for (let i = 1; i < products.length; i++) {
+            for (let i = 0; i < products.length; i++) {
                 //För varje produkt:
                 let product = products[i];
               
@@ -165,12 +166,13 @@ const APIScript = new APItoDB({
 
         // {level1: "Vin", level2: ["Rött", "Rosé", "Vitt", "Mousserande", "Vinlåda", "Starkvin", "Smaksatt%20vin%20%26%20fruktvin", "Vermouth", "Glögg%20och%20Glühwein", "Sake", "Aperitif"]} //WIP
       
-        {level1:"Sprit", level2:["Whisky", "Rom", "Likör", "Gin%20%26%20Genever", "Akvavit%20%26%20Kryddat%20brännvin", 
-        "Cognac", "Vodka%20%26%20Okryddat%20brännvin", "Grappa%20%26%20Marc", "Tequila%20%26%20Mezcal", "Armagnac%20%26%20Brandy","Smaksatt%20sprit",  "Bitter", 
-        "Frukt%20%26%20Druvsprit", "Calvados", "Drinkar%20%26%20Cocktails", "Punsch", "Anissprit", "Sprit%20av%20flera%20typer"]},
+        // {level1:"Sprit", level2:["Whisky", "Rom", "Likör", "Gin%20%26%20Genever", "Akvavit%20%26%20Kryddat%20brännvin", 
+        // "Cognac", "Vodka%20%26%20Okryddat%20brännvin", "Grappa%20%26%20Marc", "Tequila%20%26%20Mezcal", "Armagnac%20%26%20Brandy","Smaksatt%20sprit",  "Bitter", 
+        // "Frukt%20%26%20Druvsprit", "Calvados", "Drinkar%20%26%20Cocktails", "Punsch", "Anissprit", "Sprit%20av%20flera%20typer"]},
+
 
         // {level1:"Sprit", level2:["Whisky"]}
-        {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]} 
+        // {level1:"Cider%20%26%20blanddrycker",level2:["Cider", "Blanddryck"]} 
     ],
 });
 

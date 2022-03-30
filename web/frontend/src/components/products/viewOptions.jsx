@@ -19,7 +19,7 @@ class Sort extends Component {
 					<p className="sort-p">Sortera efter:</p>
 					<form className="sort">
 						<select onChange={this.props.sortUpdate} name="sort">
-							<option value="apk">APK</option>
+							<option value="apk">BPK</option>
 							<option value={"priceAsc"}>Lägsta pris</option>
 							<option value={"alcAsc"}>Alkoholhalt</option>
 						</select>

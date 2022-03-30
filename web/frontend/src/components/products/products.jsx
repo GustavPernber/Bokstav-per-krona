@@ -56,7 +56,7 @@ function Product(props) {
 	const [imgUrl, setImgUrl] = useState(`https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`);
 
 	// let imgUrl = `https://product-cdn.systembolaget.se/productimages/${props.product.productId}/${props.product.productId}_100.png`;
-	let apk = parseFloat(props.product.apk).toPrecision(4);
+	let apk = parseFloat(props.product.bpk).toPrecision(4);
 
 
 	let nameAndVintage;
@@ -112,7 +112,7 @@ function Product(props) {
 			<footer className="volumePrice">
 				<div>
 					<p>
-						<strong>APK: {apk}</strong>
+						<strong>BPK: {apk}</strong>
 					</p>
 					<p>{props.product.volume} ml</p>
 					<p>{props.product.alcPercentage}%</p>

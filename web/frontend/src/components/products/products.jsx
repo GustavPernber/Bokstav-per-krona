@@ -208,8 +208,8 @@ class ProductsContainer extends Component {
 					: "showOrderStock=false";
 			}
 
-			let url = `http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`;
-			// let url=`${window.location}api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`
+			// let url = `http://localhost:8080/api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`;
+			let url=`${window.location}api/productsLimited?page=${pageNum}&${orderStock}&${this.state.url}`
 			console.log(url);
 			const response = await fetch(url);
 			const data = await response.json();

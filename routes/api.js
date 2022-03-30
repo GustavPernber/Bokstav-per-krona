@@ -35,7 +35,7 @@ function validateQueries(query){
 
             alcMin: 0,
             alcMax: 90,
-            sortBy:{"apk":-1},
+            sortBy:{"bpk":-1},
             cat1:{}
         }
 
@@ -58,7 +58,7 @@ function validateQueries(query){
 
         // ["apk", "priceAsc", "alcAsc"]
         if (query.sortBy==="apk") {
-            newQuery["sortBy"]={"apk": -1}
+            newQuery["sortBy"]={"bpk": -1}
 
         } else if(query.sortBy==="priceAsc"){
             newQuery["sortBy"]={"price": 1}

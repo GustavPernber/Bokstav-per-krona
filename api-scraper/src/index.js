@@ -96,7 +96,8 @@ class APItoDB {
                 await this.#writeToDb(product);
             }
 
-            console.log("Resolved single page. Fetching new from API...");
+            console.log(this.amountList)
+            // console.log("Resolved single page. Fetching new from API...");
             resolve();
         });
     }
@@ -147,7 +148,7 @@ class APItoDB {
             }
             
 
-            console.log(this.amountList)
+            // console.log(this.amountList)
             resolve()
         
         
